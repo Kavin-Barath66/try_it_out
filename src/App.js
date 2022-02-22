@@ -16,6 +16,8 @@ import TransactionCancel from './Pages/TransactionCancel';
 import TransactionReverse from './Pages/TransactionReverse';
 import BankViewTransaction from './Pages/BankViewTransaction';
 import MobileViewTransaction from './Pages/MobileViewTransaction';
+import BankCreateTransaction from './Pages/BankCreateTransaction';
+import MobileCreateTransaction from './Pages/MobileCreateTransaction';
 
 function App() {
     /* header */
@@ -50,6 +52,8 @@ function App() {
             <Route path="/reverse-transaction" element={<TransactionReverse/>} />
             <Route path="/view-transaction-bank" element={<BankViewTransaction/>} />
             <Route path="/view-transaction-mobile" element={<MobileViewTransaction/>} />
+            <Route path="/create-transaction-bank" element={<BankCreateTransaction/>} />
+            <Route path="/create-transaction-mobile" element={<MobileCreateTransaction/>} />
         </Routes>
       </div>
   </BrowserRouter>

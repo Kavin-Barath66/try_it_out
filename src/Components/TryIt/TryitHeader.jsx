@@ -62,6 +62,10 @@ function TryitHeader(props) {
                 navigate('/view-transaction-bank')
             }else if(props.endPoint === "View Transaction Mobile"){
                 navigate('/view-transaction-mobile')
+            }else if(props.endPoint === "Create Transaction Bank"){
+                navigate('/create-transaction-bank')
+            }else if(props.endPoint === "Create Transaction Mobile"){
+                navigate('/create-transaction-mobile')
             }else {
                 navigate("/")
             }
@@ -108,11 +112,14 @@ function TryitHeader(props) {
                 <MenuItem value='Create Quotation Bank'>Create Quotation Bank</MenuItem>
                 <MenuItem value='View Transaction Mobile'>View Transaction Mobile</MenuItem>
                 <MenuItem value='View Transaction Bank'>View Transaction Bank</MenuItem>
+                <MenuItem value='Create Transaction Bank'>Create Transaction Bank</MenuItem>
+                <MenuItem value='Create Transaction Mobile'>Create Transaction Mobile</MenuItem>
                 <MenuItem value='Ledger Balance'>Ledger Balance</MenuItem>
                 <MenuItem value='Corridor Quotation'>Corridor Quotation</MenuItem>
                 <MenuItem value='Get Bank List'>Get Bank List</MenuItem>
                 <MenuItem value='Cancel Transaction'>Cancel Transaction</MenuItem>
                 <MenuItem value='Reverse Transaction'>Reverse Transaction</MenuItem>
+
             </TextField>
             <OutlinedInput sx={{ height: 40, width:'100%',
                     "& .MuiOutlinedInput-root": {
