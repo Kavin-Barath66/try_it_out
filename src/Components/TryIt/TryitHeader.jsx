@@ -2,11 +2,13 @@ import React, { useEffect } from 'react'
 import { styled } from '@mui/system'
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios'
-import { useState } from "react";
+import { useState} from "react";
+import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { Stack, OutlinedInput, Button, Box, Typography, TextField, Container} from '@mui/material'
 import terrapayLogo from '../../assets/img/terrapay_logo.png'
 import { config } from '../../assets/config/config';
+import Select from '@mui/material/Select';
 const apiUrl = config.api.url;
 
 
@@ -39,6 +41,10 @@ function TryitHeader(props) {
               }); 
           }
 
+          /* useEffect(()=>{
+            getLedgerBalance();
+          },[]) */
+
           useEffect(()=>{
             if(props.endPoint === "Account Status Mobile"){
                 navigate("/account-status-mobile")
@@ -66,6 +72,12 @@ function TryitHeader(props) {
                 navigate('/create-transaction-bank')
             }else if(props.endPoint === "Create Transaction Mobile"){
                 navigate('/create-transaction-mobile')
+            }else if(props.endPoint === "B2B Transaction"){
+                navigate('/b2b-transaction')
+            }else if(props.endPoint === "P2B Transaction"){
+                navigate('/p2b-transaction')
+            }else if(props.endPoint === "B2P Transaction"){
+                navigate('/b2p-transaction')
             }else {
                 navigate("/")
             }
@@ -77,7 +89,7 @@ function TryitHeader(props) {
             <img src={terrapayLogo} alt="terrapayLogo" />
         </Stack>
         <Stack width="30%" spacing={3} justifyContent='center' direction='column' >
-            <TextField
+                <TextField
                 sx={{width:'100%',
                     "& .MuiSvgIcon-root": {
                         color: "white",
@@ -119,20 +131,20 @@ function TryitHeader(props) {
                 <MenuItem value='Get Bank List'>Get Bank List</MenuItem>
                 <MenuItem value='Cancel Transaction'>Cancel Transaction</MenuItem>
                 <MenuItem value='Reverse Transaction'>Reverse Transaction</MenuItem>
-
-            </TextField>
+                <MenuItem value='B2B Transaction'>B2B Transaction</MenuItem>
+                <MenuItem value='P2B Transaction'>P2B Transaction</MenuItem>
+                <MenuItem value='B2P Transaction'>B2P Transaction</MenuItem>
+            </TextField> 
             <OutlinedInput sx={{ height: 40, width:'100%',
-                    "& .MuiOutlinedInput-root": {
-                        '& fieldset':{
-                            borderColor: 'white',
-                        },
-                        '&:hover fieldset': {
-                            borderColor: 'white',
-                        },
-                        '&.Mui-focused fieldset': {
-                            borderColor: 'white',
-                        },
-                    },
+                                "& .MuiOutlinedInput-input": {
+                                    color:'white',
+                                },
+                                "& .MuiOutlinedInput-notchedOutline": {
+                                    borderColor:'white',
+                                    '&.Mui-focused': {
+                                        borderColor: 'white',
+                                    },
+                                },
             }} placeholder='Username' onChange={({ target }) => props.setuserName(target.value)} value={props.userName} />
             </Stack>
             <Stack width="30%" spacing={3} justifyContent='center' direction='column' >

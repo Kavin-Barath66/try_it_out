@@ -16,43 +16,38 @@ function ResponseCreateQuotationBank(props) {
                 <Stack p={3} color="#20336d">
                     <Typography pb={1} variant='h6' color="#20336d" fontFamily='Poppins' fontWeight='500' sx={{fontSize:"26px"}} >API code snippet</Typography>
                         <Typography fontSize={14} overflow="hidden" textOverflow="ellipsis" style={{wordWrap: "break-word"}}>
-                        curl --location --request POST 'https://uat-connect.terrapay.com:21211/eig/gsma/quotations'\
-                        <br/>--header 'X-DATE: 2020-01-02 10:51:16'\
-                        <br/>--header 'X-ORIGINCOUNTRY: US' \
-                        <br/>--header 'X-USERNAME: partneruat' \
-                        <br/>--header 'X-PASSWORD:   cb0ae8d698378ed31c04a1b41bee389a8e392313c09c0c2df2e52b09d74af86b' \
-                        <br/>--header 'Content-Type: application/json' \
-                        <br/>--data-raw ' {JSON.stringify({
-                          "requestDate": "2017-05-03 11:00:00",
-                            "debitParty": [
-                                {
-                                    "key": "msisdn",
-                                    "value": "+4491509874561"
+                        {JSON.stringify({
+                            method: 'post',
+                            url: 'https://uat-connect.terrapay.com:21211/eig/gsma/quotations',
+                            headers: { 
+                                'X-USERNAME': 'OpenTurfDev', 
+                                'X-PASSWORD': '85d6dcc27d9fb21c7c346cdbcee2b56a84eba0f542a846de06658d2d094afd56', 
+                                'X-DATE': '2018-04-04 09:27:16', 
+                                'X-ORIGINCOUNTRY': 'US', 
+                                'Content-Type': 'application/json'
+                            },
+                            data : {
+                                "requestDate": "2017-06-20 12:27:16",
+                                "creditParty": [
+                                    {
+                                        "key": "bankaccountno",
+                                        "value": "50100002965304"
+                                    },
+                                    {
+                                        "key": "receivingCountry",
+                                        "value": "IN"
+                                    }
+                                ],
+                                "requestAmount": "500",
+                                "requestCurrency": "INR",
+                                "quotes": [
+                                    {
+                                        "sendingCurrency": "USD",
+                                        "receivingCurrency": "INR"
+                                    }
+                                ]
                                 }
-                            ],
-                            "creditParty": [
-                                {
-                                    "key": "msisdn",
-                                    "value": "+25691508523697"
-                                },
-                                {
-                                    "key": "bankaccountno",
-                                    "value": "2356915085237"
-                                },
-                                {
-                                    "key": "receivingCountry",
-                                    "value": "NG"
-                                }
-                            ],
-                            "requestAmount": "100",
-                            "requestCurrency": "EUR",
-                            "quotes": [
-                                {
-                                    "sendingCurrency": "EUR",
-                                    "receivingCurrency": "UGX"
-                                }
-                            ]    
-                        })}
+                            })}
                         </Typography>
                 </Stack>
             </Stack>

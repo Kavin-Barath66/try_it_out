@@ -15,13 +15,16 @@ function ResponseAccountStatusMobile(props) {
                 <Stack p={3} color="#20336d">
                     <Typography pb={1} variant='h6' color="#20336d" fontFamily='Poppins' fontWeight='500' sx={{fontSize:"26px"}} >API code snippet</Typography>
                         <Typography fontSize={14} overflow="hidden" textOverflow="ellipsis" style={{wordWrap: "break-word"}}>
-                        GET /eig/gsma/accounts/msisdn/+234xxxxxxxxx/status?bnv=John%20Smith&provider=23401&snv=David%20Robinson HTTP/1.1
-                        <br/>Host: xxx.xxx.xxx.xxx
-                        <br/>Content-Type: text/json; charset=utf-8
-                        <br/>X-USERNAME: "terrapayuser"
-                        <br/>X-PASSWORD: "101dfd2422f23f06120b77ab17d39229ff9bb40563eae042bc6cc6e8f9f1825b"
-                        <br/>X-DATE: "2017-05-03 11:00:00"
-                        <br/>X-ORIGINCOUNTRY: "US"
+                        {JSON.stringify({
+                            method: 'get',
+                            url: 'https://uat-connect.terrapay.com:21211/eig/gsma/accounts/msisdn/+9779840002320/status?bnv=David Robinson',
+                            headers: { 
+                                'X-USERNAME': 'OpenTurfDev', 
+                                'X-PASSWORD': '85d6dcc27d9fb21c7c346cdbcee2b56a84eba0f542a846de06658d2d094afd56', 
+                                'X-DATE': '2018-04-04 09:27:16', 
+                                'X-ORIGINCOUNTRY': 'US'
+                            }
+                            })}
                         </Typography>
                 </Stack>
             </Stack>

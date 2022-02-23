@@ -15,12 +15,17 @@ function ResponseGetBankList(props) {
                 <Stack p={3} color="#20336d">
                     <Typography pb={1} variant='h6' color="#20336d" fontFamily='Poppins' fontWeight='500' sx={{fontSize:"26px"}} >API code snippet</Typography>
                     <Typography fontSize={14} overflow="hidden" textOverflow="ellipsis" style={{wordWrap: "break-word"}}>
-                        curl --location --request GET 'https://connect.terrapay.com:21211/eig/getbanklist/BD'\
-                        <br/>--header 'X-USERNAME: username'\
-                        <br/>--header 'X-PASSWORD: password'\
-                        <br/>--header 'X-DATE:request datetime'\
-                        <br/>--header 'X-ORIGINCOUNTRY:origincountry'\
-                        <br/>--header 'Content-Type: application/json'
+                        {JSON.stringify({
+                            method: 'get',
+                            url: 'https://uat-connect.terrapay.com:21211/eig/getbanklist/NP',
+                            headers: { 
+                              'X-USERNAME': 'OpenTurfDev', 
+                              'X-PASSWORD': '85d6dcc27d9fb21c7c346cdbcee2b56a84eba0f542a846de06658d2d094afd56', 
+                              'X-DATE': '2018-04-04 09:27:16', 
+                              'X-ORIGINCOUNTRY': 'US'
+                            },
+                            data : {}
+                        })}
                     </Typography>
                 </Stack>
             </Stack>

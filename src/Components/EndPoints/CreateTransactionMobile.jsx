@@ -11,7 +11,7 @@ function CreateTransactionMobile(props) {
   return (
     <>
     <Stack direction='row' alignItems='center' justifyContent='center'>
-        <Typography py={2} textAlign='center' fontWeight={600} fontSize={20} variant='h6' color="#404040">Create Quotation Bank</Typography>
+        <Typography py={2} textAlign='center' fontWeight={600} fontSize={20} variant='h6' color="#404040">Create Transaction Mobile</Typography>
     </Stack>
     <Stack height="100%" width={600} spacing={5} sx={{ p: 4 }} >
         <Stack direction='row' alignItems='center' justifyContent='space-between'>

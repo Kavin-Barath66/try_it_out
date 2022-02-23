@@ -15,134 +15,17 @@ function ResponseCreateTransactionBank(props) {
                 <Stack p={3} color="#20336d">
                     <Typography pb={1} variant='h6' color="#20336d" fontFamily='Poppins' fontWeight='500' sx={{fontSize:"26px"}} >API code snippet</Typography>
                         <Typography fontSize={14} overflow="hidden" textOverflow="ellipsis" style={{wordWrap: "break-word"}}>
-                            curl --location --request POST 'https://uat-connect.terrapay.com:21211/eig/gsma/transactions' \
-                            <br/>--header 'X-DATE: 2020-01-02 10:51:16' \
-                            <br/>--header 'X-ORIGINCOUNTRY: US' \
-                            <br/>--header 'X-USERNAME: partneruat' \
-                            <br/>--header 'X-PASSWORD: cb0ae8d698378ed31c04a1b41bee389a8e392313c09c0c2df2e52b09d74af86b' \
-                            <br/>--header 'Content-Type: application/json' \
-                            <br/>--data-raw {JSON.stringify({
-                            "currency":"INR",
-                            "type":"p2b",
-                            "requestDate":"2020-01-02 10:51:16",
-                            "amount":"7291.35",
-                            "descriptionText":"Gift for my brother",
-                            "requestingOrganisationTransactionReference":"requestingOrganisationTransactionReference12",
-                            "sendingAmount":"7291.35",
-                            "payinCcyCode":"USD",
-                            "paymentMode":"cash",
-                            "authenticationPartnerCode":"4534",
-                            "paymentOption":"Mobile Wallet",
-                            "sendingPartnerCode":"343432223",
-                            "receivingPartnerCode":"343431223",
-                            "debitParty":[
-                                {
-                                    "key":"msisdn",
-                                    "value":"+4491509874561"
-                                }
-                            ],
-                            "creditParty":[
-                                {
-                                    "key":"bankaccountno",
-                                    "value":"232201001617"
-                                },
-                                {
-                                    "key":"sortcode",
-                                    "value":"CNRB0000232"
-                                },
-                                {
-                                    "key":"organisationid",
-                                    "value":"Canara Bank"
-                                },
-                                {
-                                    "key":"bankBranchName",
-                                    "value":"Canara Bank"
-                                },
-                                {
-                                    "key":"accountName",
-                                    "value":"Devki Luggage Centre"
-                                },
-                                {
-                                    "key":"accountIBAN",
-                                    "value":"GB29NWBK60161331926819"
-                                },
-                                {
-                                    "key":"accountAdditionalNo1",
-                                    "value":"2656915085434"
-                                }
-                            ],
-                            "senderKyc":{
-                                "nationality":"US",
-                                "dateOfBirth":"1986-06-28",
-                                "gender":"M",
-                                "primaryContactCountryCode":"USA",
-                                "primaryContactNo":"2349061114853",
-                                "primaryContactNoType":"personal",
-                                "idDocument":[
-                                    {
-                                        "idType":"nationalidcard",
-                                        "idNumber":"123456789",
-                                        "issueDate":"2003-09-26",
-                                        "expiryDate":"2033-09-26",
-                                        "issuerCountry":"US"
-                                    }
-                                ],
-                                "postalAddress":{
-                                    "addressLine1":"49 ",
-                                    "addressLine2":"park street",
-                                    "addressLine3":"walton'\''s road",
-                                    "city":"Lyon",
-                                    "stateProvince":"Lyon",
-                                    "postalCode":"123456",
-                                    "country":"US"
-                                },
-                                "subjectName":{
-                                    "title":"Mr.",
-                                    "firstName":"Einstein",
-                                    "middleName":"James",
-                                    "lastName":"Bela",
-                                    "fullName":"Einstien James Bela"
-                                }
+                        {JSON.stringify({
+                            method: 'post',
+                            url: 'https://uat-connect.terrapay.com:21211/eig/gsma/transactions',
+                            headers: { 
+                                'X-USERNAME': 'OpenTurfDev', 
+                                'X-PASSWORD': '85d6dcc27d9fb21c7c346cdbcee2b56a84eba0f542a846de06658d2d094afd56', 
+                                'X-DATE': '2018-04-04 09:27:16', 
+                                'X-ORIGINCOUNTRY': 'US', 
+                                'Content-Type': 'text/plain'
                             },
-                            "recipientKyc":{
-
-                            },
-                            "internationalTransferInformation":{
-                                "quoteId":"QT037CRICZMKS4H6E",
-                                "receivingCountry":"IN",
-                                "remittancePurpose":"Business profits to Parents",
-                                "sourceOfFunds":"Savings",
-                                "relationshipSender": "Brother"
-                            },
-                            "business":{
-                                "senderKyc":{
-                                },
-                                "recepientKyc":{
-                                    "businessName":"Devki Luggage Centre",
-                                    "businessPINCode":"123456",
-                                    "businessAddress1":"24",
-                                    "businessAddress2":"walton'\''s road",
-                                    "businessAddressCity":"newyork",
-                                    "businessAddressState":"NYC",
-                                    "businessAddressCountryCode":"IND",
-                                    "businessAddressZip":"123456",
-                                    "businessPrimaryContactCountryCode":"IND",
-                                    "businessPrimaryContactNo":"232323212",
-                                    "businessPrimaryContactNoType":"Mobile",
-                                    "businessDescription":"Electronics wholesale",
-                                    "businessEmail":"vrs.electronics@gmail.com",
-                                    "businessCountryCode":"IND",
-                                    "businessRegistrationType":"p2b",
-                                    "businessRegistrationNumber":"2312345678912",
-                                    "businessRegistrationIssuedBy":"NYC_TRADE",
-                                    "businessRegistrationIssuedAt":"NYC",
-                                    "businessRegistrationIssueDate":"2002-09-26",
-                                    "businessIDValidThru":"2036-09-26",
-                                    "typeofbusiness":"Electronics",
-                                    "businessPObox":"12345",
-                                    "businessMobile":"343234433"
-                                }
-                            }
+                            data : {  "amount": "500",  "currency": "INR",  "type": "inttransfer",  "descriptionText": "Gift for my brother",  "requestDate": "2021-05-23 08:19:36",  "requestingOrganisationTransactionReference": "SrcTxnId002",  "debitParty": [    {      "key": "msisdn",      "value": "+971810456234"    }  ],  "creditParty": [    {      "key": "bankaccountno",      "value": "50100002965304"    },    {      "key": "organisationid",      "value": "HDFC Bank"    },    {      "key": "sortcode",      "value": "HDFC0001626"    }  ],  "senderKyc": {    "nationality": "AE",    "dateOfBirth": "1967-05-28",    "gender": "M",    "idDocument": [      {        "idType": "VOTER_CARD",        "idNumber": "13321115521",        "issueDate": "1967-05-28",        "expiryDate": "2067-05-28",        "issuerCountry": "AE"      }    ],    "postalAddress": {      "addressLine1": "49 , park street",      "addressLine2": "12",      "addressLine3": "12",      "city": "12",      "stateProvince": "12",      "postalCode": "50000",      "country": "US"    },    "subjectName": {      "firstName": "Test",      "middleName": "",      "lastName": "Sender2",      "fullName": "Test Sender2"    }  },    "recipientKyc": {    "subjectName": {      "firstName": "Deepa",      "lastName": "Jain",      "fullName": "Deepa Jain"    }  },  "internationalTransferInformation": {    "quoteId": "QR037C1NA6ZXBSQ88B",    "receivingCountry": "IN",    "remittancePurpose": "Family Maintainance",    "sourceOfFunds": "Salary",    "relationshipSender": "Brother"  }}
                             })}
                         </Typography>
                 </Stack>

@@ -15,77 +15,18 @@ function ResponseCreateTransactionMobile(props) {
                 <Stack p={3} color="#20336d">
                     <Typography pb={1} variant='h6' color="#20336d" fontFamily='Poppins' fontWeight='500' sx={{fontSize:"26px"}} >API code snippet</Typography>
                         <Typography fontSize={14} overflow="hidden" textOverflow="ellipsis" style={{wordWrap: "break-word"}}>
-                        curl --location --request POST 'https://127.0.0.1:21211/eig/gsma/transactions' \
-                        <br/>--header 'X-DATE: 2020-01-02 10:51:16' \
-                        <br/>--header 'X-ORIGINCOUNTRY: US' \
-                        <br/>--header 'X-USERNAME: partneruat' \
-                        <br/>--header 'X-PASSWORD: cb0ae8d698378ed31c04a1b41bee389a8e392313c09c0c2df2e52b09d74af86b' \
-                        <br/>--header 'Content-Type: application/json' \
-                        <br/>--data-raw '{JSON.stringify({
-                        "amount": "355882.35",
-                        "currency": "UGX",
-                        "type": "inttransfer",
-                        "descriptionText": "Gift for my brother",
-                        "requestDate": "2017-03-20T06:19:36.969Z",
-                        "requestingOrganisationTransactionReference": "requestingOrganisationTransactionReference1122",
-                        "debitParty": [
-                            {
-                            "key": "msisdn",
-                            "value": "+33472034605"
-                            } 
-                        ],
-                        "creditParty": [
-                            {
-                            "key": "msisdn",
-                            "value": "+256897378380"
-                            }
-                        ],
-                        "senderKyc": {
-                            "nationality": "US",
-                            "dateOfBirth": "1986-06-28",
-                            "gender": "M",
-                            "idDocument": [
-                            {
-                                "idType": "nationalidcard",
-                                "idNumber": "123456789",
-                                "issueDate": "2003-09-26",
-                                "expiryDate": "2033-09-26",
-                                "issuerCountry": "US"
-                            }
-                            ],
-                            "postalAddress": {
-                            "addressLine1": "49 ",
-                            "addressLine2": "park street",
-                            "addressLine3": "walton'\''s road",
-                            "city": "Lyon",
-                            "stateProvince": "Lyon",
-                            "postalCode": "123456",
-                            "country": "US"
+                        {JSON.stringify({
+                            method: 'post',
+                            url: 'https://uat-connect.terrapay.com:21211/eig/gsma/transactions',
+                            headers: { 
+                                'X-USERNAME': 'OpenTurfDev', 
+                                'X-PASSWORD': '85d6dcc27d9fb21c7c346cdbcee2b56a84eba0f542a846de06658d2d094afd56', 
+                                'X-DATE': '2018-04-04 09:27:16', 
+                                'X-ORIGINCOUNTRY': 'US', 
+                                'Content-Type': 'text/plain'
                             },
-                            "subjectName": {
-                            "title": "Mr.",
-                            "firstName": "Einstein",
-                            "middleName": "James",
-                            "lastName": "Bela",
-                            "fullName": "Einstien James Bela"
-                            }
-                        },
-                            "recipientKyc":
-                            {
-                            "subjectName": {
-                            "firstName": "David",
-                            "lastName": "Robinson",
-                            "fullName": "David Robinson"
-                            }
-                            },
-                        "internationalTransferInformation": {
-                            "quoteId": "QT037CRISXJTHGN53",
-                            "receivingCountry": "UG",
-                            "remittancePurpose": "Gift",
-                            "sourceOfFunds": "Salary",
-                            "relationshipSender": "Brother"
-                        }
-                        })}
+                            data : {  "amount": "500",  "currency": "NPR",  "type": "inttransfer",  "descriptionText": "Gift for my brother",  "requestDate": "2021-05-23 08:19:36",  "requestingOrganisationTransactionReference": "SrcTxnId001",  "debitParty": [    {      "key": "msisdn",      "value": "+971810456234"    }  ],  "creditParty": [    {      "key": "msisdn",      "value": "+9779840002320"    }  ],  "senderKyc": {    "nationality": "AE",    "dateOfBirth": "1967-05-28",    "gender": "M",    "idDocument": [      {        "idType": "VOTER_CARD",        "idNumber": "13321115521",        "issueDate": "1967-05-28",        "expiryDate": "2067-05-28",        "issuerCountry": "AE"      }    ],    "postalAddress": {      "addressLine1": "49 , park street",      "addressLine2": "12",      "addressLine3": "12",      "city": "12",      "stateProvince": "12",      "postalCode": "50000",      "country": "US"    },    "subjectName": {      "firstName": "Test",      "middleName": "",      "lastName": "Sender",      "fullName": "Test Sender"    }  },    "recipientKyc": {    "subjectName": {      "firstName": "David",      "lastName": "Robinson",      "fullName": "David Robinson"    }  },  "internationalTransferInformation": {    "quoteId": "QT037C1NQ6BHMV59A3",    "receivingCountry": "NP",    "remittancePurpose": "Family Maintainance",    "sourceOfFunds": "Salary",    "relationshipSender": "Brother"  }}
+                            })}
                     </Typography>
                 </Stack>
             </Stack>

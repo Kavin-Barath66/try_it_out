@@ -5,13 +5,13 @@ import axios from 'axios'
 import MenuItem from '@mui/material/MenuItem';
 import { Stack, OutlinedInput, Button, Box, Typography, TextField, Container} from '@mui/material'
 
-function CreateTransactionBank(props) {
+function P2BTransaction(props) {
     
     
   return (
     <>
     <Stack direction='row' alignItems='center' justifyContent='center'>
-        <Typography py={2} textAlign='center' fontWeight={600} fontSize={20} variant='h6' color="#404040">Create Transaction Bank</Typography>
+        <Typography py={2} textAlign='center' fontWeight={600} fontSize={20} variant='h6' color="#404040">P2B Transaction</Typography>
     </Stack>
     <Stack height="100%" width={600} spacing={5} sx={{ p: 4 }} >
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
@@ -166,9 +166,183 @@ function CreateTransactionBank(props) {
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-                Receiver Full Name
+                Sending Amount
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Receiver Full Name' />
+        </Stack>
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+                Paying Currency Code
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='Paying Currency Code' />
+        </Stack>
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+                Payment Mode
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='Payment Mode' />
+        </Stack>
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+                Authentication Partner Code
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='Authentication Partner Code' />
+        </Stack>
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+                Payment Option
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='Payment Option' />
+        </Stack>
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+                Sending Partner Code
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='Sending Partner Code' />
+        </Stack>
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+                Receiving Partner Code
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='Receiving Partner Code' />
+        </Stack>
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+                Business Name
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='Business Name' />
+        </Stack>
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+                Business PINCODE
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='Business PINCODE' />
+        </Stack>
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+                Business Address 1
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='Business Address 1' />
+        </Stack>
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+                Business Address 2
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='Business Address 2' />
+        </Stack>
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+                Business Address City
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='Business Address City' />
+        </Stack>
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+                Business Address State
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='Business Address State' />
+        </Stack>
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+                Business Address Country Code
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='Business Address Country Code' />
+        </Stack>
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+                Business Address Zip Code
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='Business Address Zip Code' />
+        </Stack>
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+                Business Address Contact Country Code
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='Business Address Contact Country Code' />
+        </Stack>
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+                Business Address Contact Number
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='Business Address Contact Number' />
+        </Stack>
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+                Business Address Contact Number Type
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='Business Address Contact Number Type' />
+        </Stack>
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+                Business Description
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='Business Description' />
+        </Stack>
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+                Business Email
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='Business Email' />
+        </Stack>
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+                Business Country Code
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='Business Country Code' />
+        </Stack>
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+                Business Registration Type
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='Business Registration Type' />
+        </Stack>
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+                Business Registration Number
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='Business Registration Number' />
+        </Stack>
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+                Business Registration Issued By
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='Business Registration Issued By' />
+        </Stack>
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+                Business Registration Issued At
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='Business Registration Issued At' />
+        </Stack>
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+                Business Registration Issued Date
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='Business Registration Issued Date' />
+        </Stack>
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+                Business ID ValidThru
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='Business ID ValidThru' />
+        </Stack>
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+                Type Of Business
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='Type Of Business' />
+        </Stack>
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+                Business POBox
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='Business POBox' />
+        </Stack>
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+                Business Mobile
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='Business Mobile' />
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
@@ -211,4 +385,4 @@ function CreateTransactionBank(props) {
   )
 }
 
-export default CreateTransactionBank
+export default P2BTransaction

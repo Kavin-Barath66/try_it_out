@@ -15,12 +15,16 @@ function ResponseViewTransactionBank(props) {
                 <Stack p={3} color="#20336d">
                     <Typography pb={1} variant='h6' color="#20336d" fontFamily='Poppins' fontWeight='500' sx={{fontSize:"26px"}} >API code snippet</Typography>
                         <Typography fontSize={14} overflow="hidden" textOverflow="ellipsis" style={{wordWrap: "break-word"}}>
-                        curl --location --request GET 'https://uat-connect.terrapay.com:21211/eig/gsma/transactions/TPKM000000056269 HTTP/1.1'\
-                        <br/>--header  'Content-Type: application/json; charset=utf-8'\
-                        <br/>--header  'X-USERNAME: partneruat '\
-                        <br/>--header  'X-PASSWORD: 101dfd2422f23f06120b77ab17d39229ff9bb40563eae042bc6cc6e8f9f1825b'\
-                        <br/>--header  'X-DATE: "2017-05-03 11:00:00'\
-                        <br/>--header  'X-ORIGINCOUNTRY:US'\
+                        {JSON.stringify({
+                            method: 'get',
+                            url: 'https://uat-connect.terrapay.com:21211/eig/gsma/transactions/SrcTxnId001',
+                            headers: { 
+                                'X-USERNAME': 'OpenTurfDev', 
+                                'X-PASSWORD': '85d6dcc27d9fb21c7c346cdbcee2b56a84eba0f542a846de06658d2d094afd56', 
+                                'X-DATE': '2018-04-04 09:27:16', 
+                                'X-ORIGINCOUNTRY': 'US'
+                            },data:{}
+                        })}
                         </Typography>
                 </Stack>
             </Stack>

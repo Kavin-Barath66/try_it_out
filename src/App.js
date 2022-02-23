@@ -18,6 +18,9 @@ import BankViewTransaction from './Pages/BankViewTransaction';
 import MobileViewTransaction from './Pages/MobileViewTransaction';
 import BankCreateTransaction from './Pages/BankCreateTransaction';
 import MobileCreateTransaction from './Pages/MobileCreateTransaction';
+import TransactionB2B from './Pages/TransactionB2B';
+import TransactionB2P from './Pages/TransactionB2P';
+import TransactionP2B from './Pages/TransactionP2B';
 
 function App() {
     /* header */
@@ -54,6 +57,9 @@ function App() {
             <Route path="/view-transaction-mobile" element={<MobileViewTransaction/>} />
             <Route path="/create-transaction-bank" element={<BankCreateTransaction/>} />
             <Route path="/create-transaction-mobile" element={<MobileCreateTransaction/>} />
+            <Route path="/b2b-transaction" element={<TransactionB2B/>} />
+            <Route path="/b2p-transaction" element={<TransactionB2P/>} />
+            <Route path="/p2b-transaction" element={<TransactionP2B/>} />
         </Routes>
       </div>
   </BrowserRouter>
