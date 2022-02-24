@@ -18,9 +18,12 @@ import BankViewTransaction from './Pages/BankViewTransaction';
 import MobileViewTransaction from './Pages/MobileViewTransaction';
 import BankCreateTransaction from './Pages/BankCreateTransaction';
 import MobileCreateTransaction from './Pages/MobileCreateTransaction';
-import TransactionB2B from './Pages/TransactionB2B';
-import TransactionB2P from './Pages/TransactionB2P';
-import TransactionP2B from './Pages/TransactionP2B';
+import MobileTransactionB2B from './Pages/MobileTransactionB2B';
+import BankTransactionB2B from './Pages/BankTransactionB2B';
+import BankTransactionB2P from './Pages/BankTransactionB2P';
+import MobileTransactionB2P from './Pages/MobileTransactionB2P';
+import BankTransactionP2B from './Pages/BankTransactionP2B';
+import MobileTransactionP2B from './Pages/MobileTransactionP2B';
 
 function App() {
     /* header */
@@ -28,10 +31,12 @@ function App() {
     const [endPoint, setEndPoint] = useState("")
     const [userName, setuserName] = useState("OpenTurfDev")
     const [password, setPassword] = useState("85d6dcc27d9fb21c7c346cdbcee2b56a84eba0f542a846de06658d2d094afd56")
-    
+
+  
   return (
     <BrowserRouter>
       <TryitHeader
+        /* callBackFunction={callBackFunction} */
         endPoint={endPoint}
         setEndPoint={setEndPoint}
         environment={environment}
@@ -43,23 +48,34 @@ function App() {
       />
       <div>
         <Routes>
-            <Route  path="/" element= {<Home/>} />
-            <Route path="/ledger" element={<Ledger/>} />
-            <Route path="/account-status-mobile" element={<MobileAccountStatus/>} />
-            <Route path="/account-status-bank" element={<BankAccountStatus/>}/>
-            <Route path="/create-quotation-bank" element={<BankCreateQuotation/>} />
-            <Route path="/create-quotation-mobile" element={<MobileCreateQuotation/>} />
-            <Route path="/corridor-quotation" element={<Corridor/>}/>
-            <Route path="/get-bank-list" element={<BankList/>} />
-            <Route path="/cancel-transaction" element={<TransactionCancel/>} />
-            <Route path="/reverse-transaction" element={<TransactionReverse/>} />
-            <Route path="/view-transaction-bank" element={<BankViewTransaction/>} />
-            <Route path="/view-transaction-mobile" element={<MobileViewTransaction/>} />
-            <Route path="/create-transaction-bank" element={<BankCreateTransaction/>} />
-            <Route path="/create-transaction-mobile" element={<MobileCreateTransaction/>} />
-            <Route path="/b2b-transaction" element={<TransactionB2B/>} />
-            <Route path="/b2p-transaction" element={<TransactionB2P/>} />
-            <Route path="/p2b-transaction" element={<TransactionP2B/>} />
+            <Route  path="/" exact element= {<Home/>} />
+            <Route path="/ledger" exact element={<Ledger />} />
+            
+            <Route path="/account-status-mobile" exact element={<MobileAccountStatus/>} />
+            <Route path="/account-status-bank" exact element={<BankAccountStatus/>}/>
+
+            <Route path="/create-quotation-bank" exact element={<BankCreateQuotation/>} />
+            <Route path="/create-quotation-mobile" exact element={<MobileCreateQuotation/>} />
+
+            <Route path="/corridor-quotation" exact element={<Corridor/>}/>
+            <Route path="/get-bank-list" exact element={<BankList/>} />
+            <Route path="/cancel-transaction" exact element={<TransactionCancel/>} />
+            <Route path="/reverse-transaction" exact element={<TransactionReverse/>} />
+
+            <Route path="/view-transaction-bank" exact element={<BankViewTransaction/>} />
+            <Route path="/view-transaction-mobile" exact element={<MobileViewTransaction/>} />
+
+            <Route path="/create-transaction-bank" exact element={<BankCreateTransaction/>} />
+            <Route path="/create-transaction-mobile" exact element={<MobileCreateTransaction/>} />
+
+            <Route path="/b2b-transaction-bank" exact element={<BankTransactionB2B/>} />
+            <Route path="/b2b-transaction-mobile" exact element={<MobileTransactionB2B/>} />
+
+            <Route path="/b2p-transaction-bank" exact element={<BankTransactionB2P/> } />
+            <Route path="/b2p-transaction-mobile" exact element={<MobileTransactionB2P/>} />
+
+            <Route path="/p2b-transaction-bank" exact element={<BankTransactionP2B/>}/>
+            <Route path="/p2b-transaction-mobile" exact element={<MobileTransactionP2B/>} /> 
         </Routes>
       </div>
   </BrowserRouter>

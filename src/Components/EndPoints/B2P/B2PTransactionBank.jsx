@@ -5,13 +5,13 @@ import axios from 'axios'
 import MenuItem from '@mui/material/MenuItem';
 import { Stack, OutlinedInput, Button, Box, Typography, TextField, Container} from '@mui/material'
 
-function B2PTransaction(props) {
+function B2PTransactionBank(props) {
     
     
   return (
     <>
     <Stack direction='row' alignItems='center' justifyContent='center'>
-        <Typography py={2} textAlign='center' fontWeight={600} fontSize={20} variant='h6' color="#404040">B2P Transaction</Typography>
+        <Typography py={2} textAlign='center' fontWeight={600} fontSize={20} variant='h6' color="#404040">B2P Transaction Bank</Typography>
     </Stack>
     <Stack height="100%" width={600} spacing={5} sx={{ p: 4 }} >
       <Stack direction='row' alignItems='center' justifyContent='space-between'>
@@ -228,4 +228,4 @@ function B2PTransaction(props) {
   )
 }
 
-export default B2PTransaction
+export default B2PTransactionBank

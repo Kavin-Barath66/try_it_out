@@ -1,7 +1,7 @@
 import React from 'react'
 import { Grid } from "@mui/material";
 import ResponseCreateQuotationMobile from '../Components/Response/ResponseCreateQuotationMobile';
-import CreateQuotationMobile from '../Components/EndPoints/CreateQuotationMobile';
+import CreateQuotationMobile from '../Components/EndPoints/CreateQuotation/CreateQuotationMobile';
 
 function MobileCreateQuotation() {
     return (

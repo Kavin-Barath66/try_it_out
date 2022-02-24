@@ -1,7 +1,7 @@
 import React from 'react'
 import { Grid } from "@mui/material";
 import ResponseCreateQuotationBank from '../Components/Response/ResponseCreateQuotationBank';
-import CreateQuotationBank from '../Components/EndPoints/CreateQuotationBank';
+import CreateQuotationBank from '../Components/EndPoints/CreateQuotation/CreateQuotationBank';
 
 function BankCreateQuotation() {
     return (

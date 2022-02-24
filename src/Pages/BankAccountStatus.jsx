@@ -1,6 +1,6 @@
 import React from 'react'
 import { Grid } from "@mui/material";
-import AccountStatusBank from '../Components/EndPoints/AccountStatusBank';
+import AccountStatusBank from '../Components/EndPoints/AccountStatus/AccountStatusBank';
 import ResponseAccountStatusBank from '../Components/Response/ResponseAccountStatusBank';
 
 function BankAccountStatus() {

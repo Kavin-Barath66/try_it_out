@@ -5,13 +5,13 @@ import axios from 'axios'
 import MenuItem from '@mui/material/MenuItem';
 import { Stack, OutlinedInput, Button, Box, Typography, TextField, Container} from '@mui/material'
 
-function B2BTransaction(props) {
+function P2BTransactionMobile(props) {
     
     
   return (
     <>
     <Stack direction='row' alignItems='center' justifyContent='center'>
-        <Typography py={2} textAlign='center' fontWeight={600} fontSize={20} variant='h6' color="#404040">B2B Transaction</Typography>
+        <Typography py={2} textAlign='center' fontWeight={600} fontSize={20} variant='h6' color="#404040">P2B Transaction Mobile</Typography>
     </Stack>
     <Stack height="100%" width={600} spacing={5} sx={{ p: 4 }} >
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
@@ -70,6 +70,102 @@ function B2BTransaction(props) {
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
+            Nationality
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='Nationality' />
+        </Stack>
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+        <Typography color="#575757" fontWeight='500'>
+        Date Of Birth
+        </Typography>
+        <OutlinedInput sx={{ height: 40 }} placeholder='Date Of Birth' />
+    </Stack>
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+            Gender
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='Gender' />
+        </Stack>
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+            ID Type
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='ID Type' />
+        </Stack>
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+            ID Number
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='ID Number' />
+        </Stack>
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+            Issue Date
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='Issue Date' />
+        </Stack>  
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+            Expiry Date
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='Expiry Date' />
+        </Stack> 
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+            Issuer Country
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='Issuer Country' />
+        </Stack> 
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+            Address Line 1
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='Address Line 1' />
+        </Stack> 
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+            Address Line 2
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='Address Line 2' />
+        </Stack> 
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+            Address Line 3
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='Address Line 3' />
+        </Stack> 
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+            City
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='City' />
+        </Stack> 
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+            State Province
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='State Province' />
+        </Stack> 
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+            Postal Code
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='Postal Code' />
+        </Stack> 
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+            Country
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='Country' />
+        </Stack>
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+                Sender Full Name
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='Sender Full Name' />
+        </Stack>
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
                 Sending Amount
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Receiver Full Name' />
@@ -110,272 +206,144 @@ function B2BTransaction(props) {
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Receiving Partner Code' />
         </Stack>
-
-
-
-
-
-
-
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-                Sender Business Name
+                Business Name
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Sender Business Name' />
+            <OutlinedInput sx={{ height: 40 }} placeholder='Business Name' />
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-                Sender Business Address 1
+                Business PINCODE
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Sender Business Address 1' />
+            <OutlinedInput sx={{ height: 40 }} placeholder='Business PINCODE' />
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-                Sender Business Address City
+                Business Address 1
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Sender Business Address City' />
+            <OutlinedInput sx={{ height: 40 }} placeholder='Business Address 1' />
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-                Sender Business Address Country Code
+                Business Address 2
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Sender Business Address Country Code' />
+            <OutlinedInput sx={{ height: 40 }} placeholder='Business Address 2' />
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-                Sender Business Primary Contact Country Code
+                Business Address City
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Sender Business Primary Contact Country Code' />
+            <OutlinedInput sx={{ height: 40 }} placeholder='Business Address City' />
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-                Sender Business Primary Contact Number
+                Business Address State
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Sender Business Primary Contact Number' />
+            <OutlinedInput sx={{ height: 40 }} placeholder='Business Address State' />
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-                Sender Business Description
+                Business Address Country Code
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Sender Business Description' />
+            <OutlinedInput sx={{ height: 40 }} placeholder='Business Address Country Code' />
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-                Sender Business Country Code
+                Business Address Zip Code
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Sender Business Country Code' />
+            <OutlinedInput sx={{ height: 40 }} placeholder='Business Address Zip Code' />
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-                Sender Business Registeration Type
+                Business Address Contact Country Code
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Sender Business Registeration Type' />
+            <OutlinedInput sx={{ height: 40 }} placeholder='Business Address Contact Country Code' />
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-                Sender Business Registeration Number
+                Business Address Contact Number
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Sender Business Registeration Number' />
+            <OutlinedInput sx={{ height: 40 }} placeholder='Business Address Contact Number' />
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-                Sender Business Registeration IssueDate
+                Business Address Contact Number Type
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Sender Business Registeration IssueDate' />
+            <OutlinedInput sx={{ height: 40 }} placeholder='Business Address Contact Number Type' />
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-                Sender Business ID ValidThru
+                Business Description
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Sender Business ID ValidThru' />
+            <OutlinedInput sx={{ height: 40 }} placeholder='Business Description' />
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-                Sender Business Email
+                Business Email
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Sender Business Email' />
-        </Stack>
-        {/* Receiver */}
-        <Stack direction='row' alignItems='center' justifyContent='space-between'>
-            <Typography color="#575757" fontWeight='500'>
-                Receiver Business Name
-            </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Receiver Business Name' />
+            <OutlinedInput sx={{ height: 40 }} placeholder='Business Email' />
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-                Receiver Business PIN code
+                Business Country Code
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Receiver Business PIN code' />
+            <OutlinedInput sx={{ height: 40 }} placeholder='Business Country Code' />
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-                Receiver Business Address 1
+                Business Registration Type
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Receiver Business Address 1' />
+            <OutlinedInput sx={{ height: 40 }} placeholder='Business Registration Type' />
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-                Receiver Business Address 2
+                Business Registration Number
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Receiver Business Address 2' />
+            <OutlinedInput sx={{ height: 40 }} placeholder='Business Registration Number' />
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-                Receiver Business Address City
+                Business Registration Issued By
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Receiver Business Address City' />
+            <OutlinedInput sx={{ height: 40 }} placeholder='Business Registration Issued By' />
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-                Receiver Business Address State
+                Business Registration Issued At
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Receiver Business Address State' />
+            <OutlinedInput sx={{ height: 40 }} placeholder='Business Registration Issued At' />
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-                Receiver Business Address Country Code
+                Business Registration Issued Date
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Receiver Business Address Country Code' />
+            <OutlinedInput sx={{ height: 40 }} placeholder='Business Registration Issued Date' />
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-                Receiver Business Address Zip
+                Business ID ValidThru
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Receiver Business Address Zip' />
+            <OutlinedInput sx={{ height: 40 }} placeholder='Business ID ValidThru' />
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-                Receiver Business Primary Contact Country Code
+                Type Of Business
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Receiver Business Primary Contact Country Code' />
+            <OutlinedInput sx={{ height: 40 }} placeholder='Type Of Business' />
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-                Receiver Business Primary Contact Number
+                Business POBox
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Receiver Business Primary Contact Number' />
+            <OutlinedInput sx={{ height: 40 }} placeholder='Business POBox' />
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-                Receiver Business Primary Contact Number Type
+                Business Mobile
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Receiver Business Primary Contact Number Type'  />
+            <OutlinedInput sx={{ height: 40 }} placeholder='Business Mobile' />
         </Stack>
-        <Stack direction='row' alignItems='center' justifyContent='space-between'>
-            <Typography color="#575757" fontWeight='500'>
-                Receiver Business Description
-            </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Receiver Business Description'  />
-        </Stack>
-        <Stack direction='row' alignItems='center' justifyContent='space-between'>
-            <Typography color="#575757" fontWeight='500'>
-                Receiver Business Email
-            </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Receiver Business Email'  />
-        </Stack>
-        <Stack direction='row' alignItems='center' justifyContent='space-between'>
-            <Typography color="#575757" fontWeight='500'>
-                Receiver Business Country Code
-            </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Receiver Business Country Code'  />
-        </Stack>
-        <Stack direction='row' alignItems='center' justifyContent='space-between'>
-            <Typography color="#575757" fontWeight='500'>
-                Receiver Business Registeration Type
-            </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Receiver Business Registeration Type'  />
-        </Stack>
-        <Stack direction='row' alignItems='center' justifyContent='space-between'>
-            <Typography color="#575757" fontWeight='500'>
-                Receiver Business Registeration Number
-            </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Receiver Business Registeration Number'  />
-        </Stack>
-        <Stack direction='row' alignItems='center' justifyContent='space-between'>
-            <Typography color="#575757" fontWeight='500'>
-                Receiver Business Registeration Issued By
-            </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Receiver Business Registeration Issued By'  />
-        </Stack>
-        <Stack direction='row' alignItems='center' justifyContent='space-between'>
-            <Typography color="#575757" fontWeight='500'>
-                Receiver Business Registeration Issued At
-            </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Receiver Business Registeration Issued At'  />
-        </Stack>
-        <Stack direction='row' alignItems='center' justifyContent='space-between'>
-            <Typography color="#575757" fontWeight='500'>
-                Receiver Business Registeration Issued Date
-            </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Receiver Business Registeration Issued Date'  />
-        </Stack>
-        <Stack direction='row' alignItems='center' justifyContent='space-between'>
-            <Typography color="#575757" fontWeight='500'>
-                Receiver Business Id ValidThru
-            </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Receiver Business Id ValidThru'  />
-        </Stack>
-        <Stack direction='row' alignItems='center' justifyContent='space-between'>
-            <Typography color="#575757" fontWeight='500'>
-                Receiver Type Of Business
-            </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Receiver Type Of Business'  />
-        </Stack>
-        <Stack direction='row' alignItems='center' justifyContent='space-between'>
-            <Typography color="#575757" fontWeight='500'>
-                Receiver Business POBox
-            </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Receiver Business POBox'  />
-        </Stack>
-        <Stack direction='row' alignItems='center' justifyContent='space-between'>
-            <Typography color="#575757" fontWeight='500'>
-                Receiver Business Mobile
-            </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Receiver Business Mobile'  />
-        </Stack>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
                 Quote Id
@@ -417,4 +385,4 @@ function B2BTransaction(props) {
   )
 }
 
-export default B2BTransaction
+export default P2BTransactionMobile

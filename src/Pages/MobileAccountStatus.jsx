@@ -1,6 +1,6 @@
 import React from 'react'
 import { Grid } from "@mui/material";
-import AccountStatusMobile from '../Components/EndPoints/AccountStatusMobile';
+import AccountStatusMobile from '../Components/EndPoints/AccountStatus/AccountStatusMobile';
 import ResponseAccountStatusMobile from '../Components/Response/ResponseAccountStatusMobile';
 
 function MobileAccountStatus() {

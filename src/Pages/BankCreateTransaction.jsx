@@ -1,7 +1,7 @@
 import React from 'react'
 import { Grid } from "@mui/material";
 import ResponseCreateTransactionBank from '../Components/Response/ResponseCreateTransactionBank';
-import CreateTransactionBank from '../Components/EndPoints/CreateTransactionBank';
+import CreateTransactionBank from '../Components/EndPoints/CreateTransaction/CreateTransactionBank';
 
 
 function BankCreateTransaction() {

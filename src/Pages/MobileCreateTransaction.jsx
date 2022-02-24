@@ -1,7 +1,7 @@
 import React from 'react'
 import { Grid } from "@mui/material";
 import ResponseCreateTransactionMobile from '../Components/Response/ResponseCreateTransactionMobile';
-import CreateTransactionMobile from '../Components/EndPoints/CreateTransactionMobile';
+import CreateTransactionMobile from '../Components/EndPoints/CreateTransaction/CreateTransactionMobile';
 
 
 function MobileCreateTransaction() {

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Grid } from "@mui/material";
-import ViewTransactionBank from '../Components/EndPoints/ViewTransactionBank';
+import ViewTransactionBank from '../Components/EndPoints/ViewTransaction/ViewTransactionBank';
 import ResponseViewTransactionBank from '../Components/Response/ResponseViewTransactionBank';
 
 

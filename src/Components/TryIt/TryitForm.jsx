@@ -4,8 +4,8 @@ import axios from 'axios'
 import { useState } from "react";
 import MenuItem from '@mui/material/MenuItem';
 import { Stack, OutlinedInput, Button, Box, Typography, TextField, Container} from '@mui/material'
-import AccountStatusMobile from '../EndPoints/AccountStatusMobile';
-import AccountStatusBank from '../EndPoints/AccountStatusBank';
+import AccountStatusMobile from '../EndPoints/AccountStatus/AccountStatusMobile';
+import AccountStatusBank from '../EndPoints/AccountStatus/AccountStatusBank';
 import selectionIcon from '../../assets/img/selection.svg'
 import { config } from '../../assets/config/config';
 import LedgerBalance from '../EndPoints/LedgerBalance';

@@ -1,6 +1,6 @@
 import React from 'react'
 import { Grid } from "@mui/material";
-import ViewTransactionMobile from '../Components/EndPoints/ViewTransactionMobile';
+import ViewTransactionMobile from '../Components/EndPoints/ViewTransaction/ViewTransactionMobile';
 import ResponseViewTransactionMobile from '../Components/Response/ResponseViewTransactionMobile';
 
 
