@@ -6,7 +6,7 @@ import ReverseTransaction from '../Components/EndPoints/ReverseTransaction';
 
 function TransactionReverse() {
     return (
-        <Grid container>
+        <Grid container sx={{minHeight: '100%' }}>
             <Grid item xs={7}>
                 <ReverseTransaction/>
             </Grid>

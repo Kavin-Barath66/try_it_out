@@ -102,24 +102,28 @@ function TryitHeader(props) {
         </Stack>
         <Stack width="30%" spacing={3} justifyContent='center' direction='column' >
                     <FormControl>
-                        <InputLabel id="demo-simple-select-autowidth-label">
-                        API End Point
-                        </InputLabel>
+                        <InputLabel 
+                            sx={{color:'white',
+                            '&.Mui-focused': {
+                                color: 'white',
+                            },
+                        }} 
+                            id="demo-simple-select-autowidth-label">
+                            API End Point
+                        </InputLabel> 
                         <Select
                             sx={{width:'100%', height: '40px',
-                                "& .MuiSvgIcon-root": {
-                                    color: "white",
-                                },
-                                "& .MuiOutlinedInput-input": {
-                                    color:'white',
-                                },
-                                "& .MuiOutlinedInput-notchedOutline": {
-                                    borderColor:'white',
-                                    '&.Mui-focused': {
-                                        borderColor: 'white',
-                                    },
-                                },
-                            }}
+                            "& .MuiOutlinedInput-notchedOutline":{
+                                color: 'green',
+                                borderColor: 'white',
+                            },
+                            "& .MuiSvgIcon-root": {
+                                color: "white",
+                            },
+                            "& .MuiOutlinedInput-input": {
+                                color:'white',
+                            },
+                        }}
                             value={props.endPoint} 
                             onChange={({ target }) => props.setEndPoint(target.value)}
                             input={<OutlinedInput label="API End Point" />}
@@ -146,25 +150,20 @@ function TryitHeader(props) {
                         </Select>
                     </FormControl>
                     <OutlinedInput sx={{ height: 40, width:'100%',
-                                "& .MuiOutlinedInput-input": {
-                                    color:'white',
-                                },
-                                "& .MuiOutlinedInput-notchedOutline": {
-                                    borderColor:'white',
-                                    '&.Mui-focused': {
-                                        borderColor: 'white',
-                                    },
-                                },
-                                MuiInputLabel: {
-                                    root: {
-                                        color: "white",
-                                    },
-                                },
-            }} placeholder='Username' onChange={({ target }) => props.setuserName(target.value)} value={props.userName} />
+                        "& .MuiOutlinedInput-input": {
+                            color:'white',
+                        },
+                        "& .MuiOutlinedInput-notchedOutline": {
+                            borderColor:'white',
+                            '&.Mui-focused': {
+                                borderColor: 'white',
+                            },
+                        },
+                    }} placeholder='Username' onChange={({ target }) => props.setuserName(target.value)} value={props.userName} />
             </Stack>
             <Stack width="30%" spacing={3} justifyContent='center' direction='column' >
                     <FormControl>
-                        <InputLabel id="demo-simple-select-autowidth-label">
+                        <InputLabel id="demo-simple-select-autowidth-label" sx={{color:'white'}} >
                         Environment
                         </InputLabel>
                         <Select
@@ -179,11 +178,6 @@ function TryitHeader(props) {
                                     borderColor:'white',
                                     '&.Mui-focused': {
                                         borderColor: 'white',
-                                    },
-                                },
-                                MuiInputLabel: {
-                                    root: {
-                                        color: "white",
                                     },
                                 },
                             }}
@@ -204,7 +198,6 @@ function TryitHeader(props) {
                             borderColor: 'white',
                         },
                     },
-                
                     }} placeholder='Password' onChange={({ target }) => props.setPassword(target.value)} value={props.password} />
                 </Stack>
                 <Stack width="20%" direction='column' >

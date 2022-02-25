@@ -1,6 +1,6 @@
 import React from 'react'
 import { Grid } from "@mui/material";
-import ResponseB2PTransaction from '../Components/Response/ResponseB2PTransaction';
+import ResponseB2PTransaction from '../Components/Response/B2P/ResponseB2PTransaction';
 import B2PTransactionBank from '../Components/EndPoints/B2P/B2PTransactionBank';
 
 
@@ -8,7 +8,7 @@ import B2PTransactionBank from '../Components/EndPoints/B2P/B2PTransactionBank';
 
 function BankTransactionB2P() {
     return (
-        <Grid container>
+        <Grid container sx={{minHeight: '100%' }}>
             <Grid item xs={7}>
                 <B2PTransactionBank/>
             </Grid>

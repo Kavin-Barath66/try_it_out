@@ -1,11 +1,11 @@
 import React from 'react'
 import { Grid } from "@mui/material";
-import ResponseCreateQuotationBank from '../Components/Response/ResponseCreateQuotationBank';
 import CreateQuotationBank from '../Components/EndPoints/CreateQuotation/CreateQuotationBank';
+import ResponseCreateQuotationBank from '../Components/Response/CreateQuotation/ResponseCreateQuotationBank';
 
 function BankCreateQuotation() {
     return (
-        <Grid container>
+        <Grid container sx={{minHeight: '100%' }}>
             <Grid item xs={7}>
                 <CreateQuotationBank/>
             </Grid>

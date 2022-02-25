@@ -16,19 +16,19 @@ function CreateQuotationBank(props) {
     <Stack height="100%" width={600} spacing={5} sx={{ p: 4 }} >
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
         <Typography color="#575757" fontWeight='500'>
-        Account Number
+        Receiver Account Number
         </Typography>
         <OutlinedInput sx={{ height: 40 }} placeholder='Account Number' onChange={({ target }) => props.setAccountNumber(target.value)} value={props.accountNumber} />
     </Stack>
     <Stack direction='row' alignItems='center' justifyContent='space-between'>
         <Typography color="#575757" fontWeight='500'>
-        Receive Country
+        Receiver Country
         </Typography>
         <OutlinedInput sx={{ height: 40 }} placeholder='Recive Country' onChange={({ target }) => props.setReciveCountry(target.value)} value={props.reciveCountry} />
     </Stack>
     <Stack direction='row' alignItems='center' justifyContent='space-between'>
         <Typography color="#575757" fontWeight='500'>
-        Amount
+        Request Amount
         </Typography>
         <OutlinedInput sx={{ height: 40 }} placeholder='Amount' onChange={({ target }) => props.setAmount(target.value)} value={props.amount} />
     </Stack>
@@ -40,13 +40,13 @@ function CreateQuotationBank(props) {
     </Stack>
     <Stack direction='row' alignItems='center' justifyContent='space-between'>
         <Typography color="#575757" fontWeight='500'>
-        Send Currency
+        Sending Currency
         </Typography>
         <OutlinedInput sx={{ height: 40 }} placeholder='Send Currency' onChange={({ target }) => props.setSendCurrency(target.value)} value={props.sendCurrency} />
     </Stack>
     <Stack direction='row' alignItems='center' justifyContent='space-between'>
         <Typography color="#575757" fontWeight='500'>
-        Receive Currency
+        Receiving Currency
         </Typography>
         <OutlinedInput sx={{ height: 40 }} placeholder='Recive Currency' onChange={({ target }) => props.setReciveCurrency(target.value)} value={props.reciveCurrency} />
     </Stack>

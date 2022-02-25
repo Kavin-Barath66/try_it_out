@@ -46,55 +46,55 @@ function CreateTransactionMobile(props) {
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-            Sender MSISDN
+            Sender MobileNumber
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Sender MSISDN' />
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-            Receiver MSISDN
+            Receiver MobileNumber
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Receiver MSISDN' />
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-            Nationality
+            Sender Nationality
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Nationality' />
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
         <Typography color="#575757" fontWeight='500'>
-        Date Of Birth
+        Sender Date Of Birth
         </Typography>
         <OutlinedInput sx={{ height: 40 }} placeholder='Date Of Birth' />
     </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-            Gender
+            Sender Gender
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Gender' />
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-            ID Type
+            Sender ID Type
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='ID Type' />
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-            ID Number
+            Sender ID Number
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='ID Number' />
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-            Issue Date
+            Sender Issue Date
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Issue Date' />
         </Stack>  
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-            Expiry Date
+            Sender Expiry Date
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Expiry Date' />
         </Stack> 
@@ -106,51 +106,87 @@ function CreateTransactionMobile(props) {
         </Stack> 
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-            Address Line 1
+            Sender Address Line 1
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Address Line 1' />
         </Stack> 
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-            Address Line 2
+            Sender Address Line 2
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Address Line 2' />
         </Stack> 
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-            Address Line 3
+            Sender Address Line 3
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Address Line 3' />
         </Stack> 
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-            City
+            Sender City
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='City' />
         </Stack> 
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-            State Province
+            Sender State Province
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='State Province' />
         </Stack> 
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-            Postal Code
+            Sender Postal Code
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Postal Code' />
         </Stack> 
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-            Country
+            Sender Country
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Country' />
+        </Stack>
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+                Sender First Name
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='Sender First Name' />
+        </Stack>
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+                Sender Middle Name
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='Sender Middle Name' />
+        </Stack>
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+                Sender Last Name
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='Sender Last Name' />
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
                 Sender Full Name
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Sender Full Name' />
+        </Stack>
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+                Receiver First Name
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='Receiver First Name' />
+        </Stack>
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+                Receiver Middle Name
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='Receiver Middle Name' />
+        </Stack>
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+                Receiver Last Name
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='Receiver Last Name' />
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>

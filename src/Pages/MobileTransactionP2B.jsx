@@ -1,6 +1,6 @@
 import React from 'react'
 import { Grid } from "@mui/material";
-import ResponseP2BTransaction from '../Components/Response/ResponseP2BTransaction';
+import ResponseP2BTransaction from '../Components/Response/P2B/ResponseP2BTransaction';
 import P2BTransactionMobile from '../Components/EndPoints/P2B/P2BTransactionMobile';
 
 
@@ -8,7 +8,7 @@ import P2BTransactionMobile from '../Components/EndPoints/P2B/P2BTransactionMobi
 
 function MobileTransactionP2B() {
     return (
-        <Grid container>
+        <Grid container sx={{minHeight: '100%' }}>
             <Grid item xs={7}>
                 <P2BTransactionMobile/>
             </Grid>

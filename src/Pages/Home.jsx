@@ -5,7 +5,7 @@ import selectionIcon from '../assets/img/selection.svg'
 
 function  Home() {
     return (
-        <Grid container>
+        <Grid container sx={{minHeight: '100%' }}>
             <Grid item xs={7}>
               <Box height="100vh" display="flex" flexDirection="column">
                 <Box flex={1} overflow="auto">

@@ -5,7 +5,7 @@ import ResponseCorridorQuotation from '../Components/Response/ResponseCorridorQu
 
 function Corridor() {
     return (
-        <Grid container>
+        <Grid container sx={{minHeight: '100%' }}>
             <Grid item xs={7}>
                 <CorridorQuotation/>
             </Grid>

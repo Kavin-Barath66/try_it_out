@@ -6,7 +6,7 @@ import ResponseGetBankList from '../Components/Response/ResponseGetBankList';
 
 function BankList() {
     return (
-        <Grid container>
+        <Grid container sx={{minHeight: '100%' }}>
             <Grid item xs={7}>
             <GetBankList/>
             </Grid>

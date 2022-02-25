@@ -11,7 +11,7 @@ function ResponseViewTransactionMobile(props) {
                     <Typography variant='h6' fontFamily='Poppins' fontWeight='500' >Request</Typography>
                 </Stack>
             </Stack>
-            <Stack sx={{backgroundColor:"rgba(255, 255, 255, 1)", height:'100vh' }}>
+            <Stack sx={{backgroundColor:"#f8fcff", height:'100vh' }}>
                 <Stack p={3} color="#20336d">
                     <Typography pb={1} variant='h6' color="#20336d" fontFamily='Poppins' fontWeight='500' sx={{fontSize:"26px"}} >API code snippet</Typography>
                         <Typography fontSize={14} overflow="hidden" textOverflow="ellipsis" style={{wordWrap: "break-word"}}>
