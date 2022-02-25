@@ -6,7 +6,7 @@ import ResponseCancelTransaction from '../Components/Response/ResponseCancelTran
 
 function TransactionCancel() {
     return (
-        <Grid container>
+        <Grid container sx={{minHeight: '100%' }}>
             <Grid item xs={7}>
                 <CancelTransaction/>
             </Grid>
