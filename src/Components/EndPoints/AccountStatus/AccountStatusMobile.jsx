@@ -5,7 +5,7 @@ import axios from 'axios'
 import MenuItem from '@mui/material/MenuItem';
 import { Stack, OutlinedInput, Button, Box, Typography, TextField, Container} from '@mui/material'
 
-function AccountStatusMobile(props) {
+function AccountStatusMobile({mobileAccountStatusData}) {
     
     
   return (
@@ -18,13 +18,13 @@ function AccountStatusMobile(props) {
           <Typography color="#575757" fontWeight='500'>
           Beneficiary MSISDN with country code
           </Typography>
-          <OutlinedInput sx={{ height: 40 }} placeholder='MSISDN number' onChange={({ target }) => props.setAccountNumber(target.value)} value={props.accountNumber} />
+          <OutlinedInput sx={{ height: 40 }} placeholder='MSISDN number' onChange={({ target }) => mobileAccountStatusData.msisdn(target.value)} value={mobileAccountStatusData.msisdn} />
       </Stack>
       <Stack direction='row' alignItems='center' justifyContent='space-between'>
           <Typography color="#575757" fontWeight='500'>
           Full KYC name of the beneficiary
           </Typography>
-          <OutlinedInput sx={{ height: 40 }} placeholder='Full KYC name' onChange={({ target }) => props.setKycNumber(target.value)} value={props.kycNumber} />
+          <OutlinedInput sx={{ height: 40 }} placeholder='Full KYC name' onChange={({ target }) => mobileAccountStatusData.bnv(target.value)} value={mobileAccountStatusData.bnv} />
       </Stack>
       <Stack direction='row' alignItems='center' justifyContent='space-between'>
           <Typography color="#575757" fontWeight='500'>
@@ -34,8 +34,8 @@ function AccountStatusMobile(props) {
           <TextField
           sx={{ width: 205 }}
           label="Instrument"
-          value={props.network}
-          onChange={({ target }) => props.setNetwork(target.value)}
+          value={mobileAccountStatusData.instrument}
+          onChange={({ target }) => mobileAccountStatusData.instrument(target.value)}
           select
           InputProps={{ style: { height: 40 } }}
           InputLabelProps={{ style: { height: 40 } }}

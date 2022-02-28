@@ -18,7 +18,7 @@ function ViewTransactionMobile(props) {
           <Typography color="#575757" fontWeight='500'>
             Transaction Reference
           </Typography>
-          <OutlinedInput sx={{ height: 40 }} placeholder='Transaction Reference' onChange={({ target }) => props.setKycNumber(target.value)} value={props.kycNumber} />
+          <OutlinedInput sx={{ height: 40 }} placeholder='Transaction Reference' onChange={({ target }) => props.setTransRef(target.value)} value={props.transRef} />
       </Stack>
     </Stack>
     </>

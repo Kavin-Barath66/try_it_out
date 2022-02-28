@@ -21,14 +21,14 @@ function  Home() {
               </Box>
             </Grid>
             <Grid item xs={5}>
-              <Box height="100vh" display="flex" flexDirection="column" color="white">
+              <Box height="100%" display="flex" flexDirection="column" color="white">
                   <Box flex={1} /* overflow="auto" */>
                       <Stack p={3} m={0} justifyContent='flex-start' direction='row' sx={{backgroundColor:"#22387198"}}>
                           <Stack justifyContent='left'  direction='row'>
                               <Typography variant='h6' fontFamily='Poppins' fontWeight='500' >Request</Typography>
                           </Stack>
                       </Stack>
-                      <Stack sx={{backgroundColor:"#f8fcff", height:'100vh' }}>
+                      <Stack sx={{backgroundColor:"#f8fcff", minHeight:'100%' }}>
                           <Stack p={3} color="#20336d">
                               <Typography pb={1} variant='h6' color="#20336d" fontFamily='Poppins' fontWeight='500' sx={{fontSize:"26px"}} >API code snippet</Typography>
                               <Typography fontSize={14} overflow="hidden" textOverflow="ellipsis" style={{wordWrap: "break-word"}}>

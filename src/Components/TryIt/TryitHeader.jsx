@@ -24,7 +24,6 @@ const MenuProps = {
 function TryitHeader(props) {
     const navigate = useNavigate();
 
-
     const CustomButtom = styled(Button)`
         &.Mui-disabled{
         opacity:0.5;
@@ -51,7 +50,35 @@ function TryitHeader(props) {
               }); 
           }
 
+          const getViewTransaction = () => {
+            var options = {
+                headers: { 
+                'X-USERNAME': 'OpenTurfDev', 
+                'X-PASSWORD': '85d6dcc27d9fb21c7c346cdbcee2b56a84eba0f542a846de06658d2d094afd56', 
+                'X-DATE': '2018-04-04 09:27:16', 
+                'X-ORIGINCOUNTRY': 'US'
+              }
+            }
+            axios.get(`${apiUrl}/v1/try-it/transaction?transactionReference=${props.transRef}`,
+            { headers: options.headers },
+              ).then(function (response) {
+                console.log(JSON.stringify(response.data));
+                props.setResponseScreen(true)
+                props.setApiResponseData(response.data)
+              })
+              .catch(function (error) {
+                console.log(error);
+                props.setApiResponseData(error)
+                props.setResponseScreen(true)
+              }); 
+          }
+
+
+          const getAccountStatus = () => {
+            props.setResponseScreen(true)
+          }
           useEffect(()=>{
+            props.setResponseScreen(false)
             if(props.endPoint === "Account Status Mobile"){
                 navigate("/account-status-mobile")
             } else if(props.endPoint === "Account Status Bank"){
@@ -114,7 +141,6 @@ function TryitHeader(props) {
                         <Select
                             sx={{width:'100%', height: '40px',
                             "& .MuiOutlinedInput-notchedOutline":{
-                                color: 'green',
                                 borderColor: 'white',
                             },
                             "& .MuiSvgIcon-root": {
@@ -122,6 +148,11 @@ function TryitHeader(props) {
                             },
                             "& .MuiOutlinedInput-input": {
                                 color:'white',
+                            },
+                            "& .MuiSelect-nativeInput": {
+                                '&.Mui-focused': {
+                                    borderColor: 'white',
+                                },
                             },
                         }}
                             value={props.endPoint} 
@@ -155,11 +186,12 @@ function TryitHeader(props) {
                         },
                         "& .MuiOutlinedInput-notchedOutline": {
                             borderColor:'white',
-                            '&.Mui-focused': {
+                            '&.Mui-focused fieldset': {
                                 borderColor: 'white',
                             },
                         },
-                    }} placeholder='Username' onChange={({ target }) => props.setuserName(target.value)} value={props.userName} />
+                    }} placeholder='Username' onChange={({ target }) => props.setuserName(target.value)} value={props.userName} 
+                    />
             </Stack>
             <Stack width="30%" spacing={3} justifyContent='center' direction='column' >
                     <FormControl>
@@ -201,9 +233,12 @@ function TryitHeader(props) {
                     }} placeholder='Password' onChange={({ target }) => props.setPassword(target.value)} value={props.password} />
                 </Stack>
                 <Stack width="20%" direction='column' >
-                {(props.endPoint==="Ledger Balance")?<CustomButtom  sx={{textAlign:'center', minWidth:'180px', alignSelf: 'center', letterSpacing: 1, backgroundColor:'#ea5c57'}} variant='contained' /* onClick={props.callBackFunction} */ >TRY IT OUT</CustomButtom>:
+                {(props.endPoint==="Account Status Mobile" && props.mobileAccountStatusData.instrument && props.mobileAccountStatusData.bnv && props.mobileAccountStatusData.msisdn)?<CustomButtom  sx={{textAlign:'center', minWidth:'180px', alignSelf: 'center', letterSpacing: 1, backgroundColor:'#ea5c57'}} variant='contained' onClick={getAccountStatus} >TRY IT OUT</CustomButtom>:
+                (props.endPoint==="View Transaction Mobile")?<CustomButtom  sx={{textAlign:'center', minWidth:'180px', alignSelf: 'center', letterSpacing: 1, backgroundColor:'#ea5c57'}} variant='contained' onClick={getViewTransaction} >TRY IT OUT</CustomButtom>:
+                (props.endPoint==="Ledger Balance")?<CustomButtom  sx={{textAlign:'center', minWidth:'180px', alignSelf: 'center', letterSpacing: 1, backgroundColor:'#ea5c57'}} variant='contained' onClick={getAccountStatus} >TRY IT OUT</CustomButtom>:
+                (props.endPoint==="Get Bank List")?<CustomButtom  sx={{textAlign:'center', minWidth:'180px', alignSelf: 'center', letterSpacing: 1, backgroundColor:'#ea5c57'}} variant='contained' onClick={getAccountStatus} >TRY IT OUT</CustomButtom>:
                 
-                    <CustomButtom  sx={{textAlign:'center', minWidth:'180px', alignSelf: 'center', letterSpacing: 1, backgroundColor:'#ea5c57'}} variant='contained' disabled>TRY IT OUT</CustomButtom>}
+                <CustomButtom  sx={{textAlign:'center', minWidth:'180px', alignSelf: 'center', letterSpacing: 1, backgroundColor:'#ea5c57'}} variant='contained' disabled>TRY IT OUT</CustomButtom>}
                 </Stack>
         </Stack>
     )

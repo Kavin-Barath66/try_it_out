@@ -24,7 +24,7 @@ function ResponseGetBankList(props) {
     }`
 return (
     <>
-    {/* <Box height="100vh" display="flex" flexDirection="column" color="white">
+    {!props.responseScreen? <Box height="100vh" display="flex" flexDirection="column" color="white">
         <Box flex={1} overflow="auto">
             <Stack p={3} m={0} justifyContent='flex-start' direction='row' sx={{backgroundColor:"#22387198"}}>
                 <Stack justifyContent='left'  direction='row'>
@@ -50,7 +50,7 @@ return (
                 </Stack>
             </Stack>
         </Box>
-    </Box> */}
+    </Box>:
     <Box display="flex" flexDirection="column" color="white">
         <Box flex={1}>
             <Stack p={3} m={0} justifyContent='space-between' direction='row' sx={{backgroundColor:"#22387198"}}>
@@ -82,7 +82,7 @@ return (
                 </Stack>}
             </Stack>
         </Box>
-    </Box> 
+    </Box>  }
     </>
   )
 }

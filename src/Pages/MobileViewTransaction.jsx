@@ -5,14 +5,14 @@ import ResponseViewTransactionMobile from '../Components/Response/ViewTransactio
 
 
 
-function MobileViewTransaction() {
+function MobileViewTransaction({transRef, setTransRef, responseScreen, apiResponseData}) {
     return (
         <Grid container sx={{minHeight: '100%' }}>
             <Grid item xs={7}>
-                <ViewTransactionMobile/>
+                <ViewTransactionMobile transRef={transRef} setTransRef={setTransRef}/>
             </Grid>
             <Grid item xs={5}>
-                <ResponseViewTransactionMobile/>
+                <ResponseViewTransactionMobile responseScreen={responseScreen} apiResponseData={apiResponseData} />
             </Grid>
         </Grid>
     )
