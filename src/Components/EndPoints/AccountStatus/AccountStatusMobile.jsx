@@ -5,7 +5,7 @@ import axios from 'axios'
 import MenuItem from '@mui/material/MenuItem';
 import { Stack, OutlinedInput, Button, Box, Typography, TextField, Container} from '@mui/material'
 
-function AccountStatusMobile({mobileAccountStatusData}) {
+function AccountStatusMobile({mobileAccountStatusData, setMobileAccountStatusData}) {
     
     
   return (
@@ -18,13 +18,23 @@ function AccountStatusMobile({mobileAccountStatusData}) {
           <Typography color="#575757" fontWeight='500'>
           Beneficiary MSISDN with country code
           </Typography>
-          <OutlinedInput sx={{ height: 40 }} placeholder='MSISDN number' onChange={({ target }) => mobileAccountStatusData.msisdn(target.value)} value={mobileAccountStatusData.msisdn} />
+          <OutlinedInput sx={{ height: 40 }} placeholder='MSISDN number' 
+          onChange={({ target }) =>
+           setMobileAccountStatusData( (prev) =>
+            ({...prev, msisdn:target.value}))} 
+          value={mobileAccountStatusData.msisdn} />
       </Stack>
       <Stack direction='row' alignItems='center' justifyContent='space-between'>
           <Typography color="#575757" fontWeight='500'>
           Full KYC name of the beneficiary
           </Typography>
-          <OutlinedInput sx={{ height: 40 }} placeholder='Full KYC name' onChange={({ target }) => mobileAccountStatusData.bnv(target.value)} value={mobileAccountStatusData.bnv} />
+          <OutlinedInput sx={{ height: 40 }} placeholder='Full KYC name' 
+          
+          onChange={({ target }) =>
+           setMobileAccountStatusData( (prev) =>
+            ({...prev, bnv:target.value}))}
+          
+          value={mobileAccountStatusData.bnv} />
       </Stack>
       <Stack direction='row' alignItems='center' justifyContent='space-between'>
           <Typography color="#575757" fontWeight='500'>
@@ -35,7 +45,9 @@ function AccountStatusMobile({mobileAccountStatusData}) {
           sx={{ width: 205 }}
           label="Instrument"
           value={mobileAccountStatusData.instrument}
-          onChange={({ target }) => mobileAccountStatusData.instrument(target.value)}
+          onChange={({ target }) =>
+          setMobileAccountStatusData( (prev) =>
+           ({...prev, instrument:target.value}))}
           select
           InputProps={{ style: { height: 40 } }}
           InputLabelProps={{ style: { height: 40 } }}
