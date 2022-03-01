@@ -242,47 +242,137 @@ function TryitHeader(props) {
                 props.setResponseScreen(true)
             });
     }
+    const createQuotationBankApi = () => {
+        var options = {
+            headers: {
+                'X-USERNAME': 'OpenTurfDev',
+                'X-PASSWORD': '85d6dcc27d9fb21c7c346cdbcee2b56a84eba0f542a846de06658d2d094afd56',
+                'X-DATE': '2018-04-04 09:27:16',
+                'X-ORIGINCOUNTRY': 'US',
+                'Accept': 'application/json', 
+                'Content-Type': 'application/json'
+            }
+        }
+        axios.post(`${apiUrl}/v1/try-it/quotation`,
+        {
+            "requestDate": `${props.createQuotationBank.requestDate}`,
+            "creditParty": [
+              {
+                "key": "bankaccountno",
+                "value": `${props.createQuotationBank.bankaccountno}`
+              },
+              {
+                "key": "receivingCountry",
+                "value": `${props.createQuotationBank.receivingCountry}`
+              }
+            ],
+            "requestAmount": `${props.createQuotationBank.requestAmount}`,
+            "requestCurrency": `${props.createQuotationBank.requestCurrency}`,
+            "quotes": [
+              {
+                "sendingCurrency":`${props.createQuotationBank.sendingCurrency}`,
+                "receivingCurrency": `${props.createQuotationBank.receivingCurrency}`
+              }
+            ]
+        },
+        { headers: options.headers }
+        ).then(function (response) {
+            console.log(JSON.stringify(response.data));
+            props.setResponseScreen(true)
+            props.setApiResponseData(response.data)
+            props.setApiResponseHeaderData(options.headers)
+        })
+            .catch(function (error) {
+                console.log(error);
+                props.setApiResponseData(error)
+                props.setApiResponseHeaderData(options.headers)
+                props.setResponseScreen(true)
+            });
+    }
+    const createQuotationMobileApi = () => {
+        var options = {
+            headers: {
+                'X-USERNAME': 'OpenTurfDev',
+                'X-PASSWORD': '85d6dcc27d9fb21c7c346cdbcee2b56a84eba0f542a846de06658d2d094afd56',
+                'X-DATE': '2018-04-04 09:27:16',
+                'X-ORIGINCOUNTRY': 'US',
+                'Accept': 'application/json', 
+                'Content-Type': 'application/json'
+            }
+        }
+        axios.post(`${apiUrl}/v1/try-it/quotation`,
+        {
+            "requestDate": `${props.createQuotationMobileData.requestDate}`,
+            "creditParty": [
+              {
+                "key": "msisdn",
+                "value": `${props.createQuotationMobileData.reciverMsisdn}`
+              }
+            ],
+            "requestAmount": `${props.createQuotationMobileData.requestAmount}`,
+            "requestCurrency": `${props.createQuotationMobileData.requestCurrency}`,
+            "quotes": [
+              {
+                "sendingCurrency": `${props.createQuotationMobileData.sendingCurrency}`,
+                "receivingCurrency": `${props.createQuotationMobileData.receivingCurrency}`
+              }
+            ]
+          },
+        { headers: options.headers }
+        ).then(function (response) {
+            console.log(JSON.stringify(response.data));
+            props.setResponseScreen(true)
+            props.setApiResponseData(response.data)
+            props.setApiResponseHeaderData(options.headers)
+        })
+            .catch(function (error) {
+                console.log(error);
+                props.setApiResponseData(error)
+                props.setApiResponseHeaderData(options.headers)
+                props.setResponseScreen(true)
+            });
+    }
 
     useEffect(() => {
         props.setResponseScreen(false)
         if (props.endPoint === "Account Status Mobile") {
-            navigate("/account-status-mobile")
+            navigate(`${process.env.REACT_APP_BASE_URL}/account-status-mobile`)
         } else if (props.endPoint === "Account Status Bank") {
-            navigate("/account-status-bank")
+            navigate(`${process.env.REACT_APP_BASE_URL}/account-status-bank`)
         } else if (props.endPoint === "Ledger Balance") {
-            navigate("/ledger")
+            navigate(`${process.env.REACT_APP_BASE_URL}/ledger`)
         } else if (props.endPoint === "Corridor Quotation") {
-            navigate("/corridor-quotation")
+            navigate(`${process.env.REACT_APP_BASE_URL}/corridor-quotation`)
         } else if (props.endPoint === "Get Bank List") {
-            navigate("/get-bank-list")
+            navigate(`${process.env.REACT_APP_BASE_URL}/get-bank-list`)
         } else if (props.endPoint === "Create Quotation Mobile") {
-            navigate("/create-quotation-mobile")
+            navigate(`${process.env.REACT_APP_BASE_URL}/create-quotation-mobile`)
         } else if (props.endPoint === "Create Quotation Bank") {
-            navigate("/create-quotation-bank")
+            navigate(`${process.env.REACT_APP_BASE_URL}/create-quotation-bank`)
         } else if (props.endPoint === "Cancel Transaction") {
-            navigate('/cancel-transaction')
+            navigate(`${process.env.REACT_APP_BASE_URL}/cancel-transaction`)
         } else if (props.endPoint === "Reverse Transaction") {
-            navigate('/reverse-transaction')
+            navigate(`${process.env.REACT_APP_BASE_URL}/reverse-transaction`)
         } else if (props.endPoint === "View Transaction Bank") {
-            navigate('/view-transaction-bank')
+            navigate(`${process.env.REACT_APP_BASE_URL}/view-transaction-bank`)
         } else if (props.endPoint === "View Transaction Mobile") {
-            navigate('/view-transaction-mobile')
+            navigate(`${process.env.REACT_APP_BASE_URL}/view-transaction-mobile`)
         } else if (props.endPoint === "Create Transaction Bank") {
-            navigate('/create-transaction-bank')
+            navigate(`${process.env.REACT_APP_BASE_URL}/create-transaction-bank`)
         } else if (props.endPoint === "Create Transaction Mobile") {
-            navigate('/create-transaction-mobile')
+            navigate(`${process.env.REACT_APP_BASE_URL}/create-transaction-mobile`)
         } else if (props.endPoint === "B2B Transaction Bank") {
-            navigate('/b2b-transaction-bank')
+            navigate(`${process.env.REACT_APP_BASE_URL}/b2b-transaction-bank`)
         } else if (props.endPoint === "B2B Transaction Mobile") {
-            navigate('/b2b-transaction-mobile')
+            navigate(`${process.env.REACT_APP_BASE_URL}/b2b-transaction-mobile`)
         } else if (props.endPoint === "P2B Transaction Bank") {
-            navigate('/p2b-transaction-bank')
+            navigate(`${process.env.REACT_APP_BASE_URL}/p2b-transaction-bank`)
         } else if (props.endPoint === "P2B Transaction Mobile") {
-            navigate('/p2b-transaction-mobile')
+            navigate(`${process.env.REACT_APP_BASE_URL}/p2b-transaction-mobile`)
         } else if (props.endPoint === "B2P Transaction Bank") {
-            navigate('/b2p-transaction-bank')
+            navigate(`${process.env.REACT_APP_BASE_URL}/b2p-transaction-bank`)
         } else if (props.endPoint === "B2P Transaction Mobile") {
-            navigate('/b2p-transaction-mobile')
+            navigate(`${process.env.REACT_APP_BASE_URL}/b2p-transaction-mobile`)
         } else {
             navigate("/")
         }
@@ -303,6 +393,10 @@ function TryitHeader(props) {
             reverseTransactionApi();
         }else if (props.endPoint === "Ledger Balance") {
             getLedgerBalanceApi();
+        }else if (props.endPoint === "Create Quotation Bank") {
+            createQuotationBankApi();
+        }else if (props.endPoint === "Create Quotation Bank") {
+            createQuotationMobileApi();
         }
     }
 

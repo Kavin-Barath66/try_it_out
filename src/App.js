@@ -56,6 +56,22 @@ function App() {
   const [reverseTransactionData, setReverseTransactionData] = useState({
     reason: 'reversing',
     txId:'TPOT000000723616',})
+  const [createQuotationBank, setCreateQuotationBank] = useState({
+    requestDate: '2017-06-20 12:27:16',
+    bankaccountno:'50100002965304',
+    receivingCountry:'IN',
+    requestAmount:'500',
+    requestCurrency:'INR',
+    sendingCurrency:'USD',
+    receivingCurrency:'INR',})
+    const [createQuotationMobileData, setCreateQuotationMobileData] = useState({
+      requestDate: '2017-06-20 12:27:16',
+      reciverMsisdn:'50100002965304',
+      requestAmount:'500',
+      requestCurrency:'INR',
+      sendingCurrency:'USD',
+      receivingCurrency:'INR',})
+  
 
   useEffect(() => {
     if (endPoint === 'Account Status Mobile') {
@@ -70,9 +86,13 @@ function App() {
       setHeaderObject(corridorQuotationData);
     }else if (endPoint === "Reverse Transaction") {
       setHeaderObject(reverseTransactionData);
+    } else if (endPoint === "Create Quotation Bank") {
+      setHeaderObject(createQuotationBank);
+    } else if (endPoint === "Create Quotation Mobile") {
+      setHeaderObject(createQuotationMobileData);
     }
-  }, [endPoint, mobileAccountStatusData, cancelTransactionData, bankAccountStatusData,
-    getBankListData, corridorQuotationData, reverseTransactionData])
+  }, [endPoint, mobileAccountStatusData, cancelTransactionData, bankAccountStatusData,createQuotationMobileData,
+    getBankListData, corridorQuotationData, reverseTransactionData, createQuotationBank])
 
   const [responseScreen, setResponseScreen] = useState(false)
   const [apiResponseData, setApiResponseData] = useState("")
@@ -88,6 +108,8 @@ function App() {
         getBankListData={getBankListData}
         corridorQuotationData={corridorQuotationData}
         reverseTransactionData={reverseTransactionData}
+        createQuotationBank={createQuotationBank}
+        createQuotationMobileData={createQuotationMobileData}
         endPoint={endPoint}
         setEndPoint={setEndPoint}
         environment={environment}
@@ -103,35 +125,36 @@ function App() {
         headerObject={headerObject}
       />
       <div>
-        <Routes>
+        <Routes basename={process.env.REACT_APP_BASE_URL}>
           <Route path="/" exact element={<Home />} />
-          <Route path="/ledger" exact element={<Ledger responseScreen={responseScreen} apiResponseHeaderData={apiResponseHeaderData} apiResponseData={apiResponseData} />} />
+          <Route path={`${process.env.REACT_APP_BASE_URL}/ledger`} exact element={<Ledger responseScreen={responseScreen} apiResponseHeaderData={apiResponseHeaderData} apiResponseData={apiResponseData} />} />
 
-          <Route path="/account-status-mobile" exact element={<MobileAccountStatus responseScreen={responseScreen} mobileAccountStatusData={mobileAccountStatusData} setMobileAccountStatusData={setMobileAccountStatusData} apiResponseHeaderData={apiResponseHeaderData} apiResponseData={apiResponseData} />} />
-          <Route path="/account-status-bank" exact element={<BankAccountStatus apiResponseHeaderData={apiResponseHeaderData} responseScreen={responseScreen} bankAccountStatusData={bankAccountStatusData} setBankAccountStatusData={setBankAccountStatusData} apiResponseData={apiResponseData}  />} />
+          <Route path={`${process.env.REACT_APP_BASE_URL}/account-status-mobile`} exact element={<MobileAccountStatus responseScreen={responseScreen} mobileAccountStatusData={mobileAccountStatusData} setMobileAccountStatusData={setMobileAccountStatusData} apiResponseHeaderData={apiResponseHeaderData} apiResponseData={apiResponseData} />} />
+          <Route path={`${process.env.REACT_APP_BASE_URL}/account-status-bank`} exact element={<BankAccountStatus apiResponseHeaderData={apiResponseHeaderData} responseScreen={responseScreen} bankAccountStatusData={bankAccountStatusData} setBankAccountStatusData={setBankAccountStatusData} apiResponseData={apiResponseData}  />} />
 
-          <Route path="/create-quotation-bank" exact element={<BankCreateQuotation />} />
-          <Route path="/create-quotation-mobile" exact element={<MobileCreateQuotation />} />
+          <Route path={`${process.env.REACT_APP_BASE_URL}/create-quotation-bank`} exact element={<BankCreateQuotation createQuotationBank={createQuotationBank} setCreateQuotationBank={setCreateQuotationBank} responseScreen={responseScreen} apiResponseHeaderData={apiResponseHeaderData} apiResponseData={apiResponseData} />} />
+          <Route path={`${process.env.REACT_APP_BASE_URL}/create-quotation-mobile`} exact element={<MobileCreateQuotation setCreateQuotationMobileData={setCreateQuotationMobileData} createQuotationMobileData={createQuotationMobileData} responseScreen={responseScreen} apiResponseData={apiResponseData} apiResponseHeaderData={apiResponseHeaderData} />} />
 
-          <Route path="/corridor-quotation" exact element={<Corridor corridorQuotationData={corridorQuotationData} setCorridorQuotationData={setCorridorQuotationData} responseScreen={responseScreen} apiResponseHeaderData={apiResponseHeaderData} apiResponseData={apiResponseData} />} />
-          <Route path="/get-bank-list" exact element={<BankList responseScreen={responseScreen} setGetBankListData={setGetBankListData} getBankListData={getBankListData} apiResponseHeaderData={apiResponseHeaderData} apiResponseData={apiResponseData} />} />
-          <Route path="/cancel-transaction" exact element={<TransactionCancel responseScreen={responseScreen} apiResponseData={apiResponseData} cancelTransactionData={cancelTransactionData} setCancelTransactionData={setCancelTransactionData} apiResponseHeaderData={apiResponseHeaderData} />} />
-          <Route path="/reverse-transaction" exact element={<TransactionReverse reverseTransactionData={reverseTransactionData} setReverseTransactionData={setReverseTransactionData} responseScreen={responseScreen} apiResponseHeaderData={apiResponseHeaderData} apiResponseData={apiResponseData} />} />
+          <Route path={`${process.env.REACT_APP_BASE_URL}/corridor-quotation`} exact element={<Corridor corridorQuotationData={corridorQuotationData} setCorridorQuotationData={setCorridorQuotationData} responseScreen={responseScreen} apiResponseHeaderData={apiResponseHeaderData} apiResponseData={apiResponseData} />} />
+          <Route path={`${process.env.REACT_APP_BASE_URL}/get-bank-list`} exact element={<BankList responseScreen={responseScreen} setGetBankListData={setGetBankListData} getBankListData={getBankListData} apiResponseHeaderData={apiResponseHeaderData} apiResponseData={apiResponseData} />} />
+          <Route path={`${process.env.REACT_APP_BASE_URL}/cancel-transaction`} exact element={<TransactionCancel responseScreen={responseScreen} apiResponseData={apiResponseData} cancelTransactionData={cancelTransactionData} setCancelTransactionData={setCancelTransactionData} apiResponseHeaderData={apiResponseHeaderData} />} />
+          <Route path={`${process.env.REACT_APP_BASE_URL}/reverse-transaction`} exact element={<TransactionReverse reverseTransactionData={reverseTransactionData} setReverseTransactionData={setReverseTransactionData} responseScreen={responseScreen} apiResponseHeaderData={apiResponseHeaderData} apiResponseData={apiResponseData} />} />
 
-          <Route path="/view-transaction-bank" exact element={<BankViewTransaction apiResponseHeaderData={apiResponseHeaderData} transRef={transRef} setTransRef={setTransRef} />} />
-          <Route path="/view-transaction-mobile" exact element={<MobileViewTransaction apiResponseData={apiResponseData} transRef={transRef} setTransRef={setTransRef} responseScreen={responseScreen} />} />
+          <Route path={`${process.env.REACT_APP_BASE_URL}/view-transaction-bank`}  exact element={<BankViewTransaction apiResponseHeaderData={apiResponseHeaderData} transRef={transRef} setTransRef={setTransRef} />} />
+          <Route path={`${process.env.REACT_APP_BASE_URL}/view-transaction-mobile`} exact element={<MobileViewTransaction apiResponseData={apiResponseData} transRef={transRef} setTransRef={setTransRef} responseScreen={responseScreen} />} />
 
-          <Route path="/create-transaction-bank" exact element={<BankCreateTransaction />} />
-          <Route path="/create-transaction-mobile" exact element={<MobileCreateTransaction />} />
+          <Route path={`${process.env.REACT_APP_BASE_URL}/create-transaction-bank`} exact element={<BankCreateTransaction />} />
+          <Route path={`${process.env.REACT_APP_BASE_URL}/create-transaction-mobile`} exact element={<MobileCreateTransaction />} />
 
-          <Route path="/b2b-transaction-bank" exact element={<BankTransactionB2B />} />
-          <Route path="/b2b-transaction-mobile" exact element={<MobileTransactionB2B />} />
+          <Route path={`${process.env.REACT_APP_BASE_URL}/b2b-transaction-bank`} exact element={<BankTransactionB2B />} />
+          <Route path={`${process.env.REACT_APP_BASE_URL}/b2b-transaction-mobile`} exact element={<MobileTransactionB2B />} />
 
-          <Route path="/b2p-transaction-bank" exact element={<BankTransactionB2P />} />
-          <Route path="/b2p-transaction-mobile" exact element={<MobileTransactionB2P />} />
+          <Route path={`${process.env.REACT_APP_BASE_URL}/b2p-transaction-bank`} exact element={<BankTransactionB2P />} />
+          <Route path={`${process.env.REACT_APP_BASE_URL}/b2p-transaction-mobile`} exact element={<MobileTransactionB2P />} />
 
-          <Route path="/p2b-transaction-bank" exact element={<BankTransactionP2B />} />
-          <Route path="/p2b-transaction-mobile" exact element={<MobileTransactionP2B />} />
+          <Route path={`${process.env.REACT_APP_BASE_URL}/p2b-transaction-bank`} exact element={<BankTransactionP2B />} />
+          <Route path={`${process.env.REACT_APP_BASE_URL}/p2b-transaction-mobile`} exact element={<MobileTransactionP2B />} />
+          <Route path="*"  element={<Home />} />
         </Routes>
       </div>
     </BrowserRouter>
