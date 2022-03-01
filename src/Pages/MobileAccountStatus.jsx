@@ -4,7 +4,7 @@ import { Grid } from "@mui/material";
 import AccountStatusMobile from '../Components/EndPoints/AccountStatus/AccountStatusMobile';
 import ResponseAccountStatusMobile from '../Components/Response/AccountStatus/ResponseAccountStatusMobile';
 
-function MobileAccountStatus({setMobileAccountStatusData, responseScreen, mobileAccountStatusData}) {
+function MobileAccountStatus({setMobileAccountStatusData, responseScreen, apiResponseData, apiResponseHeaderData, mobileAccountStatusData}) {
     
     return (
         <Grid container sx={{height: '100vh' }}>
@@ -12,7 +12,7 @@ function MobileAccountStatus({setMobileAccountStatusData, responseScreen, mobile
                 <AccountStatusMobile setMobileAccountStatusData={setMobileAccountStatusData} mobileAccountStatusData={mobileAccountStatusData}/>
             </Grid>
             <Grid item xs={5}>
-                <ResponseAccountStatusMobile responseScreen={responseScreen} />
+                <ResponseAccountStatusMobile responseScreen={responseScreen} apiResponseData={apiResponseData} apiResponseHeaderData={apiResponseHeaderData} />
             </Grid>
         </Grid>
     )

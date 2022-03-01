@@ -5,7 +5,7 @@ import axios from 'axios'
 import MenuItem from '@mui/material/MenuItem';
 import { Stack, OutlinedInput, Button, Box, Typography, TextField, Container} from '@mui/material'
 
-function ReverseTransaction(props) {
+function ReverseTransaction({reverseTransactionData, setReverseTransactionData}) {
     
     
   return (
@@ -18,13 +18,21 @@ function ReverseTransaction(props) {
           <Typography color="#575757" fontWeight='500'>
           Reason For Reversing
           </Typography>
-          <OutlinedInput sx={{ height: 40 }} placeholder='Reversal Reason' onChange={({ target }) => props.setAccountNumber(target.value)} value={props.accountNumber} />
+          <OutlinedInput sx={{ height: 40 }} placeholder='Reversal Reason' 
+          onChange={({ target }) =>
+          setReverseTransactionData( (prev) =>
+            ({...prev, reason:target.value}))} 
+        value={reverseTransactionData.reason} />
       </Stack>
       <Stack direction='row' alignItems='center' justifyContent='space-between'>
           <Typography color="#575757" fontWeight='500'>
             Transaction ID
           </Typography>
-          <OutlinedInput sx={{ height: 40 }} placeholder='Transaction ID' onChange={({ target }) => props.setKycNumber(target.value)} value={props.kycNumber} />
+          <OutlinedInput sx={{ height: 40 }} placeholder='Transaction ID' 
+          onChange={({ target }) =>
+          setReverseTransactionData( (prev) =>
+            ({...prev, txId:target.value}))} 
+        value={reverseTransactionData.txId}  />
       </Stack>
     </Stack>
     </>

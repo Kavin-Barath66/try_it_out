@@ -3,14 +3,14 @@ import { Grid } from "@mui/material";
 import CorridorQuotation from '../Components/EndPoints/CorridorQuotation';
 import ResponseCorridorQuotation from '../Components/Response/ResponseCorridorQuotation';
 
-function Corridor() {
+function Corridor({corridorQuotationData, setCorridorQuotationData, responseScreen, apiResponseHeaderData, apiResponseData}) {
     return (
         <Grid container sx={{minHeight: '100%' }}>
             <Grid item xs={7}>
-                <CorridorQuotation/>
+                <CorridorQuotation corridorQuotationData={corridorQuotationData} setCorridorQuotationData={setCorridorQuotationData}  />
             </Grid>
             <Grid item xs={5}>
-                <ResponseCorridorQuotation/>
+                <ResponseCorridorQuotation responseScreen={responseScreen} apiResponseHeaderData={apiResponseHeaderData} apiResponseData={apiResponseData} />
             </Grid>
         </Grid>
     )

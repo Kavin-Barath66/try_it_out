@@ -1,4 +1,4 @@
-import './App.css';
+import './app.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import TryIt from './Pages/TryIt';
 import Home from './Pages/Home';
@@ -33,35 +33,61 @@ function App() {
   const [password, setPassword] = useState("85d6dcc27d9fb21c7c346cdbcee2b56a84eba0f542a846de06658d2d094afd56")
 
   const [transRef, setTransRef] = useState("SrcTxnId001")
+  const [getBankListData, setGetBankListData] = useState({country:'BD'})
 
   const [headerObject, setHeaderObject] = useState({})
 
   const [mobileAccountStatusData, setMobileAccountStatusData] = useState({
     msisdn: '+9779840002320',
-    bnv: 'David Robinso',
-    instrument: 'mobile-wallet',
+    bnv: 'David Robinson',
   })
   const [bankAccountStatusData, setBankAccountStatusData] = useState({
-    msisdn: '+9779840002320',
-    bnv: 'David Robinson',
-    instrument: 'mobile-wallet',
+    accountId: '50100002965304',
+    bnv: 'Deepa%20Jain',
+    bankCode:'HDFC0001626',
+    bankName:'HDFC%20Bank',
+    country:'IN',
   })
-
+  const [cancelTransactionData, setCancelTransactionData] = useState({
+    reason: 'cancelling',
+    txId:'SrcTxnId4561',
+  })
+  const [corridorQuotationData, setCorridorQuotationData] = useState({currency:'USD'})
+  const [reverseTransactionData, setReverseTransactionData] = useState({
+    reason: 'reversing',
+    txId:'TPOT000000723616',})
 
   useEffect(() => {
     if (endPoint === 'Account Status Mobile') {
       setHeaderObject(mobileAccountStatusData)
+    } else if(endPoint === "Account Status Bank"){
+      setHeaderObject(bankAccountStatusData)
+    }else if(endPoint === "Cancel Transaction"){
+      setHeaderObject(cancelTransactionData)
+    }else if (endPoint === "Get Bank List") {
+      setHeaderObject(getBankListData);
+    }else if (endPoint === "Corridor Quotation") {
+      setHeaderObject(corridorQuotationData);
+    }else if (endPoint === "Reverse Transaction") {
+      setHeaderObject(reverseTransactionData);
     }
-  }, [endPoint, mobileAccountStatusData])
+  }, [endPoint, mobileAccountStatusData, cancelTransactionData, bankAccountStatusData,
+    getBankListData, corridorQuotationData, reverseTransactionData])
 
   const [responseScreen, setResponseScreen] = useState(false)
   const [apiResponseData, setApiResponseData] = useState("")
+  const [apiResponseHeaderData, setApiResponseHeaderData] = useState("")
 
 
   return (
     <BrowserRouter>
       <TryitHeader
+        bankAccountStatusData={bankAccountStatusData}
         mobileAccountStatusData={mobileAccountStatusData}
+        cancelTransactionData={cancelTransactionData}
+        getBankListData={getBankListData}
+        corridorQuotationData={corridorQuotationData}
+        reverseTransactionData={reverseTransactionData}
         endPoint={endPoint}
         setEndPoint={setEndPoint}
         environment={environment}
@@ -73,26 +99,26 @@ function App() {
         setResponseScreen={setResponseScreen}
         transRef={transRef}
         setApiResponseData={setApiResponseData}
+        setApiResponseHeaderData={setApiResponseHeaderData}
         headerObject={headerObject}
       />
       <div>
         <Routes>
           <Route path="/" exact element={<Home />} />
-          <Route path="/ledger" exact element={<Ledger responseScreen={responseScreen} />} />
+          <Route path="/ledger" exact element={<Ledger responseScreen={responseScreen} apiResponseHeaderData={apiResponseHeaderData} apiResponseData={apiResponseData} />} />
 
-          <Route path="/account-status-mobile" exact element={<MobileAccountStatus responseScreen={responseScreen} mobileAccountStatusData={mobileAccountStatusData}
-            setMobileAccountStatusData={setMobileAccountStatusData} />} />
-          <Route path="/account-status-bank" exact element={<BankAccountStatus />} />
+          <Route path="/account-status-mobile" exact element={<MobileAccountStatus responseScreen={responseScreen} mobileAccountStatusData={mobileAccountStatusData} setMobileAccountStatusData={setMobileAccountStatusData} apiResponseHeaderData={apiResponseHeaderData} apiResponseData={apiResponseData} />} />
+          <Route path="/account-status-bank" exact element={<BankAccountStatus apiResponseHeaderData={apiResponseHeaderData} responseScreen={responseScreen} bankAccountStatusData={bankAccountStatusData} setBankAccountStatusData={setBankAccountStatusData} apiResponseData={apiResponseData}  />} />
 
           <Route path="/create-quotation-bank" exact element={<BankCreateQuotation />} />
           <Route path="/create-quotation-mobile" exact element={<MobileCreateQuotation />} />
 
-          <Route path="/corridor-quotation" exact element={<Corridor />} />
-          <Route path="/get-bank-list" exact element={<BankList responseScreen={responseScreen} />} />
-          <Route path="/cancel-transaction" exact element={<TransactionCancel />} />
-          <Route path="/reverse-transaction" exact element={<TransactionReverse />} />
+          <Route path="/corridor-quotation" exact element={<Corridor corridorQuotationData={corridorQuotationData} setCorridorQuotationData={setCorridorQuotationData} responseScreen={responseScreen} apiResponseHeaderData={apiResponseHeaderData} apiResponseData={apiResponseData} />} />
+          <Route path="/get-bank-list" exact element={<BankList responseScreen={responseScreen} setGetBankListData={setGetBankListData} getBankListData={getBankListData} apiResponseHeaderData={apiResponseHeaderData} apiResponseData={apiResponseData} />} />
+          <Route path="/cancel-transaction" exact element={<TransactionCancel responseScreen={responseScreen} apiResponseData={apiResponseData} cancelTransactionData={cancelTransactionData} setCancelTransactionData={setCancelTransactionData} apiResponseHeaderData={apiResponseHeaderData} />} />
+          <Route path="/reverse-transaction" exact element={<TransactionReverse reverseTransactionData={reverseTransactionData} setReverseTransactionData={setReverseTransactionData} responseScreen={responseScreen} apiResponseHeaderData={apiResponseHeaderData} apiResponseData={apiResponseData} />} />
 
-          <Route path="/view-transaction-bank" exact element={<BankViewTransaction transRef={transRef} setTransRef={setTransRef} />} />
+          <Route path="/view-transaction-bank" exact element={<BankViewTransaction apiResponseHeaderData={apiResponseHeaderData} transRef={transRef} setTransRef={setTransRef} />} />
           <Route path="/view-transaction-mobile" exact element={<MobileViewTransaction apiResponseData={apiResponseData} transRef={transRef} setTransRef={setTransRef} responseScreen={responseScreen} />} />
 
           <Route path="/create-transaction-bank" exact element={<BankCreateTransaction />} />

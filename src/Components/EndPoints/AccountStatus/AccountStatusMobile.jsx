@@ -20,7 +20,7 @@ function AccountStatusMobile({mobileAccountStatusData, setMobileAccountStatusDat
           </Typography>
           <OutlinedInput sx={{ height: 40 }} placeholder='MSISDN number' 
           onChange={({ target }) =>
-           setMobileAccountStatusData( (prev) =>
+            setMobileAccountStatusData( (prev) =>
             ({...prev, msisdn:target.value}))} 
           value={mobileAccountStatusData.msisdn} />
       </Stack>
@@ -31,12 +31,12 @@ function AccountStatusMobile({mobileAccountStatusData, setMobileAccountStatusDat
           <OutlinedInput sx={{ height: 40 }} placeholder='Full KYC name' 
           
           onChange={({ target }) =>
-           setMobileAccountStatusData( (prev) =>
+            setMobileAccountStatusData( (prev) =>
             ({...prev, bnv:target.value}))}
           
           value={mobileAccountStatusData.bnv} />
       </Stack>
-      <Stack direction='row' alignItems='center' justifyContent='space-between'>
+      {/* <Stack direction='row' alignItems='center' justifyContent='space-between'>
           <Typography color="#575757" fontWeight='500'>
           Account Instrument
           </Typography>
@@ -47,7 +47,7 @@ function AccountStatusMobile({mobileAccountStatusData, setMobileAccountStatusDat
           value={mobileAccountStatusData.instrument}
           onChange={({ target }) =>
           setMobileAccountStatusData( (prev) =>
-           ({...prev, instrument:target.value}))}
+            ({...prev, instrument:target.value}))}
           select
           InputProps={{ style: { height: 40 } }}
           InputLabelProps={{ style: { height: 40 } }}
@@ -55,6 +55,14 @@ function AccountStatusMobile({mobileAccountStatusData, setMobileAccountStatusDat
           <MenuItem value='mobile-wallet'>Mobile-Wallet</MenuItem>
           <MenuItem value='bank-account'>Bank-Account</MenuItem>
           </TextField>
+      </Stack> */}
+      <Stack direction='row' alignItems='center' justifyContent='space-between'>
+          <Typography color="#575757" fontWeight='500'>
+          Full name of the sender as per KYC Id
+          </Typography>
+          <OutlinedInput sx={{ height: 40 }} 
+            placeholder="Disabled"
+            disabled />
       </Stack>
     </Stack>
     </>

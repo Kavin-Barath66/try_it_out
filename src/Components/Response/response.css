@@ -1,3 +1,7 @@
 .response-box{
     min-height: 100%;
 }
+.responseStyles{
+    overflow-wrap: break-word;
+    word-break: break-all;
+}

@@ -4,14 +4,14 @@ import GetBankList from '../Components/EndPoints/GetBankList';
 import ResponseGetBankList from '../Components/Response/ResponseGetBankList';
 
 
-function BankList({responseScreen}) {
+function BankList({responseScreen, setGetBankListData, getBankListData, apiResponseHeaderData, apiResponseData}) {
     return (
         <Grid container sx={{minHeight: '100%' }}>
             <Grid item xs={7}>
-            <GetBankList/>
+            <GetBankList setGetBankListData={setGetBankListData} getBankListData={getBankListData} />
             </Grid>
             <Grid item xs={5}>
-                <ResponseGetBankList responseScreen={responseScreen}/>
+                <ResponseGetBankList responseScreen={responseScreen} apiResponseData={apiResponseData} apiResponseHeaderData={apiResponseHeaderData} />
             </Grid>
         </Grid>
     )

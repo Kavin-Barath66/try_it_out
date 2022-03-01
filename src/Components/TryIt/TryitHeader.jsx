@@ -32,21 +32,88 @@ function TryitHeader(props) {
             background-color: #E4302A;
         }`
 
-    const getLedgerBalance = () => {
+    const getLedgerBalanceApi = () => {
         var options = {
             headers: {
                 'X-USERNAME': 'OpenTurfDev',
                 'X-PASSWORD': '85d6dcc27d9fb21c7c346cdbcee2b56a84eba0f542a846de06658d2d094afd56',
                 'X-DATE': '2018-04-04 09:27:16',
-                'X-ORIGINCOUNTRY': 'US'
+                'X-ORIGINCOUNTRY': 'US',
+                'Accept': 'application/json'
             }
         }
-        axios.get(`${apiUrl}/accounts/all/balance`, { headers: options.headers },
+        axios.get(`${apiUrl}/v1/try-it/ledger-balance`, { headers: options.headers },
         ).then(function (response) {
             console.log(JSON.stringify(response.data));
+            props.setResponseScreen(true)
+            props.setApiResponseData(response.data)
+            props.setApiResponseHeaderData(options.headers)
+        })
+        .catch(function (error) {
+            console.log(error);
+            props.setApiResponseData(error)
+            props.setResponseScreen(true)
+            props.setApiResponseHeaderData(options.headers)
+        })
+    }
+
+
+    const cancelTransactionApi = () => {
+        var options = {
+            headers: {
+                'X-USERNAME': 'OpenTurfDev',
+                'X-PASSWORD': '85d6dcc27d9fb21c7c346cdbcee2b56a84eba0f542a846de06658d2d094afd56',
+                'X-DATE': '2018-04-04 09:27:16',
+                'X-ORIGINCOUNTRY': 'US',
+                'Accept': 'application/json', 
+                'Content-Type': 'application/json'
+            }
+        }
+        axios.post(`${apiUrl}/v1/try-it/cancel-transaction`,
+        {
+            "reason": `${props.cancelTransactionData.reason}`,
+            "txnId": `${props.cancelTransactionData.txId}`,
+        },{ headers: options.headers }
+        ).then(function (response) {
+            console.log(JSON.stringify(response.data));
+            props.setResponseScreen(true)
+            props.setApiResponseData(response.data)
+            props.setApiResponseHeaderData(options.headers)
         })
             .catch(function (error) {
                 console.log(error);
+                props.setApiResponseData(error)
+                props.setResponseScreen(true)
+                props.setApiResponseHeaderData(options.headers)
+            });
+    }
+    const reverseTransactionApi = () => {
+        var options = {
+            headers: {
+                'X-USERNAME': 'OpenTurfDev',
+                'X-PASSWORD': '85d6dcc27d9fb21c7c346cdbcee2b56a84eba0f542a846de06658d2d094afd56',
+                'X-DATE': '2018-04-04 09:27:16',
+                'X-ORIGINCOUNTRY': 'US',
+                'Accept': 'application/json', 
+                'Content-Type': 'application/json'
+            }
+        }
+        axios.post(`${apiUrl}/v1/try-it/reverse-transaction`,
+        {
+            "reversalReason": `${props.reverseTransactionData.reason}`,
+            "txnId": `${props.reverseTransactionData.txId}`,
+        },{ headers: options.headers }
+        ).then(function (response) {
+            console.log(JSON.stringify(response.data));
+            props.setResponseScreen(true)
+            props.setApiResponseData(response.data)
+            props.setApiResponseHeaderData(options.headers)
+        })
+            .catch(function (error) {
+                console.log(error);
+                props.setApiResponseData(error)
+                props.setResponseScreen(true)
+                props.setApiResponseHeaderData(options.headers)
             });
     }
 
@@ -64,19 +131,118 @@ function TryitHeader(props) {
         ).then(function (response) {
             console.log(JSON.stringify(response.data));
             props.setResponseScreen(true)
+            props.setApiResponseHeaderData(options.headers)
             props.setApiResponseData(response.data)
         })
             .catch(function (error) {
                 console.log(error);
                 props.setApiResponseData(error)
+                props.setApiResponseHeaderData(options.headers)
                 props.setResponseScreen(true)
             });
     }
 
-
-    const getAccountStatus = () => {
-        props.setResponseScreen(true)
+    const accountStatusBankApi = () => {
+        var options = {
+            headers: {
+                'X-USERNAME': 'OpenTurfDev',
+                'X-PASSWORD': '85d6dcc27d9fb21c7c346cdbcee2b56a84eba0f542a846de06658d2d094afd56',
+                'X-DATE': '2018-04-04 09:27:16',
+                'X-ORIGINCOUNTRY': 'US',
+                'Accept': 'application/json', 
+                'Content-Type': 'application/json'
+            }
+        }
+        axios.get(`${apiUrl}/v1/try-it/account-status?accountId=${props.bankAccountStatusData.accountId}&bnv=${props.bankAccountStatusData.bnv}&bankcode=${props.bankAccountStatusData.bankCode}&bankname=${props.bankAccountStatusData.bankName}&country=${props.bankAccountStatusData.country}`,{ headers: options.headers }
+        ).then(function (response) {
+            console.log(JSON.stringify(response.data));
+            props.setResponseScreen(true)
+            props.setApiResponseData(response.data)
+            props.setApiResponseHeaderData(options.headers)
+        })
+            .catch(function (error) {
+                console.log(error);
+                props.setApiResponseData(error)
+                props.setApiResponseHeaderData(options.headers)
+                props.setResponseScreen(true)
+            });
     }
+    const accountStatusMobileApi = () => {
+        var options = {
+            headers: {
+                'X-USERNAME': 'OpenTurfDev',
+                'X-PASSWORD': '85d6dcc27d9fb21c7c346cdbcee2b56a84eba0f542a846de06658d2d094afd56',
+                'X-DATE': '2018-04-04 09:27:16',
+                'X-ORIGINCOUNTRY': 'US',
+                'Accept': 'application/json', 
+                'Content-Type': 'application/json'
+            }
+        }
+        axios.get(`${apiUrl}/v1/try-it/account-status?msisdn=${props.mobileAccountStatusData.msisdn}&bnv=${props.mobileAccountStatusData.bnv}`,{ headers: options.headers }
+        ).then(function (response) {
+            console.log(JSON.stringify(response.data));
+            props.setResponseScreen(true)
+            props.setApiResponseData(response.data)
+            props.setApiResponseHeaderData(options.headers)
+        })
+            .catch(function (error) {
+                console.log(error);
+                props.setApiResponseData(error)
+                props.setApiResponseHeaderData(options.headers)
+                props.setResponseScreen(true)
+            });
+    }
+    const getBankListApi = () => {
+        var options = {
+            headers: {
+                'X-USERNAME': 'OpenTurfDev',
+                'X-PASSWORD': '85d6dcc27d9fb21c7c346cdbcee2b56a84eba0f542a846de06658d2d094afd56',
+                'X-DATE': '2018-04-04 09:27:16',
+                'X-ORIGINCOUNTRY': 'US',
+                'Accept': 'application/json', 
+                'Content-Type': 'application/json'
+            }
+        }
+        axios.get(`${apiUrl}/v1/try-it/bank-list?countryCode=${props.getBankListData.country}`,{ headers: options.headers }
+        ).then(function (response) {
+            console.log(JSON.stringify(response.data));
+            props.setResponseScreen(true)
+            props.setApiResponseData(response.data)
+            props.setApiResponseHeaderData(options.headers)
+        })
+            .catch(function (error) {
+                console.log(error);
+                props.setApiResponseData(error)
+                props.setApiResponseHeaderData(options.headers)
+                props.setResponseScreen(true)
+            });
+    }
+    const corridorQuotationApi = () => {
+        var options = {
+            headers: {
+                'X-USERNAME': 'OpenTurfDev',
+                'X-PASSWORD': '85d6dcc27d9fb21c7c346cdbcee2b56a84eba0f542a846de06658d2d094afd56',
+                'X-DATE': '2018-04-04 09:27:16',
+                'X-ORIGINCOUNTRY': 'US',
+                'Accept': 'application/json', 
+                'Content-Type': 'application/json'
+            }
+        }
+        axios.get(`${apiUrl}/v1/try-it/quotation?currency=${props.corridorQuotationData.currency}`,{ headers: options.headers }
+        ).then(function (response) {
+            console.log(JSON.stringify(response.data));
+            props.setResponseScreen(true)
+            props.setApiResponseData(response.data)
+            props.setApiResponseHeaderData(options.headers)
+        })
+            .catch(function (error) {
+                console.log(error);
+                props.setApiResponseData(error)
+                props.setApiResponseHeaderData(options.headers)
+                props.setResponseScreen(true)
+            });
+    }
+
     useEffect(() => {
         props.setResponseScreen(false)
         if (props.endPoint === "Account Status Mobile") {
@@ -120,14 +286,27 @@ function TryitHeader(props) {
         } else {
             navigate("/")
         }
-
     }, [props.endPoint])
 
     const tryItOutHandler = () => {
         if(props.endPoint === "Account Status Mobile") {
-            // accountStatusMobileApi(props.mobileAccountStatusData)
+            accountStatusMobileApi()
+        } else if(props.endPoint === "Account Status Bank"){
+            accountStatusBankApi();
+        } else if(props.endPoint === "Cancel Transaction"){
+            cancelTransactionApi();
+        } else if (props.endPoint === "Get Bank List") {
+            getBankListApi();
+        }else if (props.endPoint === "Corridor Quotation") {
+            corridorQuotationApi();
+        }else if (props.endPoint === "Reverse Transaction") {
+            reverseTransactionApi();
+        }else if (props.endPoint === "Ledger Balance") {
+            getLedgerBalanceApi();
         }
     }
+
+    /* console.log("asfadf", props.bankAccountStatusData) */
 
 
 

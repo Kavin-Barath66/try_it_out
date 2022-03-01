@@ -5,7 +5,7 @@ import axios from 'axios'
 import MenuItem from '@mui/material/MenuItem';
 import { Stack, OutlinedInput, Button, Box, Typography, TextField, Container} from '@mui/material'
 
-function CancelTransaction(props) {
+function CancelTransaction({cancelTransactionData, setCancelTransactionData}) {
     
     
   return (
@@ -18,13 +18,23 @@ function CancelTransaction(props) {
           <Typography color="#575757" fontWeight='500'>
           Reason For Cancelling
           </Typography>
-          <OutlinedInput sx={{ height: 40 }} placeholder='Cancel Reason' onChange={({ target }) => props.setAccountNumber(target.value)} value={props.accountNumber} />
+          <OutlinedInput sx={{ height: 40 }} placeholder='Cancel Reason' 
+          onChange={({ target }) =>
+          setCancelTransactionData( (prev) =>
+            ({...prev, reason:target.value}))} 
+          value={cancelTransactionData.reason}
+          />
       </Stack>
       <Stack direction='row' alignItems='center' justifyContent='space-between'>
           <Typography color="#575757" fontWeight='500'>
             Transaction ID
           </Typography>
-          <OutlinedInput sx={{ height: 40 }} placeholder='Transaction ID' onChange={({ target }) => props.setKycNumber(target.value)} value={props.kycNumber} />
+          <OutlinedInput sx={{ height: 40 }} placeholder='Transaction ID' 
+          onChange={({ target }) =>
+          setCancelTransactionData( (prev) =>
+            ({...prev, txId:target.value}))} 
+          value={cancelTransactionData.txId}
+          />
       </Stack>
     </Stack>
     </>

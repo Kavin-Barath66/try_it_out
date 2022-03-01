@@ -3,14 +3,14 @@ import { Grid } from "@mui/material";
 import AccountStatusBank from '../Components/EndPoints/AccountStatus/AccountStatusBank';
 import ResponseAccountStatusBank from '../Components/Response/AccountStatus/ResponseAccountStatusBank';
 
-function BankAccountStatus() {
+function BankAccountStatus({bankAccountStatusData, setBankAccountStatusData, responseScreen, apiResponseData, apiResponseHeaderData}) {
     return (
         <Grid container sx={{minHeight: '100%' }}>
             <Grid item xs={7}>
-            <AccountStatusBank/>
+            <AccountStatusBank bankAccountStatusData={bankAccountStatusData} setBankAccountStatusData={setBankAccountStatusData} />
             </Grid>
             <Grid item xs={5}>
-            <ResponseAccountStatusBank/>
+            <ResponseAccountStatusBank responseScreen={responseScreen} apiResponseData={apiResponseData} apiResponseHeaderData={apiResponseHeaderData} />
             </Grid>
         </Grid>
     )
