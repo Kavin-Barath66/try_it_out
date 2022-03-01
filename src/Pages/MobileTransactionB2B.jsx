@@ -1,18 +1,18 @@
 import React from 'react'
 import { Grid } from "@mui/material";
-import ResponseB2BTransaction from '../Components/Response/B2B/ResponseB2BTransaction';
 import B2BTransactionMobile from '../Components/EndPoints/B2B/B2BTransactionMobile';
+import ResponseB2BTransactionMobile from '../Components/Response/B2B/ResponseB2BTransactionMobile';
 
 
 
-function MobileTransactionB2B() {
+function MobileTransactionB2B({mobileTransactionB2BData, setMobileTransactionB2BData, responseScreen, apiResponseHeaderData, apiResponseData}) {
     return (
         <Grid container sx={{minHeight: '100%' }}>
             <Grid item xs={7}>
-                <B2BTransactionMobile/>
+                <B2BTransactionMobile mobileTransactionB2BData={mobileTransactionB2BData} setMobileTransactionB2BData={setMobileTransactionB2BData}/>
             </Grid>
             <Grid item xs={5}>
-                <ResponseB2BTransaction/>
+                <ResponseB2BTransactionMobile   responseScreen={responseScreen} apiResponseHeaderData={apiResponseHeaderData} apiResponseData={apiResponseData}/>
             </Grid>
         </Grid>
     )

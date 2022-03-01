@@ -4,7 +4,7 @@ import { styled } from '@mui/system'
 import { useState } from 'react'
 import ReactJson from 'react-json-view'
 
-function ResponseB2BTransaction(props) {
+function ResponseB2BTransactionMobile(props) {
     const [headerTab, setHeaderTab] = useState(false)
     const [bodyTab, setBodyTab] = useState(true)
 
@@ -80,18 +80,10 @@ function ResponseB2BTransaction(props) {
                                       }
                                     ],
                                     "creditParty": [
-                                      {
-                                        "key": "bankaccountno",
-                                        "value": "50100002965304"
-                                      },
-                                      {
-                                        "key": "organisationid",
-                                        "value": "HDFC Bank"
-                                      },
-                                      {
-                                        "key": "sortcode",
-                                        "value": "HDFC0001626"
-                                      }
+                                        {
+                                            "key": "msisdn",
+                                            "value": "+971810456234"
+                                        }
                                     ],
                                     "senderKyc": {},
                                     "recipientKyc": {},
@@ -195,4 +187,4 @@ function ResponseB2BTransaction(props) {
   )
 }
 
-export default ResponseB2BTransaction
+export default ResponseB2BTransactionMobile

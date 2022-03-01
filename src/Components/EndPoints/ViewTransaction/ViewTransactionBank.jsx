@@ -5,7 +5,7 @@ import axios from 'axios'
 import MenuItem from '@mui/material/MenuItem';
 import { Stack, OutlinedInput, Button, Box, Typography, TextField, Container} from '@mui/material'
 
-function ViewTransactionBank(props) {
+function ViewTransactionBank({viewTransactionBankData, setViewTransactionBankData}) {
     
     
   return (
@@ -18,7 +18,11 @@ function ViewTransactionBank(props) {
           <Typography color="#575757" fontWeight='500'>
             Transaction Reference
           </Typography>
-          <OutlinedInput sx={{ height: 40 }} placeholder='Transaction Reference' onChange={({ target }) => props.setKycNumber(target.value)} value={props.kycNumber} />
+          <OutlinedInput sx={{ height: 40 }} placeholder='Transaction Reference' 
+          onChange={({ target }) =>
+          setViewTransactionBankData( (prev) =>
+          ({...prev, transRef:target.value}))} 
+          value={viewTransactionBankData.transRef} />
       </Stack>
     </Stack>
     </>

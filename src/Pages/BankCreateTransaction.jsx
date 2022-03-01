@@ -4,14 +4,14 @@ import ResponseCreateTransactionBank from '../Components/Response/CreateTransact
 import CreateTransactionBank from '../Components/EndPoints/CreateTransaction/CreateTransactionBank';
 
 
-function BankCreateTransaction() {
+function BankCreateTransaction({createTransactionBankData, setCreateTransactionBankData, responseScreen, apiResponseHeaderData, apiResponseData}) {
     return (
         <Grid container sx={{minHeight: '100%' }}>
             <Grid item xs={7}>
-            <CreateTransactionBank/>
+            <CreateTransactionBank createTransactionBankData={createTransactionBankData} setCreateTransactionBankData={setCreateTransactionBankData}  />
             </Grid>
             <Grid item xs={5}>
-                <ResponseCreateTransactionBank/>
+                <ResponseCreateTransactionBank responseScreen={responseScreen} apiResponseHeaderData={apiResponseHeaderData} apiResponseData={apiResponseData} />
             </Grid>
         </Grid>
     )

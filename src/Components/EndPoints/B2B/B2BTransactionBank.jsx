@@ -5,8 +5,7 @@ import axios from 'axios'
 import MenuItem from '@mui/material/MenuItem';
 import { Stack, OutlinedInput, Button, Box, Typography, TextField, Container} from '@mui/material'
 
-function B2BTransactionBank(props) {
-    
+function B2BTransactionBank({bankTransactionB2BData, setBankTransactionB2BData}) {
     
   return (
     <>
@@ -18,97 +17,171 @@ function B2BTransactionBank(props) {
             <Typography color="#575757" fontWeight='500'>
             Amount
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Amount' />
+            <OutlinedInput sx={{ height: 40 }} placeholder='Amount'
+            onChange={({ target }) =>
+            setBankTransactionB2BData( (prev) =>
+          ({...prev, amount:target.value}))} 
+          value={bankTransactionB2BData.amount} />
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
             Currency
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Currency' />
+            <OutlinedInput sx={{ height: 40 }} placeholder='Currency'
+            onChange={({ target }) =>
+            setBankTransactionB2BData( (prev) =>
+          ({...prev, currency:target.value}))} 
+          value={bankTransactionB2BData.currency} />
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
             Type
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Type' />
+            <OutlinedInput sx={{ height: 40 }} placeholder='Type' 
+            onChange={({ target }) =>
+            setBankTransactionB2BData( (prev) =>
+          ({...prev, type:target.value}))} 
+          value={bankTransactionB2BData.type}/>
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
             Description Text
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Description Text' />
+            <OutlinedInput sx={{ height: 40 }} placeholder='Description Text' 
+            onChange={({ target }) =>
+            setBankTransactionB2BData( (prev) =>
+          ({...prev, descriptionText:target.value}))} 
+          value={bankTransactionB2BData.descriptionText}/>
+        </Stack>
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+            Request Date
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='Request Date' 
+            onChange={({ target }) =>
+            setBankTransactionB2BData( (prev) =>
+          ({...prev, requestDate:target.value}))} 
+          value={bankTransactionB2BData.requestDate}/>
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
             Transaction Reference
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Transaction Reference' />
+            <OutlinedInput sx={{ height: 40 }} placeholder='Transaction Reference'
+            onChange={({ target }) =>
+            setBankTransactionB2BData( (prev) =>
+          ({...prev, transRef:target.value}))} 
+          value={bankTransactionB2BData.transRef} />
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
             Sender MSISDN
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Sender MSISDN' />
+            <OutlinedInput sx={{ height: 40 }} placeholder='Sender MSISDN' 
+            onChange={({ target }) =>
+            setBankTransactionB2BData( (prev) =>
+          ({...prev, senderMsisdn:target.value}))} 
+          value={bankTransactionB2BData.senderMsisdn}/>
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
             Receiver Bank Account Number
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Bank Account Number' />
+            <OutlinedInput sx={{ height: 40 }} placeholder='Bank Account Number' 
+            onChange={({ target }) =>
+            setBankTransactionB2BData( (prev) =>
+          ({...prev, receiverBankaccountno:target.value}))} 
+          value={bankTransactionB2BData.receiverBankaccountno}/>
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
             Receiver Bank Name
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder=' Bank Name' />
+            <OutlinedInput sx={{ height: 40 }} placeholder=' Bank Name' 
+            onChange={({ target }) =>
+            setBankTransactionB2BData( (prev) =>
+          ({...prev, receiverBankName:target.value}))} 
+          value={bankTransactionB2BData.receiverBankName}/>
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
             Receiver Bank Code
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Bank Code   ' />
+            <OutlinedInput sx={{ height: 40 }} placeholder='Bank Code'
+            onChange={({ target }) =>
+            setBankTransactionB2BData( (prev) =>
+          ({...prev, receiverBankCode:target.value}))} 
+          value={bankTransactionB2BData.receiverBankCode} />
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
                 Sending Amount
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Receiver Full Name' />
+            <OutlinedInput sx={{ height: 40 }} placeholder='Sending Amount'
+            onChange={({ target }) =>
+            setBankTransactionB2BData( (prev) =>
+          ({...prev, sendingAmount:target.value}))} 
+          value={bankTransactionB2BData.sendingAmount} />
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
                 Paying Currency Code
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Paying Currency Code' />
+            <OutlinedInput sx={{ height: 40 }} placeholder='Paying Currency Code'
+            onChange={({ target }) =>
+            setBankTransactionB2BData( (prev) =>
+          ({...prev, payinCcyCode:target.value}))} 
+          value={bankTransactionB2BData.payinCcyCode}  />
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
                 Payment Mode
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Payment Mode' />
+            <OutlinedInput sx={{ height: 40 }} placeholder='Payment Mode' 
+            onChange={({ target }) =>
+            setBankTransactionB2BData( (prev) =>
+          ({...prev, paymentMode:target.value}))} 
+          value={bankTransactionB2BData.paymentMode} />
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
                 Authentication Partner Code
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Authentication Partner Code' />
+            <OutlinedInput sx={{ height: 40 }} placeholder='Authentication Partner Code'
+            onChange={({ target }) =>
+            setBankTransactionB2BData( (prev) =>
+          ({...prev, authenticationPartnerCode:target.value}))} 
+          value={bankTransactionB2BData.authenticationPartnerCode} />
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
                 Payment Option
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Payment Option' />
+            <OutlinedInput sx={{ height: 40 }} placeholder='Payment Option' 
+            onChange={({ target }) =>
+            setBankTransactionB2BData( (prev) =>
+          ({...prev, paymentOption:target.value}))} 
+          value={bankTransactionB2BData.paymentOption} />
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
                 Sending Partner Code
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Sending Partner Code' />
+            <OutlinedInput sx={{ height: 40 }} placeholder='Sending Partner Code'
+            onChange={({ target }) =>
+            setBankTransactionB2BData( (prev) =>
+          ({...prev, sendingPartnerCode:target.value}))} 
+          value={bankTransactionB2BData.sendingPartnerCode} />
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
                 Receiving Partner Code
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Receiving Partner Code' />
+            <OutlinedInput sx={{ height: 40 }} placeholder='Receiving Partner Code'
+            onChange={({ target }) =>
+            setBankTransactionB2BData( (prev) =>
+          ({...prev, receivingPartnerCode:target.value}))} 
+          value={bankTransactionB2BData.receivingPartnerCode} />
         </Stack>
 
 
@@ -116,223 +189,368 @@ function B2BTransactionBank(props) {
 
 
 
-
+        <Typography color="#575757" fontWeight='500'>Sender Details</Typography>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-                Sender Business Name
+                Business Name
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Sender Business Name' />
+            <OutlinedInput sx={{ height: 40 }} placeholder='Sender Business Name' 
+            onChange={({ target }) =>
+            setBankTransactionB2BData( (prev) =>
+          ({...prev, senderBusinessName:target.value}))} 
+          value={bankTransactionB2BData.senderBusinessName} />
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-                Sender Business Address 1
+                Business Address 1
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Sender Business Address 1' />
+            <OutlinedInput sx={{ height: 40 }} placeholder='Sender Business Address 1' 
+            onChange={({ target }) =>
+            setBankTransactionB2BData( (prev) =>
+          ({...prev, senderBusinessAddress1:target.value}))} 
+          value={bankTransactionB2BData.senderBusinessAddress1}/>
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-                Sender Business Address City
+                Business Address City
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Sender Business Address City' />
+            <OutlinedInput sx={{ height: 40 }} placeholder='Sender Business Address City'
+            onChange={({ target }) =>
+            setBankTransactionB2BData( (prev) =>
+          ({...prev, senderBusinessAddressCity:target.value}))} 
+          value={bankTransactionB2BData.senderBusinessAddressCity} />
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-                Sender Business Address Country Code
+                Business Address Country Code
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Sender Business Address Country Code' />
+            <OutlinedInput sx={{ height: 40 }} placeholder='Sender Business Address Country Code' 
+            onChange={({ target }) =>
+            setBankTransactionB2BData( (prev) =>
+          ({...prev, senderBusinessAddressCountryCode:target.value}))} 
+          value={bankTransactionB2BData.senderBusinessAddressCountryCode} />
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-                Sender Business Primary Contact Country Code
+                Business Primary Contact Country Code
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Sender Business Primary Contact Country Code' />
+            <OutlinedInput sx={{ height: 40 }} placeholder='Sender Business Primary Contact Country Code' 
+            onChange={({ target }) =>
+            setBankTransactionB2BData( (prev) =>
+          ({...prev, senderBusinessPrimaryContactCountryCode:target.value}))} 
+          value={bankTransactionB2BData.senderBusinessPrimaryContactCountryCode} />
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-                Sender Business Primary Contact Number
+                Business Primary Contact Number
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Sender Business Primary Contact Number' />
+            <OutlinedInput sx={{ height: 40 }} placeholder='Sender Business Primary Contact Number' 
+            onChange={({ target }) =>
+            setBankTransactionB2BData( (prev) =>
+          ({...prev, senderBusinessPrimaryContactNo:target.value}))} 
+          value={bankTransactionB2BData.senderBusinessPrimaryContactNo} />
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-                Sender Business Description
+                Business Description
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Sender Business Description' />
+            <OutlinedInput sx={{ height: 40 }} placeholder='Sender Business Description'
+            onChange={({ target }) =>
+            setBankTransactionB2BData( (prev) =>
+          ({...prev, senderBusinessDescription:target.value}))} 
+          value={bankTransactionB2BData.senderBusinessDescription} />
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-                Sender Business Country Code
+                Business Country Code
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Sender Business Country Code' />
+            <OutlinedInput sx={{ height: 40 }} placeholder='Sender Business Country Code'
+            onChange={({ target }) =>
+            setBankTransactionB2BData( (prev) =>
+          ({...prev, senderBusinessCountryCode:target.value}))} 
+          value={bankTransactionB2BData.senderBusinessCountryCode} />
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-                Sender Business Registeration Type
+                Business Registeration Type
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Sender Business Registeration Type' />
+            <OutlinedInput sx={{ height: 40 }} placeholder='Business Registeration Type'
+            onChange={({ target }) =>
+            setBankTransactionB2BData( (prev) =>
+          ({...prev, senderBusinessRegistrationType:target.value}))} 
+          value={bankTransactionB2BData.senderBusinessRegistrationType} />
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-                Sender Business Registeration Number
+                Business Registeration Number
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Sender Business Registeration Number' />
+            <OutlinedInput sx={{ height: 40 }} placeholder='Business Registeration Number'
+            onChange={({ target }) =>
+            setBankTransactionB2BData( (prev) =>
+          ({...prev, senderBusinessRegistrationNumber:target.value}))} 
+          value={bankTransactionB2BData.senderBusinessRegistrationNumber}  />
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-                Sender Business Registeration IssueDate
+                Business Registeration IssueDate
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Sender Business Registeration IssueDate' />
+            <OutlinedInput sx={{ height: 40 }} placeholder='Business Registeration IssueDate'
+            onChange={({ target }) =>
+            setBankTransactionB2BData( (prev) =>
+          ({...prev, senderBusinessRegistrationIssueDate:target.value}))} 
+          value={bankTransactionB2BData.senderBusinessRegistrationIssueDate} />
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-                Sender Business ID ValidThru
+                Business ID ValidThru
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Sender Business ID ValidThru' />
+            <OutlinedInput sx={{ height: 40 }} placeholder='Business ID ValidThru'
+            onChange={({ target }) =>
+            setBankTransactionB2BData( (prev) =>
+          ({...prev, senderBusinessIDValidThru:target.value}))} 
+          value={bankTransactionB2BData.senderBusinessIDValidThru} />
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-                Sender Business Email
+                Business Email
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Sender Business Email' />
+            <OutlinedInput sx={{ height: 40 }} placeholder='Business Email'
+            onChange={({ target }) =>
+            setBankTransactionB2BData( (prev) =>
+          ({...prev, senderBusinessEmail:target.value}))} 
+          value={bankTransactionB2BData.senderBusinessEmail} />
         </Stack>
         {/* Receiver */}
+        <Typography color="#575757" fontWeight='500'>Recepient Details</Typography>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-                Receiver Business Name
+                Business Name
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Receiver Business Name' />
+            <OutlinedInput sx={{ height: 40 }} placeholder='Business Name'
+            onChange={({ target }) =>
+            setBankTransactionB2BData( (prev) =>
+          ({...prev, recepientBusinessName:target.value}))} 
+          value={bankTransactionB2BData.recepientBusinessName} />
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-                Receiver Business PIN code
+                Business PIN code
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Receiver Business PIN code' />
+            <OutlinedInput sx={{ height: 40 }} placeholder='Business PIN code' 
+            onChange={({ target }) =>
+            setBankTransactionB2BData( (prev) =>
+          ({...prev, recepientBusinessPINCode:target.value}))} 
+          value={bankTransactionB2BData.recepientBusinessPINCode} />
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-                Receiver Business Address 1
+                Business Address 1
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Receiver Business Address 1' />
+            <OutlinedInput sx={{ height: 40 }} placeholder='Business Address 1'
+            onChange={({ target }) =>
+            setBankTransactionB2BData( (prev) =>
+          ({...prev, recepientBusinessAddress1:target.value}))} 
+          value={bankTransactionB2BData.recepientBusinessAddress1} />
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-                Receiver Business Address 2
+                Business Address 2
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Receiver Business Address 2' />
+            <OutlinedInput sx={{ height: 40 }} placeholder='Business Address 2'
+            onChange={({ target }) =>
+            setBankTransactionB2BData( (prev) =>
+          ({...prev, recepientBusinessAddress2:target.value}))} 
+          value={bankTransactionB2BData.recepientBusinessAddress2} />
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-                Receiver Business Address City
+                Business Address City
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Receiver Business Address City' />
+            <OutlinedInput sx={{ height: 40 }} placeholder='Business Address City'
+            onChange={({ target }) =>
+            setBankTransactionB2BData( (prev) =>
+          ({...prev, recepientBusinessAddressCity:target.value}))} 
+          value={bankTransactionB2BData.recepientBusinessAddressCity} />
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-                Receiver Business Address State
+                Business Address State
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Receiver Business Address State' />
+            <OutlinedInput sx={{ height: 40 }} placeholder='Business Address State'
+            onChange={({ target }) =>
+            setBankTransactionB2BData( (prev) =>
+          ({...prev, recepientBusinessAddressState:target.value}))} 
+          value={bankTransactionB2BData.recepientBusinessAddressState} />
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-                Receiver Business Address Country Code
+                Business Address Country Code
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Receiver Business Address Country Code' />
+            <OutlinedInput sx={{ height: 40 }} placeholder='Business Address Country Code'
+            onChange={({ target }) =>
+            setBankTransactionB2BData( (prev) =>
+          ({...prev, recepientBusinessAddressCountryCode:target.value}))} 
+          value={bankTransactionB2BData.recepientBusinessAddressCountryCode} />
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-                Receiver Business Address Zip
+                Business Address Zip
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Receiver Business Address Zip' />
+            <OutlinedInput sx={{ height: 40 }} placeholder='Business Address Zip'
+            onChange={({ target }) =>
+            setBankTransactionB2BData( (prev) =>
+          ({...prev, recepientBusinessAddressZip:target.value}))} 
+          value={bankTransactionB2BData.recepientBusinessAddressZip} />
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-                Receiver Business Primary Contact Country Code
+                Business Primary Contact Country Code
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Receiver Business Primary Contact Country Code' />
+            <OutlinedInput sx={{ height: 40 }} placeholder='Business Primary Contact Country Code' 
+            onChange={({ target }) =>
+            setBankTransactionB2BData( (prev) =>
+          ({...prev, recepientBusinessPrimaryContactCountryCode:target.value}))} 
+          value={bankTransactionB2BData.recepientBusinessPrimaryContactCountryCode}/>
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-                Receiver Business Primary Contact Number
+                Business Primary Contact Number
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Receiver Business Primary Contact Number' />
+            <OutlinedInput sx={{ height: 40 }} placeholder='Business Primary Contact Number' 
+            onChange={({ target }) =>
+            setBankTransactionB2BData( (prev) =>
+          ({...prev, recepientBusinessPrimaryContactNo:target.value}))} 
+          value={bankTransactionB2BData.recepientBusinessPrimaryContactNo}/>
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-                Receiver Business Primary Contact Number Type
+                Business Primary Contact Number Type
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Receiver Business Primary Contact Number Type'  />
+            <OutlinedInput sx={{ height: 40 }} placeholder='Business Primary Contact Number Type'  
+            onChange={({ target }) =>
+            setBankTransactionB2BData( (prev) =>
+          ({...prev, recepientBusinessPrimaryContactNoType:target.value}))} 
+          value={bankTransactionB2BData.recepientBusinessPrimaryContactNoType} />
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-                Receiver Business Description
+                Business Description
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Receiver Business Description'  />
+            <OutlinedInput sx={{ height: 40 }} placeholder='Business Description'  
+            onChange={({ target }) =>
+            setBankTransactionB2BData( (prev) =>
+          ({...prev, recepientBusinessDescription:target.value}))} 
+          value={bankTransactionB2BData.recepientBusinessDescription}/>
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-                Receiver Business Email
+                Business Email
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Receiver Business Email'  />
+            <OutlinedInput sx={{ height: 40 }} placeholder='Business Email'  
+            onChange={({ target }) =>
+            setBankTransactionB2BData( (prev) =>
+          ({...prev, recepientBusinessEmail:target.value}))} 
+          value={bankTransactionB2BData.recepientBusinessEmail} />
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-                Receiver Business Country Code
+                Business Country Code
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Receiver Business Country Code'  />
+            <OutlinedInput sx={{ height: 40 }} placeholder='Business Country Code' 
+            onChange={({ target }) =>
+            setBankTransactionB2BData( (prev) =>
+          ({...prev, recepientBusinessCountryCode:target.value}))} 
+          value={bankTransactionB2BData.recepientBusinessCountryCode} />
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-                Receiver Business Registeration Type
+                Business Registeration Type
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Receiver Business Registeration Type'  />
+            <OutlinedInput sx={{ height: 40 }} placeholder='Business Registeration Type' 
+            onChange={({ target }) =>
+            setBankTransactionB2BData( (prev) =>
+          ({...prev, recepientBusinessRegistrationType:target.value}))} 
+          value={bankTransactionB2BData.recepientBusinessRegistrationType} />
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-                Receiver Business Registeration Number
+                Business Registeration Number
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Receiver Business Registeration Number'  />
+            <OutlinedInput sx={{ height: 40 }} placeholder='Business Registeration Number'
+            onChange={({ target }) =>
+            setBankTransactionB2BData( (prev) =>
+          ({...prev, recepientBusinessRegistrationNumber:target.value}))} 
+          value={bankTransactionB2BData.recepientBusinessRegistrationNumber} />
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-                Receiver Business Registeration Issued By
+                Business Registeration Issued By
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Receiver Business Registeration Issued By'  />
+            <OutlinedInput sx={{ height: 40 }} placeholder='Business Registeration Issued By'
+            onChange={({ target }) =>
+            setBankTransactionB2BData( (prev) =>
+          ({...prev, recepientBusinessRegistrationIssuedBy:target.value}))} 
+          value={bankTransactionB2BData.recepientBusinessRegistrationIssuedBy}  />
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-                Receiver Business Registeration Issued At
+                Business Registeration Issued At
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Receiver Business Registeration Issued At'  />
+            <OutlinedInput sx={{ height: 40 }} placeholder='Business Registeration Issued At' 
+            onChange={({ target }) =>
+            setBankTransactionB2BData( (prev) =>
+          ({...prev, recepientBusinessRegistrationIssuedAt:target.value}))} 
+          value={bankTransactionB2BData.recepientBusinessRegistrationIssuedAt} />
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-                Receiver Business Registeration Issued Date
+                Business Registeration Issued Date
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Receiver Business Registeration Issued Date'  />
+            <OutlinedInput sx={{ height: 40 }} placeholder='Business Registeration Issued Date'
+            onChange={({ target }) =>
+            setBankTransactionB2BData( (prev) =>
+          ({...prev, recepientBusinessRegistrationIssueDate:target.value}))} 
+          value={bankTransactionB2BData.recepientBusinessRegistrationIssueDate}   />
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-                Receiver Business Id ValidThru
+                Business Id ValidThru
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Receiver Business Id ValidThru'  />
+            <OutlinedInput sx={{ height: 40 }} placeholder='Business Id ValidThru' 
+            onChange={({ target }) =>
+            setBankTransactionB2BData( (prev) =>
+          ({...prev, recepientBusinessIDValidThru:target.value}))} 
+          value={bankTransactionB2BData.recepientBusinessIDValidThru}  />
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-                Receiver Type Of Business
+                Type Of Business
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Receiver Type Of Business'  />
+            <OutlinedInput sx={{ height: 40 }} placeholder='Type Of Business' 
+            onChange={({ target }) =>
+            setBankTransactionB2BData( (prev) =>
+          ({...prev, recepientBypeofbusiness:target.value}))} 
+          value={bankTransactionB2BData.recepientBypeofbusiness}  />
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-                Receiver Business POBox
+                Business POBox
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Receiver Business POBox'  />
+            <OutlinedInput sx={{ height: 40 }} placeholder='Business POBox' 
+            onChange={({ target }) =>
+            setBankTransactionB2BData( (prev) =>
+          ({...prev, recepientBusinessPObox:target.value}))} 
+          value={bankTransactionB2BData.recepientBusinessPObox} />
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-                Receiver Business Mobile
+                Business Mobile
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Receiver Business Mobile'  />
+            <OutlinedInput sx={{ height: 40 }} placeholder='Business Mobile' 
+            onChange={({ target }) =>
+            setBankTransactionB2BData( (prev) =>
+          ({...prev, recepientBusinessMobile:target.value}))} 
+          value={bankTransactionB2BData.recepientBusinessMobile} />
         </Stack>
 
 
@@ -380,37 +598,51 @@ function B2BTransactionBank(props) {
             <Typography color="#575757" fontWeight='500'>
                 Quote Id
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Quote Id' />
+            <OutlinedInput sx={{ height: 40 }} placeholder='Quote Id' 
+            onChange={({ target }) =>
+            setBankTransactionB2BData( (prev) =>
+          ({...prev, quoteId:target.value}))} 
+          value={bankTransactionB2BData.quoteId}/>
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
                 Receiving Country
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Receiving Country' />
-        </Stack>
-        <Stack direction='row' alignItems='center' justifyContent='space-between'>
-            <Typography color="#575757" fontWeight='500'>
-                Remittance Country
-            </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Remittance Country' />
+            <OutlinedInput sx={{ height: 40 }} placeholder='Receiving Country' 
+            onChange={({ target }) =>
+            setBankTransactionB2BData( (prev) =>
+          ({...prev, receivingCountry:target.value}))} 
+          value={bankTransactionB2BData.receivingCountry}/>
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
                 Remittance Purpose
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Remittance Purpose' />
+            <OutlinedInput sx={{ height: 40 }} placeholder='Remittance Purpose'
+            onChange={({ target }) =>
+            setBankTransactionB2BData( (prev) =>
+          ({...prev, remittancePurpose:target.value}))} 
+          value={bankTransactionB2BData.remittancePurpose} />
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
                 Source Of Funds
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Source Of Funds' />
+            <OutlinedInput sx={{ height: 40 }} placeholder='Source Of Funds' 
+            onChange={({ target }) =>
+            setBankTransactionB2BData( (prev) =>
+          ({...prev, sourceOfFunds:target.value}))} 
+          value={bankTransactionB2BData.sourceOfFunds} />
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
                 Relationship Sender
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Relationship Sender' />
+            <OutlinedInput sx={{ height: 40 }} placeholder='Relationship Sender'
+            onChange={({ target }) =>
+            setBankTransactionB2BData( (prev) =>
+          ({...prev, relationshipSender:target.value}))} 
+          value={bankTransactionB2BData.relationshipSender}  />
         </Stack>
     </Stack>
     </>

@@ -1,8 +1,6 @@
-import './App.css';
+import './app.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
-import TryIt from './Pages/TryIt';
 import Home from './Pages/Home';
-import TryitBody from './Components/TryIt/TryitBody';
 import TryitHeader from './Components/TryIt/TryitHeader';
 import Ledger from './Pages/Ledger';
 import { useState, useEffect } from "react";
@@ -74,28 +72,235 @@ function App() {
     sendingCurrency: 'USD',
     receivingCurrency: 'INR',
   })
+  const [viewTransactionMobileData, setViewTransactionMobileData] = useState({transRef:"SrcTxnId001"})
+  const [viewTransactionBankData, setViewTransactionBankData] = useState({transRef:"SrcTxnId001"})
+  const [createTransactionBankData, setCreateTransactionBankData] = useState({
+    amount: "500",
+    currency: "INR",
+    type: "inttransfer",
+    descriptionText: "Gift for my brother",
+    requestDate: "2021-05-23 08:19:36",
+    transRef: "SrcTxnId002",
+    senderMsisd: "+971810456234",
+    receiverBankaccountno:"50100002965304",
+    receiverBankName: "HDFC Bank",
+    receiverBankCode: "HDFC0001626",
+    senderNationality: "AE",
+    senderDateOfBirth: "1967-05-28",
+    senderGender: "M",
+    idType: "VOTER_CARD",
+    idNumber: "13321115521",
+    issueDate: "1967-05-28",
+    expiryDate: "2067-05-28",
+    issuerCountry: "AE",
+    addressLine1: "49 park street",
+    addressLine2: "12",
+    addressLine3: "12",
+    city: "12",
+    stateProvince: "12",
+    postalCode: "50000",
+    country: "US",
+    firstName: "Test",
+    middleName: " ",
+    lastName: "Sender2",
+    receiverFirstName: "Deepa",
+    receiverLastName: "Jain",
+    quoteId: "QR037C1NA6ZXBSQ88B",
+    receivingCountry: "IN",
+    remittancePurpose: "Family Maintainance",
+    sourceOfFunds: "Salary",
+    relationshipSender: "Brother"
+  })
+  const [createTransactionMobileData, setCreateTransactionMobileData] = useState({
+    amount: "500",
+    currency: "NPR",
+    type: "inttransfer",
+    descriptionText: "Gift for my brother",
+    requestDate: "2021-05-23 08:19:36",
+    transRef: "SrcTxnId001",
+    senderMsisdn: "+971810456234",
+    receiverMsisdn:"+9779840002320",
+    nationality: "AE",
+    dateOfBirth: "1967-05-28",
+    gender: "M",
+    idType: "VOTER_CARD",
+    idNumber: "13321115521",
+    issueDate: "1967-05-28",
+    expiryDate: "2067-05-28",
+    issuerCountry: "AE",
+    addressLine1: "49 park street",
+    addressLine2: "12",
+    addressLine3: "12",
+    city: "12",
+    stateProvince: "12",
+    postalCode: "50000",
+    country: "US",
+    firstName: "Test",
+    middleName: " ",
+    lastName: "Sender",
+    receiverFirstName: "David",
+    receiverLastName: "Robinson",
+    quoteId: "QT037C1NQ6BHMV59A3",
+    receivingCountry: "NP",
+    remittancePurpose: "Family Maintainance",
+    sourceOfFunds: "Salary",
+    relationshipSender: "Brother"
+})
+
+const [bankTransactionB2BData, setBankTransactionB2BData] = useState({
+  amount: "500",
+  currency: "INR",
+  type: "b2b",
+  descriptionText: "Gift for my brother",
+  requestDate: "2021-05-23 08:19:36",
+  transRef: "SrcTxnId004",
+  senderMsisdn: "+971810456234",
+  receiverBankaccountno:"50100002965304",
+  receiverBankName:"HDFC Bank",
+  receiverBankCode:"HDFC0001626",
+  sendingAmount: "35500.00",
+  payinCcyCode: "USD",
+  paymentMode: "cash",
+  authenticationPartnerCode: "4534",
+  paymentOption: "Mobile Wallet",
+  sendingPartnerCode: "343432223",
+  receivingPartnerCode: "343432223",
+  senderBusinessName: "sample business",
+  senderBusinessAddress1: "alton's road",
+  senderBusinessAddressCity: "Lyon",
+  senderBusinessAddressCountryCode: "US",
+  senderBusinessPrimaryContactCountryCode: "US",
+  senderBusinessPrimaryContactNo: "3472034605",
+  senderBusinessDescription: "Electronics",
+  senderBusinessCountryCode: "US",
+  senderBusinessRegistrationType: "Private Limited Company",
+  senderBusinessRegistrationNumber: "23123456789",
+  senderBusinessRegistrationIssueDate: "2001-09-26",
+  senderBusinessIDValidThru: "2033-09-26",
+  senderBusinessEmail: "test@testemail.com",
+  recepientBusinessName: "Oyugi Randy Electric Sale Pvt. Ltd.",
+  recepientBusinessPINCode: "123456",
+  recepientBusinessAddress1: "24",
+  recepientBusinessAddress2: "walton's road",
+  recepientBusinessAddressCity: "newyork",
+  recepientBusinessAddressState: "NYC",
+  recepientBusinessAddressCountryCode: "NG",
+  recepientBusinessAddressZip: "123456",
+  recepientBusinessPrimaryContactCountryCode: "NG",
+  recepientBusinessPrimaryContactNo: "232323212",
+  recepientBusinessPrimaryContactNoType: "Mobile",
+  recepientBusinessDescription: "Electronics wholesale",
+  recepientBusinessEmail: "rs.electronics@gmail.com",
+  recepientBusinessCountryCode: "NG",
+  recepientBusinessRegistrationType: "Private Limited Company",
+  recepientBusinessRegistrationNumber: "2312345678912",
+  recepientBusinessRegistrationIssuedBy: "NYC_TRADE",
+  recepientBusinessRegistrationIssuedAt: "NYC",
+  recepientBusinessRegistrationIssueDate: "2002-08-26",
+  recepientBusinessIDValidThru: "2036-09-26",
+  recepientBypeofbusiness: "Electronics",
+  recepientBusinessMobile: "343234433",
+  recepientBusinessPObox: "12345",
+  quoteId: "QR037C1NA1XDKDL53E",
+  receivingCountry: "IN",
+  remittancePurpose: "Business Travel",
+  sourceOfFunds: "Business Income",
+  relationshipSender: "Employer"
+})
+
+const [mobileTransactionB2BData, setMobileTransactionB2BData] = useState({
+  amount: "500",
+  currency: "INR",
+  type: "b2b",
+  descriptionText: "Gift for my brother",
+  requestDate: "2021-05-23 08:19:36",
+  transRef: "SrcTxnId004",
+  senderMsisdn: "+971810456234",
+  receiverMsisdn:"+2349061114853",
+  sendingAmount: "35500.00",
+  payinCcyCode: "USD",
+  paymentMode: "cash",
+  authenticationPartnerCode: "4534",
+  paymentOption: "Mobile Wallet",
+  sendingPartnerCode: "343432223",
+  receivingPartnerCode: "343432223",
+  senderBusinessName: "sample business",
+  senderBusinessAddress1: "alton's road",
+  senderBusinessAddressCity: "Lyon",
+  senderBusinessAddressCountryCode: "US",
+  senderBusinessPrimaryContactCountryCode: "US",
+  senderBusinessPrimaryContactNo: "3472034605",
+  senderBusinessDescription: "Electronics",
+  senderBusinessCountryCode: "US",
+  senderBusinessRegistrationType: "Private Limited Company",
+  senderBusinessRegistrationNumber: "23123456789",
+  senderBusinessRegistrationIssueDate: "2001-09-26",
+  senderBusinessIDValidThru: "2033-09-26",
+  senderBusinessEmail: "test@testemail.com",
+  recepientBusinessName: "Oyugi Randy Electric Sale Pvt. Ltd.",
+  recepientBusinessPINCode: "123456",
+  recepientBusinessAddress1: "24",
+  recepientBusinessAddress2: "walton's road",
+  recepientBusinessAddressCity: "newyork",
+  recepientBusinessAddressState: "NYC",
+  recepientBusinessAddressCountryCode: "NG",
+  recepientBusinessAddressZip: "123456",
+  recepientBusinessPrimaryContactCountryCode: "NG",
+  recepientBusinessPrimaryContactNo: "232323212",
+  recepientBusinessPrimaryContactNoType: "Mobile",
+  recepientBusinessDescription: "Electronics wholesale",
+  recepientBusinessEmail: "rs.electronics@gmail.com",
+  recepientBusinessCountryCode: "NG",
+  recepientBusinessRegistrationType: "Private Limited Company",
+  recepientBusinessRegistrationNumber: "2312345678912",
+  recepientBusinessRegistrationIssuedBy: "NYC_TRADE",
+  recepientBusinessRegistrationIssuedAt: "NYC",
+  recepientBusinessRegistrationIssueDate: "2002-08-26",
+  recepientBusinessIDValidThru: "2036-09-26",
+  recepientBypeofbusiness: "Electronics",
+  recepientBusinessMobile: "343234433",
+  recepientBusinessPObox: "12345",
+  quoteId: "QR037C1NA1XDKDL53E",
+  receivingCountry: "IN",
+  remittancePurpose: "Business Travel",
+  sourceOfFunds: "Business Income",
+  relationshipSender: "Employer"
+})
 
 
-  useEffect(() => {
-    if (endPoint === 'Account Status Mobile') {
-      setHeaderObject(mobileAccountStatusData)
-    } else if (endPoint === "Account Status Bank") {
-      setHeaderObject(bankAccountStatusData)
-    } else if (endPoint === "Cancel Transaction") {
-      setHeaderObject(cancelTransactionData)
-    } else if (endPoint === "Get Bank List") {
-      setHeaderObject(getBankListData);
-    } else if (endPoint === "Corridor Quotation") {
-      setHeaderObject(corridorQuotationData);
-    } else if (endPoint === "Reverse Transaction") {
-      setHeaderObject(reverseTransactionData);
-    } else if (endPoint === "Create Quotation Bank") {
-      setHeaderObject(createQuotationBank);
-    } else if (endPoint === "Create Quotation Mobile") {
-      setHeaderObject(createQuotationMobileData);
-    }
-  }, [endPoint, mobileAccountStatusData, cancelTransactionData, bankAccountStatusData, createQuotationMobileData,
-    getBankListData, corridorQuotationData, reverseTransactionData, createQuotationBank])
+useEffect(() => {
+  if (endPoint === 'Account Status Mobile') {
+    setHeaderObject(mobileAccountStatusData)
+  } else if(endPoint === "Account Status Bank"){
+    setHeaderObject(bankAccountStatusData)
+  }else if(endPoint === "Cancel Transaction"){
+    setHeaderObject(cancelTransactionData)
+  }else if (endPoint === "Get Bank List") {
+    setHeaderObject(getBankListData);
+  }else if (endPoint === "Corridor Quotation") {
+    setHeaderObject(corridorQuotationData);
+  }else if (endPoint === "Reverse Transaction") {
+    setHeaderObject(reverseTransactionData);
+  } else if (endPoint === "Create Quotation Bank") {
+    setHeaderObject(createQuotationBank);
+  } else if (endPoint === "Create Quotation Mobile") {
+    setHeaderObject(createQuotationMobileData);
+  } else if (endPoint === "View Transaction Bank") {
+    setHeaderObject(viewTransactionBankData);
+} else if (endPoint === "View Transaction Mobile") {
+    setHeaderObject(viewTransactionMobileData);
+}else if (endPoint === "Create Transaction Bank") {
+  setHeaderObject(createTransactionBankData);
+}else if (endPoint === "Create Transaction Mobile") {
+  setHeaderObject(createTransactionMobileData);
+} else if (endPoint === "B2B Transaction Bank") {
+  setHeaderObject(bankTransactionB2BData);
+}else if (endPoint === "B2B Transaction Mobile") {
+  setHeaderObject(mobileTransactionB2BData);
+}
+}, [endPoint, mobileAccountStatusData, cancelTransactionData, bankAccountStatusData,createQuotationMobileData,createTransactionBankData,
+  viewTransactionMobileData, getBankListData, corridorQuotationData, reverseTransactionData, createQuotationBank, viewTransactionBankData,
+  createTransactionMobileData, bankTransactionB2BData, mobileTransactionB2BData])
 
   const [responseScreen, setResponseScreen] = useState(false)
   const [apiResponseData, setApiResponseData] = useState("")
@@ -113,6 +318,12 @@ function App() {
         reverseTransactionData={reverseTransactionData}
         createQuotationBank={createQuotationBank}
         createQuotationMobileData={createQuotationMobileData}
+        viewTransactionMobileData={viewTransactionMobileData}
+        viewTransactionBankData={viewTransactionBankData}
+        createTransactionBankData={createTransactionBankData}
+        createTransactionMobileData={createTransactionMobileData}
+        bankTransactionB2BData={bankTransactionB2BData}
+        mobileTransactionB2BData={mobileTransactionB2BData}
         endPoint={endPoint}
         setEndPoint={setEndPoint}
         environment={environment}
@@ -144,14 +355,14 @@ function App() {
           <Route path={`${process.env.REACT_APP_BASE_URL}/cancel-transaction`} element={<TransactionCancel responseScreen={responseScreen} apiResponseData={apiResponseData} cancelTransactionData={cancelTransactionData} setCancelTransactionData={setCancelTransactionData} apiResponseHeaderData={apiResponseHeaderData} />} />
           <Route path={`${process.env.REACT_APP_BASE_URL}/reverse-transaction`} element={<TransactionReverse reverseTransactionData={reverseTransactionData} setReverseTransactionData={setReverseTransactionData} responseScreen={responseScreen} apiResponseHeaderData={apiResponseHeaderData} apiResponseData={apiResponseData} />} />
 
-          <Route path={`${process.env.REACT_APP_BASE_URL}/view-transaction-bank`} element={<BankViewTransaction apiResponseHeaderData={apiResponseHeaderData} transRef={transRef} setTransRef={setTransRef} />} />
-          <Route path={`${process.env.REACT_APP_BASE_URL}/view-transaction-mobile`} element={<MobileViewTransaction apiResponseData={apiResponseData} transRef={transRef} setTransRef={setTransRef} responseScreen={responseScreen} />} />
+          <Route path={`${process.env.REACT_APP_BASE_URL}/view-transaction-bank`} element={<BankViewTransaction responseScreen={responseScreen} viewTransactionBankData={viewTransactionBankData} setViewTransactionBankData={setViewTransactionBankData} apiResponseHeaderData={apiResponseHeaderData} apiResponseData={apiResponseData} />} />
+          <Route path={`${process.env.REACT_APP_BASE_URL}/view-transaction-mobile`} element={<MobileViewTransaction viewTransactionMobileData={viewTransactionMobileData} setViewTransactionMobileData={setViewTransactionMobileData} responseScreen={responseScreen} apiResponseHeaderData={apiResponseHeaderData} apiResponseData={apiResponseData} />} />
 
-          <Route path={`${process.env.REACT_APP_BASE_URL}/create-transaction-bank`} element={<BankCreateTransaction />} />
-          <Route path={`${process.env.REACT_APP_BASE_URL}/create-transaction-mobile`} element={<MobileCreateTransaction />} />
+          <Route path={`${process.env.REACT_APP_BASE_URL}/create-transaction-bank`} element={<BankCreateTransaction createTransactionBankData={createTransactionBankData} setCreateTransactionBankData={setCreateTransactionBankData} responseScreen={responseScreen} apiResponseHeaderData={apiResponseHeaderData} apiResponseData={apiResponseData} />} />
+          <Route path={`${process.env.REACT_APP_BASE_URL}/create-transaction-mobile`} element={<MobileCreateTransaction createTransactionMobileData={createTransactionMobileData} setCreateTransactionMobileData={setCreateTransactionMobileData} responseScreen={responseScreen} apiResponseHeaderData={apiResponseHeaderData} apiResponseData={apiResponseData} />} />
 
-          <Route path={`${process.env.REACT_APP_BASE_URL}/b2b-transaction-bank`} element={<BankTransactionB2B />} />
-          <Route path={`${process.env.REACT_APP_BASE_URL}/b2b-transaction-mobile`} element={<MobileTransactionB2B />} />
+          <Route path={`${process.env.REACT_APP_BASE_URL}/b2b-transaction-bank`} element={<BankTransactionB2B bankTransactionB2BData={bankTransactionB2BData} setBankTransactionB2BData={setBankTransactionB2BData} responseScreen={responseScreen} apiResponseHeaderData={apiResponseHeaderData} apiResponseData={apiResponseData} />} />
+          <Route path={`${process.env.REACT_APP_BASE_URL}/b2b-transaction-mobile`} element={<MobileTransactionB2B mobileTransactionB2BData={mobileTransactionB2BData} setMobileTransactionB2BData={setMobileTransactionB2BData} responseScreen={responseScreen} apiResponseHeaderData={apiResponseHeaderData} apiResponseData={apiResponseData} />} />
 
           <Route path={`${process.env.REACT_APP_BASE_URL}/b2p-transaction-bank`} element={<BankTransactionB2P />} />
           <Route path={`${process.env.REACT_APP_BASE_URL}/b2p-transaction-mobile`} element={<MobileTransactionB2P />} />

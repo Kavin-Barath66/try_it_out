@@ -304,23 +304,482 @@ function TryitHeader(props) {
         {
             "requestDate": `${props.createQuotationMobileData.requestDate}`,
             "creditParty": [
-              {
-                "key": "msisdn",
-                "value": `${props.createQuotationMobileData.reciverMsisdn}`
-              }
+                {
+                    "key": "msisdn",
+                    "value": `${props.createQuotationMobileData.reciverMsisdn}`
+                }
             ],
             "requestAmount": `${props.createQuotationMobileData.requestAmount}`,
             "requestCurrency": `${props.createQuotationMobileData.requestCurrency}`,
             "quotes": [
-              {
-                "sendingCurrency": `${props.createQuotationMobileData.sendingCurrency}`,
-                "receivingCurrency": `${props.createQuotationMobileData.receivingCurrency}`
-              }
+                {
+                    "sendingCurrency": `${props.createQuotationMobileData.sendingCurrency}`,
+                    "receivingCurrency": `${props.createQuotationMobileData.receivingCurrency}`
+                }
             ]
+        },
+        { headers: options.headers }
+        ).then(function (response) {
+            console.log(JSON.stringify(response.data));
+            props.setResponseScreen(true)
+            props.setApiResponseData(response.data)
+            props.setApiResponseHeaderData(options.headers)
+        })
+            .catch(function (error) {
+                console.log(error);
+                props.setApiResponseData(error)
+                props.setApiResponseHeaderData(options.headers)
+                props.setResponseScreen(true)
+            });
+    }
+    const viewTransactionBankApi = () => {
+        var options = {
+            headers: {
+                'X-USERNAME': 'OpenTurfDev',
+                'X-PASSWORD': '85d6dcc27d9fb21c7c346cdbcee2b56a84eba0f542a846de06658d2d094afd56',
+                'X-DATE': '2018-04-04 09:27:16',
+                'X-ORIGINCOUNTRY': 'US',
+                'Accept': 'application/json', 
+                'Content-Type': 'application/json'
+            }
+        }
+        axios.post(`${apiUrl}/v1/try-it/transaction?transactionReference=${props.viewTransactionBankData.transRef}`,
+        {},
+        { headers: options.headers }
+        ).then(function (response) {
+            console.log(JSON.stringify(response.data));
+            props.setResponseScreen(true)
+            props.setApiResponseData(response.data)
+            props.setApiResponseHeaderData(options.headers)
+        })
+            .catch(function (error) {
+                console.log(error);
+                props.setApiResponseData(error)
+                props.setApiResponseHeaderData(options.headers)
+                props.setResponseScreen(true)
+            });
+    }
+    const viewTransactionMobileApi = () => {
+        var options = {
+            headers: {
+                'X-USERNAME': 'OpenTurfDev',
+                'X-PASSWORD': '85d6dcc27d9fb21c7c346cdbcee2b56a84eba0f542a846de06658d2d094afd56',
+                'X-DATE': '2018-04-04 09:27:16',
+                'X-ORIGINCOUNTRY': 'US',
+                'Accept': 'application/json', 
+                'Content-Type': 'application/json'
+            }
+        }
+        axios.post(`${apiUrl}/v1/try-it/transaction?transactionReference=${props.viewTransactionMobileData.transRef}`,
+        {},
+        { headers: options.headers }
+        ).then(function (response) {
+            console.log(JSON.stringify(response.data));
+            props.setResponseScreen(true)
+            props.setApiResponseData(response.data)
+            props.setApiResponseHeaderData(options.headers)
+        })
+            .catch(function (error) {
+                console.log(error);
+                props.setApiResponseData(error)
+                props.setApiResponseHeaderData(options.headers)
+                props.setResponseScreen(true)
+            });
+    }
+    const createTransactionBankApi = () => {
+        var options = {
+            headers: {
+                'X-USERNAME': 'OpenTurfDev',
+                'X-PASSWORD': '85d6dcc27d9fb21c7c346cdbcee2b56a84eba0f542a846de06658d2d094afd56',
+                'X-DATE': '2018-04-04 09:27:16',
+                'X-ORIGINCOUNTRY': 'US',
+                'Accept': 'application/json', 
+                'Content-Type': 'application/json'
+            }
+        }
+        axios.post(`${apiUrl}/v1/try-it/transaction`,
+        {
+            "amount": `${props.createTransactionBankData.amount}`,
+            "currency": `${props.createTransactionBankData.currency}`,
+            "type": `${props.createTransactionBankData.type}`,
+            "descriptionText": `${props.createTransactionBankData.descriptionText}`,
+            "requestDate": `${props.createTransactionBankData.requestDate}`,
+            "requestingOrganisationTransactionReference": `${props.createTransactionBankData.transRef}`,
+            "debitParty": [
+              {
+                "key": "msisdn",
+                "value": `${props.createTransactionBankData.senderMsisd}`
+              }
+            ],
+            "creditParty": [
+              {
+                "key": "bankaccountno",
+                "value": `${props.createTransactionBankData.receiverBankaccountno}`
+              },
+              {
+                "key": "organisationid",
+                "value": `${props.createTransactionBankData.receiverBankName}`
+              },
+              {
+                "key": "sortcode",
+                "value": `${props.createTransactionBankData.receiverBankCode}`
+              }
+            ],
+            "senderKyc": {
+              "nationality": `${props.createTransactionBankData.senderNationality}`,
+              "dateOfBirth": `${props.createTransactionBankData.senderDateOfBirth}`,
+              "gender": `${props.createTransactionBankData.senderGender}`,
+              "idDocument": [
+                {
+                  "idType": `${props.createTransactionBankData.idType}`,
+                  "idNumber": `${props.createTransactionBankData.idNumber}`,
+                  "issueDate": `${props.createTransactionBankData.issueDate}`,
+                  "expiryDate": `${props.createTransactionBankData.expiryDate}`,
+                  "issuerCountry": `${props.createTransactionBankData.issuerCountry}`
+                }
+              ],
+              "postalAddress": {
+                "addressLine1": `${props.createTransactionBankData.addressLine1}`,
+                "addressLine2": `${props.createTransactionBankData.addressLine2}`,
+                "addressLine3": `${props.createTransactionBankData.addressLine3}`,
+                "city": `${props.createTransactionBankData.city}`,
+                "stateProvince":`${props.createTransactionBankData.stateProvince}`,
+                "postalCode": `${props.createTransactionBankData.postalCode}`,
+                "country": `${props.createTransactionBankData.country}`
+              },
+              "subjectName": {
+                "firstName": `${props.createTransactionBankData.firstName}`,
+                "middleName": `${props.createTransactionBankData.middleName}`,
+                "lastName": `${props.createTransactionBankData.lastName}`,
+                "fullName": `${props.createTransactionBankData.firstName+props.createTransactionBankData.middleName+props.createTransactionBankData.lastName}`
+              }
+            },
+            "recipientKyc": {
+              "subjectName": {
+                "firstName": `${props.createTransactionBankData.receiverFirstName}`,
+                "lastName": `${props.createTransactionBankData.receiverLastName}`,
+                "fullName":`${props.createTransactionBankData.receiverFirstName + props.createTransactionBankData.receiverFirstName}`,
+              }
+            },
+            "internationalTransferInformation": {
+              "quoteId": `${props.createTransactionBankData.quoteId}`,
+              "receivingCountry": `${props.createTransactionBankData.receivingCountry}`,
+              "remittancePurpose": `${props.createTransactionBankData.remittancePurpose}`,
+              "sourceOfFunds": `${props.createTransactionBankData.sourceOfFunds}`,
+              "relationshipSender": `${props.createTransactionBankData.relationshipSender}`
+            }
           },
         { headers: options.headers }
         ).then(function (response) {
             console.log(JSON.stringify(response.data));
+            props.setResponseScreen(true)
+            props.setApiResponseData(response.data)
+            props.setApiResponseHeaderData(options.headers)
+        })
+            .catch(function (error) {
+                console.log(error);
+                props.setApiResponseData(error)
+                props.setApiResponseHeaderData(options.headers)
+                props.setResponseScreen(true)
+            });
+    }
+    const createTransactionMobileApi = () => {
+        var options = {
+            headers: {
+                'X-USERNAME': 'OpenTurfDev',
+                'X-PASSWORD': '85d6dcc27d9fb21c7c346cdbcee2b56a84eba0f542a846de06658d2d094afd56',
+                'X-DATE': '2018-04-04 09:27:16',
+                'X-ORIGINCOUNTRY': 'US',
+                'Accept': 'application/json', 
+                'Content-Type': 'application/json'
+            }
+        }
+        axios.post(`${apiUrl}/v1/try-it/transaction`,
+        {
+            "amount": `${props.createTransactionMobileData.amount}`,
+            "currency": `${props.createTransactionMobileData.currency}`,
+            "type": `${props.createTransactionMobileData.type}`,
+            "descriptionText": `${props.createTransactionMobileData.descriptionText}`,
+            "requestDate": `${props.createTransactionMobileData.requestDate}`,
+            "requestingOrganisationTransactionReference": `${props.createTransactionMobileData.transRef}`,
+            "debitParty": [
+              {
+                "key": "msisdn",
+                "value": `${props.createTransactionMobileData.senderMsisdn}`
+              }
+            ],
+            "creditParty": [
+              {
+                "key": "msisdn",
+                "value": `${props.createTransactionMobileData.receiverMsisdn}`
+              }
+            ],
+            "senderKyc": {
+              "nationality": `${props.createTransactionMobileData.nationality}`,
+              "dateOfBirth": `${props.createTransactionMobileData.dateOfBirth}`,
+              "gender": `${props.createTransactionMobileData.gender}`,
+              "idDocument": [
+                {
+                  "idType": `${props.createTransactionMobileData.idType}`,
+                  "idNumber": `${props.createTransactionMobileData.idNumber}`,
+                  "issueDate": `${props.createTransactionMobileData.issueDate}`,
+                  "expiryDate": `${props.createTransactionMobileData.expiryDate}`,
+                  "issuerCountry": `${props.createTransactionMobileData.issuerCountry}`
+                }
+              ],
+              "postalAddress": {
+                "addressLine1": `${props.createTransactionMobileData.addressLine1}`,
+                "addressLine2": `${props.createTransactionMobileData.addressLine2}`,
+                "addressLine3": `${props.createTransactionMobileData.addressLine3}`,
+                "city": `${props.createTransactionMobileData.city}`,
+                "stateProvince":`${props.createTransactionMobileData.stateProvince}`,
+                "postalCode": `${props.createTransactionMobileData.postalCode}`,
+                "country": `${props.createTransactionMobileData.country}`
+              },
+              "subjectName": {
+                "firstName": `${props.createTransactionMobileData.firstName}`,
+                "middleName":`${props.createTransactionMobileData.middleName}`,
+                "lastName": `${props.createTransactionMobileData.lastName}`,
+                "fullName": `${props.createTransactionMobileData.firstName+
+                    props.createTransactionMobileData.middleName+props.createTransactionMobileData.lastName}`
+              }
+            },
+            "recipientKyc": {
+              "subjectName": {
+                "firstName": `${props.createTransactionMobileData.receiverFirstName}`,
+                "lastName": `${props.createTransactionMobileData.receiverLastName}`,
+                "fullName": `${props.createTransactionMobileData.receiverFirstName+props.createTransactionMobileData.receiverLastName}`
+              }
+            },
+            "internationalTransferInformation": {
+              "quoteId": `${props.createTransactionMobileData.quoteId}`,
+              "receivingCountry": `${props.createTransactionMobileData.receivingCountry}`,
+              "remittancePurpose": `${props.createTransactionMobileData.remittancePurpose}`,
+              "sourceOfFunds": `${props.createTransactionMobileData.sourceOfFunds}`,
+              "relationshipSender": `${props.createTransactionMobileData.relationshipSender}`
+            }
+          },
+        { headers: options.headers }
+        ).then(function (response) {
+            console.log(JSON.stringify(response.data));
+            props.setResponseScreen(true)
+            props.setApiResponseData(response.data)
+            props.setApiResponseHeaderData(options.headers)
+        })
+            .catch(function (error) {
+                console.log(error);
+                props.setApiResponseData(error)
+                props.setApiResponseHeaderData(options.headers)
+                props.setResponseScreen(true)
+            });
+    }
+    const bankTransactionB2BApi = () => {
+        var options = {
+            headers: {
+                'X-USERNAME': 'OpenTurfDev',
+                'X-PASSWORD': '85d6dcc27d9fb21c7c346cdbcee2b56a84eba0f542a846de06658d2d094afd56',
+                'X-DATE': '2018-04-04 09:27:16',
+                'X-ORIGINCOUNTRY': 'US',
+                'Accept': 'application/json', 
+                'Content-Type': 'application/json'
+            }
+        }
+        axios.post(`${apiUrl}/v1/try-it/transaction`,
+        {
+            "amount": `${props.bankTransactionB2BData.amount}`,
+            "currency": `${props.bankTransactionB2BData.currency}`,
+            "type": `${props.bankTransactionB2BData.type}`,
+            "descriptionText": `${props.bankTransactionB2BData.descriptionText}`,
+            "requestDate": `${props.bankTransactionB2BData.requestDate}`,
+            "requestingOrganisationTransactionReference": `${props.bankTransactionB2BData.transRef}`,
+            "debitParty": [
+              {
+                "key": "msisdn",
+                "value": `${props.bankTransactionB2BData.senderMsisdn}`
+              }
+            ],
+            "creditParty": [
+              {
+                "key": "bankaccountno",
+                "value": `${props.bankTransactionB2BData.receiverBankaccountno}`
+              },
+              {
+                "key": "organisationid",
+                "value": `${props.bankTransactionB2BData.receiverBankName}`
+              },
+              {
+                "key": "sortcode",
+                "value": `${props.bankTransactionB2BData.receiverBankCode}`
+              }
+            ],
+            "senderKyc": {},
+            "recipientKyc": {},
+            "sendingAmount": `${props.bankTransactionB2BData.sendingAmount}`,
+            "payinCcyCode": `${props.bankTransactionB2BData.payinCcyCode}`,
+            "paymentMode": `${props.bankTransactionB2BData.paymentMode}`,
+            "authenticationPartnerCode": `${props.bankTransactionB2BData.authenticationPartnerCode}`,
+            "paymentOption": `${props.bankTransactionB2BData.paymentOption}`,
+            "sendingPartnerCode": `${props.bankTransactionB2BData.sendingPartnerCode}`,
+            "receivingPartnerCode": `${props.bankTransactionB2BData.receivingPartnerCode}`,
+            "business": {
+              "senderKyc": {
+                "businessName": `${props.bankTransactionB2BData.senderBusinessName}`,
+                "businessAddress1": `${props.bankTransactionB2BData.senderBusinessAddress1}`,
+                "businessAddressCity": `${props.bankTransactionB2BData.senderBusinessAddressCity}`,
+                "businessAddressCountryCode": `${props.bankTransactionB2BData.senderBusinessAddressCountryCode}`,
+                "businessPrimaryContactCountryCode": `${props.bankTransactionB2BData.senderBusinessPrimaryContactCountryCode}`,
+                "businessPrimaryContactNo": `${props.bankTransactionB2BData.senderBusinessPrimaryContactNo}`,
+                "businessDescription": `${props.bankTransactionB2BData.senderBusinessDescription}`,
+                "businessCountryCode": `${props.bankTransactionB2BData.senderBusinessCountryCode}`,
+                "businessRegistrationType": `${props.bankTransactionB2BData.senderBusinessRegistrationType}`,
+                "businessRegistrationNumber": `${props.bankTransactionB2BData.senderBusinessRegistrationNumber}`,
+                "businessRegistrationIssueDate": `${props.bankTransactionB2BData.senderBusinessRegistrationIssueDate}`,
+                "businessIDValidThru": `${props.bankTransactionB2BData.senderBusinessIDValidThru}`,
+                "businessEmail": `${props.bankTransactionB2BData.senderBusinessEmail}`
+              },
+              "recepientKyc": {
+                "businessName": `${props.bankTransactionB2BData.recepientBusinessName}`,
+                "businessPINCode": `${props.bankTransactionB2BData.recepientBusinessPINCode}`,
+                "businessAddress1": `${props.bankTransactionB2BData.recepientBusinessAddress1}`,
+                "businessAddress2": `${props.bankTransactionB2BData.recepientBusinessAddress2}`,
+                "businessAddressCity": `${props.bankTransactionB2BData.recepientBusinessAddressCity}`,
+                "businessAddressState": `${props.bankTransactionB2BData.recepientBusinessAddressState}`,
+                "businessAddressCountryCode": `${props.bankTransactionB2BData.recepientBusinessAddressCountryCode}`,
+                "businessAddressZip": `${props.bankTransactionB2BData.recepientBusinessAddressZip}`,
+                "businessPrimaryContactCountryCode": `${props.bankTransactionB2BData.recepientBusinessPrimaryContactCountryCode}`,
+                "businessPrimaryContactNo": `${props.bankTransactionB2BData.recepientBusinessPrimaryContactNo}`,
+                "businessPrimaryContactNoType": `${props.bankTransactionB2BData.recepientBusinessPrimaryContactNoType}`,
+                "businessDescription": `${props.bankTransactionB2BData.recepientBusinessDescription}`,
+                "businessEmail": `${props.bankTransactionB2BData.recepientBusinessEmail}`,
+                "businessCountryCode": `${props.bankTransactionB2BData.recepientBusinessCountryCode}`,
+                "businessRegistrationType": `${props.bankTransactionB2BData.recepientBusinessRegistrationType}`,
+                "businessRegistrationNumber": `${props.bankTransactionB2BData.recepientBusinessRegistrationNumber}`,
+                "businessRegistrationIssuedBy": `${props.bankTransactionB2BData.recepientBusinessRegistrationIssuedBy}`,
+                "businessRegistrationIssuedAt": `${props.bankTransactionB2BData.recepientBusinessRegistrationIssuedAt}`,
+                "businessRegistrationIssueDate": `${props.bankTransactionB2BData.recepientBusinessRegistrationIssueDate}`,
+                "businessIDValidThru": `${props.bankTransactionB2BData.recepientBusinessIDValidThru}`,
+                "typeofbusiness": `${props.bankTransactionB2BData.recepientBypeofbusiness}`,
+                "businessPObox": `${props.bankTransactionB2BData.recepientBusinessPObox}`,
+                "businessMobile": `${props.bankTransactionB2BData.recepientBusinessMobile}`
+              }
+            },
+            "internationalTransferInformation": {
+              "quoteId": `${props.bankTransactionB2BData.quoteId}`,
+              "receivingCountry": `${props.bankTransactionB2BData.receivingCountry}`,
+              "remittancePurpose": `${props.bankTransactionB2BData.remittancePurpose}`,
+              "sourceOfFunds": `${props.bankTransactionB2BData.sourceOfFunds}`,
+              "relationshipSender": `${props.bankTransactionB2BData.relationshipSender}`
+            }
+          },
+        { headers: options.headers }
+        ).then(function (response) {
+            console.log(response.data);
+            props.setResponseScreen(true)
+            props.setApiResponseData(response.data)
+            props.setApiResponseHeaderData(options.headers)
+        })
+            .catch(function (error) {
+                console.log(error);
+                props.setApiResponseData(error)
+                props.setApiResponseHeaderData(options.headers)
+                props.setResponseScreen(true)
+            });
+    }
+
+
+    const mobileTransactionB2BApi = () => {
+        var options = {
+            headers: {
+                'X-USERNAME': 'OpenTurfDev',
+                'X-PASSWORD': '85d6dcc27d9fb21c7c346cdbcee2b56a84eba0f542a846de06658d2d094afd56',
+                'X-DATE': '2018-04-04 09:27:16',
+                'X-ORIGINCOUNTRY': 'US',
+                'Accept': 'application/json', 
+                'Content-Type': 'application/json'
+            }
+        }
+        axios.post(`${apiUrl}/v1/try-it/transaction`,
+        {
+            "amount": `${props.mobileTransactionB2BData.amount}`,
+            "currency": `${props.mobileTransactionB2BData.currency}`,
+            "type": `${props.mobileTransactionB2BData.type}`,
+            "descriptionText": `${props.mobileTransactionB2BData.descriptionText}`,
+            "requestDate": `${props.mobileTransactionB2BData.requestDate}`,
+            "requestingOrganisationTransactionReference": `${props.mobileTransactionB2BData.transRef}`,
+            "debitParty": [
+              {
+                "key": "msisdn",
+                "value": `${props.mobileTransactionB2BData.senderMsisdn}`
+              }
+            ],
+            "creditParty": [
+                {
+                    "key": "msisdn",
+                    "value": `${props.mobileTransactionB2BData.receiverMsisdn}`
+                }
+            ],
+            "senderKyc": {},
+            "recipientKyc": {},
+            "sendingAmount": `${props.mobileTransactionB2BData.sendingAmount}`,
+            "payinCcyCode": `${props.mobileTransactionB2BData.payinCcyCode}`,
+            "paymentMode": `${props.mobileTransactionB2BData.paymentMode}`,
+            "authenticationPartnerCode": `${props.mobileTransactionB2BData.authenticationPartnerCode}`,
+            "paymentOption": `${props.mobileTransactionB2BData.paymentOption}`,
+            "sendingPartnerCode": `${props.mobileTransactionB2BData.sendingPartnerCode}`,
+            "receivingPartnerCode": `${props.mobileTransactionB2BData.receivingPartnerCode}`,
+            "business": {
+              "senderKyc": {
+                "businessName": `${props.mobileTransactionB2BData.senderBusinessName}`,
+                "businessAddress1": `${props.mobileTransactionB2BData.senderBusinessAddress1}`,
+                "businessAddressCity": `${props.mobileTransactionB2BData.senderBusinessAddressCity}`,
+                "businessAddressCountryCode": `${props.mobileTransactionB2BData.senderBusinessAddressCountryCode}`,
+                "businessPrimaryContactCountryCode": `${props.mobileTransactionB2BData.senderBusinessPrimaryContactCountryCode}`,
+                "businessPrimaryContactNo": `${props.mobileTransactionB2BData.senderBusinessPrimaryContactNo}`,
+                "businessDescription": `${props.mobileTransactionB2BData.senderBusinessDescription}`,
+                "businessCountryCode": `${props.mobileTransactionB2BData.senderBusinessCountryCode}`,
+                "businessRegistrationType": `${props.mobileTransactionB2BData.senderBusinessRegistrationType}`,
+                "businessRegistrationNumber": `${props.mobileTransactionB2BData.senderBusinessRegistrationNumber}`,
+                "businessRegistrationIssueDate": `${props.mobileTransactionB2BData.senderBusinessRegistrationIssueDate}`,
+                "businessIDValidThru": `${props.mobileTransactionB2BData.senderBusinessIDValidThru}`,
+                "businessEmail": `${props.mobileTransactionB2BData.senderBusinessEmail}`
+              },
+              "recepientKyc": {
+                "businessName": `${props.mobileTransactionB2BData.recepientBusinessName}`,
+                "businessPINCode": `${props.mobileTransactionB2BData.recepientBusinessPINCode}`,
+                "businessAddress1": `${props.mobileTransactionB2BData.recepientBusinessAddress1}`,
+                "businessAddress2": `${props.mobileTransactionB2BData.recepientBusinessAddress2}`,
+                "businessAddressCity": `${props.mobileTransactionB2BData.recepientBusinessAddressCity}`,
+                "businessAddressState": `${props.mobileTransactionB2BData.recepientBusinessAddressState}`,
+                "businessAddressCountryCode": `${props.mobileTransactionB2BData.recepientBusinessAddressCountryCode}`,
+                "businessAddressZip": `${props.mobileTransactionB2BData.recepientBusinessAddressZip}`,
+                "businessPrimaryContactCountryCode": `${props.mobileTransactionB2BData.recepientBusinessPrimaryContactCountryCode}`,
+                "businessPrimaryContactNo": `${props.mobileTransactionB2BData.recepientBusinessPrimaryContactNo}`,
+                "businessPrimaryContactNoType": `${props.mobileTransactionB2BData.recepientBusinessPrimaryContactNoType}`,
+                "businessDescription": `${props.mobileTransactionB2BData.recepientBusinessDescription}`,
+                "businessEmail": `${props.mobileTransactionB2BData.recepientBusinessEmail}`,
+                "businessCountryCode": `${props.mobileTransactionB2BData.recepientBusinessCountryCode}`,
+                "businessRegistrationType": `${props.mobileTransactionB2BData.recepientBusinessRegistrationType}`,
+                "businessRegistrationNumber": `${props.mobileTransactionB2BData.recepientBusinessRegistrationNumber}`,
+                "businessRegistrationIssuedBy": `${props.mobileTransactionB2BData.recepientBusinessRegistrationIssuedBy}`,
+                "businessRegistrationIssuedAt": `${props.mobileTransactionB2BData.recepientBusinessRegistrationIssuedAt}`,
+                "businessRegistrationIssueDate": `${props.mobileTransactionB2BData.recepientBusinessRegistrationIssueDate}`,
+                "businessIDValidThru": `${props.mobileTransactionB2BData.recepientBusinessIDValidThru}`,
+                "typeofbusiness": `${props.mobileTransactionB2BData.recepientBypeofbusiness}`,
+                "businessPObox": `${props.mobileTransactionB2BData.recepientBusinessPObox}`,
+                "businessMobile": `${props.mobileTransactionB2BData.recepientBusinessMobile}`
+              }
+            },
+            "internationalTransferInformation": {
+              "quoteId": `${props.mobileTransactionB2BData.quoteId}`,
+              "receivingCountry": `${props.mobileTransactionB2BData.receivingCountry}`,
+              "remittancePurpose": `${props.mobileTransactionB2BData.remittancePurpose}`,
+              "sourceOfFunds": `${props.mobileTransactionB2BData.sourceOfFunds}`,
+              "relationshipSender": `${props.mobileTransactionB2BData.relationshipSender}`
+            }
+          },
+        { headers: options.headers }
+        ).then(function (response) {
+            console.log(response.data);
             props.setResponseScreen(true)
             props.setApiResponseData(response.data)
             props.setApiResponseHeaderData(options.headers)
@@ -395,12 +854,23 @@ function TryitHeader(props) {
             getLedgerBalanceApi();
         }else if (props.endPoint === "Create Quotation Bank") {
             createQuotationBankApi();
-        }else if (props.endPoint === "Create Quotation Bank") {
+        }else if (props.endPoint === "Create Quotation Mobile") {
             createQuotationMobileApi();
+        }else if (props.endPoint === "View Transaction Bank") {
+            viewTransactionBankApi();
+        }else if (props.endPoint === "View Transaction Mobile") {
+            viewTransactionMobileApi();
+        }else if (props.endPoint === "Create Transaction Bank") {
+            createTransactionBankApi();
+        }else if (props.endPoint === "Create Transaction Mobile") {
+            createTransactionMobileApi();
+        }else if (props.endPoint === "B2B Transaction Bank") {
+            bankTransactionB2BApi();
+        }else if (props.endPoint === "B2B Transaction Mobile") {
+            mobileTransactionB2BApi();
         }
     }
 
-    /* console.log("asfadf", props.bankAccountStatusData) */
 
 
 

@@ -5,7 +5,7 @@ import axios from 'axios'
 import MenuItem from '@mui/material/MenuItem';
 import { Stack, OutlinedInput, Button, Box, Typography, TextField, Container} from '@mui/material'
 
-function ViewTransactionMobile(props) {
+function ViewTransactionMobile({viewTransactionMobileData, setViewTransactionMobileData}) {
     
     
   return (
@@ -18,7 +18,11 @@ function ViewTransactionMobile(props) {
           <Typography color="#575757" fontWeight='500'>
             Transaction Reference
           </Typography>
-          <OutlinedInput sx={{ height: 40 }} placeholder='Transaction Reference' onChange={({ target }) => props.setTransRef(target.value)} value={props.transRef} />
+          <OutlinedInput sx={{ height: 40 }} placeholder='Transaction Reference' 
+          onChange={({ target }) =>
+          setViewTransactionMobileData( (prev) =>
+          ({...prev, transRef:target.value}))} 
+          value={viewTransactionMobileData.transRef} />
       </Stack>
     </Stack>
     </>
