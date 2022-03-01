@@ -4,7 +4,7 @@ import { styled } from '@mui/system'
 import { useState } from 'react'
 import ReactJson from 'react-json-view'
 
-function ResponseB2BTransaction(props) {
+function ResponseB2BTransactionBank(props) {
     const [headerTab, setHeaderTab] = useState(false)
     const [bodyTab, setBodyTab] = useState(true)
 
@@ -195,4 +195,4 @@ function ResponseB2BTransaction(props) {
   )
 }
 
-export default ResponseB2BTransaction
+export default ResponseB2BTransactionBank

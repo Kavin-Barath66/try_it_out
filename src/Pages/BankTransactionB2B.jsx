@@ -1,7 +1,7 @@
 import React from 'react'
 import { Grid } from "@mui/material";
-import ResponseB2BTransaction from '../Components/Response/B2B/ResponseB2BTransaction';
 import B2BTransactionBank from '../Components/EndPoints/B2B/B2BTransactionBank';
+import ResponseB2BTransactionBank from '../Components/Response/B2B/ResponseB2BTransactionBank';
 
 
 
@@ -12,7 +12,7 @@ function BankTransactionB2B({bankTransactionB2BData, setBankTransactionB2BData, 
                 <B2BTransactionBank bankTransactionB2BData={bankTransactionB2BData} setBankTransactionB2BData={setBankTransactionB2BData} />
             </Grid>
             <Grid item xs={5}>
-                <ResponseB2BTransaction  responseScreen={responseScreen} apiResponseHeaderData={apiResponseHeaderData} apiResponseData={apiResponseData}/>
+                <ResponseB2BTransactionBank responseScreen={responseScreen} apiResponseHeaderData={apiResponseHeaderData} apiResponseData={apiResponseData} />
             </Grid>
         </Grid>
     )
