@@ -5,7 +5,7 @@ import axios from 'axios'
 import MenuItem from '@mui/material/MenuItem';
 import { Stack, OutlinedInput, Button, Box, Typography, TextField, Container} from '@mui/material'
 
-function B2PTransactionBank(props) {
+function B2PTransactionBank({bankTransactionB2PData, setBankTransactionB2PData}) {
     
     
   return (
@@ -18,205 +18,371 @@ function B2PTransactionBank(props) {
           <Typography color="#575757" fontWeight='500'>
           Amount
           </Typography>
-          <OutlinedInput sx={{ height: 40 }} placeholder='Amount' onChange={({ target }) => props.setAccountNumber(target.value)} value={props.accountNumber} />
+          <OutlinedInput sx={{ height: 40 }} placeholder='Amount'
+          onChange={({ target }) =>
+          setBankTransactionB2PData( (prev) =>
+          ({...prev, amount:target.value}))} 
+          value={bankTransactionB2PData.amount} />
       </Stack>
       <Stack direction='row' alignItems='center' justifyContent='space-between'>
           <Typography color="#575757" fontWeight='500'>
             Currency
           </Typography>
-          <OutlinedInput sx={{ height: 40 }} placeholder='Currency' onChange={({ target }) => props.setKycNumber(target.value)} value={props.kycNumber} />
+          <OutlinedInput sx={{ height: 40 }} placeholder='Currency' 
+          onChange={({ target }) =>
+          setBankTransactionB2PData( (prev) =>
+          ({...prev, currency:target.value}))} 
+          value={bankTransactionB2PData.currency} />
       </Stack>
       <Stack direction='row' alignItems='center' justifyContent='space-between'>
           <Typography color="#575757" fontWeight='500'>
             Type
           </Typography>
-          <OutlinedInput sx={{ height: 40 }} placeholder='Type' onChange={({ target }) => props.setKycNumber(target.value)} value={props.kycNumber} />
+          <OutlinedInput sx={{ height: 40 }} placeholder='Type' 
+          onChange={({ target }) =>
+          setBankTransactionB2PData( (prev) =>
+          ({...prev, type:target.value}))} 
+          value={bankTransactionB2PData.type} />
       </Stack>
       <Stack direction='row' alignItems='center' justifyContent='space-between'>
           <Typography color="#575757" fontWeight='500'>
             Description Text
           </Typography>
-          <OutlinedInput sx={{ height: 40 }} placeholder='Description Text' onChange={({ target }) => props.setKycNumber(target.value)} value={props.kycNumber} />
+          <OutlinedInput sx={{ height: 40 }} placeholder='Description Text' 
+          onChange={({ target }) =>
+          setBankTransactionB2PData( (prev) =>
+          ({...prev, descriptionText:target.value}))} 
+          value={bankTransactionB2PData.descriptionText} />
+      </Stack>
+      <Stack direction='row' alignItems='center' justifyContent='space-between'>
+          <Typography color="#575757" fontWeight='500'>
+            Request Date
+          </Typography>
+          <OutlinedInput sx={{ height: 40 }} placeholder='Transaction Reference' 
+          onChange={({ target }) =>
+          setBankTransactionB2PData( (prev) =>
+          ({...prev, requestDate:target.value}))} 
+          value={bankTransactionB2PData.requestDate} />
       </Stack>
       <Stack direction='row' alignItems='center' justifyContent='space-between'>
           <Typography color="#575757" fontWeight='500'>
             Transaction Reference
           </Typography>
-          <OutlinedInput sx={{ height: 40 }} placeholder='Transaction Reference' onChange={({ target }) => props.setKycNumber(target.value)} value={props.kycNumber} />
+          <OutlinedInput sx={{ height: 40 }} placeholder='Transaction Reference' 
+          onChange={({ target }) =>
+          setBankTransactionB2PData( (prev) =>
+          ({...prev, transRef:target.value}))} 
+          value={bankTransactionB2PData.transRef} />
       </Stack>
       <Stack direction='row' alignItems='center' justifyContent='space-between'>
           <Typography color="#575757" fontWeight='500'>
             Sender MSISDN
           </Typography>
-          <OutlinedInput sx={{ height: 40 }} placeholder='Sender MSISDN' onChange={({ target }) => props.setKycNumber(target.value)} value={props.kycNumber} />
+          <OutlinedInput sx={{ height: 40 }} placeholder='Sender MSISDN' 
+          onChange={({ target }) =>
+          setBankTransactionB2PData( (prev) =>
+          ({...prev, senderMsisd:target.value}))} 
+          value={bankTransactionB2PData.senderMsisd} />
       </Stack>
       <Stack direction='row' alignItems='center' justifyContent='space-between'>
           <Typography color="#575757" fontWeight='500'>
                 Receiver Bank Account Number
           </Typography>
-          <OutlinedInput sx={{ height: 40 }} placeholder='Receiver Bank Account Number' onChange={({ target }) => props.setKycNumber(target.value)} value={props.kycNumber} />
+          <OutlinedInput sx={{ height: 40 }} placeholder='Receiver Bank Account Number' 
+          onChange={({ target }) =>
+          setBankTransactionB2PData( (prev) =>
+          ({...prev, receiverBankaccountno:target.value}))} 
+          value={bankTransactionB2PData.receiverBankaccountno}  />
       </Stack>
       <Stack direction='row' alignItems='center' justifyContent='space-between'>
           <Typography color="#575757" fontWeight='500'>
                 Receiver Bank Account Name
           </Typography>
-          <OutlinedInput sx={{ height: 40 }} placeholder='Receiver Bank Account Name' onChange={({ target }) => props.setKycNumber(target.value)} value={props.kycNumber} />
+          <OutlinedInput sx={{ height: 40 }} placeholder='Receiver Bank Account Name' 
+          onChange={({ target }) =>
+          setBankTransactionB2PData( (prev) =>
+          ({...prev, receiverBankName:target.value}))} 
+          value={bankTransactionB2PData.receiverBankName} />
       </Stack>
       <Stack direction='row' alignItems='center' justifyContent='space-between'>
           <Typography color="#575757" fontWeight='500'>
                 Receiver Bank Code
           </Typography>
-          <OutlinedInput sx={{ height: 40 }} placeholder='Receiver Bank Code' onChange={({ target }) => props.setKycNumber(target.value)} value={props.kycNumber} />
+          <OutlinedInput sx={{ height: 40 }} placeholder='Receiver Bank Code' 
+          onChange={({ target }) =>
+          setBankTransactionB2PData( (prev) =>
+          ({...prev, receiverBankCode:target.value}))} 
+          value={bankTransactionB2PData.receiverBankCode} />
       </Stack>
       <Stack direction='row' alignItems='center' justifyContent='space-between'>
           <Typography color="#575757" fontWeight='500'>
-                Receiver Fullname
+                Receiver FirstName
           </Typography>
-          <OutlinedInput sx={{ height: 40 }} placeholder='Receiver Fullname' onChange={({ target }) => props.setKycNumber(target.value)} value={props.kycNumber} />
+          <OutlinedInput sx={{ height: 40 }} placeholder='Receiver Fullname' 
+          onChange={({ target }) =>
+          setBankTransactionB2PData( (prev) =>
+          ({...prev, receiverFirstName:target.value}))} 
+          value={bankTransactionB2PData.receiverFirstName} />
+      </Stack>
+      <Stack direction='row' alignItems='center' justifyContent='space-between'>
+          <Typography color="#575757" fontWeight='500'>
+                Receiver LastName
+          </Typography>
+          <OutlinedInput sx={{ height: 40 }} placeholder='Receiver Fullname' 
+          onChange={({ target }) =>
+          setBankTransactionB2PData( (prev) =>
+          ({...prev, receiverLastName:target.value}))} 
+          value={bankTransactionB2PData.receiverLastName} />
       </Stack>
       <Stack direction='row' alignItems='center' justifyContent='space-between'>
           <Typography color="#575757" fontWeight='500'>
                 Sending Amount
           </Typography>
-          <OutlinedInput sx={{ height: 40 }} placeholder='Sending Amount' onChange={({ target }) => props.setKycNumber(target.value)} value={props.kycNumber} />
+          <OutlinedInput sx={{ height: 40 }} placeholder='Sending Amount' 
+          onChange={({ target }) =>
+          setBankTransactionB2PData( (prev) =>
+          ({...prev, sendingAmount:target.value}))} 
+          value={bankTransactionB2PData.sendingAmount} />
       </Stack>
       <Stack direction='row' alignItems='center' justifyContent='space-between'>
           <Typography color="#575757" fontWeight='500'>
                 Paying Currency
           </Typography>
-          <OutlinedInput sx={{ height: 40 }} placeholder='Paying Currency' onChange={({ target }) => props.setKycNumber(target.value)} value={props.kycNumber} />
+          <OutlinedInput sx={{ height: 40 }} placeholder='Paying Currency' 
+          onChange={({ target }) =>
+          setBankTransactionB2PData( (prev) =>
+          ({...prev, payinCcyCode:target.value}))} 
+          value={bankTransactionB2PData.payinCcyCode} />
       </Stack>
       <Stack direction='row' alignItems='center' justifyContent='space-between'>
           <Typography color="#575757" fontWeight='500'>
                 Payment Mode
           </Typography>
-          <OutlinedInput sx={{ height: 40 }} placeholder='Payment Mode' onChange={({ target }) => props.setKycNumber(target.value)} value={props.kycNumber} />
+          <OutlinedInput sx={{ height: 40 }} placeholder='Payment Mode' 
+          onChange={({ target }) =>
+          setBankTransactionB2PData( (prev) =>
+          ({...prev, paymentMode:target.value}))} 
+          value={bankTransactionB2PData.paymentMode} />
       </Stack>
       <Stack direction='row' alignItems='center' justifyContent='space-between'>
           <Typography color="#575757" fontWeight='500'>
                 Authentication Partner Code
           </Typography>
-          <OutlinedInput sx={{ height: 40 }} placeholder='Authentication Partner Code' onChange={({ target }) => props.setKycNumber(target.value)} value={props.kycNumber} />
+          <OutlinedInput sx={{ height: 40 }} placeholder='Authentication Partner Code' 
+          onChange={({ target }) =>
+          setBankTransactionB2PData( (prev) =>
+          ({...prev, authenticationPartnerCode:target.value}))} 
+          value={bankTransactionB2PData.authenticationPartnerCode} />
       </Stack>
       <Stack direction='row' alignItems='center' justifyContent='space-between'>
           <Typography color="#575757" fontWeight='500'>
                 Payment Option
           </Typography>
-          <OutlinedInput sx={{ height: 40 }} placeholder=' Payment Option' onChange={({ target }) => props.setKycNumber(target.value)} value={props.kycNumber} />
+          <OutlinedInput sx={{ height: 40 }} placeholder=' Payment Option' 
+          onChange={({ target }) =>
+          setBankTransactionB2PData( (prev) =>
+          ({...prev, paymentOption:target.value}))} 
+          value={bankTransactionB2PData.paymentOption} />
       </Stack>
       <Stack direction='row' alignItems='center' justifyContent='space-between'>
           <Typography color="#575757" fontWeight='500'>
                 Sending Partner Code
           </Typography>
-          <OutlinedInput sx={{ height: 40 }} placeholder='Sending Partner Code' onChange={({ target }) => props.setKycNumber(target.value)} value={props.kycNumber} />
+          <OutlinedInput sx={{ height: 40 }} placeholder='Sending Partner Code' 
+          onChange={({ target }) =>
+          setBankTransactionB2PData( (prev) =>
+          ({...prev, sendingPartnerCode:target.value}))} 
+          value={bankTransactionB2PData.sendingPartnerCode} />
       </Stack>
       <Stack direction='row' alignItems='center' justifyContent='space-between'>
           <Typography color="#575757" fontWeight='500'>
                 Receiving Partner Code
           </Typography>
-          <OutlinedInput sx={{ height: 40 }} placeholder='Receiving Partner Code' onChange={({ target }) => props.setKycNumber(target.value)} value={props.kycNumber} />
+          <OutlinedInput sx={{ height: 40 }} placeholder='Receiving Partner Code' 
+          onChange={({ target }) =>
+          setBankTransactionB2PData( (prev) =>
+          ({...prev, receivingPartnerCode:target.value}))} 
+          value={bankTransactionB2PData.receivingPartnerCode} />
       </Stack>
       <Stack direction='row' alignItems='center' justifyContent='space-between'>
           <Typography color="#575757" fontWeight='500'>
                 Business Name
           </Typography>
-          <OutlinedInput sx={{ height: 40 }} placeholder='Business Name' onChange={({ target }) => props.setKycNumber(target.value)} value={props.kycNumber} />
+          <OutlinedInput sx={{ height: 40 }} placeholder='Business Name' 
+          onChange={({ target }) =>
+          setBankTransactionB2PData( (prev) =>
+          ({...prev, businessName:target.value}))} 
+          value={bankTransactionB2PData.businessName} />
       </Stack>
       <Stack direction='row' alignItems='center' justifyContent='space-between'>
           <Typography color="#575757" fontWeight='500'>
           Business Address1
           </Typography>
-          <OutlinedInput sx={{ height: 40 }} placeholder='Business Address1' onChange={({ target }) => props.setKycNumber(target.value)} value={props.kycNumber} />
+          <OutlinedInput sx={{ height: 40 }} placeholder='Business Address1' 
+          onChange={({ target }) =>
+          setBankTransactionB2PData( (prev) =>
+          ({...prev, businessAddress1:target.value}))} 
+          value={bankTransactionB2PData.businessAddress1} />
       </Stack>
       <Stack direction='row' alignItems='center' justifyContent='space-between'>
           <Typography color="#575757" fontWeight='500'>
           Business Address City
           </Typography>
-          <OutlinedInput sx={{ height: 40 }} placeholder='Business Address City' onChange={({ target }) => props.setKycNumber(target.value)} value={props.kycNumber} />
+          <OutlinedInput sx={{ height: 40 }} placeholder='Business Address City' 
+          onChange={({ target }) =>
+          setBankTransactionB2PData( (prev) =>
+          ({...prev, businessAddressCity:target.value}))} 
+          value={bankTransactionB2PData.businessAddressCity} />
+      </Stack>
+      <Stack direction='row' alignItems='center' justifyContent='space-between'>
+          <Typography color="#575757" fontWeight='500'>
+          Business Address Country Code
+          </Typography>
+          <OutlinedInput sx={{ height: 40 }} placeholder='Business Address Primary Country Code'
+          onChange={({ target }) =>
+          setBankTransactionB2PData( (prev) =>
+          ({...prev, businessAddressCountryCode:target.value}))} 
+          value={bankTransactionB2PData.businessAddressCountryCode} />
       </Stack>
       <Stack direction='row' alignItems='center' justifyContent='space-between'>
           <Typography color="#575757" fontWeight='500'>
           Business Address Primary Country Code
           </Typography>
-          <OutlinedInput sx={{ height: 40 }} placeholder='Business Address Primary Country Code' onChange={({ target }) => props.setKycNumber(target.value)} value={props.kycNumber} />
+          <OutlinedInput sx={{ height: 40 }} placeholder='Business Address Primary Country Code'
+          onChange={({ target }) =>
+          setBankTransactionB2PData( (prev) =>
+          ({...prev, businessPrimaryContactCountryCode:target.value}))} 
+          value={bankTransactionB2PData.businessPrimaryContactCountryCode} />
       </Stack>
       <Stack direction='row' alignItems='center' justifyContent='space-between'>
           <Typography color="#575757" fontWeight='500'>
           Business Address Primary Contact Code
           </Typography>
-          <OutlinedInput sx={{ height: 40 }} placeholder='Business Address Primary Contact Code' onChange={({ target }) => props.setKycNumber(target.value)} value={props.kycNumber} />
+          <OutlinedInput sx={{ height: 40 }} placeholder='Business Address Primary Contact Code' 
+          onChange={({ target }) =>
+          setBankTransactionB2PData( (prev) =>
+          ({...prev, businessPrimaryContactNo:target.value}))} 
+          value={bankTransactionB2PData.businessPrimaryContactNo} />
       </Stack>
       <Stack direction='row' alignItems='center' justifyContent='space-between'>
           <Typography color="#575757" fontWeight='500'>
             Business Description
           </Typography>
-          <OutlinedInput sx={{ height: 40 }} placeholder='Business Description' onChange={({ target }) => props.setKycNumber(target.value)} value={props.kycNumber} />
+          <OutlinedInput sx={{ height: 40 }} placeholder='Business Description' 
+          onChange={({ target }) =>
+          setBankTransactionB2PData( (prev) =>
+          ({...prev, businessDescription:target.value}))} 
+          value={bankTransactionB2PData.businessDescription} />
       </Stack>
       <Stack direction='row' alignItems='center' justifyContent='space-between'>
           <Typography color="#575757" fontWeight='500'>
           Business Country Code
           </Typography>
-          <OutlinedInput sx={{ height: 40 }} placeholder='Business Country Code' onChange={({ target }) => props.setKycNumber(target.value)} value={props.kycNumber} />
+          <OutlinedInput sx={{ height: 40 }} placeholder='Business Country Code' 
+          onChange={({ target }) =>
+          setBankTransactionB2PData( (prev) =>
+          ({...prev, businessCountryCode:target.value}))} 
+          value={bankTransactionB2PData.businessCountryCode} />
       </Stack>
       <Stack direction='row' alignItems='center' justifyContent='space-between'>
           <Typography color="#575757" fontWeight='500'>
           Business Registeration Type
           </Typography>
-          <OutlinedInput sx={{ height: 40 }} placeholder='Business Registeration Type' onChange={({ target }) => props.setKycNumber(target.value)} value={props.kycNumber} />
+          <OutlinedInput sx={{ height: 40 }} placeholder='Business Registeration Type' 
+          onChange={({ target }) =>
+          setBankTransactionB2PData( (prev) =>
+          ({...prev, businessRegistrationType:target.value}))} 
+          value={bankTransactionB2PData.businessRegistrationType} />
       </Stack>
       <Stack direction='row' alignItems='center' justifyContent='space-between'>
           <Typography color="#575757" fontWeight='500'>
           Business Registeration Number
           </Typography>
-          <OutlinedInput sx={{ height: 40 }} placeholder='Business Registeration Number' onChange={({ target }) => props.setKycNumber(target.value)} value={props.kycNumber} />
+          <OutlinedInput sx={{ height: 40 }} placeholder='Business Registeration Number' 
+          onChange={({ target }) =>
+          setBankTransactionB2PData( (prev) =>
+          ({...prev, businessRegistrationNumber:target.value}))} 
+          value={bankTransactionB2PData.businessRegistrationNumber} />
       </Stack>
       <Stack direction='row' alignItems='center' justifyContent='space-between'>
           <Typography color="#575757" fontWeight='500'>
           Business Registration IssueDate
           </Typography>
-          <OutlinedInput sx={{ height: 40 }} placeholder='Business Registration IssueDate' onChange={({ target }) => props.setKycNumber(target.value)} value={props.kycNumber} />
+          <OutlinedInput sx={{ height: 40 }} placeholder='Business Registration IssueDate' 
+          onChange={({ target }) =>
+          setBankTransactionB2PData( (prev) =>
+          ({...prev, businessRegistrationIssueDate:target.value}))} 
+          value={bankTransactionB2PData.businessRegistrationIssueDate} />
       </Stack>
       <Stack direction='row' alignItems='center' justifyContent='space-between'>
           <Typography color="#575757" fontWeight='500'>
           Business ID ValidThru
           </Typography>
-          <OutlinedInput sx={{ height: 40 }} placeholder='Business ID ValidThru' onChange={({ target }) => props.setKycNumber(target.value)} value={props.kycNumber} />
+          <OutlinedInput sx={{ height: 40 }} placeholder='Business ID ValidThru' 
+          onChange={({ target }) =>
+          setBankTransactionB2PData( (prev) =>
+          ({...prev, businessIDValidThru:target.value}))} 
+          value={bankTransactionB2PData.businessIDValidThru} />
       </Stack>
       <Stack direction='row' alignItems='center' justifyContent='space-between'>
           <Typography color="#575757" fontWeight='500'>
           Business Email
           </Typography>
-          <OutlinedInput sx={{ height: 40 }} placeholder='Business Email' onChange={({ target }) => props.setKycNumber(target.value)} value={props.kycNumber} />
+          <OutlinedInput sx={{ height: 40 }} placeholder='Business Email' 
+          onChange={({ target }) =>
+          setBankTransactionB2PData( (prev) =>
+          ({...prev, businessEmail:target.value}))} 
+          value={bankTransactionB2PData.businessEmail} />
       </Stack>
       <Stack direction='row' alignItems='center' justifyContent='space-between'>
           <Typography color="#575757" fontWeight='500'>
           Quoted Id
           </Typography>
-          <OutlinedInput sx={{ height: 40 }} placeholder='Quoted Id' onChange={({ target }) => props.setKycNumber(target.value)} value={props.kycNumber} />
+          <OutlinedInput sx={{ height: 40 }} placeholder='Quoted Id' 
+          onChange={({ target }) =>
+          setBankTransactionB2PData( (prev) =>
+          ({...prev, quoteId:target.value}))} 
+          value={bankTransactionB2PData.quoteId} />
       </Stack>
       <Stack direction='row' alignItems='center' justifyContent='space-between'>
           <Typography color="#575757" fontWeight='500'>
           Receiving Country
           </Typography>
-          <OutlinedInput sx={{ height: 40 }} placeholder='Receiving Country' onChange={({ target }) => props.setKycNumber(target.value)} value={props.kycNumber} />
+          <OutlinedInput sx={{ height: 40 }} placeholder='Receiving Country' 
+          onChange={({ target }) =>
+          setBankTransactionB2PData( (prev) =>
+          ({...prev, receivingCountry:target.value}))} 
+          value={bankTransactionB2PData.receivingCountry}  />
       </Stack>
       <Stack direction='row' alignItems='center' justifyContent='space-between'>
           <Typography color="#575757" fontWeight='500'>
           Remittance Purpose
           </Typography>
-          <OutlinedInput sx={{ height: 40 }} placeholder='Receiving Country' onChange={({ target }) => props.setKycNumber(target.value)} value={props.kycNumber} />
+          <OutlinedInput sx={{ height: 40 }} placeholder='Receiving Country' 
+          onChange={({ target }) =>
+          setBankTransactionB2PData( (prev) =>
+          ({...prev, remittancePurpose:target.value}))} 
+          value={bankTransactionB2PData.remittancePurpose} />
       </Stack>
       <Stack direction='row' alignItems='center' justifyContent='space-between'>
           <Typography color="#575757" fontWeight='500'>
             Source Of Fund
           </Typography>
-          <OutlinedInput sx={{ height: 40 }} placeholder='Source Of Fund' onChange={({ target }) => props.setKycNumber(target.value)} value={props.kycNumber} />
+          <OutlinedInput sx={{ height: 40 }} placeholder='Source Of Fund' 
+          onChange={({ target }) =>
+          setBankTransactionB2PData( (prev) =>
+          ({...prev, sourceOfFunds:target.value}))} 
+          value={bankTransactionB2PData.sourceOfFunds} />
       </Stack>
       <Stack direction='row' alignItems='center' justifyContent='space-between'>
           <Typography color="#575757" fontWeight='500'>
           Relationship Of Sender
           </Typography>
-          <OutlinedInput sx={{ height: 40 }} placeholder='Relationship Of Sender' onChange={({ target }) => props.setKycNumber(target.value)} value={props.kycNumber} />
+          <OutlinedInput sx={{ height: 40 }} placeholder='Relationship Of Sender' 
+          onChange={({ target }) =>
+          setBankTransactionB2PData( (prev) =>
+          ({...prev, relationshipSender:target.value}))} 
+          value={bankTransactionB2PData.relationshipSender} />
       </Stack>
 
 

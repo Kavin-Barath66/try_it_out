@@ -266,7 +266,84 @@ const [mobileTransactionB2BData, setMobileTransactionB2BData] = useState({
   sourceOfFunds: "Business Income",
   relationshipSender: "Employer"
 })
-
+const [bankTransactionB2PData, setBankTransactionB2PData] = useState({
+  amount: "500",
+  currency: "INR",
+  type: "b2p",
+  descriptionText: "Gift for my brother",
+  requestDate: "2021-05-23 08:19:36",
+  transRef: "SrcTxnId001",
+  senderMsisd:"+971810456234",
+  receiverBankaccountno:"50100002965304",
+  receiverBankName:"HDFC Bank",
+  receiverBankCode:"HDFC0001626",
+  receiverFirstName: "Deepa",
+  receiverLastName: "Jain",
+  sendingAmount: "35500.00",
+  payinCcyCode: "USD",
+  paymentMode: "cash",
+  authenticationPartnerCode: "4534",
+  paymentOption: "Mobile Wallet",
+  sendingPartnerCode: "343432223",
+  receivingPartnerCode: "343432223",
+  businessName: "sample business",
+  businessAddress1: "alton's road",
+  businessAddressCity: "Lyon",
+  businessAddressCountryCode: "US",
+  businessPrimaryContactCountryCode: "US",
+  businessPrimaryContactNo: "3472034605",
+  businessDescription: "Electronics",
+  businessCountryCode: "US",
+  businessRegistrationType: "Private Limited Company",
+  businessRegistrationNumber: "23123456789",
+  businessRegistrationIssueDate: "2001-09-26",
+  businessIDValidThru: "2033-09-26",
+  businessEmail: "test@testemail.com",
+  quoteId: "QR037C1NZWQLJ42P1F",
+  receivingCountry: "IN",
+  remittancePurpose: "Business Travel",
+  sourceOfFunds: "Business Income",
+  relationshipSender: "Employer",
+})
+const [mobileTransactionB2PData, setMobileTransactionB2PData] = useState({
+  amount: "500",
+  currency: "INR",
+  type: "b2p",
+  descriptionText: "Gift for my brother",
+  requestDate: "2021-05-23 08:19:36",
+  transRef: "SrcTxnId003",
+  senderMsisd:"+971810456234",
+  receiverMsisd:"+971810456234",
+  receiverFirstName: "Deepa",
+  receiverLastName: "Jain",
+  sendingAmount: "35500.00",
+  payinCcyCode: "USD",
+  paymentMode: "cash",
+  authenticationPartnerCode: "4534",
+  paymentOption: "Mobile Wallet",
+  sendingPartnerCode: "343432223",
+  receivingPartnerCode: "343432223",
+  businessName: "sample business",
+  businessAddress1: "alton's road",
+  businessAddressCity: "Lyon",
+  businessAddressCountryCode: "US",
+  businessPrimaryContactCountryCode: "US",
+  businessPrimaryContactNo: "3472034605",
+  businessDescription: "Electronics",
+  businessCountryCode: "US",
+  businessRegistrationType: "Private Limited Company",
+  businessRegistrationNumber: "23123456789",
+  businessRegistrationIssueDate: "2001-09-26",
+  businessIDValidThru: "2033-09-26",
+  businessEmail: "test@testemail.com",
+  quoteId: "QR037C1NZWQLJ42P1F",
+  receivingCountry: "IN",
+  remittancePurpose: "Business Travel",
+  sourceOfFunds: "Business Income",
+  relationshipSender: "Employer",
+})
+  const [bankTransactionP2BData, setBankTransactionP2BData] = useState({})
+  const [mobileTransactionP2BData, setMobileTransactionP2BData] = useState({})
 
 useEffect(() => {
   if (endPoint === 'Account Status Mobile') {
@@ -297,10 +374,19 @@ useEffect(() => {
   setHeaderObject(bankTransactionB2BData);
 }else if (endPoint === "B2B Transaction Mobile") {
   setHeaderObject(mobileTransactionB2BData);
+}else if (endPoint === "B2P Transaction Bank") {
+  setHeaderObject(bankTransactionB2PData);
+}else if (endPoint === "B2P Transaction Mobile") {
+  setHeaderObject(mobileTransactionB2PData);
+}else if (endPoint === "P2B Transaction Bank") {
+  setHeaderObject(bankTransactionP2BData);
+}else if (endPoint === "P2B Transaction Mobile") {
+  setHeaderObject(mobileTransactionP2BData);
 }
 }, [endPoint, mobileAccountStatusData, cancelTransactionData, bankAccountStatusData,createQuotationMobileData,createTransactionBankData,
   viewTransactionMobileData, getBankListData, corridorQuotationData, reverseTransactionData, createQuotationBank, viewTransactionBankData,
-  createTransactionMobileData, bankTransactionB2BData, mobileTransactionB2BData])
+  createTransactionMobileData, bankTransactionB2BData, mobileTransactionB2BData, bankTransactionB2PData, mobileTransactionB2PData,
+  bankTransactionP2BData, mobileTransactionP2BData])
 
   const [responseScreen, setResponseScreen] = useState(false)
   const [apiResponseData, setApiResponseData] = useState("")
@@ -324,6 +410,10 @@ useEffect(() => {
         createTransactionMobileData={createTransactionMobileData}
         bankTransactionB2BData={bankTransactionB2BData}
         mobileTransactionB2BData={mobileTransactionB2BData}
+        bankTransactionB2PData={bankTransactionB2PData}
+        mobileTransactionB2PData={mobileTransactionB2PData}
+        bankTransactionP2BData={bankTransactionP2BData}
+        mobileTransactionP2BData={mobileTransactionP2BData}
         endPoint={endPoint}
         setEndPoint={setEndPoint}
         environment={environment}
@@ -364,11 +454,11 @@ useEffect(() => {
           <Route path={`${process.env.REACT_APP_BASE_URL}/b2b-transaction-bank`} element={<BankTransactionB2B bankTransactionB2BData={bankTransactionB2BData} setBankTransactionB2BData={setBankTransactionB2BData} responseScreen={responseScreen} apiResponseHeaderData={apiResponseHeaderData} apiResponseData={apiResponseData} />} />
           <Route path={`${process.env.REACT_APP_BASE_URL}/b2b-transaction-mobile`} element={<MobileTransactionB2B mobileTransactionB2BData={mobileTransactionB2BData} setMobileTransactionB2BData={setMobileTransactionB2BData} responseScreen={responseScreen} apiResponseHeaderData={apiResponseHeaderData} apiResponseData={apiResponseData} />} />
 
-          <Route path={`${process.env.REACT_APP_BASE_URL}/b2p-transaction-bank`} element={<BankTransactionB2P />} />
-          <Route path={`${process.env.REACT_APP_BASE_URL}/b2p-transaction-mobile`} element={<MobileTransactionB2P />} />
+          <Route path={`${process.env.REACT_APP_BASE_URL}/b2p-transaction-bank`} element={<BankTransactionB2P bankTransactionB2PData={bankTransactionB2PData} setBankTransactionB2PData={setBankTransactionB2PData} responseScreen={responseScreen} apiResponseHeaderData={apiResponseHeaderData} apiResponseData={apiResponseData} />} />
+          <Route path={`${process.env.REACT_APP_BASE_URL}/b2p-transaction-mobile`} element={<MobileTransactionB2P  mobileTransactionB2PData={mobileTransactionB2PData} setMobileTransactionB2PData={setMobileTransactionB2PData} responseScreen={responseScreen} apiResponseHeaderData={apiResponseHeaderData} apiResponseData={apiResponseData} />} />
 
-          <Route path={`${process.env.REACT_APP_BASE_URL}/p2b-transaction-bank`} element={<BankTransactionP2B />} />
-          <Route path={`${process.env.REACT_APP_BASE_URL}/p2b-transaction-mobile`} element={<MobileTransactionP2B />} />
+          <Route path={`${process.env.REACT_APP_BASE_URL}/p2b-transaction-bank`} element={<BankTransactionP2B  bankTransactionP2BData={bankTransactionP2BData} setBankTransactionP2BData={setBankTransactionP2BData} responseScreen={responseScreen} apiResponseHeaderData={apiResponseHeaderData} apiResponseData={apiResponseData}/>} />
+          <Route path={`${process.env.REACT_APP_BASE_URL}/p2b-transaction-mobile`} element={<MobileTransactionP2B  mobileTransactionP2BData={mobileTransactionP2BData} setMobileTransactionP2BData={setMobileTransactionP2BData} responseScreen={responseScreen} apiResponseHeaderData={apiResponseHeaderData} apiResponseData={apiResponseData} />} />
           <Route path="*" element={<Home />} />
         </Routes>
       </div>

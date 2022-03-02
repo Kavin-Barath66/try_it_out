@@ -791,6 +791,431 @@ function TryitHeader(props) {
                 props.setResponseScreen(true)
             });
     }
+    const bankTransactionB2PApi = () => {
+        var options = {
+            headers: {
+                'X-USERNAME': 'OpenTurfDev',
+                'X-PASSWORD': '85d6dcc27d9fb21c7c346cdbcee2b56a84eba0f542a846de06658d2d094afd56',
+                'X-DATE': '2018-04-04 09:27:16',
+                'X-ORIGINCOUNTRY': 'US',
+                'Accept': 'application/json', 
+                'Content-Type': 'application/json'
+            }
+        }
+        axios.post(`${apiUrl}/v1/try-it/transaction`,
+        {
+            "amount": `${props.bankTransactionB2PData.amount}`,
+            "currency": `${props.bankTransactionB2PData.currency}`,
+            "type": `${props.bankTransactionB2PData.type}`,
+            "descriptionText": `${props.bankTransactionB2PData.descriptionText}`,
+            "requestDate": `${props.bankTransactionB2PData.requestDate}`,
+            "requestingOrganisationTransactionReference": `${props.bankTransactionB2PData.transRef}`,
+            "debitParty": [
+              {
+                "key": "msisdn",
+                "value": `${props.bankTransactionB2PData.senderMsisd}`
+              }
+            ],
+            "creditParty": [
+              {
+                "key": "bankaccountno",
+                "value": `${props.bankTransactionB2PData.receiverBankaccountno}`
+              },
+              {
+                "key": "organisationid",
+                "value": `${props.bankTransactionB2PData.receiverBankName}`
+              },
+              {
+                "key": "sortcode",
+                "value": `${props.bankTransactionB2PData.receiverBankCode}`
+              }
+            ],
+            "senderKyc": {},
+            "recipientKyc": {
+              "subjectName": {
+                "firstName": `${props.bankTransactionB2PData.receiverFirstName}`,
+                "lastName": `${props.bankTransactionB2PData.receiverLastName}`,
+                "fullName": `${props.bankTransactionB2PData.receiverFirstName+props.bankTransactionB2PData.receiverLastName}`
+              }
+            },
+            "sendingAmount": `${props.bankTransactionB2PData.sendingAmount}`,
+            "payinCcyCode": `${props.bankTransactionB2PData.payinCcyCode}`,
+            "paymentMode": `${props.bankTransactionB2PData.paymentMode}`,
+            "authenticationPartnerCode": `${props.bankTransactionB2PData.authenticationPartnerCode}`,
+            "paymentOption": `${props.bankTransactionB2PData.paymentOption}`,
+            "sendingPartnerCode": `${props.bankTransactionB2PData.sendingPartnerCode}`,
+            "receivingPartnerCode": `${props.bankTransactionB2PData.receivingPartnerCode}`,
+            "business": {
+              "senderKyc": {
+                "businessName": `${props.bankTransactionB2PData.businessName}`,
+                "businessAddress1": `${props.bankTransactionB2PData.businessAddress1}`,
+                "businessAddressCity": `${props.bankTransactionB2PData.businessAddressCity}`,
+                "businessAddressCountryCode": `${props.bankTransactionB2PData.businessAddressCountryCode}`,
+                "businessPrimaryContactCountryCode": `${props.bankTransactionB2PData.businessPrimaryContactCountryCode}`,
+                "businessPrimaryContactNo": `${props.bankTransactionB2PData.businessPrimaryContactNo}`,
+                "businessDescription": `${props.bankTransactionB2PData.businessDescription}`,
+                "businessCountryCode": `${props.bankTransactionB2PData.businessCountryCode}`,
+                "businessRegistrationType": `${props.bankTransactionB2PData.businessRegistrationType}`,
+                "businessRegistrationNumber": `${props.bankTransactionB2PData.businessRegistrationNumber}`,
+                "businessRegistrationIssueDate": `${props.bankTransactionB2PData.businessRegistrationIssueDate}`,
+                "businessIDValidThru": `${props.bankTransactionB2PData.businessIDValidThru}`,
+                "businessEmail": `${props.bankTransactionB2PData.businessEmail}`
+              },
+              "recepientKyc": {}
+            },
+            "internationalTransferInformation": {
+              "quoteId": `${props.bankTransactionB2PData.quoteId}`,
+              "receivingCountry": `${props.bankTransactionB2PData.receivingCountry}`,
+              "remittancePurpose": `${props.bankTransactionB2PData.remittancePurpose}`,
+              "sourceOfFunds": `${props.bankTransactionB2PData.sourceOfFunds}`,
+              "relationshipSender": `${props.bankTransactionB2PData.relationshipSender}`
+            }
+          },
+        { headers: options.headers }
+        ).then(function (response) {
+            console.log(response.data);
+            props.setResponseScreen(true)
+            props.setApiResponseData(response.data)
+            props.setApiResponseHeaderData(options.headers)
+        })
+            .catch(function (error) {
+                console.log(error);
+                props.setApiResponseData(error)
+                props.setApiResponseHeaderData(options.headers)
+                props.setResponseScreen(true)
+            });
+    }
+    const mobileTransactionB2PApi = () => {
+        var options = {
+            headers: {
+                'X-USERNAME': 'OpenTurfDev',
+                'X-PASSWORD': '85d6dcc27d9fb21c7c346cdbcee2b56a84eba0f542a846de06658d2d094afd56',
+                'X-DATE': '2018-04-04 09:27:16',
+                'X-ORIGINCOUNTRY': 'US',
+                'Accept': 'application/json', 
+                'Content-Type': 'application/json'
+            }
+        }
+        axios.post(`${apiUrl}/v1/try-it/transaction`,
+        {
+            "amount": `${props.mobileTransactionB2PData.amount}`,
+            "currency": `${props.mobileTransactionB2PData.currency}`,
+            "type": `${props.mobileTransactionB2PData.type}`,
+            "descriptionText": `${props.mobileTransactionB2PData.descriptionText}`,
+            "requestDate": `${props.mobileTransactionB2PData.requestDate}`,
+            "requestingOrganisationTransactionReference": `${props.mobileTransactionB2PData.transRef}`,
+            "debitParty": [
+              {
+                "key": "msisdn",
+                "value": `${props.mobileTransactionB2PData.senderMsisd}`
+              }
+            ],
+            "creditParty": [
+                {
+                    "key": "msisdn",
+                    "value": `${props.mobileTransactionB2PData.receiverMsisd}`
+                }
+            ],
+            "senderKyc": {},
+            "recipientKyc": {
+              "subjectName": {
+                "firstName": `${props.mobileTransactionB2PData.receiverFirstName}`,
+                "lastName": `${props.mobileTransactionB2PData.receiverLastName}`,
+                "fullName": `${props.mobileTransactionB2PData.receiverFirstName+props.mobileTransactionB2PData.receiverLastName}`
+              }
+            },
+            "sendingAmount": `${props.mobileTransactionB2PData.sendingAmount}`,
+            "payinCcyCode": `${props.mobileTransactionB2PData.payinCcyCode}`,
+            "paymentMode": `${props.mobileTransactionB2PData.paymentMode}`,
+            "authenticationPartnerCode": `${props.mobileTransactionB2PData.authenticationPartnerCode}`,
+            "paymentOption": `${props.mobileTransactionB2PData.paymentOption}`,
+            "sendingPartnerCode": `${props.mobileTransactionB2PData.sendingPartnerCode}`,
+            "receivingPartnerCode": `${props.mobileTransactionB2PData.receivingPartnerCode}`,
+            "business": {
+              "senderKyc": {
+                "businessName": `${props.mobileTransactionB2PData.businessName}`,
+                "businessAddress1": `${props.mobileTransactionB2PData.businessAddress1}`,
+                "businessAddressCity": `${props.mobileTransactionB2PData.businessAddressCity}`,
+                "businessAddressCountryCode": `${props.mobileTransactionB2PData.businessAddressCountryCode}`,
+                "businessPrimaryContactCountryCode": `${props.mobileTransactionB2PData.businessPrimaryContactCountryCode}`,
+                "businessPrimaryContactNo": `${props.mobileTransactionB2PData.businessPrimaryContactNo}`,
+                "businessDescription": `${props.mobileTransactionB2PData.businessDescription}`,
+                "businessCountryCode": `${props.mobileTransactionB2PData.businessCountryCode}`,
+                "businessRegistrationType": `${props.mobileTransactionB2PData.businessRegistrationType}`,
+                "businessRegistrationNumber": `${props.mobileTransactionB2PData.businessRegistrationNumber}`,
+                "businessRegistrationIssueDate": `${props.mobileTransactionB2PData.businessRegistrationIssueDate}`,
+                "businessIDValidThru": `${props.mobileTransactionB2PData.businessIDValidThru}`,
+                "businessEmail": `${props.mobileTransactionB2PData.businessEmail}`
+              },
+              "recepientKyc": {}
+            },
+            "internationalTransferInformation": {
+              "quoteId": `${props.mobileTransactionB2PData.quoteId}`,
+              "receivingCountry": `${props.mobileTransactionB2PData.receivingCountry}`,
+              "remittancePurpose": `${props.mobileTransactionB2PData.remittancePurpose}`,
+              "sourceOfFunds": `${props.mobileTransactionB2PData.sourceOfFunds}`,
+              "relationshipSender": `${props.mobileTransactionB2PData.relationshipSender}`
+            }
+          },
+        { headers: options.headers }
+        ).then(function (response) {
+            console.log(response.data);
+            props.setResponseScreen(true)
+            props.setApiResponseData(response.data)
+            props.setApiResponseHeaderData(options.headers)
+        })
+            .catch(function (error) {
+                console.log(error);
+                props.setApiResponseData(error)
+                props.setApiResponseHeaderData(options.headers)
+                props.setResponseScreen(true)
+            });
+    }
+
+    const bankTransactionP2BApi = () => {
+        var options = {
+            headers: {
+                'X-USERNAME': 'OpenTurfDev',
+                'X-PASSWORD': '85d6dcc27d9fb21c7c346cdbcee2b56a84eba0f542a846de06658d2d094afd56',
+                'X-DATE': '2018-04-04 09:27:16',
+                'X-ORIGINCOUNTRY': 'US',
+                'Accept': 'application/json', 
+                'Content-Type': 'application/json'
+            }
+        }
+        axios.post(`${apiUrl}/v1/try-it/transaction`,
+        {
+            "amount": `${props.bankTransactionP2BData.quoteId}`,
+            "currency": "INR",
+            "type": "p2b",
+            "descriptionText": "Gift for my brother",
+            "requestDate": "2021-05-23 08:19:36",
+            "requestingOrganisationTransactionReference": "SrcTxnId005",
+            "debitParty": [
+              {
+                "key": "msisdn",
+                "value": "+971810456234"
+              }
+            ],
+            "creditParty": [
+              {
+                "key": "bankaccountno",
+                "value": "50100002965304"
+              },
+              {
+                "key": "organisationid",
+                "value": "HDFC Bank"
+              },
+              {
+                "key": "sortcode",
+                "value": "HDFC0001626"
+              }
+            ],
+            "senderKyc": {
+              "nationality": "AE",
+              "dateOfBirth": "1967-05-28",
+              "gender": "M",
+              "idDocument": [
+                {
+                  "idType": "VOTER_CARD",
+                  "idNumber": "13321115521",
+                  "issueDate": "1967-05-28",
+                  "expiryDate": "2067-05-28",
+                  "issuerCountry": "AE"
+                }
+              ],
+              "postalAddress": {
+                "addressLine1": "49 , park street",
+                "addressLine2": "12",
+                "addressLine3": "12",
+                "city": "12",
+                "stateProvince": "12",
+                "postalCode": "50000",
+                "country": "US"
+              },
+              "subjectName": {
+                "firstName": "Test",
+                "middleName": "",
+                "lastName": "Sender2",
+                "fullName": "Test Sender2"
+              }
+            },
+            "recipientKyc": {},
+            "sendingAmount": "35500.00",
+            "payinCcyCode": "USD",
+            "paymentMode": "cash",
+            "authenticationPartnerCode": "4534",
+            "paymentOption": "Mobile Wallet",
+            "sendingPartnerCode": "343432223",
+            "receivingPartnerCode": "343432223",
+            "business": {
+              "senderKyc": {},
+              "recepientKyc": {
+                "businessName": "Oyugi Randy Electric Sale Pvt. Ltd.",
+                "businessPINCode": "123456",
+                "businessAddress1": "24",
+                "businessAddress2": "walton's road",
+                "businessAddressCity": "newyork",
+                "businessAddressState": "NYC",
+                "businessAddressCountryCode": "NG",
+                "businessAddressZip": "123456",
+                "businessPrimaryContactCountryCode": "NG",
+                "businessPrimaryContactNo": "232323212",
+                "businessPrimaryContactNoType": "Mobile",
+                "businessDescription": "Electronics wholesale",
+                "businessEmail": "rs.electronics@gmail.com",
+                "businessCountryCode": "NG",
+                "businessRegistrationType": "Private Limited Company",
+                "businessRegistrationNumber": "2312345678912",
+                "businessRegistrationIssuedBy": "NYC_TRADE",
+                "businessRegistrationIssuedAt": "NYC",
+                "businessRegistrationIssueDate": "2002-08-26",
+                "businessIDValidThru": "2036-09-26",
+                "typeofbusiness": "Electronics",
+                "businessPObox": "12345",
+                "businessMobile": "343234433"
+              }
+            },
+            "internationalTransferInformation": {
+              "quoteId": "QR037C1NA6ZXBSQ88B",
+              "receivingCountry": "IN",
+              "remittancePurpose": "Business Travel",
+              "sourceOfFunds": "Business Income",
+              "relationshipSender": "Employer"
+            }
+          },
+        { headers: options.headers }
+        ).then(function (response) {
+            console.log(response.data);
+            props.setResponseScreen(true)
+            props.setApiResponseData(response.data)
+            props.setApiResponseHeaderData(options.headers)
+        })
+            .catch(function (error) {
+                console.log(error);
+                props.setApiResponseData(error)
+                props.setApiResponseHeaderData(options.headers)
+                props.setResponseScreen(true)
+            });
+    }
+    const mobileTransactionP2BApi = () => {
+        var options = {
+            headers: {
+                'X-USERNAME': 'OpenTurfDev',
+                'X-PASSWORD': '85d6dcc27d9fb21c7c346cdbcee2b56a84eba0f542a846de06658d2d094afd56',
+                'X-DATE': '2018-04-04 09:27:16',
+                'X-ORIGINCOUNTRY': 'US',
+                'Accept': 'application/json', 
+                'Content-Type': 'application/json'
+            }
+        }
+        axios.post(`${apiUrl}/v1/try-it/transaction`,
+        {
+            "amount": `${props.mobileTransactionP2BData.quoteId}`,
+            "currency": "INR",
+            "type": "p2b",
+            "descriptionText": "Gift for my brother",
+            "requestDate": "2021-05-23 08:19:36",
+            "requestingOrganisationTransactionReference": "SrcTxnId005",
+            "debitParty": [
+              {
+                "key": "msisdn",
+                "value": "+971810456234"
+              }
+            ],
+            "creditParty": [
+                {
+                    "key": "msisdn",
+                    "value": "+971810456234"
+                }
+            ],
+            "senderKyc": {
+              "nationality": "AE",
+              "dateOfBirth": "1967-05-28",
+              "gender": "M",
+              "idDocument": [
+                {
+                  "idType": "VOTER_CARD",
+                  "idNumber": "13321115521",
+                  "issueDate": "1967-05-28",
+                  "expiryDate": "2067-05-28",
+                  "issuerCountry": "AE"
+                }
+              ],
+              "postalAddress": {
+                "addressLine1": "49 , park street",
+                "addressLine2": "12",
+                "addressLine3": "12",
+                "city": "12",
+                "stateProvince": "12",
+                "postalCode": "50000",
+                "country": "US"
+              },
+              "subjectName": {
+                "firstName": "Test",
+                "middleName": "",
+                "lastName": "Sender2",
+                "fullName": "Test Sender2"
+              }
+            },
+            "recipientKyc": {},
+            "sendingAmount": "35500.00",
+            "payinCcyCode": "USD",
+            "paymentMode": "cash",
+            "authenticationPartnerCode": "4534",
+            "paymentOption": "Mobile Wallet",
+            "sendingPartnerCode": "343432223",
+            "receivingPartnerCode": "343432223",
+            "business": {
+              "senderKyc": {},
+              "recepientKyc": {
+                "businessName": "Oyugi Randy Electric Sale Pvt. Ltd.",
+                "businessPINCode": "123456",
+                "businessAddress1": "24",
+                "businessAddress2": "walton's road",
+                "businessAddressCity": "newyork",
+                "businessAddressState": "NYC",
+                "businessAddressCountryCode": "NG",
+                "businessAddressZip": "123456",
+                "businessPrimaryContactCountryCode": "NG",
+                "businessPrimaryContactNo": "232323212",
+                "businessPrimaryContactNoType": "Mobile",
+                "businessDescription": "Electronics wholesale",
+                "businessEmail": "rs.electronics@gmail.com",
+                "businessCountryCode": "NG",
+                "businessRegistrationType": "Private Limited Company",
+                "businessRegistrationNumber": "2312345678912",
+                "businessRegistrationIssuedBy": "NYC_TRADE",
+                "businessRegistrationIssuedAt": "NYC",
+                "businessRegistrationIssueDate": "2002-08-26",
+                "businessIDValidThru": "2036-09-26",
+                "typeofbusiness": "Electronics",
+                "businessPObox": "12345",
+                "businessMobile": "343234433"
+              }
+            },
+            "internationalTransferInformation": {
+              "quoteId": "QR037C1NA6ZXBSQ88B",
+              "receivingCountry": "IN",
+              "remittancePurpose": "Business Travel",
+              "sourceOfFunds": "Business Income",
+              "relationshipSender": "Employer"
+            }
+          },
+        { headers: options.headers }
+        ).then(function (response) {
+            console.log(response.data);
+            props.setResponseScreen(true)
+            props.setApiResponseData(response.data)
+            props.setApiResponseHeaderData(options.headers)
+        })
+            .catch(function (error) {
+                console.log(error);
+                props.setApiResponseData(error)
+                props.setApiResponseHeaderData(options.headers)
+                props.setResponseScreen(true)
+            });
+    }
 
     useEffect(() => {
         props.setResponseScreen(false)
@@ -868,6 +1293,14 @@ function TryitHeader(props) {
             bankTransactionB2BApi();
         }else if (props.endPoint === "B2B Transaction Mobile") {
             mobileTransactionB2BApi();
+        }else if (props.endPoint === "B2P Transaction Bank") {
+            bankTransactionB2PApi();
+        }else if (props.endPoint === "B2P Transaction Mobile") {
+            mobileTransactionB2PApi();
+        }else if (props.endPoint === "P2B Transaction Bank") {
+            bankTransactionP2BApi();
+        }else if (props.endPoint === "P2B Transaction Mobile") {
+            mobileTransactionP2BApi();
         }
     }
 
