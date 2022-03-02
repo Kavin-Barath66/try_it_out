@@ -32,7 +32,7 @@ function CreateQuotationMobile({createQuotationMobileData, setCreateQuotationMob
         <OutlinedInput sx={{ height: 40 }} placeholder='MSISDN number' 
         onChange={({ target }) =>
         setCreateQuotationMobileData( (prev) =>
-            ({...prev, ReciverMsisdn:target.value}))} 
+            ({...prev, reciverMsisdn:target.value}))} 
         value={createQuotationMobileData.reciverMsisdn} />
     </Stack>
     <Stack direction='row' alignItems='center' justifyContent='space-between'>

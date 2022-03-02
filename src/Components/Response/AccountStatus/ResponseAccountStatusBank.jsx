@@ -37,18 +37,18 @@ function ResponseAccountStatusBank(props) {
     }&:hover {
         background-color: #E4302A;
     }`
-
+    console.log("Respinse",props.apiResponseData)
 
   return (
     <>
-    {!props.responseScreen?<Box height="100vh" display="flex" flexDirection="column" color="white">
+    {!props.responseScreen?<Box sx={{height:"100%"}} display="flex" flexDirection="column" color="white">
         <Box flex={1} /* overflow="auto" */>
             <Stack p={3} m={0} justifyContent='flex-start' direction='row' sx={{backgroundColor:"#22387198"}}>
                 <Stack justifyContent='left'  direction='row'>
                     <Typography variant='h6' fontFamily='Poppins' fontWeight='500' >Request</Typography>
                 </Stack>
             </Stack>
-            <Stack sx={{backgroundColor:"#f8fcff", height:'100vh' }}>
+            <Stack sx={{backgroundColor:"#f8fcff", minHeight:'100%' }}>
                 <Stack p={3} color="#20336d">
                     <Typography pb={1} variant='h6' color="#20336d" fontFamily='Poppins' fontWeight='500' sx={{fontSize:"26px"}} >API code snippet</Typography>
                         <Typography fontSize={14} overflow="hidden" textOverflow="ellipsis" style={{wordWrap: "break-word"}}>
@@ -73,7 +73,7 @@ function ResponseAccountStatusBank(props) {
                 </Stack>
             </Stack>
         </Box>
-    </Box>:<Box height="100vh" display="flex" flexDirection="column" color="white">
+    </Box>:<Box sx={{height:"100%"}} display="flex" flexDirection="column" color="white">
     <Box flex={1}>
         <Stack p={3} m={0} justifyContent='space-between' direction='row' sx={{backgroundColor:"#22387198"}}>
             <Stack justifyContent='left'  direction='row' spacing={4}>
@@ -84,7 +84,7 @@ function ResponseAccountStatusBank(props) {
                 <Typography variant='h6' fontFamily='Poppins' fontWeight='500' ></Typography>
             </Stack>
         </Stack>
-        <Stack sx={{backgroundColor:"#f8fcff", height:'100vh' }}>
+        <Stack sx={{backgroundColor:"#f8fcff", height:'100%' }}>
         {bodyTab?<Stack p={3} color="#20336d">
                 <Typography pb={1} variant='h6' color="#20336d" fontFamily='Poppins' fontWeight='500' sx={{fontSize:"26px"}} >Response JSON</Typography>
                     <StyledReactJsonContainer>

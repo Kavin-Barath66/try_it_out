@@ -138,11 +138,20 @@ function CreateTransactionBank({createTransactionBankData, setCreateTransactionB
             <Typography color="#575757" fontWeight='500'>
             Sender Gender
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Gender'
-            onChange={({ target }) =>
-            setCreateTransactionBankData( (prev) =>
-            ({...prev, senderGender:target.value}))} 
-            value={createTransactionBankData.senderGender}  />
+            <TextField
+              sx={{ width: 205 }}
+              label="Sender Gender"
+              onChange={({ target }) =>
+                setCreateTransactionBankData( (prev) =>
+                ({...prev, senderGender:target.value}))} 
+                value={createTransactionBankData.senderGender}
+              select
+              InputProps={{ style: { height: 40 } }}
+              InputLabelProps={{ style: { height: 40 } }}
+            >
+              <MenuItem value='M'>Male</MenuItem>
+              <MenuItem value='F'>Female</MenuItem>
+            </TextField>
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>

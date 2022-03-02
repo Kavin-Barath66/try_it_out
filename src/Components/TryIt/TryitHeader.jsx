@@ -35,8 +35,8 @@ function TryitHeader(props) {
     const getLedgerBalanceApi = () => {
         var options = {
             headers: {
-                'X-USERNAME': 'OpenTurfDev',
-                'X-PASSWORD': '85d6dcc27d9fb21c7c346cdbcee2b56a84eba0f542a846de06658d2d094afd56',
+                'X-USERNAME': `${props.userName}`,
+                'X-PASSWORD':  `${props.password}`,
                 'X-DATE': '2018-04-04 09:27:16',
                 'X-ORIGINCOUNTRY': 'US',
                 'Accept': 'application/json'
@@ -61,8 +61,8 @@ function TryitHeader(props) {
     const cancelTransactionApi = () => {
         var options = {
             headers: {
-                'X-USERNAME': 'OpenTurfDev',
-                'X-PASSWORD': '85d6dcc27d9fb21c7c346cdbcee2b56a84eba0f542a846de06658d2d094afd56',
+                'X-USERNAME': `${props.userName}`,
+                'X-PASSWORD':  `${props.password}`,
                 'X-DATE': '2018-04-04 09:27:16',
                 'X-ORIGINCOUNTRY': 'US',
                 'Accept': 'application/json', 
@@ -90,8 +90,8 @@ function TryitHeader(props) {
     const reverseTransactionApi = () => {
         var options = {
             headers: {
-                'X-USERNAME': 'OpenTurfDev',
-                'X-PASSWORD': '85d6dcc27d9fb21c7c346cdbcee2b56a84eba0f542a846de06658d2d094afd56',
+                'X-USERNAME': `${props.userName}`,
+                'X-PASSWORD':  `${props.password}`,
                 'X-DATE': '2018-04-04 09:27:16',
                 'X-ORIGINCOUNTRY': 'US',
                 'Accept': 'application/json', 
@@ -120,8 +120,8 @@ function TryitHeader(props) {
     const getViewTransaction = () => {
         var options = {
             headers: {
-                'X-USERNAME': 'OpenTurfDev',
-                'X-PASSWORD': '85d6dcc27d9fb21c7c346cdbcee2b56a84eba0f542a846de06658d2d094afd56',
+                'X-USERNAME': `${props.userName}`,
+                'X-PASSWORD':  `${props.password}`,
                 'X-DATE': '2018-04-04 09:27:16',
                 'X-ORIGINCOUNTRY': 'US'
             }
@@ -145,8 +145,8 @@ function TryitHeader(props) {
     const accountStatusBankApi = () => {
         var options = {
             headers: {
-                'X-USERNAME': 'OpenTurfDev',
-                'X-PASSWORD': '85d6dcc27d9fb21c7c346cdbcee2b56a84eba0f542a846de06658d2d094afd56',
+                'X-USERNAME': `${props.userName}`,
+                'X-PASSWORD': `${props.password}`,
                 'X-DATE': '2018-04-04 09:27:16',
                 'X-ORIGINCOUNTRY': 'US',
                 'Accept': 'application/json', 
@@ -170,8 +170,8 @@ function TryitHeader(props) {
     const accountStatusMobileApi = () => {
         var options = {
             headers: {
-                'X-USERNAME': 'OpenTurfDev',
-                'X-PASSWORD': '85d6dcc27d9fb21c7c346cdbcee2b56a84eba0f542a846de06658d2d094afd56',
+                'X-USERNAME': `${props.userName}`,
+                'X-PASSWORD':  `${props.password}`,
                 'X-DATE': '2018-04-04 09:27:16',
                 'X-ORIGINCOUNTRY': 'US',
                 'Accept': 'application/json', 
@@ -195,8 +195,8 @@ function TryitHeader(props) {
     const getBankListApi = () => {
         var options = {
             headers: {
-                'X-USERNAME': 'OpenTurfDev',
-                'X-PASSWORD': '85d6dcc27d9fb21c7c346cdbcee2b56a84eba0f542a846de06658d2d094afd56',
+                'X-USERNAME': `${props.userName}`,
+                'X-PASSWORD':  `${props.password}`,
                 'X-DATE': '2018-04-04 09:27:16',
                 'X-ORIGINCOUNTRY': 'US',
                 'Accept': 'application/json', 
@@ -220,8 +220,8 @@ function TryitHeader(props) {
     const corridorQuotationApi = () => {
         var options = {
             headers: {
-                'X-USERNAME': 'OpenTurfDev',
-                'X-PASSWORD': '85d6dcc27d9fb21c7c346cdbcee2b56a84eba0f542a846de06658d2d094afd56',
+                'X-USERNAME': `${props.userName}`,
+                'X-PASSWORD':  `${props.password}`,
                 'X-DATE': '2018-04-04 09:27:16',
                 'X-ORIGINCOUNTRY': 'US',
                 'Accept': 'application/json', 
@@ -245,8 +245,8 @@ function TryitHeader(props) {
     const createQuotationBankApi = () => {
         var options = {
             headers: {
-                'X-USERNAME': 'OpenTurfDev',
-                'X-PASSWORD': '85d6dcc27d9fb21c7c346cdbcee2b56a84eba0f542a846de06658d2d094afd56',
+                'X-USERNAME': `${props.userName}`,
+                'X-PASSWORD':  `${props.password}`,
                 'X-DATE': '2018-04-04 09:27:16',
                 'X-ORIGINCOUNTRY': 'US',
                 'Accept': 'application/json', 
@@ -292,8 +292,8 @@ function TryitHeader(props) {
     const createQuotationMobileApi = () => {
         var options = {
             headers: {
-                'X-USERNAME': 'OpenTurfDev',
-                'X-PASSWORD': '85d6dcc27d9fb21c7c346cdbcee2b56a84eba0f542a846de06658d2d094afd56',
+                'X-USERNAME': `${props.userName}`,
+                'X-PASSWORD':  `${props.password}`,
                 'X-DATE': '2018-04-04 09:27:16',
                 'X-ORIGINCOUNTRY': 'US',
                 'Accept': 'application/json', 
@@ -335,8 +335,8 @@ function TryitHeader(props) {
     const viewTransactionBankApi = () => {
         var options = {
             headers: {
-                'X-USERNAME': 'OpenTurfDev',
-                'X-PASSWORD': '85d6dcc27d9fb21c7c346cdbcee2b56a84eba0f542a846de06658d2d094afd56',
+                'X-USERNAME': `${props.userName}`,
+                'X-PASSWORD':  `${props.password}`,
                 'X-DATE': '2018-04-04 09:27:16',
                 'X-ORIGINCOUNTRY': 'US',
                 'Accept': 'application/json', 
@@ -362,8 +362,8 @@ function TryitHeader(props) {
     const viewTransactionMobileApi = () => {
         var options = {
             headers: {
-                'X-USERNAME': 'OpenTurfDev',
-                'X-PASSWORD': '85d6dcc27d9fb21c7c346cdbcee2b56a84eba0f542a846de06658d2d094afd56',
+                'X-USERNAME': `${props.userName}`,
+                'X-PASSWORD':  `${props.password}`,
                 'X-DATE': '2018-04-04 09:27:16',
                 'X-ORIGINCOUNTRY': 'US',
                 'Accept': 'application/json', 
@@ -389,8 +389,8 @@ function TryitHeader(props) {
     const createTransactionBankApi = () => {
         var options = {
             headers: {
-                'X-USERNAME': 'OpenTurfDev',
-                'X-PASSWORD': '85d6dcc27d9fb21c7c346cdbcee2b56a84eba0f542a846de06658d2d094afd56',
+                'X-USERNAME': `${props.userName}`,
+                'X-PASSWORD':  `${props.password}`,
                 'X-DATE': '2018-04-04 09:27:16',
                 'X-ORIGINCOUNTRY': 'US',
                 'Accept': 'application/json', 
@@ -486,8 +486,8 @@ function TryitHeader(props) {
     const createTransactionMobileApi = () => {
         var options = {
             headers: {
-                'X-USERNAME': 'OpenTurfDev',
-                'X-PASSWORD': '85d6dcc27d9fb21c7c346cdbcee2b56a84eba0f542a846de06658d2d094afd56',
+                'X-USERNAME': `${props.userName}`,
+                'X-PASSWORD':  `${props.password}`,
                 'X-DATE': '2018-04-04 09:27:16',
                 'X-ORIGINCOUNTRY': 'US',
                 'Accept': 'application/json', 
@@ -576,8 +576,8 @@ function TryitHeader(props) {
     const bankTransactionB2BApi = () => {
         var options = {
             headers: {
-                'X-USERNAME': 'OpenTurfDev',
-                'X-PASSWORD': '85d6dcc27d9fb21c7c346cdbcee2b56a84eba0f542a846de06658d2d094afd56',
+                'X-USERNAME': `${props.userName}`,
+                'X-PASSWORD':  `${props.password}`,
                 'X-DATE': '2018-04-04 09:27:16',
                 'X-ORIGINCOUNTRY': 'US',
                 'Accept': 'application/json', 
@@ -690,8 +690,8 @@ function TryitHeader(props) {
     const mobileTransactionB2BApi = () => {
         var options = {
             headers: {
-                'X-USERNAME': 'OpenTurfDev',
-                'X-PASSWORD': '85d6dcc27d9fb21c7c346cdbcee2b56a84eba0f542a846de06658d2d094afd56',
+                'X-USERNAME': `${props.userName}`,
+                'X-PASSWORD':  `${props.password}`,
                 'X-DATE': '2018-04-04 09:27:16',
                 'X-ORIGINCOUNTRY': 'US',
                 'Accept': 'application/json', 
@@ -794,8 +794,8 @@ function TryitHeader(props) {
     const bankTransactionB2PApi = () => {
         var options = {
             headers: {
-                'X-USERNAME': 'OpenTurfDev',
-                'X-PASSWORD': '85d6dcc27d9fb21c7c346cdbcee2b56a84eba0f542a846de06658d2d094afd56',
+                'X-USERNAME': `${props.userName}`,
+                'X-PASSWORD':  `${props.password}`,
                 'X-DATE': '2018-04-04 09:27:16',
                 'X-ORIGINCOUNTRY': 'US',
                 'Accept': 'application/json', 
@@ -888,8 +888,8 @@ function TryitHeader(props) {
     const mobileTransactionB2PApi = () => {
         var options = {
             headers: {
-                'X-USERNAME': 'OpenTurfDev',
-                'X-PASSWORD': '85d6dcc27d9fb21c7c346cdbcee2b56a84eba0f542a846de06658d2d094afd56',
+                'X-USERNAME': `${props.userName}`,
+                'X-PASSWORD':  `${props.password}`,
                 'X-DATE': '2018-04-04 09:27:16',
                 'X-ORIGINCOUNTRY': 'US',
                 'Accept': 'application/json', 
@@ -975,8 +975,8 @@ function TryitHeader(props) {
     const bankTransactionP2BApi = () => {
         var options = {
             headers: {
-                'X-USERNAME': 'OpenTurfDev',
-                'X-PASSWORD': '85d6dcc27d9fb21c7c346cdbcee2b56a84eba0f542a846de06658d2d094afd56',
+                'X-USERNAME': `${props.userName}`,
+                'X-PASSWORD':  `${props.password}`,
                 'X-DATE': '2018-04-04 09:27:16',
                 'X-ORIGINCOUNTRY': 'US',
                 'Accept': 'application/json', 
@@ -985,103 +985,103 @@ function TryitHeader(props) {
         }
         axios.post(`${apiUrl}/v1/try-it/transaction`,
         {
-            "amount": `${props.bankTransactionP2BData.quoteId}`,
-            "currency": "INR",
-            "type": "p2b",
-            "descriptionText": "Gift for my brother",
-            "requestDate": "2021-05-23 08:19:36",
-            "requestingOrganisationTransactionReference": "SrcTxnId005",
+            "amount": `${props.bankTransactionP2BData.amount}`,
+            "currency": `${props.bankTransactionP2BData.currency}`,
+            "type": `${props.bankTransactionP2BData.type}`,
+            "descriptionText": `${props.bankTransactionP2BData.descriptionText}`,
+            "requestDate": `${props.bankTransactionP2BData.requestDate}`,
+            "requestingOrganisationTransactionReference": `${props.bankTransactionP2BData.transRef}`,
             "debitParty": [
               {
                 "key": "msisdn",
-                "value": "+971810456234"
+                "value":`${props.bankTransactionP2BData.senderMsisdn}`
               }
             ],
             "creditParty": [
               {
                 "key": "bankaccountno",
-                "value": "50100002965304"
+                "value": `${props.bankTransactionP2BData.receiverBankaccountno}`
               },
               {
                 "key": "organisationid",
-                "value": "HDFC Bank"
+                "value": `${props.bankTransactionP2BData.receiverBankName}`
               },
               {
                 "key": "sortcode",
-                "value": "HDFC0001626"
+                "value": `${props.bankTransactionP2BData.receiverBankCode}`
               }
             ],
             "senderKyc": {
-              "nationality": "AE",
-              "dateOfBirth": "1967-05-28",
-              "gender": "M",
+              "nationality": `${props.bankTransactionP2BData.nationality}`,
+              "dateOfBirth": `${props.bankTransactionP2BData.dateOfBirth}`,
+              "gender": `${props.bankTransactionP2BData.gender}`,
               "idDocument": [
                 {
-                  "idType": "VOTER_CARD",
-                  "idNumber": "13321115521",
-                  "issueDate": "1967-05-28",
-                  "expiryDate": "2067-05-28",
-                  "issuerCountry": "AE"
+                  "idType": `${props.bankTransactionP2BData.idType}`,
+                  "idNumber": `${props.bankTransactionP2BData.idNumber}`,
+                  "issueDate": `${props.bankTransactionP2BData.issueDate}`,
+                  "expiryDate": `${props.bankTransactionP2BData.expiryDate}`,
+                  "issuerCountry": `${props.bankTransactionP2BData.issuerCountry}`
                 }
               ],
               "postalAddress": {
-                "addressLine1": "49 , park street",
-                "addressLine2": "12",
-                "addressLine3": "12",
-                "city": "12",
-                "stateProvince": "12",
-                "postalCode": "50000",
-                "country": "US"
+                "addressLine1": `${props.bankTransactionP2BData.addressLine1}`,
+                "addressLine2": `${props.bankTransactionP2BData.addressLine2}`,
+                "addressLine3": `${props.bankTransactionP2BData.addressLine3}`,
+                "city": `${props.bankTransactionP2BData.city}`,
+                "stateProvince": `${props.bankTransactionP2BData.stateProvince}`,
+                "postalCode": `${props.bankTransactionP2BData.postalCode}`,
+                "country": `${props.bankTransactionP2BData.country}`
               },
               "subjectName": {
-                "firstName": "Test",
-                "middleName": "",
-                "lastName": "Sender2",
-                "fullName": "Test Sender2"
+                "firstName": `${props.bankTransactionP2BData.firstName}`,
+                "middleName": `${props.bankTransactionP2BData.middleName}`,
+                "lastName": `${props.bankTransactionP2BData.lastName}`,
+                "fullName": `${props.bankTransactionP2BData.firstName+props.bankTransactionP2BData.middleName+props.bankTransactionP2BData.lastName}`
               }
             },
             "recipientKyc": {},
-            "sendingAmount": "35500.00",
-            "payinCcyCode": "USD",
-            "paymentMode": "cash",
-            "authenticationPartnerCode": "4534",
-            "paymentOption": "Mobile Wallet",
-            "sendingPartnerCode": "343432223",
-            "receivingPartnerCode": "343432223",
+            "sendingAmount":  `${props.bankTransactionP2BData.sendingAmount}`,
+            "payinCcyCode":  `${props.bankTransactionP2BData.payinCcyCode}`,
+            "paymentMode":  `${props.bankTransactionP2BData.paymentMode}`,
+            "authenticationPartnerCode":  `${props.bankTransactionP2BData.authenticationPartnerCode}`,
+            "paymentOption":  `${props.bankTransactionP2BData.paymentOption}`,
+            "sendingPartnerCode":  `${props.bankTransactionP2BData.sendingPartnerCode}`,
+            "receivingPartnerCode":  `${props.bankTransactionP2BData.receivingPartnerCode}`,
             "business": {
               "senderKyc": {},
               "recepientKyc": {
-                "businessName": "Oyugi Randy Electric Sale Pvt. Ltd.",
-                "businessPINCode": "123456",
-                "businessAddress1": "24",
-                "businessAddress2": "walton's road",
-                "businessAddressCity": "newyork",
-                "businessAddressState": "NYC",
-                "businessAddressCountryCode": "NG",
-                "businessAddressZip": "123456",
-                "businessPrimaryContactCountryCode": "NG",
-                "businessPrimaryContactNo": "232323212",
-                "businessPrimaryContactNoType": "Mobile",
-                "businessDescription": "Electronics wholesale",
-                "businessEmail": "rs.electronics@gmail.com",
-                "businessCountryCode": "NG",
-                "businessRegistrationType": "Private Limited Company",
-                "businessRegistrationNumber": "2312345678912",
-                "businessRegistrationIssuedBy": "NYC_TRADE",
-                "businessRegistrationIssuedAt": "NYC",
-                "businessRegistrationIssueDate": "2002-08-26",
-                "businessIDValidThru": "2036-09-26",
-                "typeofbusiness": "Electronics",
-                "businessPObox": "12345",
-                "businessMobile": "343234433"
+                "businessName":  `${props.bankTransactionP2BData.businessName}`,
+                "businessPINCode":  `${props.bankTransactionP2BData.businessPINCode}`,
+                "businessAddress1":  `${props.bankTransactionP2BData.businessAddress1}`,
+                "businessAddress2": `${props.bankTransactionP2BData.businessAddress2}`,
+                "businessAddressCity":  `${props.bankTransactionP2BData.businessAddressCity}`,
+                "businessAddressState":  `${props.bankTransactionP2BData.businessAddressState}`,
+                "businessAddressCountryCode": `${props.bankTransactionP2BData.businessAddressCountryCode}`,
+                "businessAddressZip": `${props.bankTransactionP2BData.businessAddressZip}`,
+                "businessPrimaryContactCountryCode":  `${props.bankTransactionP2BData.businessPrimaryContactCountryCode}`,
+                "businessPrimaryContactNo":  `${props.bankTransactionP2BData.businessPrimaryContactNo}`,
+                "businessPrimaryContactNoType":  `${props.bankTransactionP2BData.businessPrimaryContactNoType}`,
+                "businessDescription":  `${props.bankTransactionP2BData.businessDescription}`,
+                "businessEmail":  `${props.bankTransactionP2BData.businessEmail}`,
+                "businessCountryCode": `${props.bankTransactionP2BData.businessCountryCode}`,
+                "businessRegistrationType": `${props.bankTransactionP2BData.businessRegistrationType}`,
+                "businessRegistrationNumber":  `${props.bankTransactionP2BData.businessRegistrationNumber}`,
+                "businessRegistrationIssuedBy":  `${props.bankTransactionP2BData.businessRegistrationIssuedBy}`,
+                "businessRegistrationIssuedAt":  `${props.bankTransactionP2BData.businessRegistrationIssuedAt}`,
+                "businessRegistrationIssueDate":  `${props.bankTransactionP2BData.businessRegistrationIssueDate}`,
+                "businessIDValidThru":  `${props.bankTransactionP2BData.businessIDValidThru}`,
+                "typeofbusiness":  `${props.bankTransactionP2BData.typeofbusiness}`,
+                "businessPObox":  `${props.bankTransactionP2BData.businessPObox}`,
+                "businessMobile":  `${props.bankTransactionP2BData.businessMobile}`
               }
             },
             "internationalTransferInformation": {
-              "quoteId": "QR037C1NA6ZXBSQ88B",
-              "receivingCountry": "IN",
-              "remittancePurpose": "Business Travel",
-              "sourceOfFunds": "Business Income",
-              "relationshipSender": "Employer"
+              "quoteId":  `${props.bankTransactionP2BData.quoteId}`,
+              "receivingCountry":  `${props.bankTransactionP2BData.receivingCountry}`,
+              "remittancePurpose":  `${props.bankTransactionP2BData.remittancePurpose}`,
+              "sourceOfFunds":  `${props.bankTransactionP2BData.sourceOfFunds}`,
+              "relationshipSender":  `${props.bankTransactionP2BData.relationshipSender}`
             }
           },
         { headers: options.headers }
@@ -1101,8 +1101,8 @@ function TryitHeader(props) {
     const mobileTransactionP2BApi = () => {
         var options = {
             headers: {
-                'X-USERNAME': 'OpenTurfDev',
-                'X-PASSWORD': '85d6dcc27d9fb21c7c346cdbcee2b56a84eba0f542a846de06658d2d094afd56',
+                'X-USERNAME': `${props.userName}`,
+                'X-PASSWORD':  `${props.password}`,
                 'X-DATE': '2018-04-04 09:27:16',
                 'X-ORIGINCOUNTRY': 'US',
                 'Accept': 'application/json', 
@@ -1111,95 +1111,95 @@ function TryitHeader(props) {
         }
         axios.post(`${apiUrl}/v1/try-it/transaction`,
         {
-            "amount": `${props.mobileTransactionP2BData.quoteId}`,
-            "currency": "INR",
-            "type": "p2b",
-            "descriptionText": "Gift for my brother",
-            "requestDate": "2021-05-23 08:19:36",
-            "requestingOrganisationTransactionReference": "SrcTxnId005",
+            "amount": `${props.mobileTransactionP2BData.amount}`,
+            "currency": `${props.mobileTransactionP2BData.currency}`,
+            "type": `${props.mobileTransactionP2BData.type}`,
+            "descriptionText": `${props.mobileTransactionP2BData.descriptionText}`,
+            "requestDate": `${props.mobileTransactionP2BData.requestDate}`,
+            "requestingOrganisationTransactionReference": `${props.mobileTransactionP2BData.transRef}`,
             "debitParty": [
               {
                 "key": "msisdn",
-                "value": "+971810456234"
+                "value":`${props.mobileTransactionP2BData.senderMsisdn}`
               }
             ],
             "creditParty": [
                 {
                     "key": "msisdn",
-                    "value": "+971810456234"
-                }
+                    "value":`${props.mobileTransactionP2BData.receiverMsisdn}`
+                  }
             ],
             "senderKyc": {
-              "nationality": "AE",
-              "dateOfBirth": "1967-05-28",
-              "gender": "M",
+              "nationality": `${props.mobileTransactionP2BData.nationality}`,
+              "dateOfBirth": `${props.mobileTransactionP2BData.dateOfBirth}`,
+              "gender": `${props.mobileTransactionP2BData.gender}`,
               "idDocument": [
                 {
-                  "idType": "VOTER_CARD",
-                  "idNumber": "13321115521",
-                  "issueDate": "1967-05-28",
-                  "expiryDate": "2067-05-28",
-                  "issuerCountry": "AE"
+                  "idType": `${props.mobileTransactionP2BData.idType}`,
+                  "idNumber": `${props.mobileTransactionP2BData.idNumber}`,
+                  "issueDate": `${props.mobileTransactionP2BData.issueDate}`,
+                  "expiryDate": `${props.mobileTransactionP2BData.expiryDate}`,
+                  "issuerCountry": `${props.mobileTransactionP2BData.issuerCountry}`
                 }
               ],
               "postalAddress": {
-                "addressLine1": "49 , park street",
-                "addressLine2": "12",
-                "addressLine3": "12",
-                "city": "12",
-                "stateProvince": "12",
-                "postalCode": "50000",
-                "country": "US"
+                "addressLine1": `${props.mobileTransactionP2BData.addressLine1}`,
+                "addressLine2": `${props.mobileTransactionP2BData.addressLine2}`,
+                "addressLine3": `${props.mobileTransactionP2BData.addressLine3}`,
+                "city": `${props.mobileTransactionP2BData.city}`,
+                "stateProvince": `${props.mobileTransactionP2BData.stateProvince}`,
+                "postalCode": `${props.mobileTransactionP2BData.postalCode}`,
+                "country": `${props.mobileTransactionP2BData.country}`
               },
               "subjectName": {
-                "firstName": "Test",
-                "middleName": "",
-                "lastName": "Sender2",
-                "fullName": "Test Sender2"
+                "firstName": `${props.mobileTransactionP2BData.firstName}`,
+                "middleName": `${props.mobileTransactionP2BData.middleName}`,
+                "lastName": `${props.mobileTransactionP2BData.lastName}`,
+                "fullName": `${props.mobileTransactionP2BData.firstName+props.mobileTransactionP2BData.middleName+props.mobileTransactionP2BData.lastName}`
               }
             },
             "recipientKyc": {},
-            "sendingAmount": "35500.00",
-            "payinCcyCode": "USD",
-            "paymentMode": "cash",
-            "authenticationPartnerCode": "4534",
-            "paymentOption": "Mobile Wallet",
-            "sendingPartnerCode": "343432223",
-            "receivingPartnerCode": "343432223",
+            "sendingAmount":  `${props.mobileTransactionP2BData.sendingAmount}`,
+            "payinCcyCode":  `${props.mobileTransactionP2BData.payinCcyCode}`,
+            "paymentMode":  `${props.mobileTransactionP2BData.paymentMode}`,
+            "authenticationPartnerCode":  `${props.mobileTransactionP2BData.authenticationPartnerCode}`,
+            "paymentOption":  `${props.mobileTransactionP2BData.paymentOption}`,
+            "sendingPartnerCode":  `${props.mobileTransactionP2BData.sendingPartnerCode}`,
+            "receivingPartnerCode":  `${props.mobileTransactionP2BData.receivingPartnerCode}`,
             "business": {
               "senderKyc": {},
               "recepientKyc": {
-                "businessName": "Oyugi Randy Electric Sale Pvt. Ltd.",
-                "businessPINCode": "123456",
-                "businessAddress1": "24",
-                "businessAddress2": "walton's road",
-                "businessAddressCity": "newyork",
-                "businessAddressState": "NYC",
-                "businessAddressCountryCode": "NG",
-                "businessAddressZip": "123456",
-                "businessPrimaryContactCountryCode": "NG",
-                "businessPrimaryContactNo": "232323212",
-                "businessPrimaryContactNoType": "Mobile",
-                "businessDescription": "Electronics wholesale",
-                "businessEmail": "rs.electronics@gmail.com",
-                "businessCountryCode": "NG",
-                "businessRegistrationType": "Private Limited Company",
-                "businessRegistrationNumber": "2312345678912",
-                "businessRegistrationIssuedBy": "NYC_TRADE",
-                "businessRegistrationIssuedAt": "NYC",
-                "businessRegistrationIssueDate": "2002-08-26",
-                "businessIDValidThru": "2036-09-26",
-                "typeofbusiness": "Electronics",
-                "businessPObox": "12345",
-                "businessMobile": "343234433"
+                "businessName":  `${props.mobileTransactionP2BData.businessName}`,
+                "businessPINCode":  `${props.mobileTransactionP2BData.businessPINCode}`,
+                "businessAddress1":  `${props.mobileTransactionP2BData.businessAddress1}`,
+                "businessAddress2": `${props.mobileTransactionP2BData.businessAddress2}`,
+                "businessAddressCity":  `${props.mobileTransactionP2BData.businessAddressCity}`,
+                "businessAddressState":  `${props.mobileTransactionP2BData.businessAddressState}`,
+                "businessAddressCountryCode": `${props.mobileTransactionP2BData.businessAddressCountryCode}`,
+                "businessAddressZip": `${props.mobileTransactionP2BData.businessAddressZip}`,
+                "businessPrimaryContactCountryCode":  `${props.mobileTransactionP2BData.businessPrimaryContactCountryCode}`,
+                "businessPrimaryContactNo":  `${props.mobileTransactionP2BData.businessPrimaryContactNo}`,
+                "businessPrimaryContactNoType":  `${props.mobileTransactionP2BData.businessPrimaryContactNoType}`,
+                "businessDescription":  `${props.mobileTransactionP2BData.businessDescription}`,
+                "businessEmail":  `${props.mobileTransactionP2BData.businessEmail}`,
+                "businessCountryCode": `${props.mobileTransactionP2BData.businessCountryCode}`,
+                "businessRegistrationType": `${props.mobileTransactionP2BData.businessRegistrationType}`,
+                "businessRegistrationNumber":  `${props.mobileTransactionP2BData.businessRegistrationNumber}`,
+                "businessRegistrationIssuedBy":  `${props.mobileTransactionP2BData.businessRegistrationIssuedBy}`,
+                "businessRegistrationIssuedAt":  `${props.mobileTransactionP2BData.businessRegistrationIssuedAt}`,
+                "businessRegistrationIssueDate":  `${props.mobileTransactionP2BData.businessRegistrationIssueDate}`,
+                "businessIDValidThru":  `${props.mobileTransactionP2BData.businessIDValidThru}`,
+                "typeofbusiness":  `${props.mobileTransactionP2BData.typeofbusiness}`,
+                "businessPObox":  `${props.mobileTransactionP2BData.businessPObox}`,
+                "businessMobile":  `${props.mobileTransactionP2BData.businessMobile}`
               }
             },
             "internationalTransferInformation": {
-              "quoteId": "QR037C1NA6ZXBSQ88B",
-              "receivingCountry": "IN",
-              "remittancePurpose": "Business Travel",
-              "sourceOfFunds": "Business Income",
-              "relationshipSender": "Employer"
+              "quoteId":  `${props.mobileTransactionP2BData.quoteId}`,
+              "receivingCountry":  `${props.mobileTransactionP2BData.receivingCountry}`,
+              "remittancePurpose":  `${props.mobileTransactionP2BData.remittancePurpose}`,
+              "sourceOfFunds":  `${props.mobileTransactionP2BData.sourceOfFunds}`,
+              "relationshipSender":  `${props.mobileTransactionP2BData.relationshipSender}`
             }
           },
         { headers: options.headers }
@@ -1263,6 +1263,8 @@ function TryitHeader(props) {
     }, [props.endPoint])
 
     const tryItOutHandler = () => {
+        props.setApiResponseData("")
+        props.setApiResponseHeaderData("")
         if(props.endPoint === "Account Status Mobile") {
             accountStatusMobileApi()
         } else if(props.endPoint === "Account Status Bank"){
@@ -1365,8 +1367,8 @@ function TryitHeader(props) {
                         <MenuItem value='Account Status Bank'>Account Status Bank</MenuItem>
                         <MenuItem value='Create Quotation Mobile'>Create Quotation Mobile</MenuItem>
                         <MenuItem value='Create Quotation Bank'>Create Quotation Bank</MenuItem>
-                        <MenuItem value='View Transaction Mobile'>View Transaction Mobile</MenuItem>
-                        <MenuItem value='View Transaction Bank'>View Transaction Bank</MenuItem>
+                        {/* <MenuItem value='View Transaction Mobile'>View Transaction Mobile</MenuItem> */}
+                        <MenuItem value='View Transaction Bank'>View Transaction</MenuItem>
                         <MenuItem value='Create Transaction Bank'>Create Transaction Bank</MenuItem>
                         <MenuItem value='Create Transaction Mobile'>Create Transaction Mobile</MenuItem>
                         <MenuItem value='Ledger Balance'>Ledger Balance</MenuItem>

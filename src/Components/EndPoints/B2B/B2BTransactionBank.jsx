@@ -189,7 +189,7 @@ function B2BTransactionBank({bankTransactionB2BData, setBankTransactionB2BData})
 
 
 
-        <Typography color="#575757" fontWeight='500'>Sender Details</Typography>
+        <Typography fontWeight={600} fontSize={20} variant='h6' color="#404040">Sender Details:-</Typography>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
                 Business Name
@@ -321,7 +321,7 @@ function B2BTransactionBank({bankTransactionB2BData, setBankTransactionB2BData})
           value={bankTransactionB2BData.senderBusinessEmail} />
         </Stack>
         {/* Receiver */}
-        <Typography color="#575757" fontWeight='500'>Recepient Details</Typography>
+        <Typography fontWeight={600} fontSize={20} variant='h6' color="#404040" >Recepient Details:-</Typography>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
                 Business Name
