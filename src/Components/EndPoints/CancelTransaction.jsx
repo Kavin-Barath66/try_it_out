@@ -5,7 +5,7 @@ import axios from 'axios'
 import MenuItem from '@mui/material/MenuItem';
 import { Stack, OutlinedInput, Button, Box, Typography, TextField, Container} from '@mui/material'
 
-function CancelTransaction({cancelTransactionData, setCancelTransactionData}) {
+function CancelTransaction({allowUatAccess, cancelTransactionData, setCancelTransactionData}) {
     
     
   return (
@@ -19,6 +19,7 @@ function CancelTransaction({cancelTransactionData, setCancelTransactionData}) {
           Reason For Cancelling
           </Typography>
           <OutlinedInput sx={{ height: 40 }} placeholder='Cancel Reason' 
+          disabled={!allowUatAccess}
           onChange={({ target }) =>
           setCancelTransactionData( (prev) =>
             ({...prev, reason:target.value}))} 
@@ -30,6 +31,7 @@ function CancelTransaction({cancelTransactionData, setCancelTransactionData}) {
             Transaction ID
           </Typography>
           <OutlinedInput sx={{ height: 40 }} placeholder='Transaction ID' 
+          disabled={!allowUatAccess}
           onChange={({ target }) =>
           setCancelTransactionData( (prev) =>
             ({...prev, txId:target.value}))} 

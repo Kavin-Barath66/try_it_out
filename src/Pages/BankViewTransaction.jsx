@@ -5,14 +5,14 @@ import ResponseViewTransactionBank from '../Components/Response/ViewTransaction/
 
 
 
-function BankViewTransaction({viewTransactionBankData, setViewTransactionBankData, responseScreen, apiResponseData, apiResponseHeaderData}) {
+function BankViewTransaction({allowUatAccess, viewTransactionBankData, setViewTransactionBankData, responseScreen, apiResponseData, apiResponseHeaderData}) {
     return (
         <Grid container sx={{minHeight: '100%' }}>
             <Grid item xs={7}>
-            <ViewTransactionBank viewTransactionBankData={viewTransactionBankData} setViewTransactionBankData={setViewTransactionBankData} />
+            <ViewTransactionBank allowUatAccess={allowUatAccess} viewTransactionBankData={viewTransactionBankData} setViewTransactionBankData={setViewTransactionBankData} />
             </Grid>
             <Grid item xs={5}>
-                <ResponseViewTransactionBank responseScreen={responseScreen} apiResponseData={apiResponseData} apiResponseHeaderData={apiResponseHeaderData} />
+                <ResponseViewTransactionBank allowUatAccess={allowUatAccess} responseScreen={responseScreen} apiResponseData={apiResponseData} apiResponseHeaderData={apiResponseHeaderData} />
             </Grid>
         </Grid>
     )

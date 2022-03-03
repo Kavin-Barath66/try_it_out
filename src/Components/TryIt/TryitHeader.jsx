@@ -1265,44 +1265,46 @@ function TryitHeader(props) {
     const tryItOutHandler = () => {
         props.setApiResponseData("")
         props.setApiResponseHeaderData("")
-        if(props.endPoint === "Account Status Mobile") {
-            accountStatusMobileApi()
-        } else if(props.endPoint === "Account Status Bank"){
-            accountStatusBankApi();
-        } else if(props.endPoint === "Cancel Transaction"){
-            cancelTransactionApi();
-        } else if (props.endPoint === "Get Bank List") {
-            getBankListApi();
-        }else if (props.endPoint === "Corridor Quotation") {
-            corridorQuotationApi();
-        }else if (props.endPoint === "Reverse Transaction") {
-            reverseTransactionApi();
-        }else if (props.endPoint === "Ledger Balance") {
-            getLedgerBalanceApi();
-        }else if (props.endPoint === "Create Quotation Bank") {
-            createQuotationBankApi();
-        }else if (props.endPoint === "Create Quotation Mobile") {
-            createQuotationMobileApi();
-        }else if (props.endPoint === "View Transaction Bank") {
-            viewTransactionBankApi();
-        }else if (props.endPoint === "View Transaction Mobile") {
-            viewTransactionMobileApi();
-        }else if (props.endPoint === "Create Transaction Bank") {
-            createTransactionBankApi();
-        }else if (props.endPoint === "Create Transaction Mobile") {
-            createTransactionMobileApi();
-        }else if (props.endPoint === "B2B Transaction Bank") {
-            bankTransactionB2BApi();
-        }else if (props.endPoint === "B2B Transaction Mobile") {
-            mobileTransactionB2BApi();
-        }else if (props.endPoint === "B2P Transaction Bank") {
-            bankTransactionB2PApi();
-        }else if (props.endPoint === "B2P Transaction Mobile") {
-            mobileTransactionB2PApi();
-        }else if (props.endPoint === "P2B Transaction Bank") {
-            bankTransactionP2BApi();
-        }else if (props.endPoint === "P2B Transaction Mobile") {
-            mobileTransactionP2BApi();
+        if(props.allowUatAccess){
+            if(props.endPoint === "Account Status Mobile") {
+                accountStatusMobileApi()
+            } else if(props.endPoint === "Account Status Bank"){
+                accountStatusBankApi();
+            } else if(props.endPoint === "Cancel Transaction"){
+                cancelTransactionApi();
+            } else if (props.endPoint === "Get Bank List") {
+                getBankListApi();
+            }else if (props.endPoint === "Corridor Quotation") {
+                corridorQuotationApi();
+            }else if (props.endPoint === "Reverse Transaction") {
+                reverseTransactionApi();
+            }else if (props.endPoint === "Ledger Balance") {
+                getLedgerBalanceApi();
+            }else if (props.endPoint === "Create Quotation Bank") {
+                createQuotationBankApi();
+            }else if (props.endPoint === "Create Quotation Mobile") {
+                createQuotationMobileApi();
+            }else if (props.endPoint === "View Transaction Bank") {
+                viewTransactionBankApi();
+            }else if (props.endPoint === "View Transaction Mobile") {
+                viewTransactionMobileApi();
+            }else if (props.endPoint === "Create Transaction Bank") {
+                createTransactionBankApi();
+            }else if (props.endPoint === "Create Transaction Mobile") {
+                createTransactionMobileApi();
+            }else if (props.endPoint === "B2B Transaction Bank") {
+                bankTransactionB2BApi();
+            }else if (props.endPoint === "B2B Transaction Mobile") {
+                mobileTransactionB2BApi();
+            }else if (props.endPoint === "B2P Transaction Bank") {
+                bankTransactionB2PApi();
+            }else if (props.endPoint === "B2P Transaction Mobile") {
+                mobileTransactionB2PApi();
+            }else if (props.endPoint === "P2B Transaction Bank") {
+                bankTransactionP2BApi();
+            }else if (props.endPoint === "P2B Transaction Mobile") {
+                mobileTransactionP2BApi();
+            }
         }
     }
 
@@ -1321,6 +1323,12 @@ function TryitHeader(props) {
         } else {
             return true
         }
+    }
+    const allowTryingWithRealTime = () =>{
+        props.setAllowUatAccess(true)
+    }
+    const allowStaticScreen = () =>{
+        props.setResponseScreen(true)
     }
 
 
@@ -1361,7 +1369,8 @@ function TryitHeader(props) {
                         }}
                         value={props.endPoint}
                         onChange={({ target }) => props.setEndPoint(target.value)}
-                        input={<OutlinedInput label="API End Point" />}
+                        input={<OutlinedInput label="API End Point"
+                        />}
                         MenuProps={MenuProps}>
                         <MenuItem value='Account Status Mobile'>Account Status Mobile</MenuItem>
                         <MenuItem value='Account Status Bank'>Account Status Bank</MenuItem>
@@ -1384,7 +1393,9 @@ function TryitHeader(props) {
                         <MenuItem value='B2P Transaction Mobile'>B2P Transaction Mobile</MenuItem>
                     </Select>
                 </FormControl>
-                <OutlinedInput sx={{
+                <OutlinedInput
+                    disabled={!props.allowUatAccess}
+                    sx={{
                     height: 40, width: '100%',
                     "& .MuiOutlinedInput-input": {
                         color: 'white',
@@ -1395,12 +1406,14 @@ function TryitHeader(props) {
                             borderColor: 'white',
                         },
                     },
-                }} placeholder='Username' onChange={({ target }) => props.setuserName(target.value)} value={props.userName}
+                    }} 
+                    placeholder='Username' onChange={({ target }) => props.setuserName(target.value)} value={props.userName}
                 />
             </Stack>
             <Stack width="30%" spacing={3} justifyContent='center' direction='column' >
                 <FormControl>
-                    <InputLabel id="demo-simple-select-autowidth-label" sx={{ color: 'white' }} >
+                    <InputLabel id="demo-simple-select-autowidth-label" sx={{ color: 'white' }} 
+                    disabled={!props.allowUatAccess} >
                         Environment
                     </InputLabel>
                     <Select
@@ -1421,7 +1434,8 @@ function TryitHeader(props) {
                         }}
                         value={props.environment}
                         onChange={({ target }) => props.setEnvironment(target.value)}
-                        input={<OutlinedInput label="Environment" />} >
+                        input={<OutlinedInput label="Environment" 
+                        disabled={!props.allowUatAccess} />} >
                         <MenuItem value='Sandbox'>Sandbox</MenuItem>
                         <MenuItem value='Production'>Production</MenuItem>
                     </Select>
@@ -1437,18 +1451,30 @@ function TryitHeader(props) {
                             borderColor: 'white',
                         },
                     },
-                }} placeholder='Password' onChange={({ target }) => props.setPassword(target.value)} value={props.password} />
+                    "outlinedInputFocused": {
+                        borderStyle: 'none',
+                        borderColor: 'red',
+                        outlineWidth: 0,
+                        outline: 'none',
+                        backgroundColor: 'green'
+                     },
+                }} placeholder='Password' onChange={({ target }) => props.setPassword(target.value)} value={props.password} 
+                disabled={!props.allowUatAccess}
+                />
             </Stack>
-            <Stack width="20%" direction='column' >
+            <Stack width="20%" spacing={3} direction='column' >
                 {/* {(props.endPoint==="Account Status Mobile" && props.mobileAccountStatusData.instrument && props.mobileAccountStatusData.bnv && props.mobileAccountStatusData.msisdn)?<CustomButtom  sx={{textAlign:'center', minWidth:'180px', alignSelf: 'center', letterSpacing: 1, backgroundColor:'#ea5c57'}} variant='contained' onClick={getAccountStatus} >TRY IT OUT</CustomButtom>:
                 (props.endPoint==="View Transaction Mobile")?<CustomButtom  sx={{textAlign:'center', minWidth:'180px', alignSelf: 'center', letterSpacing: 1, backgroundColor:'#ea5c57'}} variant='contained' onClick={getViewTransaction} >TRY IT OUT</CustomButtom>:
                 (props.endPoint==="Ledger Balance")?<CustomButtom  sx={{textAlign:'center', minWidth:'180px', alignSelf: 'center', letterSpacing: 1, backgroundColor:'#ea5c57'}} variant='contained' onClick={getAccountStatus} >TRY IT OUT</CustomButtom>:
                 (props.endPoint==="Get Bank List")?<CustomButtom  sx={{textAlign:'center', minWidth:'180px', alignSelf: 'center', letterSpacing: 1, backgroundColor:'#ea5c57'}} variant='contained' onClick={getAccountStatus} >TRY IT OUT</CustomButtom>: */}
 
                 {/* <CustomButtom  sx={{textAlign:'center', minWidth:'180px', alignSelf: 'center', letterSpacing: 1, backgroundColor:'#ea5c57'}} variant='contained' onClick={tryItOutHandler} >TRY IT OUT</CustomButtom> */}
-
-                <CustomButtom sx={{ textAlign: 'center', minWidth: '180px', alignSelf: 'center', letterSpacing: 1, backgroundColor: '#ea5c57' }} variant='contained' disabled={checkProperties(props.headerObject)} onClick={tryItOutHandler}>TRY IT OUT</CustomButtom>
-            </Stack>
+                {props.allowUatAccess? <CustomButtom sx={{ textAlign: 'center', minWidth: '180px', alignSelf: 'center', letterSpacing: 1, backgroundColor: '#ea5c57' }} variant='contained' disabled={checkProperties(props.headerObject)} onClick={tryItOutHandler}>TRY IT OUT</CustomButtom>:
+                <CustomButtom sx={{ textAlign: 'center', minWidth: '180px', alignSelf: 'center', letterSpacing: 1, backgroundColor: '#ea5c57' }} variant='contained' disabled={checkProperties(props.headerObject)} onClick={allowStaticScreen}>TRY IT OUT</CustomButtom>}
+                {!props.allowUatAccess && <Typography color="white" fonstSize={12} height={40} fontWeight='500'>
+                    To try it out with UAT <Typography color='#ea5c57' sx={{cursor:'pointer'}}onClick={allowTryingWithRealTime} >Click here!</Typography>
+                </Typography>}
+        </Stack>
         </Stack>
     )
 }

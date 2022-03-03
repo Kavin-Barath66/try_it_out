@@ -4,14 +4,14 @@ import ResponseReverseTransaction from '../Components/Response/ResponseReverseTr
 import ReverseTransaction from '../Components/EndPoints/ReverseTransaction';
 
 
-function TransactionReverse({reverseTransactionData, setReverseTransactionData, responseScreen, apiResponseData, apiResponseHeaderData}) {
+function TransactionReverse({allowUatAccess, reverseTransactionData, setReverseTransactionData, responseScreen, apiResponseData, apiResponseHeaderData}) {
     return (
         <Grid container sx={{minHeight: '100%' }}>
             <Grid item xs={7}>
-                <ReverseTransaction setReverseTransactionData={setReverseTransactionData} reverseTransactionData={reverseTransactionData} />
+                <ReverseTransaction allowUatAccess={allowUatAccess} setReverseTransactionData={setReverseTransactionData} reverseTransactionData={reverseTransactionData} />
             </Grid>
             <Grid item xs={5}>
-                <ResponseReverseTransaction  responseScreen={responseScreen} apiResponseData={apiResponseData} apiResponseHeaderData={apiResponseHeaderData} />
+                <ResponseReverseTransaction allowUatAccess={allowUatAccess} responseScreen={responseScreen} apiResponseData={apiResponseData} apiResponseHeaderData={apiResponseHeaderData} />
             </Grid>
         </Grid>
     )

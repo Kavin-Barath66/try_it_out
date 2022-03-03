@@ -5,7 +5,7 @@ import axios from 'axios'
 import MenuItem from '@mui/material/MenuItem';
 import { Stack, OutlinedInput, Button, Box, Typography, TextField, Container} from '@mui/material'
 
-function AccountStatusMobile({mobileAccountStatusData, setMobileAccountStatusData}) {
+function AccountStatusMobile({allowUatAccess, mobileAccountStatusData, setMobileAccountStatusData}) {
     
     
   return (
@@ -19,6 +19,7 @@ function AccountStatusMobile({mobileAccountStatusData, setMobileAccountStatusDat
           Beneficiary MSISDN with country code
           </Typography>
           <OutlinedInput sx={{ height: 40 }} placeholder='MSISDN number' 
+          disabled={!allowUatAccess}
           onChange={({ target }) =>
             setMobileAccountStatusData( (prev) =>
             ({...prev, msisdn:target.value}))} 
@@ -29,7 +30,7 @@ function AccountStatusMobile({mobileAccountStatusData, setMobileAccountStatusDat
           Full KYC name of the beneficiary
           </Typography>
           <OutlinedInput sx={{ height: 40 }} placeholder='Full KYC name' 
-          
+          disabled={!allowUatAccess}
           onChange={({ target }) =>
             setMobileAccountStatusData( (prev) =>
             ({...prev, bnv:target.value}))}

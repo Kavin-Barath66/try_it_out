@@ -5,7 +5,7 @@ import axios from 'axios'
 import MenuItem from '@mui/material/MenuItem';
 import { Stack, OutlinedInput, Button, Box, Typography, TextField, Container} from '@mui/material'
 
-function AccountStatusBank({bankAccountStatusData, setBankAccountStatusData}) {
+function AccountStatusBank({allowUatAccess, bankAccountStatusData, setBankAccountStatusData}) {
     
     
   return (
@@ -19,6 +19,7 @@ function AccountStatusBank({bankAccountStatusData, setBankAccountStatusData}) {
         Beneficiary Bank Account ID or IBAN Number
         </Typography>
         <OutlinedInput sx={{ height: 40 }} 
+        disabled={!allowUatAccess}
         onChange={({ target }) =>
         setBankAccountStatusData( (prev) =>
             ({...prev, accountId:target.value}))} 
@@ -29,6 +30,7 @@ function AccountStatusBank({bankAccountStatusData, setBankAccountStatusData}) {
         Full KYC name of the beneficiary
         </Typography>
         <OutlinedInput sx={{ height: 40 }} 
+        disabled={!allowUatAccess}
         onChange={({ target }) =>
         setBankAccountStatusData( (prev) =>
         ({...prev, bnv:target.value}))} 
@@ -62,6 +64,7 @@ function AccountStatusBank({bankAccountStatusData, setBankAccountStatusData}) {
         Bank Name
         </Typography>
         <OutlinedInput sx={{ height: 40 }} 
+        disabled={!allowUatAccess}
         onChange={({ target }) =>
         setBankAccountStatusData( (prev) =>
         ({...prev, bankName:target.value}))} 
@@ -73,6 +76,7 @@ function AccountStatusBank({bankAccountStatusData, setBankAccountStatusData}) {
             Bank code-IFSC/Routing Code/Swift BIC
         </Typography>
         <OutlinedInput sx={{ height: 40 }} 
+        disabled={!allowUatAccess}
         onChange={({ target }) =>
         setBankAccountStatusData( (prev) =>
         ({...prev, bankCode:target.value}))} 
@@ -83,6 +87,7 @@ function AccountStatusBank({bankAccountStatusData, setBankAccountStatusData}) {
             Country
         </Typography>
         <OutlinedInput sx={{ height: 40 }} 
+        disabled={!allowUatAccess}
         onChange={({ target }) =>
         setBankAccountStatusData( (prev) =>
         ({...prev, country:target.value}))} 

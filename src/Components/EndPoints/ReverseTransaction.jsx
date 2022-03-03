@@ -5,7 +5,7 @@ import axios from 'axios'
 import MenuItem from '@mui/material/MenuItem';
 import { Stack, OutlinedInput, Button, Box, Typography, TextField, Container} from '@mui/material'
 
-function ReverseTransaction({reverseTransactionData, setReverseTransactionData}) {
+function ReverseTransaction({allowUatAccess, reverseTransactionData, setReverseTransactionData}) {
     
     
   return (
@@ -19,6 +19,7 @@ function ReverseTransaction({reverseTransactionData, setReverseTransactionData})
           Reason For Reversing
           </Typography>
           <OutlinedInput sx={{ height: 40 }} placeholder='Reversal Reason' 
+          disabled={!allowUatAccess}
           onChange={({ target }) =>
           setReverseTransactionData( (prev) =>
             ({...prev, reason:target.value}))} 
@@ -29,6 +30,7 @@ function ReverseTransaction({reverseTransactionData, setReverseTransactionData})
             Transaction ID
           </Typography>
           <OutlinedInput sx={{ height: 40 }} placeholder='Transaction ID' 
+          disabled={!allowUatAccess}
           onChange={({ target }) =>
           setReverseTransactionData( (prev) =>
             ({...prev, txId:target.value}))} 

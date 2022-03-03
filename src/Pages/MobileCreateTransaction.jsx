@@ -4,14 +4,14 @@ import ResponseCreateTransactionMobile from '../Components/Response/CreateTransa
 import CreateTransactionMobile from '../Components/EndPoints/CreateTransaction/CreateTransactionMobile';
 
 
-function MobileCreateTransaction({createTransactionMobileData, setCreateTransactionMobileData,  apiResponseHeaderData, apiResponseData,responseScreen }) {
+function MobileCreateTransaction({allowUatAccess, createTransactionMobileData, setCreateTransactionMobileData,  apiResponseHeaderData, apiResponseData,responseScreen }) {
     return (
         <Grid container sx={{minHeight: '100%' }}>
             <Grid item xs={7}>
-            <CreateTransactionMobile createTransactionMobileData={createTransactionMobileData} setCreateTransactionMobileData={setCreateTransactionMobileData} />
+            <CreateTransactionMobile allowUatAccess={allowUatAccess} createTransactionMobileData={createTransactionMobileData} setCreateTransactionMobileData={setCreateTransactionMobileData} />
             </Grid>
             <Grid item xs={5}>
-                <ResponseCreateTransactionMobile responseScreen={responseScreen} apiResponseHeaderData={apiResponseHeaderData} apiResponseData={apiResponseData}/>
+                <ResponseCreateTransactionMobile allowUatAccess={allowUatAccess} responseScreen={responseScreen} apiResponseHeaderData={apiResponseHeaderData} apiResponseData={apiResponseData}/>
             </Grid>
         </Grid>
     )

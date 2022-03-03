@@ -1,7 +1,7 @@
 import React from 'react'
 import { Stack, Button, Box, Typography, OutlinedInput, MenuItem, TextField } from '@mui/material'
 
-function CorridorQuotation({corridorQuotationData, setCorridorQuotationData}) {
+function CorridorQuotation({allowUatAccess, corridorQuotationData, setCorridorQuotationData}) {
   return (
     <>
     <Stack direction='row' alignItems='center' justifyContent='center'>
@@ -20,6 +20,7 @@ function CorridorQuotation({corridorQuotationData, setCorridorQuotationData}) {
               ({...prev, currency:target.value}))} 
           value={corridorQuotationData.currency}
           select
+          disabled={!allowUatAccess}
           InputProps={{ style: { height: 40 } }}
           InputLabelProps={{ style: { height: 40 } }}
         >

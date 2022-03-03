@@ -1,7 +1,7 @@
 import React from 'react'
 import { Stack, Button, Box, Typography, OutlinedInput} from '@mui/material'
 
-function GetBankList({setGetBankListData, getBankListData}) {
+function GetBankList({allowUatAccess, setGetBankListData, getBankListData}) {
   return (
     <>
     <Stack direction='row' alignItems='center' justifyContent='center'>
@@ -13,6 +13,7 @@ function GetBankList({setGetBankListData, getBankListData}) {
         Country
         </Typography>
         <OutlinedInput sx={{ height: 40 }} 
+        disabled={allowUatAccess}
         onChange={({ target }) =>
         setGetBankListData( (prev) =>
             ({...prev, country:target.value}))} 

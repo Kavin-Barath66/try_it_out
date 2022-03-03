@@ -5,7 +5,7 @@ import axios from 'axios'
 import MenuItem from '@mui/material/MenuItem';
 import { Stack, OutlinedInput, Button, Box, Typography, TextField, Container} from '@mui/material'
 
-function CreateQuotationBank({createQuotationBank, setCreateQuotationBank}) {
+function CreateQuotationBank({allowUatAccess, createQuotationBank, setCreateQuotationBank}) {
     
     
   return (
@@ -19,6 +19,7 @@ function CreateQuotationBank({createQuotationBank, setCreateQuotationBank}) {
         Request Date
         </Typography>
         <OutlinedInput sx={{ height: 40 }} placeholder='Account Number' 
+        disabled={!allowUatAccess}
         onChange={({ target }) =>
         setCreateQuotationBank( (prev) =>
             ({...prev, requestDate:target.value}))} 
@@ -30,6 +31,7 @@ function CreateQuotationBank({createQuotationBank, setCreateQuotationBank}) {
         Receiver Account Number
         </Typography>
         <OutlinedInput sx={{ height: 40 }} placeholder='Account Number' 
+        disabled={!allowUatAccess}
         onChange={({ target }) =>
         setCreateQuotationBank( (prev) =>
             ({...prev, bankaccountno:target.value}))} 
@@ -41,6 +43,7 @@ function CreateQuotationBank({createQuotationBank, setCreateQuotationBank}) {
         Receiver Country
         </Typography>
         <OutlinedInput sx={{ height: 40 }} placeholder='Recive Country' 
+        disabled={!allowUatAccess}
         onChange={({ target }) =>
         setCreateQuotationBank( (prev) =>
             ({...prev, receivingCountry:target.value}))} 
@@ -51,6 +54,7 @@ function CreateQuotationBank({createQuotationBank, setCreateQuotationBank}) {
         Request Amount
         </Typography>
         <OutlinedInput sx={{ height: 40 }} placeholder='Amount' 
+        disabled={!allowUatAccess}
         onChange={({ target }) =>
         setCreateQuotationBank( (prev) =>
             ({...prev, requestAmount:target.value}))} 
@@ -61,6 +65,7 @@ function CreateQuotationBank({createQuotationBank, setCreateQuotationBank}) {
         Request Currency
         </Typography>
         <OutlinedInput sx={{ height: 40 }} placeholder='Request Currency' 
+        disabled={!allowUatAccess}
         onChange={({ target }) =>
         setCreateQuotationBank( (prev) =>
             ({...prev, requestCurrency:target.value}))} 
@@ -71,6 +76,7 @@ function CreateQuotationBank({createQuotationBank, setCreateQuotationBank}) {
         Sending Currency
         </Typography>
         <OutlinedInput sx={{ height: 40 }} placeholder='Send Currency' 
+        disabled={!allowUatAccess}
         onChange={({ target }) =>
         setCreateQuotationBank( (prev) =>
             ({...prev, sendingCurrency:target.value}))} 
@@ -81,6 +87,7 @@ function CreateQuotationBank({createQuotationBank, setCreateQuotationBank}) {
         Receiving Currency
         </Typography>
         <OutlinedInput sx={{ height: 40 }} placeholder='Recive Currency' 
+        disabled={!allowUatAccess}
         onChange={({ target }) =>
         setCreateQuotationBank( (prev) =>
             ({...prev, receivingCurrency:target.value}))} 
@@ -90,7 +97,7 @@ function CreateQuotationBank({createQuotationBank, setCreateQuotationBank}) {
     <Typography color="#575757" fontWeight='500'>
     Receiver MSISDN
     </Typography>
-    <OutlinedInput sx={{ height: 40 }} placeholder='Recive Currency'
+    <OutlinedInput sx={{ height: 40 }} 
     placeholder ="Disabled"
     disabled />
 </Stack>
@@ -98,7 +105,7 @@ function CreateQuotationBank({createQuotationBank, setCreateQuotationBank}) {
         <Typography color="#575757" fontWeight='500'>
         Sender MSISDN
         </Typography>
-        <OutlinedInput sx={{ height: 40 }} placeholder='Recive Currency'
+        <OutlinedInput sx={{ height: 40 }}
         placeholder ="Disabled"
         disabled/>
     </Stack>

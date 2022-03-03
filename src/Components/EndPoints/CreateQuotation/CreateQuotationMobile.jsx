@@ -5,7 +5,7 @@ import axios from 'axios'
 import MenuItem from '@mui/material/MenuItem';
 import { Stack, OutlinedInput, Button, Box, Typography, TextField, Container} from '@mui/material'
 
-function CreateQuotationMobile({createQuotationMobileData, setCreateQuotationMobileData,}) {
+function CreateQuotationMobile({allowUatAccess, createQuotationMobileData, setCreateQuotationMobileData,}) {
     
     
   return (
@@ -19,7 +19,8 @@ function CreateQuotationMobile({createQuotationMobileData, setCreateQuotationMob
         <Typography color="#575757" fontWeight='500'>
         Request Date
         </Typography>
-        <OutlinedInput sx={{ height: 40 }} placeholder='Request Date' 
+        <OutlinedInput sx={{ height: 40 }} placeholder='Request Date'
+        disabled={!allowUatAccess} 
         onChange={({ target }) =>
         setCreateQuotationMobileData( (prev) =>
             ({...prev, requestDate:target.value}))} 
@@ -30,6 +31,7 @@ function CreateQuotationMobile({createQuotationMobileData, setCreateQuotationMob
         Receiver MSISDN
         </Typography>
         <OutlinedInput sx={{ height: 40 }} placeholder='MSISDN number' 
+        disabled={!allowUatAccess} 
         onChange={({ target }) =>
         setCreateQuotationMobileData( (prev) =>
             ({...prev, reciverMsisdn:target.value}))} 
@@ -40,6 +42,7 @@ function CreateQuotationMobile({createQuotationMobileData, setCreateQuotationMob
         Request Amount
         </Typography>
         <OutlinedInput sx={{ height: 40 }} placeholder='Amount' 
+        disabled={!allowUatAccess} 
         onChange={({ target }) =>
         setCreateQuotationMobileData( (prev) =>
             ({...prev, requestAmount:target.value}))} 
@@ -50,6 +53,7 @@ function CreateQuotationMobile({createQuotationMobileData, setCreateQuotationMob
         Request Currency
         </Typography>
         <OutlinedInput sx={{ height: 40 }} placeholder='Request Currency'
+        disabled={!allowUatAccess} 
         onChange={({ target }) =>
         setCreateQuotationMobileData( (prev) =>
             ({...prev, requestCurrency:target.value}))} 
@@ -60,6 +64,7 @@ function CreateQuotationMobile({createQuotationMobileData, setCreateQuotationMob
         Sending Currency
         </Typography>
         <OutlinedInput sx={{ height: 40 }} placeholder='Sending Currency' 
+        disabled={!allowUatAccess} 
         onChange={({ target }) =>
         setCreateQuotationMobileData( (prev) =>
             ({...prev, sendingCurrency:target.value}))} 
@@ -70,6 +75,7 @@ function CreateQuotationMobile({createQuotationMobileData, setCreateQuotationMob
         Receiving Currency
         </Typography>
         <OutlinedInput sx={{ height: 40 }} placeholder='Receiving Currency' 
+        disabled={!allowUatAccess} 
         onChange={({ target }) =>
         setCreateQuotationMobileData( (prev) =>
             ({...prev, receivingCurrency:target.value}))} 

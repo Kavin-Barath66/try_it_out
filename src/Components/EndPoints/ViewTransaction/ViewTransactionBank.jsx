@@ -5,7 +5,7 @@ import axios from 'axios'
 import MenuItem from '@mui/material/MenuItem';
 import { Stack, OutlinedInput, Button, Box, Typography, TextField, Container} from '@mui/material'
 
-function ViewTransactionBank({viewTransactionBankData, setViewTransactionBankData}) {
+function ViewTransactionBank({allowUatAccess, viewTransactionBankData, setViewTransactionBankData}) {
     
     
   return (
@@ -19,6 +19,7 @@ function ViewTransactionBank({viewTransactionBankData, setViewTransactionBankDat
             Transaction Reference
           </Typography>
           <OutlinedInput sx={{ height: 40 }} placeholder='Transaction Reference' 
+          disabled={!allowUatAccess}
           onChange={({ target }) =>
           setViewTransactionBankData( (prev) =>
           ({...prev, transRef:target.value}))} 

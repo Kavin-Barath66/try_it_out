@@ -5,7 +5,7 @@ import axios from 'axios'
 import MenuItem from '@mui/material/MenuItem';
 import { Stack, OutlinedInput, Button, Box, Typography, TextField, Container} from '@mui/material'
 
-function CreateTransactionMobile({createTransactionMobileData, setCreateTransactionMobileData}) {
+function CreateTransactionMobile({allowUatAccess, createTransactionMobileData, setCreateTransactionMobileData}) {
     
     
   return (
@@ -19,6 +19,7 @@ function CreateTransactionMobile({createTransactionMobileData, setCreateTransact
             Amount
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Amount'
+            disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionMobileData( (prev) =>
           ({...prev, amount:target.value}))} 
@@ -29,6 +30,7 @@ function CreateTransactionMobile({createTransactionMobileData, setCreateTransact
             Currency
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Currency'
+            disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionMobileData( (prev) =>
           ({...prev, currency:target.value}))} 
@@ -39,6 +41,7 @@ function CreateTransactionMobile({createTransactionMobileData, setCreateTransact
             Type
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Type'
+            disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionMobileData( (prev) =>
             ({...prev, type:target.value}))} 
@@ -49,6 +52,7 @@ function CreateTransactionMobile({createTransactionMobileData, setCreateTransact
             Description Text
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Description Text'
+            disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionMobileData( (prev) =>
             ({...prev, descriptionText:target.value}))} 
@@ -59,6 +63,7 @@ function CreateTransactionMobile({createTransactionMobileData, setCreateTransact
             Request Date
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Transaction Reference'
+            disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionMobileData( (prev) =>
             ({...prev, requestDate:target.value}))} 
@@ -69,6 +74,7 @@ function CreateTransactionMobile({createTransactionMobileData, setCreateTransact
             Transaction Reference
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Transaction Reference'
+            disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionMobileData( (prev) =>
             ({...prev, transRef:target.value}))} 
@@ -79,6 +85,7 @@ function CreateTransactionMobile({createTransactionMobileData, setCreateTransact
             Sender MobileNumber
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Sender MSISDN' 
+            disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionMobileData( (prev) =>
             ({...prev, senderMsisdn:target.value}))} 
@@ -89,6 +96,7 @@ function CreateTransactionMobile({createTransactionMobileData, setCreateTransact
             Receiver MobileNumber
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Receiver MSISDN' 
+            disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionMobileData( (prev) =>
             ({...prev, receiverMsisdn:target.value}))} 
@@ -99,6 +107,7 @@ function CreateTransactionMobile({createTransactionMobileData, setCreateTransact
             Sender Nationality
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Nationality'
+            disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionMobileData( (prev) =>
             ({...prev, nationality:target.value}))} 
@@ -109,6 +118,7 @@ function CreateTransactionMobile({createTransactionMobileData, setCreateTransact
         Sender Date Of Birth
         </Typography>
         <OutlinedInput sx={{ height: 40 }} placeholder='Date Of Birth' 
+        disabled={!allowUatAccess}
         onChange={({ target }) =>
             setCreateTransactionMobileData( (prev) =>
             ({...prev, dateOfBirth:target.value}))} 
@@ -121,6 +131,7 @@ function CreateTransactionMobile({createTransactionMobileData, setCreateTransact
             <TextField
             sx={{ width: 205 }}
             label="Sender Gender"
+            disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionMobileData( (prev) =>
             ({...prev, gender:target.value}))} 
@@ -138,6 +149,7 @@ function CreateTransactionMobile({createTransactionMobileData, setCreateTransact
             Sender ID Type
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='ID Type'
+            disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionMobileData( (prev) =>
             ({...prev, idType:target.value}))} 
@@ -148,6 +160,7 @@ function CreateTransactionMobile({createTransactionMobileData, setCreateTransact
             Sender ID Number
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='ID Number' 
+            disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionMobileData( (prev) =>
             ({...prev, idNumber:target.value}))} 
@@ -158,6 +171,7 @@ function CreateTransactionMobile({createTransactionMobileData, setCreateTransact
             Sender Issue Date
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Issue Date' 
+            disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionMobileData( (prev) =>
             ({...prev, issueDate:target.value}))} 
@@ -168,6 +182,7 @@ function CreateTransactionMobile({createTransactionMobileData, setCreateTransact
             Sender Expiry Date
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Expiry Date'
+            disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionMobileData( (prev) =>
             ({...prev, expiryDate:target.value}))} 
@@ -178,6 +193,7 @@ function CreateTransactionMobile({createTransactionMobileData, setCreateTransact
             Issuer Country
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Issuer Country' 
+            disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionMobileData( (prev) =>
             ({...prev, issuerCountry:target.value}))} 
@@ -188,6 +204,7 @@ function CreateTransactionMobile({createTransactionMobileData, setCreateTransact
             Sender Address Line 1
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Address Line 1' 
+            disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionMobileData( (prev) =>
             ({...prev, addressLine1:target.value}))} 
@@ -198,6 +215,7 @@ function CreateTransactionMobile({createTransactionMobileData, setCreateTransact
             Sender Address Line 2
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Address Line 2' 
+            disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionMobileData( (prev) =>
             ({...prev, addressLine2:target.value}))} 
@@ -208,6 +226,7 @@ function CreateTransactionMobile({createTransactionMobileData, setCreateTransact
             Sender Address Line 3
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Address Line 3'
+            disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionMobileData( (prev) =>
             ({...prev, addressLine3:target.value}))} 
@@ -218,6 +237,7 @@ function CreateTransactionMobile({createTransactionMobileData, setCreateTransact
             Sender City
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='City' 
+            disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionMobileData( (prev) =>
             ({...prev, city:target.value}))} 
@@ -228,6 +248,7 @@ function CreateTransactionMobile({createTransactionMobileData, setCreateTransact
             Sender State Province
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='State Province'
+            disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionMobileData( (prev) =>
             ({...prev, stateProvince:target.value}))} 
@@ -238,6 +259,7 @@ function CreateTransactionMobile({createTransactionMobileData, setCreateTransact
             Sender Postal Code
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Postal Code'
+            disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionMobileData( (prev) =>
             ({...prev, postalCode:target.value}))} 
@@ -248,6 +270,7 @@ function CreateTransactionMobile({createTransactionMobileData, setCreateTransact
             Sender Country
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Country' 
+            disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionMobileData( (prev) =>
             ({...prev, country:target.value}))} 
@@ -258,6 +281,7 @@ function CreateTransactionMobile({createTransactionMobileData, setCreateTransact
                 Sender First Name
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Sender First Name'
+            disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionMobileData( (prev) =>
             ({...prev, firstName:target.value}))} 
@@ -268,6 +292,7 @@ function CreateTransactionMobile({createTransactionMobileData, setCreateTransact
                 Sender Middle Name
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Sender Middle Name'
+            disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionMobileData( (prev) =>
             ({...prev, middleName:target.value}))} 
@@ -278,6 +303,7 @@ function CreateTransactionMobile({createTransactionMobileData, setCreateTransact
                 Sender Last Name
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Sender Last Name' 
+            disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionMobileData( (prev) =>
             ({...prev, lastName:target.value}))} 
@@ -288,6 +314,7 @@ function CreateTransactionMobile({createTransactionMobileData, setCreateTransact
                 Receiver First Name
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Receiver First Name'
+            disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionMobileData( (prev) =>
             ({...prev, receiverFirstName:target.value}))} 
@@ -298,6 +325,7 @@ function CreateTransactionMobile({createTransactionMobileData, setCreateTransact
                 Receiver Last Name
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Receiver Last Name'
+            disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionMobileData( (prev) =>
             ({...prev, receiverLastName:target.value}))} 
@@ -308,6 +336,7 @@ function CreateTransactionMobile({createTransactionMobileData, setCreateTransact
                 Quote Id
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Quote Id'
+            disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionMobileData( (prev) =>
             ({...prev, quoteId:target.value}))} 
@@ -318,6 +347,7 @@ function CreateTransactionMobile({createTransactionMobileData, setCreateTransact
                 Receiving Country
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Receiving Country' 
+            disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionMobileData( (prev) =>
             ({...prev, receivingCountry:target.value}))} 
@@ -328,6 +358,7 @@ function CreateTransactionMobile({createTransactionMobileData, setCreateTransact
                 Remittance Purpose
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Remittance Purpose' 
+            disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionMobileData( (prev) =>
             ({...prev, remittancePurpose:target.value}))} 
@@ -338,6 +369,7 @@ function CreateTransactionMobile({createTransactionMobileData, setCreateTransact
                 Source Of Funds
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Source Of Funds'
+            disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionMobileData( (prev) =>
             ({...prev, sourceOfFunds:target.value}))} 
@@ -348,6 +380,7 @@ function CreateTransactionMobile({createTransactionMobileData, setCreateTransact
                 Relationship Sender
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Relationship Sender'
+            disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionMobileData( (prev) =>
             ({...prev, relationshipSender:target.value}))} 
