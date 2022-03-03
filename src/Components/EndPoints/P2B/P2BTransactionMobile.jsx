@@ -5,7 +5,7 @@ import axios from 'axios'
 import MenuItem from '@mui/material/MenuItem';
 import { Stack, OutlinedInput, Button, Box, Typography, TextField, Container} from '@mui/material'
 
-function P2BTransactionMobile({mobileTransactionP2BData, setMobileTransactionP2BData}) {
+function P2BTransactionMobile({allowUatAccess, mobileTransactionP2BData, setMobileTransactionP2BData}) {
     
     
   return (
@@ -19,6 +19,7 @@ function P2BTransactionMobile({mobileTransactionP2BData, setMobileTransactionP2B
         Amount
         </Typography>
         <OutlinedInput sx={{ height: 40 }} placeholder='Amount'
+        disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
         ({...prev, amount:target.value}))} 
@@ -29,6 +30,7 @@ function P2BTransactionMobile({mobileTransactionP2BData, setMobileTransactionP2B
         Currency
         </Typography>
         <OutlinedInput sx={{ height: 40 }} placeholder='Currency'
+        disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
         ({...prev, currency:target.value}))} 
@@ -39,6 +41,7 @@ function P2BTransactionMobile({mobileTransactionP2BData, setMobileTransactionP2B
         Type
         </Typography>
         <OutlinedInput sx={{ height: 40 }} placeholder='Type'
+        disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
         ({...prev, type:target.value}))} 
@@ -49,6 +52,7 @@ function P2BTransactionMobile({mobileTransactionP2BData, setMobileTransactionP2B
         Description Text
         </Typography>
         <OutlinedInput sx={{ height: 40 }} placeholder='Description Text'
+        disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
         ({...prev, descriptionText:target.value}))} 
@@ -59,6 +63,7 @@ function P2BTransactionMobile({mobileTransactionP2BData, setMobileTransactionP2B
         Request Date
         </Typography>
         <OutlinedInput sx={{ height: 40 }} placeholder='Transaction Reference' 
+        disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
         ({...prev, requestDate:target.value}))} 
@@ -69,6 +74,7 @@ function P2BTransactionMobile({mobileTransactionP2BData, setMobileTransactionP2B
         Transaction Reference
         </Typography>
         <OutlinedInput sx={{ height: 40 }} placeholder='Transaction Reference' 
+        disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
         ({...prev, transRef:target.value}))} 
@@ -79,6 +85,7 @@ function P2BTransactionMobile({mobileTransactionP2BData, setMobileTransactionP2B
         Sender MSISDN
         </Typography>
         <OutlinedInput sx={{ height: 40 }} placeholder='Sender MSISDN'
+        disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
         ({...prev, senderMsisdn:target.value}))} 
@@ -89,6 +96,7 @@ function P2BTransactionMobile({mobileTransactionP2BData, setMobileTransactionP2B
         Receiver MSISDN
         </Typography>
         <OutlinedInput sx={{ height: 40 }} placeholder='Sender MSISDN'
+        disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
         ({...prev, receiverMsisdn:target.value}))} 
@@ -99,6 +107,7 @@ function P2BTransactionMobile({mobileTransactionP2BData, setMobileTransactionP2B
         Nationality
         </Typography>
         <OutlinedInput sx={{ height: 40 }} placeholder='Nationality'
+        disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
         ({...prev, nationality:target.value}))} 
@@ -109,6 +118,7 @@ function P2BTransactionMobile({mobileTransactionP2BData, setMobileTransactionP2B
         Date Of Birth
         </Typography>
         <OutlinedInput sx={{ height: 40 }} placeholder='Date Of Birth'
+        disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
         ({...prev, dateOfBirth:target.value}))} 
@@ -122,6 +132,7 @@ function P2BTransactionMobile({mobileTransactionP2BData, setMobileTransactionP2B
         <TextField
               sx={{ width: 205 }}
               label="Gender"
+              disabled={!allowUatAccess}     
               onChange={({ target }) =>
             setMobileTransactionP2BData( (prev) =>
             ({...prev, gender:target.value}))} 
@@ -141,6 +152,7 @@ function P2BTransactionMobile({mobileTransactionP2BData, setMobileTransactionP2B
         ID Type
         </Typography>
         <OutlinedInput sx={{ height: 40 }} placeholder='ID Type'
+        disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
         ({...prev, idType:target.value}))} 
@@ -151,6 +163,7 @@ function P2BTransactionMobile({mobileTransactionP2BData, setMobileTransactionP2B
         ID Number
         </Typography>
         <OutlinedInput sx={{ height: 40 }} placeholder='ID Number'
+        disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
         ({...prev, idNumber:target.value}))} 
@@ -161,6 +174,7 @@ function P2BTransactionMobile({mobileTransactionP2BData, setMobileTransactionP2B
         Issue Date
         </Typography>
         <OutlinedInput sx={{ height: 40 }} placeholder='Issue Date'
+        disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
         ({...prev, issueDate:target.value}))} 
@@ -171,6 +185,7 @@ function P2BTransactionMobile({mobileTransactionP2BData, setMobileTransactionP2B
         Expiry Date
         </Typography>
         <OutlinedInput sx={{ height: 40 }} placeholder='Expiry Date'
+        disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
         ({...prev, expiryDate:target.value}))} 
@@ -181,6 +196,7 @@ function P2BTransactionMobile({mobileTransactionP2BData, setMobileTransactionP2B
         Issuer Country
         </Typography>
         <OutlinedInput sx={{ height: 40 }} placeholder='Issuer Country'
+        disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
         ({...prev, issuerCountry:target.value}))} 
@@ -191,6 +207,7 @@ function P2BTransactionMobile({mobileTransactionP2BData, setMobileTransactionP2B
         Address Line 1
         </Typography>
         <OutlinedInput sx={{ height: 40 }} placeholder='Address Line 1'
+        disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
         ({...prev, addressLine1:target.value}))} 
@@ -201,6 +218,7 @@ function P2BTransactionMobile({mobileTransactionP2BData, setMobileTransactionP2B
         Address Line 2
         </Typography>
         <OutlinedInput sx={{ height: 40 }} placeholder='Address Line 2'
+        disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
         ({...prev, addressLine2:target.value}))} 
@@ -211,6 +229,7 @@ function P2BTransactionMobile({mobileTransactionP2BData, setMobileTransactionP2B
         Address Line 3
         </Typography>
         <OutlinedInput sx={{ height: 40 }} placeholder='Address Line 3' 
+        disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
         ({...prev, addressLine3:target.value}))} 
@@ -221,6 +240,7 @@ function P2BTransactionMobile({mobileTransactionP2BData, setMobileTransactionP2B
         City
         </Typography>
         <OutlinedInput sx={{ height: 40 }} placeholder='City' 
+        disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
         ({...prev, city:target.value}))} 
@@ -231,6 +251,7 @@ function P2BTransactionMobile({mobileTransactionP2BData, setMobileTransactionP2B
         State Province
         </Typography>
         <OutlinedInput sx={{ height: 40 }} placeholder='State Province' 
+        disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
         ({...prev, stateProvince:target.value}))} 
@@ -241,6 +262,7 @@ function P2BTransactionMobile({mobileTransactionP2BData, setMobileTransactionP2B
         Postal Code
         </Typography>
         <OutlinedInput sx={{ height: 40 }} placeholder='Postal Code' 
+        disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
         ({...prev, postalCode:target.value}))} 
@@ -251,6 +273,7 @@ function P2BTransactionMobile({mobileTransactionP2BData, setMobileTransactionP2B
         Country
         </Typography>
         <OutlinedInput sx={{ height: 40 }} placeholder='Country'
+        disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
         ({...prev, country:target.value}))} 
@@ -261,6 +284,7 @@ function P2BTransactionMobile({mobileTransactionP2BData, setMobileTransactionP2B
             Sender First Name
         </Typography>
         <OutlinedInput sx={{ height: 40 }} placeholder='Sender First Name'
+        disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
         ({...prev, firstName:target.value}))} 
@@ -271,6 +295,7 @@ function P2BTransactionMobile({mobileTransactionP2BData, setMobileTransactionP2B
             Sender Middle Name
         </Typography>
         <OutlinedInput sx={{ height: 40 }} placeholder='Sender Last Name' 
+        disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
         ({...prev, middleName:target.value}))} 
@@ -281,6 +306,7 @@ function P2BTransactionMobile({mobileTransactionP2BData, setMobileTransactionP2B
             Sender Last Name
         </Typography>
         <OutlinedInput sx={{ height: 40 }} placeholder='Sender Last Name' 
+        disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
         ({...prev, lastName:target.value}))} 
@@ -291,6 +317,7 @@ function P2BTransactionMobile({mobileTransactionP2BData, setMobileTransactionP2B
             Sending Amount
         </Typography>
         <OutlinedInput sx={{ height: 40 }} placeholder='Receiver Full Name' 
+        disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
         ({...prev, sendingAmount:target.value}))} 
@@ -301,6 +328,7 @@ function P2BTransactionMobile({mobileTransactionP2BData, setMobileTransactionP2B
             Paying Currency Code
         </Typography>
         <OutlinedInput sx={{ height: 40 }} placeholder='Paying Currency Code'
+        disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
         ({...prev, payinCcyCode:target.value}))} 
@@ -311,6 +339,7 @@ function P2BTransactionMobile({mobileTransactionP2BData, setMobileTransactionP2B
             Payment Mode
         </Typography>
         <OutlinedInput sx={{ height: 40 }} placeholder='Payment Mode'
+        disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
         ({...prev, paymentMode:target.value}))} 
@@ -321,6 +350,7 @@ function P2BTransactionMobile({mobileTransactionP2BData, setMobileTransactionP2B
             Authentication Partner Code
         </Typography>
         <OutlinedInput sx={{ height: 40 }} placeholder='Authentication Partner Code' 
+        disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
         ({...prev, authenticationPartnerCode:target.value}))} 
@@ -331,6 +361,7 @@ function P2BTransactionMobile({mobileTransactionP2BData, setMobileTransactionP2B
             Payment Option
         </Typography>
         <OutlinedInput sx={{ height: 40 }} placeholder='Payment Option'
+        disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
         ({...prev, paymentOption:target.value}))} 
@@ -341,6 +372,7 @@ function P2BTransactionMobile({mobileTransactionP2BData, setMobileTransactionP2B
             Sending Partner Code
         </Typography>
         <OutlinedInput sx={{ height: 40 }} placeholder='Sending Partner Code'
+        disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
         ({...prev, sendingPartnerCode:target.value}))} 
@@ -351,6 +383,7 @@ function P2BTransactionMobile({mobileTransactionP2BData, setMobileTransactionP2B
             Receiving Partner Code
         </Typography>
         <OutlinedInput sx={{ height: 40 }} placeholder='Receiving Partner Code'
+        disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
         ({...prev, receivingPartnerCode:target.value}))} 
@@ -361,6 +394,7 @@ function P2BTransactionMobile({mobileTransactionP2BData, setMobileTransactionP2B
             Business Name
         </Typography>
         <OutlinedInput sx={{ height: 40 }} placeholder='Business Name'
+        disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
         ({...prev, businessName:target.value}))} 
@@ -371,6 +405,7 @@ function P2BTransactionMobile({mobileTransactionP2BData, setMobileTransactionP2B
             Business PINCODE
         </Typography>
         <OutlinedInput sx={{ height: 40 }} placeholder='Business PINCODE'
+        disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
         ({...prev, businessPINCode:target.value}))} 
@@ -381,6 +416,7 @@ function P2BTransactionMobile({mobileTransactionP2BData, setMobileTransactionP2B
             Business Address 1
         </Typography>
         <OutlinedInput sx={{ height: 40 }} placeholder='Business Address 1' 
+        disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
         ({...prev, businessAddress1:target.value}))} 
@@ -391,6 +427,7 @@ function P2BTransactionMobile({mobileTransactionP2BData, setMobileTransactionP2B
             Business Address 2
         </Typography>
         <OutlinedInput sx={{ height: 40 }} placeholder='Business Address 2' 
+        disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
         ({...prev, businessAddress2:target.value}))} 
@@ -401,6 +438,7 @@ function P2BTransactionMobile({mobileTransactionP2BData, setMobileTransactionP2B
             Business Address City
         </Typography>
         <OutlinedInput sx={{ height: 40 }} placeholder='Business Address City' 
+        disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
         ({...prev, businessAddressCity:target.value}))} 
@@ -411,6 +449,7 @@ function P2BTransactionMobile({mobileTransactionP2BData, setMobileTransactionP2B
             Business Address State
         </Typography>
         <OutlinedInput sx={{ height: 40 }} placeholder='Business Address State' 
+        disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
         ({...prev, businessAddressState:target.value}))} 
@@ -421,7 +460,8 @@ function P2BTransactionMobile({mobileTransactionP2BData, setMobileTransactionP2B
             Business Address Country Code
         </Typography>
         <OutlinedInput sx={{ height: 40 }} placeholder='Business Address Country Code' 
-        onChange={({ target }) =>
+        disabled={!allowUatAccess}    
+         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
         ({...prev, businessAddressCountryCode:target.value}))} 
         value={mobileTransactionP2BData.businessAddressCountryCode} />
@@ -431,6 +471,7 @@ function P2BTransactionMobile({mobileTransactionP2BData, setMobileTransactionP2B
             Business Address Zip Code
         </Typography>
         <OutlinedInput sx={{ height: 40 }} placeholder='Business Address Zip Code' 
+        disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
         ({...prev, businessAddressZip:target.value}))} 
@@ -441,6 +482,7 @@ function P2BTransactionMobile({mobileTransactionP2BData, setMobileTransactionP2B
             Business Address Contact Country Code
         </Typography>
         <OutlinedInput sx={{ height: 40 }} placeholder='Business Address Contact Country Code' 
+        disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
         ({...prev, businessPrimaryContactCountryCode:target.value}))} 
@@ -451,7 +493,8 @@ function P2BTransactionMobile({mobileTransactionP2BData, setMobileTransactionP2B
             Business Address Contact Number
         </Typography>
         <OutlinedInput sx={{ height: 40 }} placeholder='Business Address Contact Number' 
-        onChange={({ target }) =>
+        disabled={!allowUatAccess}    
+         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
         ({...prev, businessPrimaryContactNo:target.value}))} 
         value={mobileTransactionP2BData.businessPrimaryContactNo}/>
@@ -461,6 +504,7 @@ function P2BTransactionMobile({mobileTransactionP2BData, setMobileTransactionP2B
             Business Address Contact Number Type
         </Typography>
         <OutlinedInput sx={{ height: 40 }} placeholder='Business Address Contact Number Type'
+        disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
         ({...prev, businessPrimaryContactNoType:target.value}))} 
@@ -471,6 +515,7 @@ function P2BTransactionMobile({mobileTransactionP2BData, setMobileTransactionP2B
             Business Description
         </Typography>
         <OutlinedInput sx={{ height: 40 }} placeholder='Business Description' 
+        disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
         ({...prev, businessDescription:target.value}))} 
@@ -481,6 +526,7 @@ function P2BTransactionMobile({mobileTransactionP2BData, setMobileTransactionP2B
             Business Email
         </Typography>
         <OutlinedInput sx={{ height: 40 }} placeholder='Business Email'
+        disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
         ({...prev, businessEmail:target.value}))} 
@@ -491,6 +537,7 @@ function P2BTransactionMobile({mobileTransactionP2BData, setMobileTransactionP2B
             Business Country Code
         </Typography>
         <OutlinedInput sx={{ height: 40 }} placeholder='Business Country Code'
+        disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
         ({...prev, businessCountryCode:target.value}))} 
@@ -501,6 +548,7 @@ function P2BTransactionMobile({mobileTransactionP2BData, setMobileTransactionP2B
             Business Registration Type
         </Typography>
         <OutlinedInput sx={{ height: 40 }} placeholder='Business Registration Type'
+        disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
         ({...prev, businessRegistrationType:target.value}))} 
@@ -511,6 +559,7 @@ function P2BTransactionMobile({mobileTransactionP2BData, setMobileTransactionP2B
             Business Registration Number
         </Typography>
         <OutlinedInput sx={{ height: 40 }} placeholder='Business Registration Number' 
+        disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
         ({...prev, businessRegistrationNumber:target.value}))} 
@@ -521,6 +570,7 @@ function P2BTransactionMobile({mobileTransactionP2BData, setMobileTransactionP2B
             Business Registration Issued By
         </Typography>
         <OutlinedInput sx={{ height: 40 }} placeholder='Business Registration Issued By'
+        disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
         ({...prev, businessRegistrationIssuedBy:target.value}))} 
@@ -531,6 +581,7 @@ function P2BTransactionMobile({mobileTransactionP2BData, setMobileTransactionP2B
             Business Registration Issued At
         </Typography>
         <OutlinedInput sx={{ height: 40 }} placeholder='Business Registration Issued At'
+        disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
         ({...prev, businessRegistrationIssuedAt:target.value}))} 
@@ -541,6 +592,7 @@ function P2BTransactionMobile({mobileTransactionP2BData, setMobileTransactionP2B
             Business Registration Issued Date
         </Typography>
         <OutlinedInput sx={{ height: 40 }} placeholder='Business Registration Issued Date'
+        disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
         ({...prev, businessRegistrationIssueDate:target.value}))} 
@@ -551,6 +603,7 @@ function P2BTransactionMobile({mobileTransactionP2BData, setMobileTransactionP2B
             Business ID ValidThru
         </Typography>
         <OutlinedInput sx={{ height: 40 }} placeholder='Business ID ValidThru'
+        disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
         ({...prev, businessIDValidThru:target.value}))} 
@@ -561,6 +614,7 @@ function P2BTransactionMobile({mobileTransactionP2BData, setMobileTransactionP2B
             Type Of Business
         </Typography>
         <OutlinedInput sx={{ height: 40 }} placeholder='Type Of Business' 
+        disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
         ({...prev, typeofbusiness:target.value}))} 
@@ -571,6 +625,7 @@ function P2BTransactionMobile({mobileTransactionP2BData, setMobileTransactionP2B
             Business POBox
         </Typography>
         <OutlinedInput sx={{ height: 40 }} placeholder='Business POBox'
+        disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
         ({...prev, businessPObox:target.value}))} 
@@ -581,6 +636,7 @@ function P2BTransactionMobile({mobileTransactionP2BData, setMobileTransactionP2B
             Business Mobile
         </Typography>
         <OutlinedInput sx={{ height: 40 }} placeholder='Business Mobile'
+        disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
         ({...prev, businessMobile:target.value}))} 
@@ -591,6 +647,7 @@ function P2BTransactionMobile({mobileTransactionP2BData, setMobileTransactionP2B
             Quote Id
         </Typography>
         <OutlinedInput sx={{ height: 40 }} placeholder='Quote Id'
+        disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
         ({...prev, quoteId:target.value}))} 
@@ -601,6 +658,7 @@ function P2BTransactionMobile({mobileTransactionP2BData, setMobileTransactionP2B
             Receiving Country
         </Typography>
         <OutlinedInput sx={{ height: 40 }} placeholder='Receiving Country'
+        disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
         ({...prev, receivingCountry:target.value}))} 
@@ -611,6 +669,7 @@ function P2BTransactionMobile({mobileTransactionP2BData, setMobileTransactionP2B
             Remittance Purpose
         </Typography>
         <OutlinedInput sx={{ height: 40 }} placeholder='Remittance Purpose'
+        disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
         ({...prev, remittancePurpose:target.value}))} 
@@ -621,6 +680,7 @@ function P2BTransactionMobile({mobileTransactionP2BData, setMobileTransactionP2B
             Source Of Funds
         </Typography>
         <OutlinedInput sx={{ height: 40 }} placeholder='Source Of Funds' 
+        disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
         ({...prev, sourceOfFunds:target.value}))} 
@@ -631,6 +691,7 @@ function P2BTransactionMobile({mobileTransactionP2BData, setMobileTransactionP2B
             Relationship Sender
         </Typography>
         <OutlinedInput sx={{ height: 40 }} placeholder='Relationship Sender'
+        disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
         ({...prev, relationshipSender:target.value}))} 

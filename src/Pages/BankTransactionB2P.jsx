@@ -6,14 +6,14 @@ import ResponseB2PTransactionBank from '../Components/Response/B2P/ResponseB2PTr
 
 
 
-function BankTransactionB2P({bankTransactionB2PData, setBankTransactionB2PData, responseScreen, apiResponseHeaderData, apiResponseData}) {
+function BankTransactionB2P({allowUatAccess, bankTransactionB2PData, setBankTransactionB2PData, responseScreen, apiResponseHeaderData, apiResponseData}) {
     return (
         <Grid container sx={{minHeight: '100%' }}>
             <Grid item xs={7}>
-                <B2PTransactionBank bankTransactionB2PData={bankTransactionB2PData} setBankTransactionB2PData={setBankTransactionB2PData} />
+                <B2PTransactionBank allowUatAccess={allowUatAccess} bankTransactionB2PData={bankTransactionB2PData} setBankTransactionB2PData={setBankTransactionB2PData} />
             </Grid>
             <Grid item xs={5}>
-                <ResponseB2PTransactionBank  responseScreen={responseScreen} apiResponseHeaderData={apiResponseHeaderData} apiResponseData={apiResponseData}/>
+                <ResponseB2PTransactionBank  allowUatAccess={allowUatAccess} responseScreen={responseScreen} apiResponseHeaderData={apiResponseHeaderData} apiResponseData={apiResponseData}/>
             </Grid>
         </Grid>
     )

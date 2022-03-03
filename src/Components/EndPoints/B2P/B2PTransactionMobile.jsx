@@ -5,7 +5,7 @@ import axios from 'axios'
 import MenuItem from '@mui/material/MenuItem';
 import { Stack, OutlinedInput, Button, Box, Typography, TextField, Container} from '@mui/material'
 
-function B2PTransactionMobile({mobileTransactionB2PData, setMobileTransactionB2PData}) {
+function B2PTransactionMobile({allowUatAccess, mobileTransactionB2PData, setMobileTransactionB2PData}) {
     
     
   return (
@@ -19,6 +19,7 @@ function B2PTransactionMobile({mobileTransactionB2PData, setMobileTransactionB2P
           Amount
           </Typography>
           <OutlinedInput sx={{ height: 40 }} placeholder='Amount'
+          disabled={!allowUatAccess}       
           onChange={({ target }) =>
           setMobileTransactionB2PData( (prev) =>
           ({...prev, amount:target.value}))} 
@@ -29,6 +30,7 @@ function B2PTransactionMobile({mobileTransactionB2PData, setMobileTransactionB2P
             Currency
           </Typography>
           <OutlinedInput sx={{ height: 40 }} placeholder='Currency' 
+          disabled={!allowUatAccess}       
           onChange={({ target }) =>
           setMobileTransactionB2PData( (prev) =>
           ({...prev, currency:target.value}))} 
@@ -39,6 +41,7 @@ function B2PTransactionMobile({mobileTransactionB2PData, setMobileTransactionB2P
             Type
           </Typography>
           <OutlinedInput sx={{ height: 40 }} placeholder='Type' 
+          disabled={!allowUatAccess}       
           onChange={({ target }) =>
           setMobileTransactionB2PData( (prev) =>
           ({...prev, type:target.value}))} 
@@ -49,6 +52,7 @@ function B2PTransactionMobile({mobileTransactionB2PData, setMobileTransactionB2P
             Description Text
           </Typography>
           <OutlinedInput sx={{ height: 40 }} placeholder='Description Text' 
+          disabled={!allowUatAccess}       
           onChange={({ target }) =>
           setMobileTransactionB2PData( (prev) =>
           ({...prev, descriptionText:target.value}))} 
@@ -59,6 +63,7 @@ function B2PTransactionMobile({mobileTransactionB2PData, setMobileTransactionB2P
             Request Date
           </Typography>
           <OutlinedInput sx={{ height: 40 }} placeholder='Transaction Reference' 
+          disabled={!allowUatAccess}       
           onChange={({ target }) =>
           setMobileTransactionB2PData( (prev) =>
           ({...prev, requestDate:target.value}))} 
@@ -69,6 +74,7 @@ function B2PTransactionMobile({mobileTransactionB2PData, setMobileTransactionB2P
             Transaction Reference
           </Typography>
           <OutlinedInput sx={{ height: 40 }} placeholder='Transaction Reference' 
+          disabled={!allowUatAccess}       
           onChange={({ target }) =>
           setMobileTransactionB2PData( (prev) =>
           ({...prev, transRef:target.value}))} 
@@ -79,6 +85,7 @@ function B2PTransactionMobile({mobileTransactionB2PData, setMobileTransactionB2P
             Sender MSISDN
           </Typography>
           <OutlinedInput sx={{ height: 40 }} placeholder='Sender MSISDN' 
+          disabled={!allowUatAccess}       
           onChange={({ target }) =>
           setMobileTransactionB2PData( (prev) =>
           ({...prev, senderMsisd:target.value}))} 
@@ -89,6 +96,7 @@ function B2PTransactionMobile({mobileTransactionB2PData, setMobileTransactionB2P
             Receiver MSISDN
           </Typography>
           <OutlinedInput sx={{ height: 40 }} placeholder='Sender MSISDN' 
+          disabled={!allowUatAccess}       
           onChange={({ target }) =>
           setMobileTransactionB2PData( (prev) =>
           ({...prev, receiverMsisd:target.value}))} 
@@ -99,6 +107,7 @@ function B2PTransactionMobile({mobileTransactionB2PData, setMobileTransactionB2P
                 Receiver FirstName
           </Typography>
           <OutlinedInput sx={{ height: 40 }} placeholder='Receiver Fullname' 
+          disabled={!allowUatAccess}       
           onChange={({ target }) =>
           setMobileTransactionB2PData( (prev) =>
           ({...prev, receiverFirstName:target.value}))} 
@@ -109,6 +118,7 @@ function B2PTransactionMobile({mobileTransactionB2PData, setMobileTransactionB2P
                 Receiver LastName
           </Typography>
           <OutlinedInput sx={{ height: 40 }} placeholder='Receiver Fullname' 
+          disabled={!allowUatAccess}       
           onChange={({ target }) =>
           setMobileTransactionB2PData( (prev) =>
           ({...prev, receiverLastName:target.value}))} 
@@ -119,6 +129,7 @@ function B2PTransactionMobile({mobileTransactionB2PData, setMobileTransactionB2P
                 Sending Amount
           </Typography>
           <OutlinedInput sx={{ height: 40 }} placeholder='Sending Amount' 
+          disabled={!allowUatAccess}       
           onChange={({ target }) =>
           setMobileTransactionB2PData( (prev) =>
           ({...prev, sendingAmount:target.value}))} 
@@ -129,6 +140,7 @@ function B2PTransactionMobile({mobileTransactionB2PData, setMobileTransactionB2P
                 Paying Currency
           </Typography>
           <OutlinedInput sx={{ height: 40 }} placeholder='Paying Currency' 
+          disabled={!allowUatAccess}       
           onChange={({ target }) =>
           setMobileTransactionB2PData( (prev) =>
           ({...prev, payinCcyCode:target.value}))} 
@@ -139,6 +151,7 @@ function B2PTransactionMobile({mobileTransactionB2PData, setMobileTransactionB2P
                 Payment Mode
           </Typography>
           <OutlinedInput sx={{ height: 40 }} placeholder='Payment Mode' 
+          disabled={!allowUatAccess}       
           onChange={({ target }) =>
           setMobileTransactionB2PData( (prev) =>
           ({...prev, paymentMode:target.value}))} 
@@ -149,6 +162,7 @@ function B2PTransactionMobile({mobileTransactionB2PData, setMobileTransactionB2P
                 Authentication Partner Code
           </Typography>
           <OutlinedInput sx={{ height: 40 }} placeholder='Authentication Partner Code' 
+          disabled={!allowUatAccess}       
           onChange={({ target }) =>
           setMobileTransactionB2PData( (prev) =>
           ({...prev, authenticationPartnerCode:target.value}))} 
@@ -159,6 +173,7 @@ function B2PTransactionMobile({mobileTransactionB2PData, setMobileTransactionB2P
                 Payment Option
           </Typography>
           <OutlinedInput sx={{ height: 40 }} placeholder=' Payment Option' 
+          disabled={!allowUatAccess}       
           onChange={({ target }) =>
           setMobileTransactionB2PData( (prev) =>
           ({...prev, paymentOption:target.value}))} 
@@ -169,6 +184,7 @@ function B2PTransactionMobile({mobileTransactionB2PData, setMobileTransactionB2P
                 Sending Partner Code
           </Typography>
           <OutlinedInput sx={{ height: 40 }} placeholder='Sending Partner Code' 
+          disabled={!allowUatAccess}       
           onChange={({ target }) =>
           setMobileTransactionB2PData( (prev) =>
           ({...prev, sendingPartnerCode:target.value}))} 
@@ -179,6 +195,7 @@ function B2PTransactionMobile({mobileTransactionB2PData, setMobileTransactionB2P
                 Receiving Partner Code
           </Typography>
           <OutlinedInput sx={{ height: 40 }} placeholder='Receiving Partner Code' 
+          disabled={!allowUatAccess}       
           onChange={({ target }) =>
           setMobileTransactionB2PData( (prev) =>
           ({...prev, receivingPartnerCode:target.value}))} 
@@ -189,6 +206,7 @@ function B2PTransactionMobile({mobileTransactionB2PData, setMobileTransactionB2P
                 Business Name
           </Typography>
           <OutlinedInput sx={{ height: 40 }} placeholder='Business Name' 
+          disabled={!allowUatAccess}       
           onChange={({ target }) =>
           setMobileTransactionB2PData( (prev) =>
           ({...prev, businessName:target.value}))} 
@@ -199,6 +217,7 @@ function B2PTransactionMobile({mobileTransactionB2PData, setMobileTransactionB2P
           Business Address1
           </Typography>
           <OutlinedInput sx={{ height: 40 }} placeholder='Business Address1' 
+          disabled={!allowUatAccess}       
           onChange={({ target }) =>
           setMobileTransactionB2PData( (prev) =>
           ({...prev, businessAddress1:target.value}))} 
@@ -209,6 +228,7 @@ function B2PTransactionMobile({mobileTransactionB2PData, setMobileTransactionB2P
           Business Address City
           </Typography>
           <OutlinedInput sx={{ height: 40 }} placeholder='Business Address City' 
+          disabled={!allowUatAccess}       
           onChange={({ target }) =>
           setMobileTransactionB2PData( (prev) =>
           ({...prev, businessAddressCity:target.value}))} 
@@ -219,6 +239,7 @@ function B2PTransactionMobile({mobileTransactionB2PData, setMobileTransactionB2P
           Business Address Country Code
           </Typography>
           <OutlinedInput sx={{ height: 40 }} placeholder='Business Address Primary Country Code'
+          disabled={!allowUatAccess}       
           onChange={({ target }) =>
           setMobileTransactionB2PData( (prev) =>
           ({...prev, businessAddressCountryCode:target.value}))} 
@@ -229,6 +250,7 @@ function B2PTransactionMobile({mobileTransactionB2PData, setMobileTransactionB2P
           Business Address Primary Country Code
           </Typography>
           <OutlinedInput sx={{ height: 40 }} placeholder='Business Address Primary Country Code'
+          disabled={!allowUatAccess}       
           onChange={({ target }) =>
           setMobileTransactionB2PData( (prev) =>
           ({...prev, businessPrimaryContactCountryCode:target.value}))} 
@@ -239,6 +261,7 @@ function B2PTransactionMobile({mobileTransactionB2PData, setMobileTransactionB2P
           Business Address Primary Contact Code
           </Typography>
           <OutlinedInput sx={{ height: 40 }} placeholder='Business Address Primary Contact Code' 
+          disabled={!allowUatAccess}       
           onChange={({ target }) =>
           setMobileTransactionB2PData( (prev) =>
           ({...prev, businessPrimaryContactNo:target.value}))} 
@@ -249,6 +272,7 @@ function B2PTransactionMobile({mobileTransactionB2PData, setMobileTransactionB2P
             Business Description
           </Typography>
           <OutlinedInput sx={{ height: 40 }} placeholder='Business Description' 
+          disabled={!allowUatAccess}       
           onChange={({ target }) =>
           setMobileTransactionB2PData( (prev) =>
           ({...prev, businessDescription:target.value}))} 
@@ -259,6 +283,7 @@ function B2PTransactionMobile({mobileTransactionB2PData, setMobileTransactionB2P
           Business Country Code
           </Typography>
           <OutlinedInput sx={{ height: 40 }} placeholder='Business Country Code' 
+          disabled={!allowUatAccess}       
           onChange={({ target }) =>
           setMobileTransactionB2PData( (prev) =>
           ({...prev, businessCountryCode:target.value}))} 
@@ -269,6 +294,7 @@ function B2PTransactionMobile({mobileTransactionB2PData, setMobileTransactionB2P
           Business Registeration Type
           </Typography>
           <OutlinedInput sx={{ height: 40 }} placeholder='Business Registeration Type' 
+          disabled={!allowUatAccess}       
           onChange={({ target }) =>
           setMobileTransactionB2PData( (prev) =>
           ({...prev, businessRegistrationType:target.value}))} 
@@ -279,6 +305,7 @@ function B2PTransactionMobile({mobileTransactionB2PData, setMobileTransactionB2P
           Business Registeration Number
           </Typography>
           <OutlinedInput sx={{ height: 40 }} placeholder='Business Registeration Number' 
+          disabled={!allowUatAccess}       
           onChange={({ target }) =>
           setMobileTransactionB2PData( (prev) =>
           ({...prev, businessRegistrationNumber:target.value}))} 
@@ -289,6 +316,7 @@ function B2PTransactionMobile({mobileTransactionB2PData, setMobileTransactionB2P
           Business Registration IssueDate
           </Typography>
           <OutlinedInput sx={{ height: 40 }} placeholder='Business Registration IssueDate' 
+          disabled={!allowUatAccess}       
           onChange={({ target }) =>
           setMobileTransactionB2PData( (prev) =>
           ({...prev, businessRegistrationIssueDate:target.value}))} 
@@ -299,6 +327,7 @@ function B2PTransactionMobile({mobileTransactionB2PData, setMobileTransactionB2P
           Business ID ValidThru
           </Typography>
           <OutlinedInput sx={{ height: 40 }} placeholder='Business ID ValidThru' 
+          disabled={!allowUatAccess}       
           onChange={({ target }) =>
           setMobileTransactionB2PData( (prev) =>
           ({...prev, businessIDValidThru:target.value}))} 
@@ -309,6 +338,7 @@ function B2PTransactionMobile({mobileTransactionB2PData, setMobileTransactionB2P
           Business Email
           </Typography>
           <OutlinedInput sx={{ height: 40 }} placeholder='Business Email' 
+          disabled={!allowUatAccess}       
           onChange={({ target }) =>
           setMobileTransactionB2PData( (prev) =>
           ({...prev, businessEmail:target.value}))} 
@@ -319,6 +349,7 @@ function B2PTransactionMobile({mobileTransactionB2PData, setMobileTransactionB2P
           Quoted Id
           </Typography>
           <OutlinedInput sx={{ height: 40 }} placeholder='Quoted Id' 
+          disabled={!allowUatAccess}       
           onChange={({ target }) =>
           setMobileTransactionB2PData( (prev) =>
           ({...prev, quoteId:target.value}))} 
@@ -329,6 +360,7 @@ function B2PTransactionMobile({mobileTransactionB2PData, setMobileTransactionB2P
           Receiving Country
           </Typography>
           <OutlinedInput sx={{ height: 40 }} placeholder='Receiving Country' 
+          disabled={!allowUatAccess}       
           onChange={({ target }) =>
           setMobileTransactionB2PData( (prev) =>
           ({...prev, receivingCountry:target.value}))} 
@@ -339,6 +371,7 @@ function B2PTransactionMobile({mobileTransactionB2PData, setMobileTransactionB2P
           Remittance Purpose
           </Typography>
           <OutlinedInput sx={{ height: 40 }} placeholder='Receiving Country' 
+          disabled={!allowUatAccess}       
           onChange={({ target }) =>
           setMobileTransactionB2PData( (prev) =>
           ({...prev, remittancePurpose:target.value}))} 
@@ -349,6 +382,7 @@ function B2PTransactionMobile({mobileTransactionB2PData, setMobileTransactionB2P
             Source Of Fund
           </Typography>
           <OutlinedInput sx={{ height: 40 }} placeholder='Source Of Fund' 
+          disabled={!allowUatAccess}       
           onChange={({ target }) =>
           setMobileTransactionB2PData( (prev) =>
           ({...prev, sourceOfFunds:target.value}))} 
@@ -359,6 +393,7 @@ function B2PTransactionMobile({mobileTransactionB2PData, setMobileTransactionB2P
           Relationship Of Sender
           </Typography>
           <OutlinedInput sx={{ height: 40 }} placeholder='Relationship Of Sender' 
+          disabled={!allowUatAccess}       
           onChange={({ target }) =>
           setMobileTransactionB2PData( (prev) =>
           ({...prev, relationshipSender:target.value}))} 

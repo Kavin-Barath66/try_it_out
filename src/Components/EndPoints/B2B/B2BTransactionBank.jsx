@@ -5,7 +5,7 @@ import axios from 'axios'
 import MenuItem from '@mui/material/MenuItem';
 import { Stack, OutlinedInput, Button, Box, Typography, TextField, Container} from '@mui/material'
 
-function B2BTransactionBank({bankTransactionB2BData, setBankTransactionB2BData}) {
+function B2BTransactionBank({allowUatAccess, bankTransactionB2BData, setBankTransactionB2BData}) {
     
   return (
     <>
@@ -18,6 +18,7 @@ function B2BTransactionBank({bankTransactionB2BData, setBankTransactionB2BData})
             Amount
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Amount'
+            disabled={!allowUatAccess}  
             onChange={({ target }) =>
             setBankTransactionB2BData( (prev) =>
           ({...prev, amount:target.value}))} 
@@ -28,6 +29,7 @@ function B2BTransactionBank({bankTransactionB2BData, setBankTransactionB2BData})
             Currency
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Currency'
+            disabled={!allowUatAccess}  
             onChange={({ target }) =>
             setBankTransactionB2BData( (prev) =>
           ({...prev, currency:target.value}))} 
@@ -38,6 +40,7 @@ function B2BTransactionBank({bankTransactionB2BData, setBankTransactionB2BData})
             Type
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Type' 
+            disabled={!allowUatAccess}  
             onChange={({ target }) =>
             setBankTransactionB2BData( (prev) =>
           ({...prev, type:target.value}))} 
@@ -48,6 +51,7 @@ function B2BTransactionBank({bankTransactionB2BData, setBankTransactionB2BData})
             Description Text
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Description Text' 
+            disabled={!allowUatAccess}  
             onChange={({ target }) =>
             setBankTransactionB2BData( (prev) =>
           ({...prev, descriptionText:target.value}))} 
@@ -58,6 +62,7 @@ function B2BTransactionBank({bankTransactionB2BData, setBankTransactionB2BData})
             Request Date
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Request Date' 
+            disabled={!allowUatAccess}  
             onChange={({ target }) =>
             setBankTransactionB2BData( (prev) =>
           ({...prev, requestDate:target.value}))} 
@@ -68,6 +73,7 @@ function B2BTransactionBank({bankTransactionB2BData, setBankTransactionB2BData})
             Transaction Reference
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Transaction Reference'
+            disabled={!allowUatAccess}  
             onChange={({ target }) =>
             setBankTransactionB2BData( (prev) =>
           ({...prev, transRef:target.value}))} 
@@ -78,6 +84,7 @@ function B2BTransactionBank({bankTransactionB2BData, setBankTransactionB2BData})
             Sender MSISDN
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Sender MSISDN' 
+            disabled={!allowUatAccess}  
             onChange={({ target }) =>
             setBankTransactionB2BData( (prev) =>
           ({...prev, senderMsisdn:target.value}))} 
@@ -88,6 +95,7 @@ function B2BTransactionBank({bankTransactionB2BData, setBankTransactionB2BData})
             Receiver Bank Account Number
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Bank Account Number' 
+            disabled={!allowUatAccess}  
             onChange={({ target }) =>
             setBankTransactionB2BData( (prev) =>
           ({...prev, receiverBankaccountno:target.value}))} 
@@ -98,6 +106,7 @@ function B2BTransactionBank({bankTransactionB2BData, setBankTransactionB2BData})
             Receiver Bank Name
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder=' Bank Name' 
+            disabled={!allowUatAccess}  
             onChange={({ target }) =>
             setBankTransactionB2BData( (prev) =>
           ({...prev, receiverBankName:target.value}))} 
@@ -108,6 +117,7 @@ function B2BTransactionBank({bankTransactionB2BData, setBankTransactionB2BData})
             Receiver Bank Code
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Bank Code'
+            disabled={!allowUatAccess}  
             onChange={({ target }) =>
             setBankTransactionB2BData( (prev) =>
           ({...prev, receiverBankCode:target.value}))} 
@@ -118,6 +128,7 @@ function B2BTransactionBank({bankTransactionB2BData, setBankTransactionB2BData})
                 Sending Amount
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Sending Amount'
+            disabled={!allowUatAccess}  
             onChange={({ target }) =>
             setBankTransactionB2BData( (prev) =>
           ({...prev, sendingAmount:target.value}))} 
@@ -128,6 +139,7 @@ function B2BTransactionBank({bankTransactionB2BData, setBankTransactionB2BData})
                 Paying Currency Code
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Paying Currency Code'
+            disabled={!allowUatAccess}  
             onChange={({ target }) =>
             setBankTransactionB2BData( (prev) =>
           ({...prev, payinCcyCode:target.value}))} 
@@ -138,6 +150,7 @@ function B2BTransactionBank({bankTransactionB2BData, setBankTransactionB2BData})
                 Payment Mode
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Payment Mode' 
+            disabled={!allowUatAccess}  
             onChange={({ target }) =>
             setBankTransactionB2BData( (prev) =>
           ({...prev, paymentMode:target.value}))} 
@@ -148,6 +161,7 @@ function B2BTransactionBank({bankTransactionB2BData, setBankTransactionB2BData})
                 Authentication Partner Code
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Authentication Partner Code'
+            disabled={!allowUatAccess}  
             onChange={({ target }) =>
             setBankTransactionB2BData( (prev) =>
           ({...prev, authenticationPartnerCode:target.value}))} 
@@ -158,6 +172,7 @@ function B2BTransactionBank({bankTransactionB2BData, setBankTransactionB2BData})
                 Payment Option
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Payment Option' 
+            disabled={!allowUatAccess}  
             onChange={({ target }) =>
             setBankTransactionB2BData( (prev) =>
           ({...prev, paymentOption:target.value}))} 
@@ -168,6 +183,7 @@ function B2BTransactionBank({bankTransactionB2BData, setBankTransactionB2BData})
                 Sending Partner Code
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Sending Partner Code'
+            disabled={!allowUatAccess}  
             onChange={({ target }) =>
             setBankTransactionB2BData( (prev) =>
           ({...prev, sendingPartnerCode:target.value}))} 
@@ -178,6 +194,7 @@ function B2BTransactionBank({bankTransactionB2BData, setBankTransactionB2BData})
                 Receiving Partner Code
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Receiving Partner Code'
+            disabled={!allowUatAccess}  
             onChange={({ target }) =>
             setBankTransactionB2BData( (prev) =>
           ({...prev, receivingPartnerCode:target.value}))} 
@@ -195,6 +212,7 @@ function B2BTransactionBank({bankTransactionB2BData, setBankTransactionB2BData})
                 Business Name
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Sender Business Name' 
+            disabled={!allowUatAccess}  
             onChange={({ target }) =>
             setBankTransactionB2BData( (prev) =>
           ({...prev, senderBusinessName:target.value}))} 
@@ -205,6 +223,7 @@ function B2BTransactionBank({bankTransactionB2BData, setBankTransactionB2BData})
                 Business Address 1
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Sender Business Address 1' 
+            disabled={!allowUatAccess}  
             onChange={({ target }) =>
             setBankTransactionB2BData( (prev) =>
           ({...prev, senderBusinessAddress1:target.value}))} 
@@ -215,6 +234,7 @@ function B2BTransactionBank({bankTransactionB2BData, setBankTransactionB2BData})
                 Business Address City
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Sender Business Address City'
+            disabled={!allowUatAccess}  
             onChange={({ target }) =>
             setBankTransactionB2BData( (prev) =>
           ({...prev, senderBusinessAddressCity:target.value}))} 
@@ -225,6 +245,7 @@ function B2BTransactionBank({bankTransactionB2BData, setBankTransactionB2BData})
                 Business Address Country Code
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Sender Business Address Country Code' 
+            disabled={!allowUatAccess}  
             onChange={({ target }) =>
             setBankTransactionB2BData( (prev) =>
           ({...prev, senderBusinessAddressCountryCode:target.value}))} 
@@ -235,6 +256,7 @@ function B2BTransactionBank({bankTransactionB2BData, setBankTransactionB2BData})
                 Business Primary Contact Country Code
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Sender Business Primary Contact Country Code' 
+            disabled={!allowUatAccess}  
             onChange={({ target }) =>
             setBankTransactionB2BData( (prev) =>
           ({...prev, senderBusinessPrimaryContactCountryCode:target.value}))} 
@@ -245,6 +267,7 @@ function B2BTransactionBank({bankTransactionB2BData, setBankTransactionB2BData})
                 Business Primary Contact Number
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Sender Business Primary Contact Number' 
+            disabled={!allowUatAccess}  
             onChange={({ target }) =>
             setBankTransactionB2BData( (prev) =>
           ({...prev, senderBusinessPrimaryContactNo:target.value}))} 
@@ -255,6 +278,7 @@ function B2BTransactionBank({bankTransactionB2BData, setBankTransactionB2BData})
                 Business Description
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Sender Business Description'
+            disabled={!allowUatAccess}  
             onChange={({ target }) =>
             setBankTransactionB2BData( (prev) =>
           ({...prev, senderBusinessDescription:target.value}))} 
@@ -265,6 +289,7 @@ function B2BTransactionBank({bankTransactionB2BData, setBankTransactionB2BData})
                 Business Country Code
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Sender Business Country Code'
+            disabled={!allowUatAccess}  
             onChange={({ target }) =>
             setBankTransactionB2BData( (prev) =>
           ({...prev, senderBusinessCountryCode:target.value}))} 
@@ -275,6 +300,7 @@ function B2BTransactionBank({bankTransactionB2BData, setBankTransactionB2BData})
                 Business Registeration Type
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Business Registeration Type'
+            disabled={!allowUatAccess}  
             onChange={({ target }) =>
             setBankTransactionB2BData( (prev) =>
           ({...prev, senderBusinessRegistrationType:target.value}))} 
@@ -285,6 +311,7 @@ function B2BTransactionBank({bankTransactionB2BData, setBankTransactionB2BData})
                 Business Registeration Number
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Business Registeration Number'
+            disabled={!allowUatAccess}  
             onChange={({ target }) =>
             setBankTransactionB2BData( (prev) =>
           ({...prev, senderBusinessRegistrationNumber:target.value}))} 
@@ -295,6 +322,7 @@ function B2BTransactionBank({bankTransactionB2BData, setBankTransactionB2BData})
                 Business Registeration IssueDate
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Business Registeration IssueDate'
+            disabled={!allowUatAccess}  
             onChange={({ target }) =>
             setBankTransactionB2BData( (prev) =>
           ({...prev, senderBusinessRegistrationIssueDate:target.value}))} 
@@ -305,6 +333,7 @@ function B2BTransactionBank({bankTransactionB2BData, setBankTransactionB2BData})
                 Business ID ValidThru
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Business ID ValidThru'
+            disabled={!allowUatAccess}  
             onChange={({ target }) =>
             setBankTransactionB2BData( (prev) =>
           ({...prev, senderBusinessIDValidThru:target.value}))} 
@@ -315,6 +344,7 @@ function B2BTransactionBank({bankTransactionB2BData, setBankTransactionB2BData})
                 Business Email
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Business Email'
+            disabled={!allowUatAccess}  
             onChange={({ target }) =>
             setBankTransactionB2BData( (prev) =>
           ({...prev, senderBusinessEmail:target.value}))} 
@@ -327,6 +357,7 @@ function B2BTransactionBank({bankTransactionB2BData, setBankTransactionB2BData})
                 Business Name
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Business Name'
+            disabled={!allowUatAccess}  
             onChange={({ target }) =>
             setBankTransactionB2BData( (prev) =>
           ({...prev, recepientBusinessName:target.value}))} 
@@ -337,6 +368,7 @@ function B2BTransactionBank({bankTransactionB2BData, setBankTransactionB2BData})
                 Business PIN code
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Business PIN code' 
+            disabled={!allowUatAccess}  
             onChange={({ target }) =>
             setBankTransactionB2BData( (prev) =>
           ({...prev, recepientBusinessPINCode:target.value}))} 
@@ -347,6 +379,7 @@ function B2BTransactionBank({bankTransactionB2BData, setBankTransactionB2BData})
                 Business Address 1
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Business Address 1'
+            disabled={!allowUatAccess}  
             onChange={({ target }) =>
             setBankTransactionB2BData( (prev) =>
           ({...prev, recepientBusinessAddress1:target.value}))} 
@@ -357,6 +390,7 @@ function B2BTransactionBank({bankTransactionB2BData, setBankTransactionB2BData})
                 Business Address 2
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Business Address 2'
+            disabled={!allowUatAccess}  
             onChange={({ target }) =>
             setBankTransactionB2BData( (prev) =>
           ({...prev, recepientBusinessAddress2:target.value}))} 
@@ -367,6 +401,7 @@ function B2BTransactionBank({bankTransactionB2BData, setBankTransactionB2BData})
                 Business Address City
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Business Address City'
+            disabled={!allowUatAccess}  
             onChange={({ target }) =>
             setBankTransactionB2BData( (prev) =>
           ({...prev, recepientBusinessAddressCity:target.value}))} 
@@ -377,6 +412,7 @@ function B2BTransactionBank({bankTransactionB2BData, setBankTransactionB2BData})
                 Business Address State
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Business Address State'
+            disabled={!allowUatAccess}  
             onChange={({ target }) =>
             setBankTransactionB2BData( (prev) =>
           ({...prev, recepientBusinessAddressState:target.value}))} 
@@ -387,6 +423,7 @@ function B2BTransactionBank({bankTransactionB2BData, setBankTransactionB2BData})
                 Business Address Country Code
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Business Address Country Code'
+            disabled={!allowUatAccess}  
             onChange={({ target }) =>
             setBankTransactionB2BData( (prev) =>
           ({...prev, recepientBusinessAddressCountryCode:target.value}))} 
@@ -397,6 +434,7 @@ function B2BTransactionBank({bankTransactionB2BData, setBankTransactionB2BData})
                 Business Address Zip
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Business Address Zip'
+            disabled={!allowUatAccess}  
             onChange={({ target }) =>
             setBankTransactionB2BData( (prev) =>
           ({...prev, recepientBusinessAddressZip:target.value}))} 
@@ -407,6 +445,7 @@ function B2BTransactionBank({bankTransactionB2BData, setBankTransactionB2BData})
                 Business Primary Contact Country Code
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Business Primary Contact Country Code' 
+            disabled={!allowUatAccess}  
             onChange={({ target }) =>
             setBankTransactionB2BData( (prev) =>
           ({...prev, recepientBusinessPrimaryContactCountryCode:target.value}))} 
@@ -417,6 +456,7 @@ function B2BTransactionBank({bankTransactionB2BData, setBankTransactionB2BData})
                 Business Primary Contact Number
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Business Primary Contact Number' 
+            disabled={!allowUatAccess}  
             onChange={({ target }) =>
             setBankTransactionB2BData( (prev) =>
           ({...prev, recepientBusinessPrimaryContactNo:target.value}))} 
@@ -427,6 +467,7 @@ function B2BTransactionBank({bankTransactionB2BData, setBankTransactionB2BData})
                 Business Primary Contact Number Type
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Business Primary Contact Number Type'  
+            disabled={!allowUatAccess}  
             onChange={({ target }) =>
             setBankTransactionB2BData( (prev) =>
           ({...prev, recepientBusinessPrimaryContactNoType:target.value}))} 
@@ -437,6 +478,7 @@ function B2BTransactionBank({bankTransactionB2BData, setBankTransactionB2BData})
                 Business Description
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Business Description'  
+            disabled={!allowUatAccess}  
             onChange={({ target }) =>
             setBankTransactionB2BData( (prev) =>
           ({...prev, recepientBusinessDescription:target.value}))} 
@@ -447,6 +489,7 @@ function B2BTransactionBank({bankTransactionB2BData, setBankTransactionB2BData})
                 Business Email
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Business Email'  
+            disabled={!allowUatAccess}  
             onChange={({ target }) =>
             setBankTransactionB2BData( (prev) =>
           ({...prev, recepientBusinessEmail:target.value}))} 
@@ -457,6 +500,7 @@ function B2BTransactionBank({bankTransactionB2BData, setBankTransactionB2BData})
                 Business Country Code
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Business Country Code' 
+            disabled={!allowUatAccess}  
             onChange={({ target }) =>
             setBankTransactionB2BData( (prev) =>
           ({...prev, recepientBusinessCountryCode:target.value}))} 
@@ -467,6 +511,7 @@ function B2BTransactionBank({bankTransactionB2BData, setBankTransactionB2BData})
                 Business Registeration Type
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Business Registeration Type' 
+            disabled={!allowUatAccess}  
             onChange={({ target }) =>
             setBankTransactionB2BData( (prev) =>
           ({...prev, recepientBusinessRegistrationType:target.value}))} 
@@ -477,6 +522,7 @@ function B2BTransactionBank({bankTransactionB2BData, setBankTransactionB2BData})
                 Business Registeration Number
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Business Registeration Number'
+            disabled={!allowUatAccess}  
             onChange={({ target }) =>
             setBankTransactionB2BData( (prev) =>
           ({...prev, recepientBusinessRegistrationNumber:target.value}))} 
@@ -487,6 +533,7 @@ function B2BTransactionBank({bankTransactionB2BData, setBankTransactionB2BData})
                 Business Registeration Issued By
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Business Registeration Issued By'
+            disabled={!allowUatAccess}  
             onChange={({ target }) =>
             setBankTransactionB2BData( (prev) =>
           ({...prev, recepientBusinessRegistrationIssuedBy:target.value}))} 
@@ -497,6 +544,7 @@ function B2BTransactionBank({bankTransactionB2BData, setBankTransactionB2BData})
                 Business Registeration Issued At
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Business Registeration Issued At' 
+            disabled={!allowUatAccess}  
             onChange={({ target }) =>
             setBankTransactionB2BData( (prev) =>
           ({...prev, recepientBusinessRegistrationIssuedAt:target.value}))} 
@@ -507,6 +555,7 @@ function B2BTransactionBank({bankTransactionB2BData, setBankTransactionB2BData})
                 Business Registeration Issued Date
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Business Registeration Issued Date'
+            disabled={!allowUatAccess}  
             onChange={({ target }) =>
             setBankTransactionB2BData( (prev) =>
           ({...prev, recepientBusinessRegistrationIssueDate:target.value}))} 
@@ -517,6 +566,7 @@ function B2BTransactionBank({bankTransactionB2BData, setBankTransactionB2BData})
                 Business Id ValidThru
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Business Id ValidThru' 
+            disabled={!allowUatAccess}  
             onChange={({ target }) =>
             setBankTransactionB2BData( (prev) =>
           ({...prev, recepientBusinessIDValidThru:target.value}))} 
@@ -527,6 +577,7 @@ function B2BTransactionBank({bankTransactionB2BData, setBankTransactionB2BData})
                 Type Of Business
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Type Of Business' 
+            disabled={!allowUatAccess}  
             onChange={({ target }) =>
             setBankTransactionB2BData( (prev) =>
           ({...prev, recepientBypeofbusiness:target.value}))} 
@@ -537,6 +588,7 @@ function B2BTransactionBank({bankTransactionB2BData, setBankTransactionB2BData})
                 Business POBox
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Business POBox' 
+            disabled={!allowUatAccess}  
             onChange={({ target }) =>
             setBankTransactionB2BData( (prev) =>
           ({...prev, recepientBusinessPObox:target.value}))} 
@@ -547,6 +599,7 @@ function B2BTransactionBank({bankTransactionB2BData, setBankTransactionB2BData})
                 Business Mobile
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Business Mobile' 
+            disabled={!allowUatAccess}  
             onChange={({ target }) =>
             setBankTransactionB2BData( (prev) =>
           ({...prev, recepientBusinessMobile:target.value}))} 
@@ -599,7 +652,7 @@ function B2BTransactionBank({bankTransactionB2BData, setBankTransactionB2BData})
                 Quote Id
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Quote Id' 
-            onChange={({ target }) =>
+            disabled={!allowUatAccess}  onChange={({ target }) =>
             setBankTransactionB2BData( (prev) =>
           ({...prev, quoteId:target.value}))} 
           value={bankTransactionB2BData.quoteId}/>
@@ -609,7 +662,7 @@ function B2BTransactionBank({bankTransactionB2BData, setBankTransactionB2BData})
                 Receiving Country
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Receiving Country' 
-            onChange={({ target }) =>
+            disabled={!allowUatAccess}  onChange={({ target }) =>
             setBankTransactionB2BData( (prev) =>
           ({...prev, receivingCountry:target.value}))} 
           value={bankTransactionB2BData.receivingCountry}/>
@@ -619,7 +672,7 @@ function B2BTransactionBank({bankTransactionB2BData, setBankTransactionB2BData})
                 Remittance Purpose
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Remittance Purpose'
-            onChange={({ target }) =>
+            disabled={!allowUatAccess}  onChange={({ target }) =>
             setBankTransactionB2BData( (prev) =>
           ({...prev, remittancePurpose:target.value}))} 
           value={bankTransactionB2BData.remittancePurpose} />
@@ -629,7 +682,7 @@ function B2BTransactionBank({bankTransactionB2BData, setBankTransactionB2BData})
                 Source Of Funds
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Source Of Funds' 
-            onChange={({ target }) =>
+            disabled={!allowUatAccess}  onChange={({ target }) =>
             setBankTransactionB2BData( (prev) =>
           ({...prev, sourceOfFunds:target.value}))} 
           value={bankTransactionB2BData.sourceOfFunds} />
@@ -639,7 +692,7 @@ function B2BTransactionBank({bankTransactionB2BData, setBankTransactionB2BData})
                 Relationship Sender
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Relationship Sender'
-            onChange={({ target }) =>
+            disabled={!allowUatAccess}  onChange={({ target }) =>
             setBankTransactionB2BData( (prev) =>
           ({...prev, relationshipSender:target.value}))} 
           value={bankTransactionB2BData.relationshipSender}  />

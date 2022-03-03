@@ -178,20 +178,50 @@ function ResponseP2BTransactionMobile(props) {
         <Stack sx={{backgroundColor:"#f8fcff", minHeight:'100%' }}>
         {bodyTab?<Stack p={3} color="#20336d">
                 <Typography pb={1} variant='h6' color="#20336d" fontFamily='Poppins' fontWeight='500' sx={{fontSize:"26px"}} >Response JSON</Typography>
-                    <StyledReactJsonContainer>
-                    <ReactJson 
-                    collapseStringsAfterLength={25}
-                    name={false}
-                    src={props.apiResponseData} /></StyledReactJsonContainer>
+                {!props.allowUatAccess?
+                  <StyledReactJsonContainer>
+                      <ReactJson 
+                          collapseStringsAfterLength={25}
+                          name={false}
+                          src={{
+                              "status":"Dummy Response", 
+                              "subStatus":"Dummy Response", 
+                              "lei":"Dummy Response",
+                          }} />
+                  </StyledReactJsonContainer>:
+                  <StyledReactJsonContainer>
+                      {props.apiResponseData && 
+                          <ReactJson 
+                          collapseStringsAfterLength={25}
+                          name={false}
+                          src={props.apiResponseData} 
+                      />}
+                  </StyledReactJsonContainer>
+              }
             </Stack>:
             <Stack p={3} color="#20336d">
                 <Typography pb={1} variant='h6' color="#20336d" fontFamily='Poppins' fontWeight='500' sx={{fontSize:"26px"}} >Headers</Typography>
                     <Typography fontSize={16} overflow="hidden" textOverflow="ellipsis" style={{wordWrap: "break-word"}}>
-                    <StyledReactJsonContainer>
-                    <ReactJson 
-                    collapseStringsAfterLength={25}
-                    name={false}
-                    src={props.apiResponseHeaderData} /></StyledReactJsonContainer>
+                    {!props.allowUatAccess?
+                      <StyledReactJsonContainer>
+                          <ReactJson 
+                              collapseStringsAfterLength={25}
+                              name={false}
+                              src={{ 
+                                  'X-USERNAME': 'OpenTurfDev', 
+                                  'X-PASSWORD': '85d6dcc27d9fb21c7c346cdbcee2b56a84eba0f542a846de06658d2d094afd56', 
+                                  'X-DATE': '2018-04-04T09:27:16.000Z', 
+                                  'X-ORIGINCOUNTRY': 'US', 
+                                  'Accept': 'application/json'
+                                  }} />
+                      </StyledReactJsonContainer>:
+                      <StyledReactJsonContainer>
+                          {props.apiResponseHeaderData && <ReactJson 
+                          collapseStringsAfterLength={25}
+                          name={false}
+                          src={props.apiResponseHeaderData} />}
+                      </StyledReactJsonContainer>
+                  }
                     </Typography>
             </Stack>}
         </Stack>
