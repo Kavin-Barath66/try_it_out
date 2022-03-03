@@ -93,8 +93,8 @@ function ResponseAccountStatusBank(props) {
                             name={false}
                             src={{
                                 "status":"available", 
-                                "subStatus":"6000:Beneficiary MSISDN Validation Success", 
-                                "lei":"",
+                                "subStatus":"6000:Beneficiary Bank Account Validation Success", 
+                                "lei":""
                             }} />
                     </StyledReactJsonContainer>:
                     <StyledReactJsonContainer>

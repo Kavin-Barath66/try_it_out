@@ -93,9 +93,9 @@ function ResponseAccountStatusMobile(props) {
                             collapseStringsAfterLength={25}
                             name={false}
                             src={{
-                                "status":"Dummy Response", 
-                                "subStatus":"Dummy Response", 
-                                "lei":"Dummy Response",
+                                "status":"available", 
+                                "subStatus":"6000:Beneficiary Bank Account Validation Success", 
+                                "lei":""
                             }} />
                     </StyledReactJsonContainer>:
                     <StyledReactJsonContainer>

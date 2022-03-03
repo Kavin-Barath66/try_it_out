@@ -92,10 +92,9 @@ function ResponseCancelTransaction(props) {
                             collapseStringsAfterLength={25}
                             name={false}
                             src={{
-                                "status":"Dummy Response", 
-                                "subStatus":"Dummy Response", 
-                                "lei":"Dummy Response",
-                            }} />
+                                "responseMessage": "Cancel Success",
+                                "statusCode": "15000"
+                              }} />
                     </StyledReactJsonContainer>:
                     <StyledReactJsonContainer>
                         {props.apiResponseData && 

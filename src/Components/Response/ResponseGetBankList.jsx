@@ -93,10 +93,23 @@ function ResponseGetBankList(props) {
                             collapseStringsAfterLength={25}
                             name={false}
                             src={{
-                                "status":"Dummy Response", 
-                                "subStatus":"Dummy Response", 
-                                "lei":"Dummy Response",
-                            }} />
+                                "countrycode": "BD",
+                                "lastUpdatedOn": "2021-01-12 21:40:00.051",
+                                "banks": [
+                                  {
+                                    "bankName": "DUTCH BANGLA BANK LIMITED",
+                                    "bankCode": "DBBLBDDH",
+                                    "providerCode": 88090010000,
+                                    "status": "ACTIVE"
+                                  },
+                                  {
+                                    "bankName": "AGRANI BANK LTD",
+                                    "bankCode": "AGBKBDDH",
+                                    "providerCode": 88090030000,
+                                    "status": "ACTIVE"
+                                  }
+                                ]
+                              }} />
                     </StyledReactJsonContainer>:
                     <StyledReactJsonContainer>
                         {props.apiResponseData && 

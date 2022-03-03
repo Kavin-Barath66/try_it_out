@@ -92,10 +92,26 @@ function ResponseViewTransactionBank(props) {
                             collapseStringsAfterLength={25}
                             name={false}
                             src={{
-                                "status":"Dummy Response", 
-                                "subStatus":"Dummy Response", 
-                                "lei":"Dummy Response",
-                            }} />
+                                "amount": "100000.01",
+                                "currency": "NGN",
+                                "type": "inttransfer",
+                                "requestDate": "2017-03-20T06:19:36.969Z",
+                                "requestingOrganisationTransactionReference": "partnerRefId1234",
+                                "debitParty": [
+                                  {
+                                    "key": "msisdn",
+                                    "value": "+33472034605"
+                                  }
+                                ],
+                                "creditParty": [
+                                  {
+                                    "key": "msisdn",
+                                    "value": "+23410706056"
+                                  }
+                                ],
+                                "transactionStatus": "3000:Remit Success",
+                                "transactionReference": "TPKM000000056269"
+                              }} />
                     </StyledReactJsonContainer>:
                     <StyledReactJsonContainer>
                         {props.apiResponseData && 

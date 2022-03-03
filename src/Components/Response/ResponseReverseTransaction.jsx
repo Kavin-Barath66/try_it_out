@@ -92,10 +92,9 @@ function ResponseReverseTransaction(props) {
                             collapseStringsAfterLength={25}
                             name={false}
                             src={{
-                                "status":"Dummy Response", 
-                                "subStatus":"Dummy Response", 
-                                "lei":"Dummy Response",
-                            }} />
+                                "reversalReason": "reversalreason",
+                                "txnId": "TPKM000000056269"
+                                }} />
                     </StyledReactJsonContainer>:
                     <StyledReactJsonContainer>
                         {props.apiResponseData && 

@@ -94,10 +94,20 @@ function ResponseLedger(props) {
                             collapseStringsAfterLength={25}
                             name={false}
                             src={{
-                                "status":"Dummy Response", 
-                                "subStatus":"Dummy Response", 
-                                "lei":"Dummy Response",
-                            }} />
+                                "currency": "USD",
+                                "currentBalance": "1000.000000",
+                                "status": "available"
+                              },
+                              {
+                                "currency": "NGN",
+                                "currentBalance": "3000000.000000",
+                                "status": "available"
+                              },
+                              {
+                                "currency": "TZS",
+                                "currentBalance": "1000000.000000",
+                                "status": "available"
+                              }} />
                     </StyledReactJsonContainer>:
                     <StyledReactJsonContainer>
                         {props.apiResponseData && 

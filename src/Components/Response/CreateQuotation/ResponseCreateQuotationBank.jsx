@@ -114,10 +114,43 @@ function ResponseCreateQuotationBank(props) {
                             collapseStringsAfterLength={25}
                             name={false}
                             src={{
-                                "status":"Dummy Response", 
-                                "subStatus":"Dummy Response", 
-                                "lei":"Dummy Response",
-                            }} />
+                                "requestDate": "2017-05-03 11:00:00",
+                                "debitParty": [
+                                  {
+                                    "key": "msisdn",
+                                    "value": "+4491509874561"
+                                  }
+                                ],
+                                "creditParty": [
+                                  {
+                                    "key": "msisdn",
+                                    "value": "+25691508523697"
+                                  },
+                                  {
+                                    "key": "bankaccountno",
+                                    "value": "2356915085237"
+                                  },
+                                  {
+                                    "key": "receivingCountry",
+                                    "value": "NG"
+                                  }
+                                ],
+                                "requestAmount": "100",
+                                "requestCurrency": "EUR",
+                                "quotes": [
+                                  {
+                                    "quoteId": "QT037fQXs3LGWXea4",
+                                    "quoteExpiryTime": "2017-05-03 11:28:00",
+                                    "sendingAmount": "100.000000",
+                                    "sendingCurrency": "EUR",
+                                    "receivingAmount": "365217",
+                                    "receivingCurrency": "UGX",
+                                    "fxRate": "3652.173913"
+                                  }
+                                ],
+                                "quotationReference": "QT037fQXs3LGWXea4",
+                                "quotationStatus": "2000:Quote Success"
+                              }} />
                     </StyledReactJsonContainer>:
                     <StyledReactJsonContainer>
                         {props.apiResponseData && 

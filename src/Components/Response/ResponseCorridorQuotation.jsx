@@ -93,10 +93,22 @@ function ResponseCorridorQuotation(props) {
                             collapseStringsAfterLength={25}
                             name={false}
                             src={{
-                                "status":"Dummy Response", 
-                                "subStatus":"Dummy Response", 
-                                "lei":"Dummy Response",
-                            }} />
+                                "requestDate": "2017-10-18 09:27:16",
+                                "requestCurrency": "USD",
+                                "quotes": [
+                                  {
+                                    "receivingServiceProvider": "GH",
+                                    "receivingCurrency": "GHS",
+                                    "fxRate": "4.966000"
+                                  },
+                                  {
+                                    "receivingServiceProvider": "UG",
+                                    "receivingCurrency": "UGX",
+                                    "fxRate": "3728.000597"
+                                  }
+                                ],
+                                "quotationStatus": "9000:Success"
+                              }} />
                     </StyledReactJsonContainer>:
                     <StyledReactJsonContainer>
                         {props.apiResponseData && 
