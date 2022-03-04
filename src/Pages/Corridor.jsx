@@ -5,11 +5,11 @@ import ResponseCorridorQuotation from '../Components/Response/ResponseCorridorQu
 
 function Corridor({allowUatAccess, corridorQuotationData, setCorridorQuotationData, responseScreen, apiResponseHeaderData, apiResponseData}) {
     return (
-        <Grid container sx={{minHeight: '100%' }}>
+        <Grid container sx={{minHeight: '100%', paddingTop:'150px'  }}>
             <Grid item xs={7}>
                 <CorridorQuotation allowUatAccess={allowUatAccess} corridorQuotationData={corridorQuotationData} setCorridorQuotationData={setCorridorQuotationData}  />
             </Grid>
-            <Grid item xs={5}>
+            <Grid item xs={5} sx={{ height:"100vh", overflow:"auto"}} >
                 <ResponseCorridorQuotation allowUatAccess={allowUatAccess} responseScreen={responseScreen} apiResponseHeaderData={apiResponseHeaderData} apiResponseData={apiResponseData} />
             </Grid>
         </Grid>

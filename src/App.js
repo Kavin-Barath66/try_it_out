@@ -1,5 +1,6 @@
 import './app.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
+import { Box } from "@mui/material";
 import Home from './Pages/Home';
 import TryitHeader from './Components/TryIt/TryitHeader';
 import Ledger from './Pages/Ledger';
@@ -524,6 +525,7 @@ useEffect(() => {
 
 
   return (
+    <Box height="100vh" position="fixed" width="100%">
     <BrowserRouter>
       <TryitHeader
         bankAccountStatusData={bankAccountStatusData}
@@ -595,6 +597,7 @@ useEffect(() => {
         </Routes>
       </div>
     </BrowserRouter>
+    </Box>
   );
 }
 

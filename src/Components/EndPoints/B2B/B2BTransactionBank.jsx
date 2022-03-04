@@ -687,7 +687,7 @@ function B2BTransactionBank({allowUatAccess, bankTransactionB2BData, setBankTran
           ({...prev, sourceOfFunds:target.value}))} 
           value={bankTransactionB2BData.sourceOfFunds} />
         </Stack>
-        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+        <Stack direction='row' alignItems='center' justifyContent='space-between' pb={30}>
             <Typography color="#575757" fontWeight='500'>
                 Relationship Sender
             </Typography>

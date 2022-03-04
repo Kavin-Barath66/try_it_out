@@ -1,0 +1,3 @@
+.scroll-bar ::-webkit-scrollbar-button {
+  height: 40px;
+}

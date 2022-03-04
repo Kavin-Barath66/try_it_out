@@ -57,7 +57,7 @@ function AccountStatusMobile({allowUatAccess, mobileAccountStatusData, setMobile
           <MenuItem value='bank-account'>Bank-Account</MenuItem>
           </TextField>
       </Stack> */}
-      <Stack direction='row' alignItems='center' justifyContent='space-between'>
+      <Stack direction='row' alignItems='center' justifyContent='space-between' pb={30}>
           <Typography color="#575757" fontWeight='500'>
           Full name of the sender as per KYC Id
           </Typography>

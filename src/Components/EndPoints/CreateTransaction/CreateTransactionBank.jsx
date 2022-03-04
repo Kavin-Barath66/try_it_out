@@ -397,7 +397,7 @@ function CreateTransactionBank({allowUatAccess, createTransactionBankData, setCr
             ({...prev, sourceOfFunds:target.value}))} 
             value={createTransactionBankData.sourceOfFunds}   />
         </Stack>
-        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+        <Stack direction='row' alignItems='center' justifyContent='space-between' pb={30}>
             <Typography color="#575757" fontWeight='500'>
                 Relationship Sender
             </Typography>

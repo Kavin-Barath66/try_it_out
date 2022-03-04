@@ -410,7 +410,7 @@ function B2PTransactionBank({allowUatAccess, bankTransactionB2PData, setBankTran
           ({...prev, sourceOfFunds:target.value}))} 
           value={bankTransactionB2PData.sourceOfFunds} />
       </Stack>
-      <Stack direction='row' alignItems='center' justifyContent='space-between'>
+      <Stack direction='row' alignItems='center' justifyContent='space-between' pb={30}>
           <Typography color="#575757" fontWeight='500'>
           Relationship Of Sender
           </Typography>

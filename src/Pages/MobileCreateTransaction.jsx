@@ -6,11 +6,11 @@ import CreateTransactionMobile from '../Components/EndPoints/CreateTransaction/C
 
 function MobileCreateTransaction({allowUatAccess, createTransactionMobileData, setCreateTransactionMobileData,  apiResponseHeaderData, apiResponseData,responseScreen }) {
     return (
-        <Grid container sx={{minHeight: '100%' }}>
-            <Grid item xs={7}>
+        <Grid container sx={{minHeight: '100%', paddingTop:'150px'  }}>
+            <Grid item xs={7} sx={{ height:"100vh", overflow:"auto"}} >
             <CreateTransactionMobile allowUatAccess={allowUatAccess} createTransactionMobileData={createTransactionMobileData} setCreateTransactionMobileData={setCreateTransactionMobileData} />
             </Grid>
-            <Grid item xs={5}>
+            <Grid item xs={5} sx={{ height:"100vh", overflow:"auto"}} >
                 <ResponseCreateTransactionMobile allowUatAccess={allowUatAccess} responseScreen={responseScreen} apiResponseHeaderData={apiResponseHeaderData} apiResponseData={apiResponseData}/>
             </Grid>
         </Grid>

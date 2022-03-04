@@ -5,11 +5,11 @@ import CreateQuotationMobile from '../Components/EndPoints/CreateQuotation/Creat
 
 function MobileCreateQuotation({allowUatAccess, createQuotationMobileData, setCreateQuotationMobileData, responseScreen, apiResponseData, apiResponseHeaderData}) {
     return (
-        <Grid container sx={{minHeight: '100%' }}>
-            <Grid item xs={7}>
+        <Grid container sx={{minHeight: '100%', paddingTop:'150px'  }}>
+            <Grid item xs={7} sx={{ height:"100vh", overflow:"auto"}} >
                 <CreateQuotationMobile allowUatAccess={allowUatAccess} setCreateQuotationMobileData={setCreateQuotationMobileData} createQuotationMobileData={createQuotationMobileData} />
             </Grid>
-            <Grid item xs={5}>
+            <Grid item xs={5} sx={{ height:"100vh", overflow:"auto"}} >
                 <ResponseCreateQuotationMobile allowUatAccess={allowUatAccess} responseScreen={responseScreen} apiResponseData={apiResponseData} apiResponseHeaderData={apiResponseHeaderData} />
             </Grid>
         </Grid>

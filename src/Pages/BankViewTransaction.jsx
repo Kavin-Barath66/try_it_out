@@ -7,11 +7,11 @@ import ResponseViewTransactionBank from '../Components/Response/ViewTransaction/
 
 function BankViewTransaction({allowUatAccess, viewTransactionBankData, setViewTransactionBankData, responseScreen, apiResponseData, apiResponseHeaderData}) {
     return (
-        <Grid container sx={{minHeight: '100%' }}>
-            <Grid item xs={7}>
+        <Grid container sx={{minHeight: '100%', paddingTop:'150px'  }}>
+            <Grid item xs={7} >
             <ViewTransactionBank allowUatAccess={allowUatAccess} viewTransactionBankData={viewTransactionBankData} setViewTransactionBankData={setViewTransactionBankData} />
             </Grid>
-            <Grid item xs={5}>
+            <Grid item xs={5} sx={{ height:"100vh", overflow:"auto"}} >
                 <ResponseViewTransactionBank allowUatAccess={allowUatAccess} responseScreen={responseScreen} apiResponseData={apiResponseData} apiResponseHeaderData={apiResponseHeaderData} />
             </Grid>
         </Grid>

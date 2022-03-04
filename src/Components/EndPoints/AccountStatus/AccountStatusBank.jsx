@@ -110,7 +110,7 @@ function AccountStatusBank({allowUatAccess, bankAccountStatusData, setBankAccoun
         placeholder="Disabled"
         disabled />
         </Stack>
-        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+        <Stack direction='row' alignItems='center' justifyContent='space-between' pb={30}>
         <Typography color="#575757" fontWeight='500'>
             Bank Sub code
         </Typography>

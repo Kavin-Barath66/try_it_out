@@ -686,7 +686,7 @@ function P2BTransactionMobile({allowUatAccess, mobileTransactionP2BData, setMobi
         ({...prev, sourceOfFunds:target.value}))} 
         value={mobileTransactionP2BData.sourceOfFunds} />
     </Stack>
-    <Stack direction='row' alignItems='center' justifyContent='space-between'>
+    <Stack direction='row' alignItems='center' justifyContent='space-between' pb={30}>
         <Typography color="#575757" fontWeight='500'>
             Relationship Sender
         </Typography>

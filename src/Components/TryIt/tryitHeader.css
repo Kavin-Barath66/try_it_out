@@ -1,0 +1,6 @@
+.tryit-header {
+  -webkit-backdrop-filter: blur(100px);
+  backdrop-filter: blur(100px);
+  background-color: #223871;
+  z-index: 30;
+}

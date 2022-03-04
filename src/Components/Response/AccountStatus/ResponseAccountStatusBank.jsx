@@ -51,7 +51,7 @@ function ResponseAccountStatusBank(props) {
                 <Stack p={3} color="#20336d">
                     <Typography pb={1} variant='h6' color="#20336d" fontFamily='Poppins' fontWeight='500' sx={{fontSize:"26px"}} >API code snippet</Typography>
                         <Typography fontSize={14} overflow="hidden" textOverflow="ellipsis" style={{wordWrap: "break-word"}}>
-                            <StyledReactJsonContainer>
+                            <StyledReactJsonContainer sx={{paddingBottom:"50px"}}>
                             <ReactJson 
                             collapseStringsAfterLength={25}
                             name={false}
@@ -87,7 +87,7 @@ function ResponseAccountStatusBank(props) {
         {bodyTab?<Stack p={3} color="#20336d">
                 <Typography pb={1} variant='h6' color="#20336d" fontFamily='Poppins' fontWeight='500' sx={{fontSize:"26px"}} >Response JSON</Typography>
                 {!props.allowUatAccess?
-                    <StyledReactJsonContainer>
+                    <StyledReactJsonContainer sx={{paddingBottom:"50px"}}>
                         <ReactJson 
                             collapseStringsAfterLength={25}
                             name={false}
@@ -97,7 +97,7 @@ function ResponseAccountStatusBank(props) {
                                 "lei":""
                             }} />
                     </StyledReactJsonContainer>:
-                    <StyledReactJsonContainer>
+                    <StyledReactJsonContainer sx={{paddingBottom:"50px"}}>
                         {props.apiResponseData && 
                             <ReactJson 
                             collapseStringsAfterLength={25}

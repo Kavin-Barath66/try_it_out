@@ -6,13 +6,13 @@ import ResponseCancelTransaction from '../Components/Response/ResponseCancelTran
 
 function TransactionCancel({allowUatAccess, responseScreen, apiResponseData, apiResponseHeaderData, cancelTransactionData, setCancelTransactionData}) {
     return (
-        <Grid container sx={{minHeight: '100%' }}>
-            <Grid item xs={7}>
+        <Grid container sx={{minHeight: '100%', paddingTop:'150px'  }}>
+            <Grid item xs={7} >
                 <CancelTransaction 
                 cancelTransactionData={cancelTransactionData}
                 setCancelTransactionData={setCancelTransactionData} allowUatAccess={allowUatAccess} />
             </Grid>
-            <Grid item xs={5}>
+            <Grid item xs={5} sx={{ height:"100vh", overflow:"auto"}} >
                 <ResponseCancelTransaction
                 allowUatAccess={allowUatAccess}
                 responseScreen={responseScreen}

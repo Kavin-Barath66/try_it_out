@@ -7,11 +7,11 @@ import ResponseAccountStatusMobile from '../Components/Response/AccountStatus/Re
 function MobileAccountStatus({allowUatAccess, setMobileAccountStatusData, responseScreen, apiResponseData, apiResponseHeaderData, mobileAccountStatusData}) {
     
     return (
-        <Grid container sx={{height: '100vh' }}>
-            <Grid item xs={7}>
+        <Grid container sx={{height: '100vh', paddingTop:'150px' }}>
+            <Grid item xs={7} >
                 <AccountStatusMobile allowUatAccess={allowUatAccess} setMobileAccountStatusData={setMobileAccountStatusData} mobileAccountStatusData={mobileAccountStatusData}/>
             </Grid>
-            <Grid item xs={5}>
+            <Grid item xs={5} sx={{ height:"100vh", overflow:"auto"}} >
                 <ResponseAccountStatusMobile allowUatAccess={allowUatAccess} responseScreen={responseScreen} apiResponseData={apiResponseData} apiResponseHeaderData={apiResponseHeaderData} />
             </Grid>
         </Grid>

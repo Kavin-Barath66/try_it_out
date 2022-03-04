@@ -5,11 +5,11 @@ import ResponseCreateQuotationBank from '../Components/Response/CreateQuotation/
 
 function BankCreateQuotation({allowUatAccess, createQuotationBank, setCreateQuotationBank, responseScreen, apiResponseData, apiResponseHeaderData}) {
     return (
-        <Grid container sx={{minHeight: '100%' }}>
-            <Grid item xs={7}>
+        <Grid container sx={{height: '100%', paddingTop:'150px' }}>
+            <Grid item xs={7} sx={{ height:"100vh", overflow:"auto"}}>
                 <CreateQuotationBank allowUatAccess={allowUatAccess} createQuotationBank={createQuotationBank} setCreateQuotationBank={setCreateQuotationBank} />
             </Grid>
-            <Grid item xs={5}>
+            <Grid item xs={5} sx={{ height:"100vh", overflow:"auto"}}>
                 <ResponseCreateQuotationBank allowUatAccess={allowUatAccess} responseScreen={responseScreen} apiResponseData={apiResponseData} apiResponseHeaderData={apiResponseHeaderData} />
             </Grid>
         </Grid>

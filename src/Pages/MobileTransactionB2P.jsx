@@ -8,11 +8,11 @@ import B2PTransactionMobile from '../Components/EndPoints/B2P/B2PTransactionMobi
 
 function MobileTransactionB2P({allowUatAccess, mobileTransactionB2PData, setMobileTransactionB2PData, responseScreen, apiResponseHeaderData, apiResponseData}) {
     return (
-        <Grid container sx={{minHeight: '100%' }}>
-            <Grid item xs={7}>
+        <Grid container sx={{minHeight: '100%', paddingTop:'150px' }}>
+            <Grid item xs={7} sx={{ height:"100vh", overflow:"auto"}}  >
                 <B2PTransactionMobile allowUatAccess={allowUatAccess} mobileTransactionB2PData={mobileTransactionB2PData} setMobileTransactionB2PData={setMobileTransactionB2PData} />
             </Grid>
-            <Grid item xs={5}>
+            <Grid item xs={5} sx={{ height:"100vh", overflow:"auto"}}  >
                 <ResponseB2PTransactionMobile allowUatAccess={allowUatAccess} responseScreen={responseScreen} apiResponseHeaderData={apiResponseHeaderData} apiResponseData={apiResponseData}/>
             </Grid>
         </Grid>

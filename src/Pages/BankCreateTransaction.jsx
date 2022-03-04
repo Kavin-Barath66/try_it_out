@@ -6,11 +6,11 @@ import CreateTransactionBank from '../Components/EndPoints/CreateTransaction/Cre
 
 function BankCreateTransaction({allowUatAccess, createTransactionBankData, setCreateTransactionBankData, responseScreen, apiResponseHeaderData, apiResponseData}) {
     return (
-        <Grid container sx={{minHeight: '100%' }}>
-            <Grid item xs={7}>
+        <Grid container sx={{minHeight: '100%', paddingTop:'150px'  }}>
+            <Grid item xs={7} sx={{ height:"100vh", overflow:"auto"}} >
             <CreateTransactionBank allowUatAccess={allowUatAccess} createTransactionBankData={createTransactionBankData} setCreateTransactionBankData={setCreateTransactionBankData}  />
             </Grid>
-            <Grid item xs={5}>
+            <Grid item xs={5} sx={{ height:"100vh", overflow:"auto"}} >
                 <ResponseCreateTransactionBank allowUatAccess={allowUatAccess} responseScreen={responseScreen} apiResponseHeaderData={apiResponseHeaderData} apiResponseData={apiResponseData} />
             </Grid>
         </Grid>

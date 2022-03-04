@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react'
 import { styled } from '@mui/system'
+import './tryitHeader.css'
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios'
 import { useState } from "react";
@@ -11,6 +12,7 @@ import { Stack, OutlinedInput, Button, Box, Typography, TextField, Container } f
 import terrapayLogo from '../../assets/img/terrapay_logo.png'
 import { config } from '../../assets/config/config';
 const apiUrl = config.api.url;
+
 
 
 const MenuProps = {
@@ -1333,7 +1335,8 @@ function TryitHeader(props) {
 
 
     return (
-        <Stack spacing={8} p={3} m={0} justifyContent='space-between' direction='row' sx={{ backgroundColor: '#223871' }}>
+        <Box sx={{position:'fixed', width:'100%'}} className="tryit-header" >
+        <Stack spacing={8} p={3} m={0} justifyContent='space-between' direction='row' /* sx={{ backgroundColor: '#223871' }} */>
             <Stack width="20%" sx={{ marginRight: '150px' }} direction="column" justifyContent="center">
                 <img src={terrapayLogo} alt="terrapayLogo" />
             </Stack>
@@ -1476,6 +1479,7 @@ function TryitHeader(props) {
                 </Typography>}
         </Stack>
         </Stack>
+        </Box>
     )
 }
 

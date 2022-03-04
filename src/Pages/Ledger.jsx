@@ -5,11 +5,11 @@ import ResponseLedger from '../Components/Response/ResponseLedger';
 
 function Ledger({allowUatAccess, responseScreen, apiResponseHeaderData, apiResponseData}) {
     return (
-        <Grid container sx={{minHeight: '100%' }}>
+        <Grid container sx={{minHeight: '100%', paddingTop:'150px' }}>
             <Grid item xs={7}>
                 <LedgerBalance allowUatAccess={allowUatAccess} />
             </Grid>
-            <Grid item xs={5}>
+            <Grid item xs={5} sx={{ height:"100vh", overflow:"auto"}} >
                 <ResponseLedger allowUatAccess={allowUatAccess} responseScreen={responseScreen} apiResponseHeaderData={apiResponseHeaderData} apiResponseData={apiResponseData}/>
             </Grid>
         </Grid>

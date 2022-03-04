@@ -7,11 +7,11 @@ import ResponseB2BTransactionMobile from '../Components/Response/B2B/ResponseB2B
 
 function MobileTransactionB2B({allowUatAccess, mobileTransactionB2BData, setMobileTransactionB2BData, responseScreen, apiResponseHeaderData, apiResponseData}) {
     return (
-        <Grid container sx={{minHeight: '100%' }}>
-            <Grid item xs={7}>
+        <Grid container sx={{minHeight: '100%', paddingTop:'150px'  }}>
+            <Grid item xs={7} sx={{ height:"100vh", overflow:"auto"}} >
                 <B2BTransactionMobile allowUatAccess={allowUatAccess} mobileTransactionB2BData={mobileTransactionB2BData} setMobileTransactionB2BData={setMobileTransactionB2BData}/>
             </Grid>
-            <Grid item xs={5}>
+            <Grid item xs={5} sx={{ height:"100vh", overflow:"auto"}} >
                 <ResponseB2BTransactionMobile allowUatAccess={allowUatAccess} responseScreen={responseScreen} apiResponseHeaderData={apiResponseHeaderData} apiResponseData={apiResponseData}/>
             </Grid>
         </Grid>
