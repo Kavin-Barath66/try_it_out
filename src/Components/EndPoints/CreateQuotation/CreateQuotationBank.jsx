@@ -16,9 +16,9 @@ function CreateQuotationBank({allowUatAccess, createQuotationBank, setCreateQuot
     <Stack height="100%" width={600} spacing={5} sx={{ p: 4 }} >
     <Stack direction='row' alignItems='center' justifyContent='space-between'>
         <Typography color="#575757" fontWeight='500'>
-        Request Date
+        Creation Date/Time<span style={{color:'#ea5c57'}}> *</span>
         </Typography>
-        <OutlinedInput sx={{ height: 40 }} placeholder='Account Number' 
+        <OutlinedInput sx={{ height: 40 }} placeholder='requestDate' 
         disabled={!allowUatAccess}
         onChange={({ target }) =>
         setCreateQuotationBank( (prev) =>
@@ -28,9 +28,57 @@ function CreateQuotationBank({allowUatAccess, createQuotationBank, setCreateQuot
     </Stack>
     <Stack direction='row' alignItems='center' justifyContent='space-between'>
         <Typography color="#575757" fontWeight='500'>
-        Receiver Account Number
+        Request Quotation Amount<span style={{color:'#ea5c57'}}> *</span>
         </Typography>
-        <OutlinedInput sx={{ height: 40 }} placeholder='Account Number' 
+        <OutlinedInput sx={{ height: 40 }} placeholder='requestAmount' 
+        disabled={!allowUatAccess}
+        onChange={({ target }) =>
+        setCreateQuotationBank( (prev) =>
+            ({...prev, requestAmount:target.value}))} 
+        value={createQuotationBank.requestAmount} />
+    </Stack>
+    <Stack direction='row' alignItems='center' justifyContent='space-between'>
+        <Typography color="#575757" fontWeight='500'>
+        Request Currency<span style={{color:'#ea5c57'}}> *</span>
+        </Typography>
+        <OutlinedInput sx={{ height: 40 }} placeholder='requestCurrency' 
+        disabled={!allowUatAccess}
+        onChange={({ target }) =>
+        setCreateQuotationBank( (prev) =>
+            ({...prev, requestCurrency:target.value}))} 
+        value={createQuotationBank.requestCurrency} />
+    </Stack>
+    <Stack direction='row' alignItems='center' justifyContent='space-between'>
+        <Typography color="#575757" fontWeight='500'>
+        Sender Mobile Number
+        </Typography>
+        <OutlinedInput sx={{ height: 40 }}
+        placeholder ="msisdn debitParty"
+        disabled={!allowUatAccess}
+        onChange={({ target }) =>
+        setCreateQuotationBank( (prev) =>
+            ({...prev, senderMsisdn:target.value}))} 
+        value={createQuotationBank.senderMsisdn}
+        />
+    </Stack>
+    <Stack direction='row' alignItems='center' justifyContent='space-between'>
+        <Typography color="#575757" fontWeight='500'>
+        Beneficiary Mobile Number
+        </Typography>
+        <OutlinedInput sx={{ height: 40 }}
+        placeholder ="msisdn creditParty"
+        disabled={!allowUatAccess}
+        onChange={({ target }) =>
+        setCreateQuotationBank( (prev) =>
+            ({...prev, receiverMsisdn:target.value}))} 
+        value={createQuotationBank.receiverMsisdn}
+        />
+    </Stack>
+    <Stack direction='row' alignItems='center' justifyContent='space-between'>
+        <Typography color="#575757" fontWeight='500'>
+        Receiver Bank Account<span style={{color:'#ea5c57'}}> *</span>
+        </Typography>
+        <OutlinedInput sx={{ height: 40 }} placeholder='bankaccountno' 
         disabled={!allowUatAccess}
         onChange={({ target }) =>
         setCreateQuotationBank( (prev) =>
@@ -40,9 +88,9 @@ function CreateQuotationBank({allowUatAccess, createQuotationBank, setCreateQuot
     </Stack>
     <Stack direction='row' alignItems='center' justifyContent='space-between'>
         <Typography color="#575757" fontWeight='500'>
-        Receiver Country
+        Destination Country<span style={{color:'#ea5c57'}}> *</span>
         </Typography>
-        <OutlinedInput sx={{ height: 40 }} placeholder='Recive Country' 
+        <OutlinedInput sx={{ height: 40 }} placeholder='receivingCountry creditParty' 
         disabled={!allowUatAccess}
         onChange={({ target }) =>
         setCreateQuotationBank( (prev) =>
@@ -51,63 +99,25 @@ function CreateQuotationBank({allowUatAccess, createQuotationBank, setCreateQuot
     </Stack>
     <Stack direction='row' alignItems='center' justifyContent='space-between'>
         <Typography color="#575757" fontWeight='500'>
-        Request Amount
+        Currency of Debitor<span style={{color:'#ea5c57'}}> *</span>
         </Typography>
-        <OutlinedInput sx={{ height: 40 }} placeholder='Amount' 
-        disabled={!allowUatAccess}
-        onChange={({ target }) =>
-        setCreateQuotationBank( (prev) =>
-            ({...prev, requestAmount:target.value}))} 
-        value={createQuotationBank.requestAmount} />
-    </Stack>
-    <Stack direction='row' alignItems='center' justifyContent='space-between'>
-        <Typography color="#575757" fontWeight='500'>
-        Request Currency
-        </Typography>
-        <OutlinedInput sx={{ height: 40 }} placeholder='Request Currency' 
-        disabled={!allowUatAccess}
-        onChange={({ target }) =>
-        setCreateQuotationBank( (prev) =>
-            ({...prev, requestCurrency:target.value}))} 
-        value={createQuotationBank.requestCurrency} />
-    </Stack>
-    <Stack direction='row' alignItems='center' justifyContent='space-between'>
-        <Typography color="#575757" fontWeight='500'>
-        Sending Currency
-        </Typography>
-        <OutlinedInput sx={{ height: 40 }} placeholder='Send Currency' 
+        <OutlinedInput sx={{ height: 40 }} placeholder='sendingCurrency' 
         disabled={!allowUatAccess}
         onChange={({ target }) =>
         setCreateQuotationBank( (prev) =>
             ({...prev, sendingCurrency:target.value}))} 
         value={createQuotationBank.sendingCurrency} />
     </Stack>
-    <Stack direction='row' alignItems='center' justifyContent='space-between'>
+    <Stack direction='row' alignItems='center' justifyContent='space-between' pb={30}>
         <Typography color="#575757" fontWeight='500'>
-        Receiving Currency
+        Currency of Creditor<span style={{color:'#ea5c57'}}> *</span>
         </Typography>
-        <OutlinedInput sx={{ height: 40 }} placeholder='Recive Currency' 
+        <OutlinedInput sx={{ height: 40 }} placeholder='receivingCurrency' 
         disabled={!allowUatAccess}
         onChange={({ target }) =>
         setCreateQuotationBank( (prev) =>
             ({...prev, receivingCurrency:target.value}))} 
         value={createQuotationBank.receivingCurrency} />
-    </Stack>
-    <Stack direction='row' alignItems='center' justifyContent='space-between'>
-    <Typography color="#575757" fontWeight='500'>
-    Receiver MSISDN
-    </Typography>
-    <OutlinedInput sx={{ height: 40 }} 
-    placeholder ="Disabled"
-    disabled />
-</Stack>
-    <Stack direction='row' alignItems='center' justifyContent='space-between' pb={30}>
-        <Typography color="#575757" fontWeight='500'>
-        Sender MSISDN
-        </Typography>
-        <OutlinedInput sx={{ height: 40 }}
-        placeholder ="Disabled"
-        disabled/>
     </Stack>
     </Stack>
     </>

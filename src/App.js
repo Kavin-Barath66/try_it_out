@@ -1,4 +1,4 @@
-import './app.css';
+import './App.css';
 import { BrowserRouter, Routes, Route } from "react-router-dom";
 import { Box } from "@mui/material";
 import Home from './Pages/Home';
@@ -39,8 +39,10 @@ function App() {
   const [headerObject, setHeaderObject] = useState({})
 
   const [mobileAccountStatusData, setMobileAccountStatusData] = useState({
-    msisdn: '+9779840002320',
+    msisdn: '+255897378383',
     bnv: 'David Robinson',
+    snv:'Sender Name',
+    provider:'25501'
   })
   const [bankAccountStatusData, setBankAccountStatusData] = useState({
     accountId: '50100002965304',
@@ -66,6 +68,8 @@ function App() {
     requestCurrency: 'INR',
     sendingCurrency: 'USD',
     receivingCurrency: 'INR',
+    senderMsisdn:'+9779840002320',
+    receiverMsisdn:'+9779840002320',
   })
   const [createQuotationMobileData, setCreateQuotationMobileData] = useState({
     requestDate: '2017-06-20 12:27:16',
@@ -74,6 +78,9 @@ function App() {
     requestCurrency: 'INR',
     sendingCurrency: 'USD',
     receivingCurrency: 'INR',
+    senderMsisdn:'+9779840002320',
+    receiverCountry:'IN',
+    receiverBankaccountno:'50100002965304',
   })
   const [viewTransactionMobileData, setViewTransactionMobileData] = useState({transRef:"SrcTxnId001"})
   const [viewTransactionBankData, setViewTransactionBankData] = useState({transRef:"SrcTxnId001"})

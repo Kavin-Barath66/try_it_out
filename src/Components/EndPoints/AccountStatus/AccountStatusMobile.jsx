@@ -16,9 +16,9 @@ function AccountStatusMobile({allowUatAccess, mobileAccountStatusData, setMobile
     <Stack height="100%" width={600} spacing={5} sx={{ p: 4 }} >
       <Stack direction='row' alignItems='center' justifyContent='space-between'>
           <Typography color="#575757" fontWeight='500'>
-          Beneficiary MSISDN with country code
+            Beneficiary msisdn<span style={{color:'#ea5c57'}}> *</span>
           </Typography>
-          <OutlinedInput sx={{ height: 40 }} placeholder='MSISDN number' 
+          <OutlinedInput sx={{ height: 40 }} placeholder='msisdn' 
           disabled={!allowUatAccess}
           onChange={({ target }) =>
             setMobileAccountStatusData( (prev) =>
@@ -27,43 +27,38 @@ function AccountStatusMobile({allowUatAccess, mobileAccountStatusData, setMobile
       </Stack>
       <Stack direction='row' alignItems='center' justifyContent='space-between'>
           <Typography color="#575757" fontWeight='500'>
-          Full KYC name of the beneficiary
+          Full KYC name of Beneficiary<span style={{color:'#ea5c57'}}> *</span>
           </Typography>
-          <OutlinedInput sx={{ height: 40 }} placeholder='Full KYC name' 
+          <OutlinedInput sx={{ height: 40 }} placeholder='bnv' 
           disabled={!allowUatAccess}
           onChange={({ target }) =>
             setMobileAccountStatusData( (prev) =>
             ({...prev, bnv:target.value}))}
-          
           value={mobileAccountStatusData.bnv} />
       </Stack>
-      {/* <Stack direction='row' alignItems='center' justifyContent='space-between'>
+      <Stack direction='row' alignItems='center' justifyContent='space-between'>
           <Typography color="#575757" fontWeight='500'>
-          Account Instrument
-          </Typography>
-
-          <TextField
-          sx={{ width: 205 }}
-          label="Instrument"
-          value={mobileAccountStatusData.instrument}
-          onChange={({ target }) =>
-          setMobileAccountStatusData( (prev) =>
-            ({...prev, instrument:target.value}))}
-          select
-          InputProps={{ style: { height: 40 } }}
-          InputLabelProps={{ style: { height: 40 } }}
-          >
-          <MenuItem value='mobile-wallet'>Mobile-Wallet</MenuItem>
-          <MenuItem value='bank-account'>Bank-Account</MenuItem>
-          </TextField>
-      </Stack> */}
-      <Stack direction='row' alignItems='center' justifyContent='space-between' pb={30}>
-          <Typography color="#575757" fontWeight='500'>
-          Full name of the sender as per KYC Id
+          Full name of Sender
           </Typography>
           <OutlinedInput sx={{ height: 40 }} 
-            placeholder="Disabled"
-            disabled />
+            placeholder="snv"
+            disabled={!allowUatAccess}
+            onChange={({ target }) =>
+            setMobileAccountStatusData( (prev) =>
+            ({...prev, snv:target.value}))}
+          value={mobileAccountStatusData.snv} />
+      </Stack>
+      <Stack direction='row' alignItems='center' justifyContent='space-between' pb={30}>
+          <Typography color="#575757" fontWeight='500'>
+          Mobile Operator Network
+          </Typography>
+          <OutlinedInput sx={{ height: 40 }} 
+            placeholder="provider"
+            disabled={!allowUatAccess}
+            onChange={({ target }) =>
+            setMobileAccountStatusData( (prev) =>
+            ({...prev, provider:target.value}))}
+          value={mobileAccountStatusData.provider} />
       </Stack>
     </Stack>
     </>

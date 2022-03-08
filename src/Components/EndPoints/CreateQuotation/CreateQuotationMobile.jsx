@@ -17,9 +17,9 @@ function CreateQuotationMobile({allowUatAccess, createQuotationMobileData, setCr
         
     <Stack direction='row' alignItems='center' justifyContent='space-between'>
         <Typography color="#575757" fontWeight='500'>
-        Request Date
+        Creation Date/Time<span style={{color:'#ea5c57'}}> *</span>
         </Typography>
-        <OutlinedInput sx={{ height: 40 }} placeholder='Request Date'
+        <OutlinedInput sx={{ height: 40 }} placeholder='requestDate'
         disabled={!allowUatAccess} 
         onChange={({ target }) =>
         setCreateQuotationMobileData( (prev) =>
@@ -28,20 +28,9 @@ function CreateQuotationMobile({allowUatAccess, createQuotationMobileData, setCr
     </Stack>
     <Stack direction='row' alignItems='center' justifyContent='space-between'>
         <Typography color="#575757" fontWeight='500'>
-        Receiver MSISDN
+        Request Quotation Amount<span style={{color:'#ea5c57'}}> *</span>
         </Typography>
-        <OutlinedInput sx={{ height: 40 }} placeholder='MSISDN number' 
-        disabled={!allowUatAccess} 
-        onChange={({ target }) =>
-        setCreateQuotationMobileData( (prev) =>
-            ({...prev, reciverMsisdn:target.value}))} 
-        value={createQuotationMobileData.reciverMsisdn} />
-    </Stack>
-    <Stack direction='row' alignItems='center' justifyContent='space-between'>
-        <Typography color="#575757" fontWeight='500'>
-        Request Amount
-        </Typography>
-        <OutlinedInput sx={{ height: 40 }} placeholder='Amount' 
+        <OutlinedInput sx={{ height: 40 }} placeholder='requestAmount' 
         disabled={!allowUatAccess} 
         onChange={({ target }) =>
         setCreateQuotationMobileData( (prev) =>
@@ -50,9 +39,9 @@ function CreateQuotationMobile({allowUatAccess, createQuotationMobileData, setCr
     </Stack>
     <Stack direction='row' alignItems='center' justifyContent='space-between'>
         <Typography color="#575757" fontWeight='500'>
-        Request Currency
+        Request Currency<span style={{color:'#ea5c57'}}> *</span>
         </Typography>
-        <OutlinedInput sx={{ height: 40 }} placeholder='Request Currency'
+        <OutlinedInput sx={{ height: 40 }} placeholder='requestCurrency'
         disabled={!allowUatAccess} 
         onChange={({ target }) =>
         setCreateQuotationMobileData( (prev) =>
@@ -61,33 +50,72 @@ function CreateQuotationMobile({allowUatAccess, createQuotationMobileData, setCr
     </Stack>
     <Stack direction='row' alignItems='center' justifyContent='space-between'>
         <Typography color="#575757" fontWeight='500'>
-        Sending Currency
+        Sender Mobile Number
         </Typography>
-        <OutlinedInput sx={{ height: 40 }} placeholder='Sending Currency' 
+        <OutlinedInput sx={{ height: 40 }} placeholder='msisdn debitParty' 
+        disabled={!allowUatAccess} 
+        onChange={({ target }) =>
+        setCreateQuotationMobileData( (prev) =>
+            ({...prev, senderMsisdn:target.value}))} 
+        value={createQuotationMobileData.senderMsisdn}
+        />
+    </Stack>
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+        <Typography color="#575757" fontWeight='500'>
+        Beneficiary Mobile Number<span style={{color:'#ea5c57'}}> *</span>
+        </Typography>
+        <OutlinedInput sx={{ height: 40 }} placeholder='msisdn creditParty' 
+        disabled={!allowUatAccess} 
+        onChange={({ target }) =>
+        setCreateQuotationMobileData( (prev) =>
+            ({...prev, reciverMsisdn:target.value}))} 
+        value={createQuotationMobileData.reciverMsisdn} />
+    </Stack>
+    <Stack direction='row' alignItems='center' justifyContent='space-between'>
+        <Typography color="#575757" fontWeight='500'>
+        Receiver Bank Account
+        </Typography>
+        <OutlinedInput sx={{ height: 40 }} placeholder='bankaccountno creditParty' 
+        disabled={!allowUatAccess} 
+        onChange={({ target }) =>
+        setCreateQuotationMobileData( (prev) =>
+            ({...prev, receiverBankaccountno:target.value}))} 
+        value={createQuotationMobileData.receiverBankaccountno}
+        />
+    </Stack>
+    <Stack direction='row' alignItems='center' justifyContent='space-between'>
+        <Typography color="#575757" fontWeight='500'>
+        Destination Country
+        </Typography>
+        <OutlinedInput sx={{ height: 40 }} placeholder='receivingCountry creditParty' 
+        disabled={!allowUatAccess} 
+        onChange={({ target }) =>
+        setCreateQuotationMobileData( (prev) =>
+            ({...prev, receiverCountry:target.value}))} 
+        value={createQuotationMobileData.receiverCountry}
+        />
+    </Stack>
+    <Stack direction='row' alignItems='center' justifyContent='space-between'>
+        <Typography color="#575757" fontWeight='500'>
+        Currency of Debitor<span style={{color:'#ea5c57'}}> *</span>
+        </Typography>
+        <OutlinedInput sx={{ height: 40 }} placeholder='sendingCurrency' 
         disabled={!allowUatAccess} 
         onChange={({ target }) =>
         setCreateQuotationMobileData( (prev) =>
             ({...prev, sendingCurrency:target.value}))} 
         value={createQuotationMobileData.sendingCurrency} />
     </Stack>
-    <Stack direction='row' alignItems='center' justifyContent='space-between'>
+    <Stack direction='row' alignItems='center' justifyContent='space-between' pb={30}>
         <Typography color="#575757" fontWeight='500'>
-        Receiving Currency
+        Currency of Creditor<span style={{color:'#ea5c57'}}> *</span>
         </Typography>
-        <OutlinedInput sx={{ height: 40 }} placeholder='Receiving Currency' 
+        <OutlinedInput sx={{ height: 40 }} placeholder='receivingCurrency' 
         disabled={!allowUatAccess} 
         onChange={({ target }) =>
         setCreateQuotationMobileData( (prev) =>
             ({...prev, receivingCurrency:target.value}))} 
         value={createQuotationMobileData.receivingCurrency} />
-    </Stack>
-    <Stack direction='row' alignItems='center' justifyContent='space-between' pb={30}>
-        <Typography color="#575757" fontWeight='500'>
-        Sender MSISDN
-        </Typography>
-        <OutlinedInput sx={{ height: 40 }} 
-            placeholder="Disabled"
-            disabled/>
     </Stack>
     </Stack>
     </>

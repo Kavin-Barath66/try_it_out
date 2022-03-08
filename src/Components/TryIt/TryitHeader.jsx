@@ -26,33 +26,6 @@ const MenuProps = {
 function TryitHeader(props) {
     const navigate = useNavigate();
 
-    const CssTextField = styled(TextField)({
-        '& label.Mui-focused': {
-          color: 'white',
-        },
-        '& .MuiInput-underline:after': {
-          borderBottomColor: 'white',
-          color: 'white',
-        },
-        '& .MuiOutlinedInput-root': {
-          '& fieldset': {
-            borderColor: 'white',
-            color: 'white',
-          },
-          '&:hover fieldset': {
-            borderColor: 'white',
-            color: 'white',
-          },
-          '&.Mui-focused fieldset': {
-            borderColor: 'white',
-            color: 'white',
-          },
-          "& .MuiOutlinedInput-input": {
-            color: 'white',
-        },
-        },
-      });
-
     const CustomButtom = styled(Button)`
         &.Mui-disabled{
         opacity:0.5;
@@ -214,11 +187,11 @@ function TryitHeader(props) {
             props.setApiResponseData(response.data)
             props.setApiResponseHeaderData(options.headers)
         })
-            .catch(function (error) {
-                props.setApiResponseData(error.response.data)
-                props.setApiResponseHeaderData(options.headers)
-                props.setResponseScreen(true)
-            });
+          .catch(function (error) {
+              props.setApiResponseData(error.response.data)
+              props.setApiResponseHeaderData(options.headers)
+              props.setResponseScreen(true)
+          });
     }
     const getBankListApi = () => {
         var options = {
@@ -1397,23 +1370,6 @@ function TryitHeader(props) {
                                     borderColor: 'white',
                                 },
                             },
-                            '& .MuiOutlinedInput-notchedOutline': {
-                                '& fieldset': {
-                                  borderColor: 'white',
-                                  color: 'white',
-                                },
-                                '&:hover fieldset': {
-                                  borderColor: 'white',
-                                  color: 'white',
-                                },
-                                '&.Mui-focused fieldset': {
-                                  borderColor: 'white',
-                                  color: 'white',
-                                },
-                                "& .MuiOutlinedInput-input": {
-                                  color: 'white',
-                              },
-                              },
                         }}
                         size="small"
                         value={props.endPoint}
@@ -1442,12 +1398,53 @@ function TryitHeader(props) {
                         <MenuItem value='B2P Transaction Mobile'>B2P Transaction Mobile</MenuItem>
                     </Select>
                 </FormControl>
-                <CssTextField
+                <TextField
+                        sx={{
+                          '& label': {
+                            color: 'white',
+                          },
+                          '& label.Mui-focused': {
+                            color: 'white',
+                          },
+                          '& label.Mui-disabled': {
+                            color: 'rgba(0, 0, 0, 0.38)',
+                          },
+                          '& .MuiInput-underline:after': {
+                            borderBottomColor: 'white',
+                            color: 'white',
+                          },
+                          '& .MuiOutlinedInput-root': {
+                            '& fieldset': {
+                              borderColor: 'white',
+                              color: 'white',
+                            },
+                            '&:hover fieldset': {
+                              borderColor: 'white',
+                              color: 'white',
+                            },
+                            '&.Mui-focused fieldset': {
+                              borderColor: 'white',
+                              color: 'white',
+                            },
+                            "& .MuiOutlinedInput-input": {
+                              color: 'white',
+                          },
+                          },
+                          "& .MuiInputBase-input.Mui-disabled": {
+                            color: "rgba(0, 0, 0, 0.38) !important",
+                            "-webkit-text-fill-color": "rgba(0, 0, 0, 0.38) !important",
+                            borderColor: "rgba(0, 0, 0, 0.38) !important"
+                          },
+                          "& .Mui-disabled .MuiOutlinedInput-notchedOutline": {
+                            borderColor: "rgba(0, 0, 0, 0.38) !important"
+                          }
+                        }}
+                    id="Username"
+                    size='small'
                     label="Username"
-                    id="outlined-size-small"
-                    size="small"
+                    variant="outlined"
+                    onChange={({ target }) => props.setuserName(target.value)} value={props.userName}
                     disabled={!props.allowUatAccess}
-                    placeholder='Username' onChange={({ target }) => props.setuserName(target.value)} value={props.userName}
                 />
                 {/* <OutlinedInput
                     disabled={!props.allowUatAccess}
@@ -1473,35 +1470,35 @@ function TryitHeader(props) {
                         Environment
                     </InputLabel>
                     <Select
-                        sx={!props.allowUatAccess?{
-                            width: '100%',
-                            "& .MuiSvgIcon-root": {
-                                color: "rgba(0, 0, 0, 0.38)",
-                            },
-                            "& .MuiOutlinedInput-input": {
-                                color: 'white',
-                            },
-                            "& .MuiOutlinedInput-notchedOutline": {
-                                borderColor: 'white',
-                                '&.Mui-focused': {
-                                    borderColor: 'white',
-                                },
-                            },
-                        }:{
-                            width: '100%',
-                            "& .MuiSvgIcon-root": {
-                                color: "white",
-                            },
-                            "& .MuiOutlinedInput-input": {
-                                color: 'white',
-                            },
-                            "& .MuiOutlinedInput-notchedOutline": {
-                                borderColor: 'white',
-                                '&.Mui-focused': {
-                                    borderColor: 'white',
-                                },
-                            },
-                        }}
+                    sx={!props.allowUatAccess?{
+                      width: '100%',
+                      "& .MuiSvgIcon-root": {
+                          color: "rgba(0, 0, 0, 0.38)",
+                      },
+                      "& .MuiOutlinedInput-input": {
+                          color: 'white',
+                      },
+                      "& .MuiOutlinedInput-notchedOutline": {
+                          borderColor: 'white',
+                          '&.Mui-focused': {
+                              borderColor: 'white',
+                          },
+                      },
+                  }:{
+                      width: '100%',
+                      "& .MuiSvgIcon-root": {
+                          color: "white",
+                      },
+                      "& .MuiOutlinedInput-input": {
+                          color: 'white',
+                      },
+                      "& .MuiOutlinedInput-notchedOutline": {
+                          borderColor: 'white',
+                          '&.Mui-focused': {
+                              borderColor: 'white',
+                          },
+                      },
+                  }}
                         size="small"
                         value={props.environment}
                         onChange={({ target }) => props.setEnvironment(target.value)}
@@ -1511,7 +1508,56 @@ function TryitHeader(props) {
                         <MenuItem value='Production'>Production</MenuItem>
                     </Select>
                 </FormControl>
-                <OutlinedInput sx={{
+                <TextField
+                        sx={{
+                          '& label': {
+                            color: 'white',
+                          },
+                          '& label.Mui-focused': {
+                            color: 'white',
+                          },
+                          '& label.Mui-disabled': {
+                            color: 'rgba(0, 0, 0, 0.38)',
+                          },
+                          '& .MuiInput-underline:after': {
+                            borderBottomColor: 'white',
+                            color: 'white',
+                          },
+                          '& .MuiOutlinedInput-root': {
+                              '& fieldset': {
+                                borderColor: 'white',
+                                color: 'white',
+                              },
+                              '&:hover fieldset': {
+                                borderColor: 'white',
+                                color: 'white',
+                              },
+                              '&.Mui-focused fieldset': {
+                                borderColor: 'white',
+                                color: 'white',
+                              },
+                              "& .MuiOutlinedInput-input": {
+                                color: 'white',
+                            },
+                          },
+                          "& .MuiInputBase-input.Mui-disabled": {
+                            color: "rgba(0, 0, 0, 0.38) !important",
+                            "-webkit-text-fill-color": "rgba(0, 0, 0, 0.38) !important",
+                            borderColor: "rgba(0, 0, 0, 0.38) !important"
+                          },
+                          "& .Mui-disabled .MuiOutlinedInput-notchedOutline": {
+                            borderColor: "rgba(0, 0, 0, 0.38) !important"
+                          }
+                        }}
+                    id="Password"
+                    size='small'
+                    label="Password"
+                    variant="outlined"
+                    onChange={({ target }) => props.setPassword(target.value)} 
+                    value={props.password} 
+                    disabled={!props.allowUatAccess}
+                />
+                {/* <OutlinedInput sx={{
                     height: 40, width: '100%',
                     "& .MuiOutlinedInput-input": {
                         color: 'white',
@@ -1528,10 +1574,11 @@ function TryitHeader(props) {
                         outlineWidth: 0,
                         outline: 'none',
                         backgroundColor: 'green'
-                     },
-                }} placeholder='Password' onChange={({ target }) => props.setPassword(target.value)} value={props.password} 
+                    },
+                }}
+                placeholder='Password' onChange={({ target }) => props.setPassword(target.value)} value={props.password} 
                 disabled={!props.allowUatAccess}
-                />
+                />  */}
             </Stack>
             <Stack width="20%" spacing={3} direction='column' >
                 {/* {(props.endPoint==="Account Status Mobile" && props.mobileAccountStatusData.instrument && props.mobileAccountStatusData.bnv && props.mobileAccountStatusData.msisdn)?<CustomButtom  sx={{textAlign:'center', minWidth:'180px', alignSelf: 'center', letterSpacing: 1, backgroundColor:'#ea5c57'}} variant='contained' onClick={getAccountStatus} >TRY IT OUT</CustomButtom>:
