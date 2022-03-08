@@ -53,7 +53,7 @@ function TryitHeader(props) {
         })
         .catch(function (error) {
             console.log(error);
-            props.setApiResponseData(error)
+            props.setApiResponseData(error.response.data)
             props.setResponseScreen(true)
             props.setApiResponseHeaderData(options.headers)
         })
@@ -84,7 +84,7 @@ function TryitHeader(props) {
         })
             .catch(function (error) {
                 console.log(error);
-                props.setApiResponseData(error)
+                props.setApiResponseData(error.response.data)
                 props.setResponseScreen(true)
                 props.setApiResponseHeaderData(options.headers)
             });
@@ -113,7 +113,7 @@ function TryitHeader(props) {
         })
             .catch(function (error) {
                 console.log(error);
-                props.setApiResponseData(error)
+                props.setApiResponseData(error.response.data)
                 props.setResponseScreen(true)
                 props.setApiResponseHeaderData(options.headers)
             });
@@ -138,7 +138,7 @@ function TryitHeader(props) {
         })
             .catch(function (error) {
                 console.log(error);
-                props.setApiResponseData(error)
+                props.setApiResponseData(error.response.data)
                 props.setApiResponseHeaderData(options.headers)
                 props.setResponseScreen(true)
             });
@@ -164,7 +164,7 @@ function TryitHeader(props) {
         })
             .catch(function (error) {
                 console.log(error);
-                props.setApiResponseData(error)
+                props.setApiResponseData(error.response.data)
                 props.setApiResponseHeaderData(options.headers)
                 props.setResponseScreen(true)
             });
@@ -188,8 +188,7 @@ function TryitHeader(props) {
             props.setApiResponseHeaderData(options.headers)
         })
             .catch(function (error) {
-                console.log(error);
-                props.setApiResponseData(error)
+                props.setApiResponseData(error.response.data)
                 props.setApiResponseHeaderData(options.headers)
                 props.setResponseScreen(true)
             });
@@ -208,13 +207,15 @@ function TryitHeader(props) {
         axios.get(`${apiUrl}/v1/try-it/bank-list?countryCode=${props.getBankListData.country}`,{ headers: options.headers }
         ).then(function (response) {
             console.log(JSON.stringify(response.data));
+            console.log(response.data);
             props.setResponseScreen(true)
             props.setApiResponseData(response.data)
             props.setApiResponseHeaderData(options.headers)
         })
             .catch(function (error) {
                 console.log(error);
-                props.setApiResponseData(error)
+                console.log(error.data);
+                props.setApiResponseData(error.response.data)
                 props.setApiResponseHeaderData(options.headers)
                 props.setResponseScreen(true)
             });
@@ -239,7 +240,7 @@ function TryitHeader(props) {
         })
             .catch(function (error) {
                 console.log(error);
-                props.setApiResponseData(error)
+                props.setApiResponseData(error.response.data)
                 props.setApiResponseHeaderData(options.headers)
                 props.setResponseScreen(true)
             });
@@ -286,7 +287,7 @@ function TryitHeader(props) {
         })
             .catch(function (error) {
                 console.log(error);
-                props.setApiResponseData(error)
+                props.setApiResponseData(error.response.data)
                 props.setApiResponseHeaderData(options.headers)
                 props.setResponseScreen(true)
             });
@@ -329,7 +330,7 @@ function TryitHeader(props) {
         })
             .catch(function (error) {
                 console.log(error);
-                props.setApiResponseData(error)
+                props.setApiResponseData(error.response.data)
                 props.setApiResponseHeaderData(options.headers)
                 props.setResponseScreen(true)
             });
@@ -356,7 +357,7 @@ function TryitHeader(props) {
         })
             .catch(function (error) {
                 console.log(error);
-                props.setApiResponseData(error)
+                props.setApiResponseData(error.response.data)
                 props.setApiResponseHeaderData(options.headers)
                 props.setResponseScreen(true)
             });
@@ -383,7 +384,7 @@ function TryitHeader(props) {
         })
             .catch(function (error) {
                 console.log(error);
-                props.setApiResponseData(error)
+                props.setApiResponseData(error.response.data)
                 props.setApiResponseHeaderData(options.headers)
                 props.setResponseScreen(true)
             });
@@ -480,7 +481,7 @@ function TryitHeader(props) {
         })
             .catch(function (error) {
                 console.log(error);
-                props.setApiResponseData(error)
+                props.setApiResponseData(error.response.data)
                 props.setApiResponseHeaderData(options.headers)
                 props.setResponseScreen(true)
             });
@@ -570,7 +571,7 @@ function TryitHeader(props) {
         })
             .catch(function (error) {
                 console.log(error);
-                props.setApiResponseData(error)
+                props.setApiResponseData(error.response.data)
                 props.setApiResponseHeaderData(options.headers)
                 props.setResponseScreen(true)
             });
@@ -682,7 +683,7 @@ function TryitHeader(props) {
         })
             .catch(function (error) {
                 console.log(error);
-                props.setApiResponseData(error)
+                props.setApiResponseData(error.response.data)
                 props.setApiResponseHeaderData(options.headers)
                 props.setResponseScreen(true)
             });
@@ -788,7 +789,7 @@ function TryitHeader(props) {
         })
             .catch(function (error) {
                 console.log(error);
-                props.setApiResponseData(error)
+                props.setApiResponseData(error.response.data)
                 props.setApiResponseHeaderData(options.headers)
                 props.setResponseScreen(true)
             });
@@ -882,7 +883,7 @@ function TryitHeader(props) {
         })
             .catch(function (error) {
                 console.log(error);
-                props.setApiResponseData(error)
+                props.setApiResponseData(error.response.data)
                 props.setApiResponseHeaderData(options.headers)
                 props.setResponseScreen(true)
             });
@@ -968,7 +969,7 @@ function TryitHeader(props) {
         })
             .catch(function (error) {
                 console.log(error);
-                props.setApiResponseData(error)
+                props.setApiResponseData(error.response.data)
                 props.setApiResponseHeaderData(options.headers)
                 props.setResponseScreen(true)
             });
@@ -1095,7 +1096,7 @@ function TryitHeader(props) {
         })
             .catch(function (error) {
                 console.log(error);
-                props.setApiResponseData(error)
+                props.setApiResponseData(error.response.data)
                 props.setApiResponseHeaderData(options.headers)
                 props.setResponseScreen(true)
             });
@@ -1213,7 +1214,7 @@ function TryitHeader(props) {
         })
             .catch(function (error) {
                 console.log(error);
-                props.setApiResponseData(error)
+                props.setApiResponseData(error.response.data)
                 props.setApiResponseHeaderData(options.headers)
                 props.setResponseScreen(true)
             });
@@ -1488,7 +1489,7 @@ function TryitHeader(props) {
                 {/* <CustomButtom  sx={{textAlign:'center', minWidth:'180px', alignSelf: 'center', letterSpacing: 1, backgroundColor:'#ea5c57'}} variant='contained' onClick={tryItOutHandler} >TRY IT OUT</CustomButtom> */}
                 {props.allowUatAccess? <CustomButtom sx={{ textAlign: 'center', minWidth: '180px', alignSelf: 'center', letterSpacing: 1, backgroundColor: '#ea5c57' }} variant='contained' disabled={checkProperties(props.headerObject)} onClick={tryItOutHandler}>TRY IT OUT</CustomButtom>:
                 <CustomButtom sx={{ textAlign: 'center', minWidth: '180px', alignSelf: 'center', letterSpacing: 1, backgroundColor: '#ea5c57' }} variant='contained' disabled={checkProperties(props.headerObject)} onClick={allowStaticScreen}>TRY IT OUT</CustomButtom>}
-                {!props.allowUatAccess && <Typography color="white" fonstSize={12} height={40} fontWeight='500'>
+                {!props.allowUatAccess && <Typography sx={{minWidth: '180px', alignSelf: 'center'}} color="white" fonstSize={12} height={40} fontWeight='500'>
                     To try it out with UAT <Typography color='#ea5c57' sx={{cursor:'pointer'}}onClick={allowTryingWithRealTime} >Click here!</Typography>
                 </Typography>}
         </Stack>
