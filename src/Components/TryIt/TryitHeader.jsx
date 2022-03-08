@@ -1420,7 +1420,21 @@ function TryitHeader(props) {
                         Environment
                     </InputLabel>
                     <Select
-                        sx={{
+                        sx={!props.allowUatAccess?{
+                            width: '100%', height: '40px',
+                            "& .MuiSvgIcon-root": {
+                                color: "rgba(0, 0, 0, 0.38)",
+                            },
+                            "& .MuiOutlinedInput-input": {
+                                color: 'white',
+                            },
+                            "& .MuiOutlinedInput-notchedOutline": {
+                                borderColor: 'white',
+                                '&.Mui-focused': {
+                                    borderColor: 'white',
+                                },
+                            },
+                        }:{
                             width: '100%', height: '40px',
                             "& .MuiSvgIcon-root": {
                                 color: "white",
