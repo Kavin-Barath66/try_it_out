@@ -26,6 +26,33 @@ const MenuProps = {
 function TryitHeader(props) {
     const navigate = useNavigate();
 
+    const CssTextField = styled(TextField)({
+        '& label.Mui-focused': {
+          color: 'white',
+        },
+        '& .MuiInput-underline:after': {
+          borderBottomColor: 'white',
+          color: 'white',
+        },
+        '& .MuiOutlinedInput-root': {
+          '& fieldset': {
+            borderColor: 'white',
+            color: 'white',
+          },
+          '&:hover fieldset': {
+            borderColor: 'white',
+            color: 'white',
+          },
+          '&.Mui-focused fieldset': {
+            borderColor: 'white',
+            color: 'white',
+          },
+          "& .MuiOutlinedInput-input": {
+            color: 'white',
+        },
+        },
+      });
+
     const CustomButtom = styled(Button)`
         &.Mui-disabled{
         opacity:0.5;
@@ -1355,7 +1382,7 @@ function TryitHeader(props) {
                     </InputLabel>
                     <Select
                         sx={{
-                            width: '100%', height: '40px',
+                            width: '100%',
                             "& .MuiOutlinedInput-notchedOutline": {
                                 borderColor: 'white',
                             },
@@ -1370,7 +1397,25 @@ function TryitHeader(props) {
                                     borderColor: 'white',
                                 },
                             },
+                            '& .MuiOutlinedInput-notchedOutline': {
+                                '& fieldset': {
+                                  borderColor: 'white',
+                                  color: 'white',
+                                },
+                                '&:hover fieldset': {
+                                  borderColor: 'white',
+                                  color: 'white',
+                                },
+                                '&.Mui-focused fieldset': {
+                                  borderColor: 'white',
+                                  color: 'white',
+                                },
+                                "& .MuiOutlinedInput-input": {
+                                  color: 'white',
+                              },
+                              },
                         }}
+                        size="small"
                         value={props.endPoint}
                         onChange={({ target }) => props.setEndPoint(target.value)}
                         input={<OutlinedInput label="API End Point"
@@ -1397,7 +1442,14 @@ function TryitHeader(props) {
                         <MenuItem value='B2P Transaction Mobile'>B2P Transaction Mobile</MenuItem>
                     </Select>
                 </FormControl>
-                <OutlinedInput
+                <CssTextField
+                    label="Username"
+                    id="outlined-size-small"
+                    size="small"
+                    disabled={!props.allowUatAccess}
+                    placeholder='Username' onChange={({ target }) => props.setuserName(target.value)} value={props.userName}
+                />
+                {/* <OutlinedInput
                     disabled={!props.allowUatAccess}
                     sx={{
                     height: 40, width: '100%',
@@ -1412,7 +1464,7 @@ function TryitHeader(props) {
                     },
                     }} 
                     placeholder='Username' onChange={({ target }) => props.setuserName(target.value)} value={props.userName}
-                />
+                /> */}
             </Stack>
             <Stack width="30%" spacing={3} justifyContent='center' direction='column' >
                 <FormControl>
@@ -1422,7 +1474,7 @@ function TryitHeader(props) {
                     </InputLabel>
                     <Select
                         sx={!props.allowUatAccess?{
-                            width: '100%', height: '40px',
+                            width: '100%',
                             "& .MuiSvgIcon-root": {
                                 color: "rgba(0, 0, 0, 0.38)",
                             },
@@ -1436,7 +1488,7 @@ function TryitHeader(props) {
                                 },
                             },
                         }:{
-                            width: '100%', height: '40px',
+                            width: '100%',
                             "& .MuiSvgIcon-root": {
                                 color: "white",
                             },
@@ -1450,6 +1502,7 @@ function TryitHeader(props) {
                                 },
                             },
                         }}
+                        size="small"
                         value={props.environment}
                         onChange={({ target }) => props.setEnvironment(target.value)}
                         input={<OutlinedInput label="Environment" 
@@ -1490,7 +1543,7 @@ function TryitHeader(props) {
                 {props.allowUatAccess? <CustomButtom sx={{ textAlign: 'center', minWidth: '180px', alignSelf: 'center', letterSpacing: 1, backgroundColor: '#ea5c57' }} variant='contained' disabled={checkProperties(props.headerObject)} onClick={tryItOutHandler}>TRY IT OUT</CustomButtom>:
                 <CustomButtom sx={{ textAlign: 'center', minWidth: '180px', alignSelf: 'center', letterSpacing: 1, backgroundColor: '#ea5c57' }} variant='contained' disabled={checkProperties(props.headerObject)} onClick={allowStaticScreen}>TRY IT OUT</CustomButtom>}
                 {!props.allowUatAccess && <Typography sx={{minWidth: '180px', alignSelf: 'center'}} color="white" fonstSize={12} height={40} fontWeight='500'>
-                    To try it out with UAT <Typography color='#ea5c57' sx={{cursor:'pointer'}}onClick={allowTryingWithRealTime} >Click here!</Typography>
+                        <Typography color='#ea5c57' sx={{cursor:'pointer'}}onClick={allowTryingWithRealTime} >Click here!</Typography>to Try it out with UAT
                 </Typography>}
         </Stack>
         </Stack>
