@@ -16,53 +16,9 @@ function CreateTransactionMobile({allowUatAccess, createTransactionMobileData, s
     <Stack height="100%" width={600} spacing={5} sx={{ p: 4 }} >
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-            Amount
+            Creation Date/Time<span style={{color:'#ea5c57'}}> *</span>
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Amount'
-            disabled={!allowUatAccess}
-            onChange={({ target }) =>
-            setCreateTransactionMobileData( (prev) =>
-          ({...prev, amount:target.value}))} 
-          value={createTransactionMobileData.amount} />
-        </Stack>
-        <Stack direction='row' alignItems='center' justifyContent='space-between'>
-            <Typography color="#575757" fontWeight='500'>
-            Currency
-            </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Currency'
-            disabled={!allowUatAccess}
-            onChange={({ target }) =>
-            setCreateTransactionMobileData( (prev) =>
-          ({...prev, currency:target.value}))} 
-          value={createTransactionMobileData.currency} />
-        </Stack>
-        <Stack direction='row' alignItems='center' justifyContent='space-between'>
-            <Typography color="#575757" fontWeight='500'>
-            Type
-            </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Type'
-            disabled={!allowUatAccess}
-            onChange={({ target }) =>
-            setCreateTransactionMobileData( (prev) =>
-            ({...prev, type:target.value}))} 
-            value={createTransactionMobileData.type} />
-        </Stack>
-        <Stack direction='row' alignItems='center' justifyContent='space-between'>
-            <Typography color="#575757" fontWeight='500'>
-            Description Text
-            </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Description Text'
-            disabled={!allowUatAccess}
-            onChange={({ target }) =>
-            setCreateTransactionMobileData( (prev) =>
-            ({...prev, descriptionText:target.value}))} 
-            value={createTransactionMobileData.descriptionText}/>
-        </Stack>
-        <Stack direction='row' alignItems='center' justifyContent='space-between'>
-            <Typography color="#575757" fontWeight='500'>
-            Request Date
-            </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Transaction Reference'
+            <OutlinedInput sx={{ height: 40 }} placeholder='requestDate'
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionMobileData( (prev) =>
@@ -71,20 +27,78 @@ function CreateTransactionMobile({allowUatAccess, createTransactionMobileData, s
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-            Transaction Reference
+            Destination Amount Payable<span style={{color:'#ea5c57'}}> *</span>
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Transaction Reference'
+            <OutlinedInput sx={{ height: 40 }} placeholder='amount'
+            disabled={!allowUatAccess}
+            onChange={({ target }) =>
+            setCreateTransactionMobileData( (prev) =>
+          ({...prev, amount:target.value}))} 
+          value={createTransactionMobileData.amount} />
+        </Stack>
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+            Destination Currency<span style={{color:'#ea5c57'}}> *</span>
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='currency'
+            disabled={!allowUatAccess}
+            onChange={({ target }) =>
+            setCreateTransactionMobileData( (prev) =>
+          ({...prev, currency:target.value}))} 
+          value={createTransactionMobileData.currency} />
+        </Stack>
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+            Transaction Type<span style={{color:'#ea5c57'}}> *</span>
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='type'
+            disabled={!allowUatAccess}
+            onChange={({ target }) =>
+            setCreateTransactionMobileData( (prev) =>
+            ({...prev, type:target.value}))} 
+            value={createTransactionMobileData.type} />
+        </Stack>
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+            Free format Text Description
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='descriptionText'
+            disabled={!allowUatAccess}
+            onChange={({ target }) =>
+            setCreateTransactionMobileData( (prev) =>
+            ({...prev, descriptionText:target.value}))} 
+            value={createTransactionMobileData.descriptionText}/>
+        </Stack>
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+            Transaction Reference<span style={{color:'#ea5c57'}}> *</span>
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='requestingOrganisationTransactionReference'
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionMobileData( (prev) =>
             ({...prev, transRef:target.value}))} 
             value={createTransactionMobileData.transRef} />
         </Stack>
+
+        {/* Provider */}
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-            Sender MobileNumber
+            Provider Code
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Sender MSISDN' 
+            <OutlinedInput sx={{ height: 40 }} placeholder='provider'
+            disabled={!allowUatAccess}
+            onChange={({ target }) =>
+            setCreateTransactionMobileData( (prev) =>
+            ({...prev, providerCode:target.value}))} 
+            value={createTransactionMobileData.providerCode}
+            />
+        </Stack>
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+            Sender Mobile Number<span style={{color:'#ea5c57'}}> *</span>
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='msisdn debitParty' 
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionMobileData( (prev) =>
@@ -93,20 +107,90 @@ function CreateTransactionMobile({allowUatAccess, createTransactionMobileData, s
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-            Receiver MobileNumber
+            Beneficiary Mobile Number<span style={{color:'#ea5c57'}}> *</span>
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Receiver MSISDN' 
+            <OutlinedInput sx={{ height: 40 }} placeholder='msisdn creditParty' 
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionMobileData( (prev) =>
             ({...prev, receiverMsisdn:target.value}))} 
             value={createTransactionMobileData.receiverMsisdn} />
         </Stack>
+
+
+        {/* Beneficary bank account */}
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-            Sender Nationality
+            Beneficiary Bank Account No
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Nationality'
+            <OutlinedInput sx={{ height: 40 }} placeholder='bankaccountno creditParty' 
+            disabled={!allowUatAccess}
+            onChange={({ target }) =>
+            setCreateTransactionMobileData( (prev) =>
+            ({...prev, senderBankAccountno:target.value}))} 
+            value={createTransactionMobileData.senderBankAccountno}
+            />
+        </Stack>
+        {/* receiver bank account */}
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+            Receive Bank Account Type<span style={{color:'#ea5c57'}}> *</span>
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='accounttype creditParty' 
+            disabled={!allowUatAccess}
+            onChange={({ target }) =>
+            setCreateTransactionMobileData( (prev) =>
+            ({...prev, receiverBankAccountType:target.value}))} 
+            value={createTransactionMobileData.receiverBankAccountType}
+            />
+            </Stack>
+
+        {/* bank code */}
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+            Bank Code
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='sortcode creditParty' 
+            disabled={!allowUatAccess}
+            onChange={({ target }) =>
+            setCreateTransactionMobileData( (prev) =>
+            ({...prev, bankCode:target.value}))} 
+            value={createTransactionMobileData.bankCode}
+            />
+        </Stack>
+        {/* Full name of Beneficiary Bank */}
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+            Full name of Beneficiary Bank
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='organisationid' 
+            disabled={!allowUatAccess}
+            onChange={({ target }) =>
+            setCreateTransactionMobileData( (prev) =>
+            ({...prev, bankName:target.value}))} 
+            value={createTransactionMobileData.bankName}
+            />
+        </Stack>
+        {/* Branch code*/}
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+            Branch code
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='banksubcode' 
+            disabled={!allowUatAccess}
+            onChange={({ target }) =>
+            setCreateTransactionMobileData( (prev) =>
+            ({...prev, bankSubCode:target.value}))} 
+            value={createTransactionMobileData.bankSubCode}
+            />
+        </Stack>
+
+
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+            Nationality (Sender)<span style={{color:'#ea5c57'}}> *</span>
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='nationality'
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionMobileData( (prev) =>
@@ -115,9 +199,9 @@ function CreateTransactionMobile({allowUatAccess, createTransactionMobileData, s
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
         <Typography color="#575757" fontWeight='500'>
-        Sender Date Of Birth
+        Date of Birth (Sender)<span style={{color:'#ea5c57'}}> *</span>
         </Typography>
-        <OutlinedInput sx={{ height: 40 }} placeholder='Date Of Birth' 
+        <OutlinedInput sx={{ height: 40 }} placeholder='dateOfBirth' 
         disabled={!allowUatAccess}
         onChange={({ target }) =>
             setCreateTransactionMobileData( (prev) =>
@@ -126,11 +210,11 @@ function CreateTransactionMobile({allowUatAccess, createTransactionMobileData, s
     </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-            Sender Gender
+            Gender (Sender)
             </Typography>
             <TextField
             sx={{ width: 205 }}
-            label="Sender Gender"
+            label="gender"
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionMobileData( (prev) =>
@@ -146,9 +230,9 @@ function CreateTransactionMobile({allowUatAccess, createTransactionMobileData, s
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-            Sender ID Type
+            Id Document Type (Sender)<span style={{color:'#ea5c57'}}> *</span>
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='ID Type'
+            <OutlinedInput sx={{ height: 40 }} placeholder='idType'
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionMobileData( (prev) =>
@@ -157,9 +241,9 @@ function CreateTransactionMobile({allowUatAccess, createTransactionMobileData, s
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-            Sender ID Number
+            Id Number (Sender)<span style={{color:'#ea5c57'}}> *</span>
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='ID Number' 
+            <OutlinedInput sx={{ height: 40 }} placeholder='idNumber' 
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionMobileData( (prev) =>
@@ -168,9 +252,9 @@ function CreateTransactionMobile({allowUatAccess, createTransactionMobileData, s
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-            Sender Issue Date
+            Id Document Issue Date (Sender)
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Issue Date' 
+            <OutlinedInput sx={{ height: 40 }} placeholder='issueDate' 
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionMobileData( (prev) =>
@@ -179,9 +263,9 @@ function CreateTransactionMobile({allowUatAccess, createTransactionMobileData, s
         </Stack>  
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-            Sender Expiry Date
+            Id Document Expiry Date (Sender)<span style={{color:'#ea5c57'}}> *</span>
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Expiry Date'
+            <OutlinedInput sx={{ height: 40 }} placeholder='expiryDate'
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionMobileData( (prev) =>
@@ -190,9 +274,9 @@ function CreateTransactionMobile({allowUatAccess, createTransactionMobileData, s
         </Stack> 
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-            Issuer Country
+            Id Issuer Country (Sender)
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Issuer Country' 
+            <OutlinedInput sx={{ height: 40 }} placeholder='issuerCountry' 
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionMobileData( (prev) =>
@@ -201,9 +285,9 @@ function CreateTransactionMobile({allowUatAccess, createTransactionMobileData, s
         </Stack> 
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-            Sender Address Line 1
+            Address Line1 (Sender Address)<span style={{color:'#ea5c57'}}> *</span>
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Address Line 1' 
+            <OutlinedInput sx={{ height: 40 }} placeholder='addressLine1' 
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionMobileData( (prev) =>
@@ -212,9 +296,9 @@ function CreateTransactionMobile({allowUatAccess, createTransactionMobileData, s
         </Stack> 
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-            Sender Address Line 2
+            Address Line2 (Sender Address)
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Address Line 2' 
+            <OutlinedInput sx={{ height: 40 }} placeholder='addressLine2' 
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionMobileData( (prev) =>
@@ -223,9 +307,9 @@ function CreateTransactionMobile({allowUatAccess, createTransactionMobileData, s
         </Stack> 
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-            Sender Address Line 3
+            Address Line3 (Sender Address)
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Address Line 3'
+            <OutlinedInput sx={{ height: 40 }} placeholder='addressLine3'
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionMobileData( (prev) =>
@@ -234,9 +318,9 @@ function CreateTransactionMobile({allowUatAccess, createTransactionMobileData, s
         </Stack> 
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-            Sender City
+            City/Town (Sender Address)<span style={{color:'#ea5c57'}}> *</span>
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='City' 
+            <OutlinedInput sx={{ height: 40 }} placeholder='city' 
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionMobileData( (prev) =>
@@ -245,9 +329,9 @@ function CreateTransactionMobile({allowUatAccess, createTransactionMobileData, s
         </Stack> 
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-            Sender State Province
+            State (Sender Address)
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='State Province'
+            <OutlinedInput sx={{ height: 40 }} placeholder='stateProvince'
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionMobileData( (prev) =>
@@ -256,9 +340,9 @@ function CreateTransactionMobile({allowUatAccess, createTransactionMobileData, s
         </Stack> 
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-            Sender Postal Code
+            Postal Code (Sender Address)
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Postal Code'
+            <OutlinedInput sx={{ height: 40 }} placeholder='postalCode'
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionMobileData( (prev) =>
@@ -267,20 +351,35 @@ function CreateTransactionMobile({allowUatAccess, createTransactionMobileData, s
         </Stack> 
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-            Sender Country
+            Country (Sender Address)<span style={{color:'#ea5c57'}}> *</span>
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Country' 
+            <OutlinedInput sx={{ height: 40 }} placeholder='country' 
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionMobileData( (prev) =>
             ({...prev, country:target.value}))} 
             value={createTransactionMobileData.country}/>
         </Stack>
+
+        {/* Title (Sender) */}
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-                Sender First Name
+            Title (Sender)
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Sender First Name'
+            <OutlinedInput sx={{ height: 40 }} placeholder='title'
+            disabled={!allowUatAccess} 
+            onChange={({ target }) =>
+            setCreateTransactionMobileData( (prev) =>
+            ({...prev, senderTitle:target.value}))} 
+            value={createTransactionMobileData.senderTitle}/>
+        </Stack>
+
+
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+            First Name (Sender)<span style={{color:'#ea5c57'}}> *</span>
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='firstName'
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionMobileData( (prev) =>
@@ -289,9 +388,9 @@ function CreateTransactionMobile({allowUatAccess, createTransactionMobileData, s
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-                Sender Middle Name
+            Middle Name (Sender)
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Sender Middle Name'
+            <OutlinedInput sx={{ height: 40 }} placeholder='middlename'
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionMobileData( (prev) =>
@@ -300,20 +399,178 @@ function CreateTransactionMobile({allowUatAccess, createTransactionMobileData, s
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-                Sender Last Name
+            Last Name (Sender)<span style={{color:'#ea5c57'}}> *</span>	
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Sender Last Name' 
+            <OutlinedInput sx={{ height: 40 }} placeholder='lastName' 
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionMobileData( (prev) =>
             ({...prev, lastName:target.value}))} 
             value={createTransactionMobileData.lastName}/>
         </Stack>
+
+
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-                Receiver First Name
+            Nationality (Receiver)
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Receiver First Name'
+            <OutlinedInput sx={{ height: 40 }} placeholder='nationality'
+            disabled={!allowUatAccess}
+            onChange={({ target }) =>
+            setCreateTransactionMobileData( (prev) =>
+            ({...prev, receiverNationality:target.value}))} 
+            value={createTransactionMobileData.receiverNationality} />
+        </Stack>
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+            Date of Birth (Receiver)
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='dateOfBirth'
+            disabled={!allowUatAccess} 
+            onChange={({ target }) =>
+            setCreateTransactionMobileData( (prev) =>
+            ({...prev, receiverDOB:target.value}))} 
+            value={createTransactionMobileData.receiverDOB}/>
+        </Stack>
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+            Id Document Type (Receiver)
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='idType'
+            disabled={!allowUatAccess} 
+            onChange={({ target }) =>
+            setCreateTransactionMobileData( (prev) =>
+            ({...prev, receiverIdType:target.value}))} 
+            value={createTransactionMobileData.receiverIdType}/>
+        </Stack>
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+            Id Number (Receiver)
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='idNumber'
+            disabled={!allowUatAccess} 
+            onChange={({ target }) =>
+            setCreateTransactionMobileData( (prev) =>
+            ({...prev, receiverIdNumber:target.value}))} 
+            value={createTransactionMobileData.receiverIdNumber} />
+        </Stack>
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+            Id Document Issue Date (Receiver)
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='issueDate'
+            disabled={!allowUatAccess}
+            onChange={({ target }) =>
+            setCreateTransactionMobileData( (prev) =>
+            ({...prev, receiverIssueDate:target.value}))} 
+            value={createTransactionMobileData.receiverIssueDate} />
+        </Stack>
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+            Id Document Expiry Date (Receiver)
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='expiryDate'
+            disabled={!allowUatAccess}
+            onChange={({ target }) =>
+            setCreateTransactionMobileData( (prev) =>
+            ({...prev, receiverExpiryDate:target.value}))} 
+            value={createTransactionMobileData.receiverExpiryDate}  />
+        </Stack>
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+            Id Issuer Country (Receiver)
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='issuerCountry'
+            disabled={!allowUatAccess}
+            onChange={({ target }) =>
+            setCreateTransactionMobileData( (prev) =>
+            ({...prev, receiverIssuerCountry:target.value}))} 
+            value={createTransactionMobileData.receiverIssuerCountry} />
+        </Stack>
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+            Address Line1 (Receiver Address)
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='addressLine1'
+            disabled={!allowUatAccess} 
+            onChange={({ target }) =>
+            setCreateTransactionMobileData( (prev) =>
+            ({...prev, receiverAddressLine1:target.value}))} 
+            value={createTransactionMobileData.receiverAddressLine1}/>
+        </Stack>
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+            Address Line2 (Receiver Address)
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='addressLine2'
+            disabled={!allowUatAccess} 
+            onChange={({ target }) =>
+            setCreateTransactionMobileData( (prev) =>
+            ({...prev, receiverAddressLine2:target.value}))} 
+            value={createTransactionMobileData.receiverAddressLine2}/>
+        </Stack>
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+            Address Line3 (Receiver Address)
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='addressLine3'
+            disabled={!allowUatAccess}
+            onChange={({ target }) =>
+            setCreateTransactionMobileData( (prev) =>
+            ({...prev, receiverAddressLine3:target.value}))} 
+            value={createTransactionMobileData.receiverAddressLine3} />
+        </Stack>
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+            City/Town (Receiver Address)
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='city'
+            disabled={!allowUatAccess}
+            onChange={({ target }) =>
+            setCreateTransactionMobileData( (prev) =>
+            ({...prev, receiverCity:target.value}))} 
+            value={createTransactionMobileData.receiverCity}  />
+        </Stack>
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+            State (Receiver Address)
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='stateProvince'
+            disabled={!allowUatAccess} 
+            onChange={({ target }) =>
+            setCreateTransactionMobileData( (prev) =>
+            ({...prev, receiverState:target.value}))} 
+            value={createTransactionMobileData.receiverState} />
+        </Stack>
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+            Postal Code (Receiver Address)
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='postalCode'
+            disabled={!allowUatAccess} 
+            onChange={({ target }) =>
+            setCreateTransactionMobileData( (prev) =>
+            ({...prev, receiverPostalCode:target.value}))} 
+            value={createTransactionMobileData.receiverPostalCode}/>
+        </Stack>
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+            Country (Receiver Address)
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='country'
+            disabled={!allowUatAccess} 
+            onChange={({ target }) =>
+            setCreateTransactionMobileData( (prev) =>
+            ({...prev, receiverCountry:target.value}))} 
+            value={createTransactionMobileData.receiverCountry}/>
+        </Stack>
+
+
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+            First Name (Receiver)<span style={{color:'#ea5c57'}}> *</span>
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='firstName'
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionMobileData( (prev) =>
@@ -322,9 +579,9 @@ function CreateTransactionMobile({allowUatAccess, createTransactionMobileData, s
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-                Receiver Last Name
+            Last Name (Receiver)<span style={{color:'#ea5c57'}}> *</span>
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Receiver Last Name'
+            <OutlinedInput sx={{ height: 40 }} placeholder='lastName'
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionMobileData( (prev) =>
@@ -333,9 +590,9 @@ function CreateTransactionMobile({allowUatAccess, createTransactionMobileData, s
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-                Quote Id
+            Quote Id<span style={{color:'#ea5c57'}}> *</span>
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Quote Id'
+            <OutlinedInput sx={{ height: 40 }} placeholder='quoteId'
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionMobileData( (prev) =>
@@ -344,9 +601,9 @@ function CreateTransactionMobile({allowUatAccess, createTransactionMobileData, s
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-                Receiving Country
+            Destination Country<span style={{color:'#ea5c57'}}> *</span>
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Receiving Country' 
+            <OutlinedInput sx={{ height: 40 }} placeholder='receivingCountry' 
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionMobileData( (prev) =>
@@ -355,9 +612,9 @@ function CreateTransactionMobile({allowUatAccess, createTransactionMobileData, s
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-                Remittance Purpose
+            Reason for Transfer<span style={{color:'#ea5c57'}}> *</span>
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Remittance Purpose' 
+            <OutlinedInput sx={{ height: 40 }} placeholder='remittancePurpose' 
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionMobileData( (prev) =>
@@ -366,9 +623,9 @@ function CreateTransactionMobile({allowUatAccess, createTransactionMobileData, s
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-                Source Of Funds
+            Source of Funds<span style={{color:'#ea5c57'}}> *</span>
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Source Of Funds'
+            <OutlinedInput sx={{ height: 40 }} placeholder='sourceOfFunds'
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionMobileData( (prev) =>
@@ -378,9 +635,9 @@ function CreateTransactionMobile({allowUatAccess, createTransactionMobileData, s
         <Stack direction='row' alignItems='center' justifyContent='space-between' pb={30}
         >
             <Typography color="#575757" fontWeight='500'>
-                Relationship Sender
+            Relationship - Sender & Beneficiary<span style={{color:'#ea5c57'}}> *</span>
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Relationship Sender'
+            <OutlinedInput sx={{ height: 40 }} placeholder='relationshipSender'
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionMobileData( (prev) =>

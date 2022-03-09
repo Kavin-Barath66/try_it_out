@@ -27,7 +27,7 @@ function ReverseTransaction({allowUatAccess, reverseTransactionData, setReverseT
       </Stack>
       <Stack direction='row' alignItems='center' justifyContent='space-between'>
           <Typography color="#575757" fontWeight='500'>
-            Transaction ID
+          Transaction Reference ID<span style={{color:'#ea5c57'}}> *</span>
           </Typography>
           <OutlinedInput sx={{ height: 40 }} placeholder='Transaction ID' 
           disabled={!allowUatAccess}

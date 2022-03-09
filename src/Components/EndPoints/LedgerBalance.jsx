@@ -1,5 +1,6 @@
 import React from 'react'
 import { Stack, Button, Box, Typography, MenuItem, TextField } from '@mui/material'
+import { currencyList } from '../../Utils/currency'
 
 function LedgerBalance({allowUatAccess}) {
   return (<>
@@ -23,9 +24,12 @@ function LedgerBalance({allowUatAccess}) {
                   InputLabelProps={{ style: { height: 40 } }}
                   disabled={!allowUatAccess}
                 >
-                  <MenuItem value='all'>All</MenuItem>
-                  <MenuItem value='USD'>USD</MenuItem>
-                  <MenuItem value='INR'>INR</MenuItem>
+                  <MenuItem value=''>All</MenuItem>
+                  {currencyList && currencyList.length > 0 && currencyList.map((value, index) => {
+                    return (
+                      <MenuItem key={index} value={value.id}>{value.id}</MenuItem>
+                    )
+                  })}
                 </TextField>
             </Stack>
           </Stack>

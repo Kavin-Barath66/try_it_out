@@ -16,9 +16,9 @@ function ViewTransactionBank({allowUatAccess, viewTransactionBankData, setViewTr
     <Stack height="100%" width={600} spacing={5} sx={{ p: 4 }} >
       <Stack direction='row' alignItems='center' justifyContent='space-between'>
           <Typography color="#575757" fontWeight='500'>
-            Transaction Reference
+            Transaction Reference<span style={{color:'#ea5c57'}}> *</span>
           </Typography>
-          <OutlinedInput sx={{ height: 40 }} placeholder='Transaction Reference' 
+          <OutlinedInput sx={{ height: 40 }} placeholder='transactionReference' 
           disabled={!allowUatAccess}
           onChange={({ target }) =>
           setViewTransactionBankData( (prev) =>

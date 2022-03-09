@@ -32,7 +32,14 @@ function App() {
   const [password, setPassword] = useState("85d6dcc27d9fb21c7c346cdbcee2b56a84eba0f542a846de06658d2d094afd56")
 
   const [transRef, setTransRef] = useState("SrcTxnId001")
-  const [getBankListData, setGetBankListData] = useState({ country: 'BD' })
+  const [getBankListData, setGetBankListData] = useState({ 
+    country: 'BD',
+    lastUpdatedOn:'',
+    bankName:'',
+    bankCode:'',
+    providerCode:'',
+    status:''
+    })
   
   const [allowUatAccess, setAllowUatAccess] = useState(false)
 
@@ -154,7 +161,31 @@ function App() {
     receivingCountry: "NP",
     remittancePurpose: "Family Maintainance",
     sourceOfFunds: "Salary",
-    relationshipSender: "Brother"
+    relationshipSender: "Brother",
+    /*  */
+    providerCode:'123',
+    senderBankAccountno:'12312',
+    receiverBankAccountType:'accountType',
+    bankCode:'HDFC23',
+    bankName:'HDFC',
+    bankSubCode:'2343',
+    senderTitle:'title',
+    receiverNationality:'IN',
+    receiverDOB:'Date',
+    receiverIdType:'Id',
+    receiverIdNumber:'Id',
+    receiverIssueDate:'Date',
+    receiverExpiryDate:'Date',
+    receiverIssuerCountry:'IN',
+    receiverAddressLine1: "49 park street",
+    receiverAddressLine2: "12",
+    receiverAddressLine3: "12",
+    receiverCity:'city',
+    receiverState:'state',
+    receiverPostalCode:'postalcode',
+    receiverCountry:'country',
+
+
 })
 
 const [bankTransactionB2BData, setBankTransactionB2BData] = useState({
