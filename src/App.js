@@ -49,7 +49,7 @@ function App() {
     msisdn: '+255897378383',
     bnv: 'David Robinson',
     snv:'Sender Name',
-    provider:'25501'
+    provider:'25501',
   })
   const [bankAccountStatusData, setBankAccountStatusData] = useState({
     accountId: '50100002965304',
@@ -57,6 +57,10 @@ function App() {
     bankCode: 'HDFC0001626',
     bankName: 'HDFC%20Bank',
     country: 'IN',
+    snv:'',
+    msisdn:'',
+    provider:'',
+    bankSubCode:'',
   })
   const [cancelTransactionData, setCancelTransactionData] = useState({
     reason: 'cancelling',
@@ -89,6 +93,7 @@ function App() {
     receiverCountry:'IN',
     receiverBankaccountno:'50100002965304',
   })
+  const [ledgerBalanceData, setLedgerBalanceData] = useState({ currency: 'USD' })
   const [viewTransactionMobileData, setViewTransactionMobileData] = useState({transRef:"SrcTxnId001"})
   const [viewTransactionBankData, setViewTransactionBankData] = useState({transRef:"SrcTxnId001"})
   const [createTransactionBankData, setCreateTransactionBankData] = useState({
@@ -584,6 +589,7 @@ useEffect(() => {
         mobileTransactionB2PData={mobileTransactionB2PData}
         bankTransactionP2BData={bankTransactionP2BData}
         mobileTransactionP2BData={mobileTransactionP2BData}
+        ledgerBalanceData={ledgerBalanceData}
         endPoint={endPoint}
         allowUatAccess={allowUatAccess}
         setAllowUatAccess={setAllowUatAccess}
@@ -604,7 +610,7 @@ useEffect(() => {
         <Routes basename={process.env.REACT_APP_BASE_URL}>
           <Route path="/" element={<Home />} />
           <Route path={`/${process.env.REACT_APP_BASE_URL}`} element={<Home />} />
-          <Route path={`${process.env.REACT_APP_BASE_URL}/ledger`} element={<Ledger responseScreen={responseScreen} apiResponseHeaderData={apiResponseHeaderData} apiResponseData={apiResponseData} allowUatAccess={allowUatAccess} />} />
+          <Route path={`${process.env.REACT_APP_BASE_URL}/ledger`} element={<Ledger ledgerBalanceData={ledgerBalanceData} setLedgerBalanceData={setLedgerBalanceData} responseScreen={responseScreen} apiResponseHeaderData={apiResponseHeaderData} apiResponseData={apiResponseData} allowUatAccess={allowUatAccess} />} />
 
           <Route path={`${process.env.REACT_APP_BASE_URL}/account-status-mobile`} element={<MobileAccountStatus responseScreen={responseScreen} mobileAccountStatusData={mobileAccountStatusData} setMobileAccountStatusData={setMobileAccountStatusData} apiResponseHeaderData={apiResponseHeaderData} apiResponseData={apiResponseData} allowUatAccess={allowUatAccess} />} />
           <Route path={`${process.env.REACT_APP_BASE_URL}/account-status-bank`} element={<BankAccountStatus apiResponseHeaderData={apiResponseHeaderData} responseScreen={responseScreen} bankAccountStatusData={bankAccountStatusData} setBankAccountStatusData={setBankAccountStatusData} apiResponseData={apiResponseData} allowUatAccess={allowUatAccess} />} />

@@ -35,6 +35,7 @@ function TryitHeader(props) {
         }`
 
     const getLedgerBalanceApi = () => {
+      var requestUrl = `${apiUrl}/v1/try-it/ledger-balance?`;
         var options = {
             headers: {
                 'X-USERNAME': `${props.userName}`,
@@ -44,7 +45,9 @@ function TryitHeader(props) {
                 'Accept': 'application/json'
             }
         }
-        axios.get(`${apiUrl}/v1/try-it/ledger-balance`, { headers: options.headers },
+        axios.get(requestUrl 
+          +(props.ledgerBalanceData.currency && `currency=${props.ledgerBalanceData.currency}`)
+          , { headers: options.headers },
         ).then(function (response) {
             console.log(JSON.stringify(response.data));
             props.setResponseScreen(true)
@@ -145,6 +148,7 @@ function TryitHeader(props) {
     }
 
     const accountStatusBankApi = () => {
+        var requestUrl=`${apiUrl}/v1/try-it/account-status?accountId=${props.bankAccountStatusData.accountId}&bnv=${props.bankAccountStatusData.bnv}&bankcode=${props.bankAccountStatusData.bankCode}&bankname=${props.bankAccountStatusData.bankName}&country=${props.bankAccountStatusData.country}`;
         var options = {
             headers: {
                 'X-USERNAME': `${props.userName}`,
@@ -155,8 +159,13 @@ function TryitHeader(props) {
                 'Content-Type': 'application/json'
             }
         }
-        axios.get(`${apiUrl}/v1/try-it/account-status?accountId=${props.bankAccountStatusData.accountId}&bnv=${props.bankAccountStatusData.bnv}&bankcode=${props.bankAccountStatusData.bankCode}&bankname=${props.bankAccountStatusData.bankName}&country=${props.bankAccountStatusData.country}`,{ headers: options.headers }
-        ).then(function (response) {
+        axios.get(requestUrl 
+          +(props.bankAccountStatusData.snv && `&senderName=${props.bankAccountStatusData.snv}`)
+          +(props.bankAccountStatusData.msisdn && `&msisdn=${props.bankAccountStatusData.msisdn}`)
+          +(props.bankAccountStatusData.provider && `&provider=${props.bankAccountStatusData.provider}`)
+          +(props.bankAccountStatusData.bankSubCode && `&bankSubCode=${props.bankAccountStatusData.bankSubCode}`)
+          ,{ headers: options.headers })
+          .then(function (response) {
             console.log(JSON.stringify(response.data));
             props.setResponseScreen(true)
             props.setApiResponseData(response.data)
@@ -170,6 +179,7 @@ function TryitHeader(props) {
             });
     }
     const accountStatusMobileApi = () => {
+      var requestUrl=`${apiUrl}/v1/try-it/account-status?msisdn=${props.mobileAccountStatusData.msisdn}&bnv=${props.mobileAccountStatusData.bnv}`;
         var options = {
             headers: {
                 'X-USERNAME': `${props.userName}`,
@@ -180,8 +190,11 @@ function TryitHeader(props) {
                 'Content-Type': 'application/json'
             }
         }
-        axios.get(`${apiUrl}/v1/try-it/account-status?msisdn=${props.mobileAccountStatusData.msisdn}&bnv=${props.mobileAccountStatusData.bnv}`,{ headers: options.headers }
-        ).then(function (response) {
+        axios.get(requestUrl 
+            +(props.mobileAccountStatusData.provider && `&provider=${props.mobileAccountStatusData.provider}`)
+            +(props.mobileAccountStatusData.snv && `&senderName=${props.mobileAccountStatusData.snv}`)
+            ,{ headers: options.headers})
+            .then(function (response) {
             console.log(JSON.stringify(response.data));
             props.setResponseScreen(true)
             props.setApiResponseData(response.data)
@@ -221,6 +234,7 @@ function TryitHeader(props) {
             });
     }
     const corridorQuotationApi = () => {
+      var requestUrl =`${apiUrl}/v1/try-it/quotation?`
         var options = {
             headers: {
                 'X-USERNAME': `${props.userName}`,
@@ -231,7 +245,9 @@ function TryitHeader(props) {
                 'Content-Type': 'application/json'
             }
         }
-        axios.get(`${apiUrl}/v1/try-it/quotation?currency=${props.corridorQuotationData.currency}`,{ headers: options.headers }
+        axios.get(requestUrl 
+          +(props.corridorQuotationData.currency && `currency=${props.corridorQuotationData.currency}`)
+        ,{ headers: options.headers }
         ).then(function (response) {
             console.log(JSON.stringify(response.data));
             props.setResponseScreen(true)
@@ -1344,12 +1360,18 @@ function TryitHeader(props) {
             <Stack width="30%" spacing={3} justifyContent='center' direction='column' >
                 <FormControl>
                     <InputLabel
-                        sx={{
+                        sx={!props.endPoint?{
                             color: 'white',
                             '&.Mui-focused': {
                                 color: 'white',
                             },
-                        }}
+                            marginTop:-0.7,
+                        }:{
+                          color: 'white',
+                          '&.Mui-focused': {
+                              color: 'white',
+                          },
+                      }}
                         id="demo-simple-select-autowidth-label">
                         API End Point
                     </InputLabel>
@@ -1465,7 +1487,19 @@ function TryitHeader(props) {
             </Stack>
             <Stack width="30%" spacing={3} justifyContent='center' direction='column' >
                 <FormControl>
-                    <InputLabel id="demo-simple-select-autowidth-label" sx={{ color: 'white' }} 
+                    <InputLabel id="demo-simple-select-autowidth-label" 
+                    sx={!props.environment?{
+                        color: 'white',
+                        '&.Mui-focused': {
+                            color: 'white',
+                        },
+                        marginTop:-0.7,
+                    }:{
+                      color: 'white',
+                      '&.Mui-focused': {
+                          color: 'white',
+                      },
+                  }} 
                     disabled={!props.allowUatAccess} >
                         Environment
                     </InputLabel>
@@ -1587,10 +1621,10 @@ function TryitHeader(props) {
                 (props.endPoint==="Get Bank List")?<CustomButtom  sx={{textAlign:'center', minWidth:'180px', alignSelf: 'center', letterSpacing: 1, backgroundColor:'#ea5c57'}} variant='contained' onClick={getAccountStatus} >TRY IT OUT</CustomButtom>: */}
 
                 {/* <CustomButtom  sx={{textAlign:'center', minWidth:'180px', alignSelf: 'center', letterSpacing: 1, backgroundColor:'#ea5c57'}} variant='contained' onClick={tryItOutHandler} >TRY IT OUT</CustomButtom> */}
-                {props.allowUatAccess? <CustomButtom sx={{ textAlign: 'center', minWidth: '180px', alignSelf: 'center', letterSpacing: 1, backgroundColor: '#ea5c57' }} variant='contained' disabled={checkProperties(props.headerObject)} onClick={tryItOutHandler}>TRY IT OUT</CustomButtom>:
-                <CustomButtom sx={{ textAlign: 'center', minWidth: '180px', alignSelf: 'center', letterSpacing: 1, backgroundColor: '#ea5c57' }} variant='contained' disabled={checkProperties(props.headerObject)} onClick={allowStaticScreen}>TRY IT OUT</CustomButtom>}
-                {!props.allowUatAccess && <Typography sx={{minWidth: '180px', alignSelf: 'center'}} color="white" fonstSize={12} height={40} fontWeight='500'>
-                        <Typography color='#ea5c57' sx={{cursor:'pointer'}}onClick={allowTryingWithRealTime} >Click here!</Typography>to Try it out with UAT
+                {props.allowUatAccess? <CustomButtom sx={{ textAlign: 'center', minWidth: '180px', alignSelf: 'center', letterSpacing: 1, backgroundColor: '#ea5c57' }} variant='contained' /* disabled={checkProperties(props.headerObject)} */ onClick={tryItOutHandler}>TRY IT OUT</CustomButtom>:
+                <CustomButtom sx={{ textAlign: 'center', minWidth: '180px', alignSelf: 'center', letterSpacing: 1, backgroundColor: '#ea5c57' }} variant='contained' /* disabled={checkProperties(props.headerObject)} */ onClick={allowStaticScreen}>TRY IT OUT</CustomButtom>}
+                {!props.allowUatAccess && <Typography sx={{textAlign: 'center', minWidth: '180px', alignSelf: 'center'}} color="white" fonstSize={12} height={40} fontWeight='500'>
+                      Click here to <span style={{cursor:'pointer', color:'#ea5c57'}}onClick={allowTryingWithRealTime} > Login!</span>
                 </Typography>}
         </Stack>
         </Stack>

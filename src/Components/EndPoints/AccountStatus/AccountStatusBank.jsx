@@ -48,7 +48,11 @@ function AccountStatusBank({allowUatAccess, bankAccountStatusData, setBankAccoun
         </Typography>
         <OutlinedInput sx={{ height: 40 }} 
         placeholder="snv"
-        disabled={!allowUatAccess} />
+        disabled={!allowUatAccess}
+        onChange={({ target }) =>
+        setBankAccountStatusData( (prev) =>
+        ({...prev, snv:target.value}))} 
+        value={bankAccountStatusData.snv} />
         </Stack>
 
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
@@ -95,7 +99,11 @@ function AccountStatusBank({allowUatAccess, bankAccountStatusData, setBankAccoun
         </Typography>
         <OutlinedInput sx={{ height: 40 }} 
         placeholder="msisdn"
-        disabled={!allowUatAccess} />
+        disabled={!allowUatAccess} 
+        onChange={({ target }) =>
+        setBankAccountStatusData( (prev) =>
+        ({...prev, msisdn:target.value}))} 
+        value={bankAccountStatusData.msisdn}/>
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
         <Typography color="#575757" fontWeight='500'>
@@ -103,7 +111,11 @@ function AccountStatusBank({allowUatAccess, bankAccountStatusData, setBankAccoun
         </Typography>
         <OutlinedInput sx={{ height: 40 }} 
         placeholder="provider"
-        disabled={!allowUatAccess} />
+        disabled={!allowUatAccess}
+        onChange={({ target }) =>
+        setBankAccountStatusData( (prev) =>
+        ({...prev, provider:target.value}))} 
+        value={bankAccountStatusData.provider} />
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between' pb={30}>
         <Typography color="#575757" fontWeight='500'>
@@ -111,7 +123,11 @@ function AccountStatusBank({allowUatAccess, bankAccountStatusData, setBankAccoun
         </Typography>
         <OutlinedInput sx={{ height: 40 }} 
         placeholder="banksubcode"
-        disabled={!allowUatAccess} />
+        disabled={!allowUatAccess} 
+        onChange={({ target }) =>
+        setBankAccountStatusData( (prev) =>
+        ({...prev, bankSubCode:target.value}))} 
+        value={bankAccountStatusData.bankSubCode} />
         </Stack>
     </Stack>
     </>

@@ -3,11 +3,11 @@ import { Grid } from "@mui/material";
 import LedgerBalance from '../Components/EndPoints/LedgerBalance'
 import ResponseLedger from '../Components/Response/ResponseLedger';
 
-function Ledger({allowUatAccess, responseScreen, apiResponseHeaderData, apiResponseData}) {
+function Ledger({allowUatAccess, responseScreen, apiResponseHeaderData, apiResponseData, ledgerBalanceData, setLedgerBalanceData}) {
     return (
         <Grid container sx={{minHeight: '100%', paddingTop:'150px' }}>
             <Grid item xs={7}>
-                <LedgerBalance allowUatAccess={allowUatAccess} />
+                <LedgerBalance allowUatAccess={allowUatAccess} ledgerBalanceData={ledgerBalanceData} setLedgerBalanceData={setLedgerBalanceData} />
             </Grid>
             <Grid item xs={5} sx={{ height:"100vh", overflow:"auto"}} >
                 <ResponseLedger allowUatAccess={allowUatAccess} responseScreen={responseScreen} apiResponseHeaderData={apiResponseHeaderData} apiResponseData={apiResponseData}/>
