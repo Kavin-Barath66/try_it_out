@@ -50,7 +50,7 @@ function AccountStatusMobile({allowUatAccess, mobileAccountStatusData, setMobile
       </Stack>
       <Stack direction='row' alignItems='center' justifyContent='space-between' pb={30}>
           <Typography color="#575757" fontWeight='500'>
-          Mobile Operator Network
+          Provider
           </Typography>
           <OutlinedInput sx={{ height: 40 }} 
             placeholder="provider"

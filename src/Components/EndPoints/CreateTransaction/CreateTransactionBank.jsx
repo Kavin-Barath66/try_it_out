@@ -16,53 +16,9 @@ function CreateTransactionBank({allowUatAccess, createTransactionBankData, setCr
     <Stack height="100%" width={600} spacing={5} sx={{ p: 4 }} >
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-            Amount
+            Creation Date/Time<span style={{color:'#ea5c57'}}> *</span>
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Amount'
-            disabled={!allowUatAccess}
-            onChange={({ target }) =>
-            setCreateTransactionBankData( (prev) =>
-            ({...prev, amount:target.value}))} 
-            value={createTransactionBankData.amount} />
-        </Stack>
-        <Stack direction='row' alignItems='center' justifyContent='space-between'>
-            <Typography color="#575757" fontWeight='500'>
-            Currency
-            </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Currency'
-            disabled={!allowUatAccess}
-            onChange={({ target }) =>
-            setCreateTransactionBankData( (prev) =>
-            ({...prev, currency:target.value}))} 
-            value={createTransactionBankData.currency} />
-        </Stack>
-        <Stack direction='row' alignItems='center' justifyContent='space-between'>
-            <Typography color="#575757" fontWeight='500'>
-            Type
-            </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Type'
-            disabled={!allowUatAccess}
-            onChange={({ target }) =>
-            setCreateTransactionBankData( (prev) =>
-            ({...prev, type:target.value}))} 
-            value={createTransactionBankData.type} />
-        </Stack>
-        <Stack direction='row' alignItems='center' justifyContent='space-between'>
-            <Typography color="#575757" fontWeight='500'>
-            Description Text
-            </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Description Text' 
-            disabled={!allowUatAccess}
-            onChange={({ target }) =>
-            setCreateTransactionBankData( (prev) =>
-            ({...prev, descriptionText:target.value}))} 
-            value={createTransactionBankData.descriptionText} />
-        </Stack>
-        <Stack direction='row' alignItems='center' justifyContent='space-between'>
-            <Typography color="#575757" fontWeight='500'>
-            Reques Date
-            </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Transaction Reference'
+            <OutlinedInput sx={{ height: 40 }} placeholder='requestDate'
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionBankData( (prev) =>
@@ -71,53 +27,122 @@ function CreateTransactionBank({allowUatAccess, createTransactionBankData, setCr
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-            Transaction Reference
+            Destination Amount<span style={{color:'#ea5c57'}}> *</span>
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Transaction Reference'
+            <OutlinedInput sx={{ height: 40 }} placeholder='amount'
+            disabled={!allowUatAccess}
+            onChange={({ target }) =>
+            setCreateTransactionBankData( (prev) =>
+            ({...prev, amount:target.value}))} 
+            value={createTransactionBankData.amount} />
+        </Stack>
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+            Destination Amount Currency<span style={{color:'#ea5c57'}}> *</span>
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='currency'
+            disabled={!allowUatAccess}
+            onChange={({ target }) =>
+            setCreateTransactionBankData( (prev) =>
+            ({...prev, currency:target.value}))} 
+            value={createTransactionBankData.currency} />
+        </Stack>
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+            Transaction Type<span style={{color:'#ea5c57'}}> *</span>
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='types'
+            disabled={!allowUatAccess}
+            onChange={({ target }) =>
+            setCreateTransactionBankData( (prev) =>
+            ({...prev, type:target.value}))} 
+            value={createTransactionBankData.type} />
+        </Stack>
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+            Free format Text Description
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='descriptionText' 
+            disabled={!allowUatAccess}
+            onChange={({ target }) =>
+            setCreateTransactionBankData( (prev) =>
+            ({...prev, descriptionText:target.value}))} 
+            value={createTransactionBankData.descriptionText} />
+        </Stack>
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+            Transaction Reference<span style={{color:'#ea5c57'}}> *</span>
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='requestingOrganisationTransactionReference'
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionBankData( (prev) =>
             ({...prev, transRef:target.value}))} 
             value={createTransactionBankData.transRef} />
         </Stack>
+        {/* Provider Code */}
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-            Sender Mobile Number
+            Provider Code 
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Sender MSISDN'
+            <OutlinedInput sx={{ height: 40 }} placeholder='provider'
+            disabled={!allowUatAccess}
+            onChange={({ target }) =>
+            setCreateTransactionBankData( (prev) =>
+            ({...prev, provider:target.value}))} 
+            value={createTransactionBankData.provider} />
+        </Stack>
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+            Sender Mobile Number<span style={{color:'#ea5c57'}}> *</span>
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='msisdn debitParty'
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionBankData( (prev) =>
             ({...prev, senderMsisd:target.value}))} 
             value={createTransactionBankData.senderMsisd} />
         </Stack>
+        {/* Beneficiary Mobile Number */}
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-            Receiver Bank Account Number
+            Beneficiary Mobile Number 
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Bank Account Number'
+            <OutlinedInput sx={{ height: 40 }} placeholder='msisdn creditParty'
+            disabled={!allowUatAccess}
+            onChange={({ target }) =>
+            setCreateTransactionBankData( (prev) =>
+            ({...prev, receiverMsisdn:target.value}))} 
+            value={createTransactionBankData.receiverMsisdn} />
+        </Stack>
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+            Beneficiary Bank Account<span style={{color:'#ea5c57'}}> *</span>
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='bankaccountno'
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionBankData( (prev) =>
             ({...prev, receiverBankaccountno:target.value}))} 
             value={createTransactionBankData.receiverBankaccountno} />
         </Stack>
+        {/* Receive Bank Account */}
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-            Receiver Bank Name
+            Receive Bank Account Type
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder=' Bank Name'
+            <OutlinedInput sx={{ height: 40 }} placeholder='accounttype'
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionBankData( (prev) =>
-            ({...prev, receiverBankName:target.value}))} 
-            value={createTransactionBankData.receiverBankName} />
+            ({...prev, receiverBankAccountType:target.value}))} 
+            value={createTransactionBankData.receiverBankAccountType} />
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-            Receiver Bank Code
+            Bank Code
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Bank Code' 
+            <OutlinedInput sx={{ height: 40 }} placeholder='sortcode creditParty' 
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionBankData( (prev) =>
@@ -126,9 +151,32 @@ function CreateTransactionBank({allowUatAccess, createTransactionBankData, setCr
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-            Sender Nationality
+            Full name of Beneficiary Bank<span style={{color:'#ea5c57'}}> *</span>
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Nationality'
+            <OutlinedInput sx={{ height: 40 }} placeholder='organisationid'
+            disabled={!allowUatAccess}
+            onChange={({ target }) =>
+            setCreateTransactionBankData( (prev) =>
+            ({...prev, receiverBankName:target.value}))} 
+            value={createTransactionBankData.receiverBankName} />
+        </Stack>
+        {/* Branch code */}
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+            Branch code<span style={{color:'#ea5c57'}}> *</span>
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='sortcode'
+            disabled={!allowUatAccess}
+            onChange={({ target }) =>
+            setCreateTransactionBankData( (prev) =>
+            ({...prev, bankCode:target.value}))} 
+            value={createTransactionBankData.bankCode} />
+        </Stack>
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+            Nationality (Sender)<span style={{color:'#ea5c57'}}> *</span>
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='nationality'
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionBankData( (prev) =>
@@ -137,9 +185,9 @@ function CreateTransactionBank({allowUatAccess, createTransactionBankData, setCr
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
         <Typography color="#575757" fontWeight='500'>
-        Sender Date Of Birth
+        Date of Birth (Sender)<span style={{color:'#ea5c57'}}> *</span>
         </Typography>
-        <OutlinedInput sx={{ height: 40 }} placeholder='Date Of Birth'
+        <OutlinedInput sx={{ height: 40 }} placeholder='dateOfBirth'
         disabled={!allowUatAccess}
         onChange={({ target }) =>
             setCreateTransactionBankData( (prev) =>
@@ -148,11 +196,11 @@ function CreateTransactionBank({allowUatAccess, createTransactionBankData, setCr
     </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-            Sender Gender
+            Gender (Sender)
             </Typography>
             <TextField
               sx={{ width: 205 }}
-              label="Sender Gender"
+              label="gender"
               disabled={!allowUatAccess}
               onChange={({ target }) =>
                 setCreateTransactionBankData( (prev) =>
@@ -168,9 +216,9 @@ function CreateTransactionBank({allowUatAccess, createTransactionBankData, setCr
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-            Sender ID Type
+            Id Document Type (Sender)<span style={{color:'#ea5c57'}}> *</span>
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='ID Type' 
+            <OutlinedInput sx={{ height: 40 }} placeholder='idType' 
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionBankData( (prev) =>
@@ -179,9 +227,9 @@ function CreateTransactionBank({allowUatAccess, createTransactionBankData, setCr
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-            Sender ID Number
+            Id Number (Sender)<span style={{color:'#ea5c57'}}> *</span>
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='ID Number'
+            <OutlinedInput sx={{ height: 40 }} placeholder='idNumber'
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionBankData( (prev) =>
@@ -190,9 +238,9 @@ function CreateTransactionBank({allowUatAccess, createTransactionBankData, setCr
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-            Sender Issue Date
+            Id Document Issue Date (Sender)
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Issue Date'
+            <OutlinedInput sx={{ height: 40 }} placeholder='issueDate'
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionBankData( (prev) =>
@@ -201,9 +249,9 @@ function CreateTransactionBank({allowUatAccess, createTransactionBankData, setCr
         </Stack>  
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-            Sender Expiry Date
+            Id Document Expiry Date (Sender)<span style={{color:'#ea5c57'}}> *</span>
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Expiry Date'
+            <OutlinedInput sx={{ height: 40 }} placeholder='expiryDate'
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionBankData( (prev) =>
@@ -212,9 +260,9 @@ function CreateTransactionBank({allowUatAccess, createTransactionBankData, setCr
         </Stack> 
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-            Sender Issuer Country
+            Id Issuer Country (Sender)
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Issuer Country' 
+            <OutlinedInput sx={{ height: 40 }} placeholder='issuerCountry' 
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionBankData( (prev) =>
@@ -223,9 +271,9 @@ function CreateTransactionBank({allowUatAccess, createTransactionBankData, setCr
         </Stack> 
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-            Sender Address Line 1
+            Address Line1 (Sender Address)<span style={{color:'#ea5c57'}}> *</span>
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Address Line 1'
+            <OutlinedInput sx={{ height: 40 }} placeholder='addressLine1'
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionBankData( (prev) =>
@@ -234,9 +282,9 @@ function CreateTransactionBank({allowUatAccess, createTransactionBankData, setCr
         </Stack> 
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-            Sender Address Line 2
+            Address Line2 (Sender Address)
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Address Line 2' 
+            <OutlinedInput sx={{ height: 40 }} placeholder='addressLine2' 
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionBankData( (prev) =>
@@ -245,9 +293,9 @@ function CreateTransactionBank({allowUatAccess, createTransactionBankData, setCr
         </Stack> 
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-            Sender Address Line 3
+            Address Line3 (Sender Address)
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Address Line 3' 
+            <OutlinedInput sx={{ height: 40 }} placeholder='addressLine3' 
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionBankData( (prev) =>
@@ -256,9 +304,9 @@ function CreateTransactionBank({allowUatAccess, createTransactionBankData, setCr
         </Stack> 
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-            Sender City
+            City/Town (Sender Address)<span style={{color:'#ea5c57'}}> *</span>
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='City'
+            <OutlinedInput sx={{ height: 40 }} placeholder='city'
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionBankData( (prev) =>
@@ -267,9 +315,9 @@ function CreateTransactionBank({allowUatAccess, createTransactionBankData, setCr
         </Stack> 
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-            Sender State Province
+            State (Sender Address)
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='State Province' 
+            <OutlinedInput sx={{ height: 40 }} placeholder='stateProvince' 
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionBankData( (prev) =>
@@ -278,9 +326,9 @@ function CreateTransactionBank({allowUatAccess, createTransactionBankData, setCr
         </Stack> 
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-            Sender Postal Code
+            Postal Code (Sender Address)
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Postal Code'
+            <OutlinedInput sx={{ height: 40 }} placeholder='postalCode'
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionBankData( (prev) =>
@@ -289,20 +337,32 @@ function CreateTransactionBank({allowUatAccess, createTransactionBankData, setCr
         </Stack> 
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-            Sender Country
+            Country (Sender Address)<span style={{color:'#ea5c57'}}> *</span>
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Country'
+            <OutlinedInput sx={{ height: 40 }} placeholder='country'
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionBankData( (prev) =>
             ({...prev, country:target.value}))} 
             value={createTransactionBankData.country} />
         </Stack>
+        {/* Title (Sender) */}
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-                Sender First Name
+            Title (Sender)
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Sender First Name' 
+            <OutlinedInput sx={{ height: 40 }} placeholder='title' 
+            disabled={!allowUatAccess}
+            onChange={({ target }) =>
+            setCreateTransactionBankData( (prev) =>
+            ({...prev, senderTitle:target.value}))} 
+            value={createTransactionBankData.senderTitle}/>
+        </Stack>
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+            First Name (Sender)<span style={{color:'#ea5c57'}}> *</span>
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='firstName' 
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionBankData( (prev) =>
@@ -311,9 +371,9 @@ function CreateTransactionBank({allowUatAccess, createTransactionBankData, setCr
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-                Sender Middle Name
+            Middle Name (Sender)
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Sender Middle Name'
+            <OutlinedInput sx={{ height: 40 }} placeholder='middleName'
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionBankData( (prev) =>
@@ -322,20 +382,188 @@ function CreateTransactionBank({allowUatAccess, createTransactionBankData, setCr
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-                Sender Last Name
+            Last Name (Sender)<span style={{color:'#ea5c57'}}> *</span>
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Sender Last Name'
+            <OutlinedInput sx={{ height: 40 }} placeholder='lastName'
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionBankData( (prev) =>
             ({...prev, lastName:target.value}))} 
             value={createTransactionBankData.lastName} />
         </Stack>
+        {/* Nationality (Receiver) */}
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-                Receiver First Name
+            Nationality (Receiver)
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Sender First Name'
+            <OutlinedInput sx={{ height: 40 }} placeholder='nationality'
+            disabled={!allowUatAccess}
+            onChange={({ target }) =>
+            setCreateTransactionBankData( (prev) =>
+            ({...prev, receiverNationality:target.value}))} 
+            value={createTransactionBankData.receiverNationality} />
+        </Stack>
+        {/* Date of Birth (Receiver)  */}
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+            Date of Birth (Receiver)
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='dateOfBirth'
+            disabled={!allowUatAccess}
+            onChange={({ target }) =>
+            setCreateTransactionBankData( (prev) =>
+            ({...prev, receiverDOB:target.value}))} 
+            value={createTransactionBankData.receiverDOB} />
+        </Stack>
+        {/* Id Document Type (Receiver) */}
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+            Id Document Type (Receiver) 
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='idType'
+            disabled={!allowUatAccess}
+            onChange={({ target }) =>
+            setCreateTransactionBankData( (prev) =>
+            ({...prev, receiverIdType:target.value}))} 
+            value={createTransactionBankData.receiverIdType} />
+        </Stack>
+        {/*Id Number (Receiver)  */}
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+            Id Number (Receiver)
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='idNumber'
+            disabled={!allowUatAccess}
+            onChange={({ target }) =>
+            setCreateTransactionBankData( (prev) =>
+            ({...prev, receiverIdNumber:target.value}))} 
+            value={createTransactionBankData.receiverIdNumber} />
+        </Stack>
+        {/* Id Document Issue Date (Receiver) */}
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+            Id Document Issue Date (Receiver)
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='issueDate'
+            disabled={!allowUatAccess}
+            onChange={({ target }) =>
+            setCreateTransactionBankData( (prev) =>
+            ({...prev, receiverIssueDate:target.value}))} 
+            value={createTransactionBankData.receiverIssueDate} />
+        </Stack>
+        {/* Id Document Expiry Date (Receiver) */}
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+            Id Document Expiry Date (Receiver)
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='expiryDate'
+            disabled={!allowUatAccess}
+            onChange={({ target }) =>
+            setCreateTransactionBankData( (prev) =>
+            ({...prev, receiverExpiryDate:target.value}))} 
+            value={createTransactionBankData.receiverExpiryDate} />
+        </Stack>
+        {/* Id Issuer Country (Receiver) */}
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+            Id Issuer Country (Receiver)
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='issuerCountry'
+            disabled={!allowUatAccess}
+            onChange={({ target }) =>
+            setCreateTransactionBankData( (prev) =>
+            ({...prev, receiverIssuerCountry:target.value}))} 
+            value={createTransactionBankData.receiverIssuerCountry} />
+        </Stack>
+        {/* Address Line1 (Receiver Address) */}
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+            Address Line1 (Receiver Address)
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='addressLine1'
+            disabled={!allowUatAccess}
+            onChange={({ target }) =>
+            setCreateTransactionBankData( (prev) =>
+            ({...prev, receiverAddressLine1:target.value}))} 
+            value={createTransactionBankData.receiverAddressLine1} />
+        </Stack>
+        {/*  Address Line2 (Receiver Address)*/}
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+            Address Line2 (Receiver Address)
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='addressLine2'
+            disabled={!allowUatAccess}
+            onChange={({ target }) =>
+            setCreateTransactionBankData( (prev) =>
+            ({...prev, receiverAddressLine2:target.value}))} 
+            value={createTransactionBankData.receiverAddressLine2} />
+        </Stack>
+        {/* Address Line3 (Receiver Address) */}
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+            Address Line3 (Receiver Address)
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='addressLine3'
+            disabled={!allowUatAccess}
+            onChange={({ target }) =>
+            setCreateTransactionBankData( (prev) =>
+            ({...prev, receiverAddressLine3:target.value}))} 
+            value={createTransactionBankData.receiverAddressLine3} />
+        </Stack>
+          {/* City/Town (Receiver Address) */}
+          <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+            City/Town (Receiver Address) 
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='city'
+            disabled={!allowUatAccess}
+            onChange={({ target }) =>
+            setCreateTransactionBankData( (prev) =>
+            ({...prev, receiverCity:target.value}))} 
+            value={createTransactionBankData.receiverCity} />
+        </Stack>
+          {/* State (Receiver Address) */}
+          <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+            State (Receiver Address)
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='stateProvince'
+            disabled={!allowUatAccess}
+            onChange={({ target }) =>
+            setCreateTransactionBankData( (prev) =>
+            ({...prev, receiverState:target.value}))} 
+            value={createTransactionBankData.receiverState} />
+        </Stack>
+            {/* Postal Code (Receiver Address) */}
+            <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+            Postal Code (Receiver Address) 
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='postalCode'
+            disabled={!allowUatAccess}
+            onChange={({ target }) =>
+            setCreateTransactionBankData( (prev) =>
+            ({...prev, receiverPostalCode:target.value}))} 
+            value={createTransactionBankData.receiverPostalCode} />
+        </Stack>
+              {/* Country (Receiver Address) */}
+            <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+            Country (Receiver Address) 
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='country'
+            disabled={!allowUatAccess}
+            onChange={({ target }) =>
+            setCreateTransactionBankData( (prev) =>
+            ({...prev, receiverCountry:target.value}))} 
+            value={createTransactionBankData.receiverCountry} />
+        </Stack>
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+            First Name (Receiver)<span style={{color:'#ea5c57'}}> *</span>
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='firstName'
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionBankData( (prev) =>
@@ -344,9 +572,9 @@ function CreateTransactionBank({allowUatAccess, createTransactionBankData, setCr
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-                Receiver Last Name
+            Last Name (Receiver)<span style={{color:'#ea5c57'}}> *</span>
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Sender Last Name' 
+            <OutlinedInput sx={{ height: 40 }} placeholder='lastName' 
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionBankData( (prev) =>
@@ -355,9 +583,9 @@ function CreateTransactionBank({allowUatAccess, createTransactionBankData, setCr
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-                Quote Id
+            Quote Id<span style={{color:'#ea5c57'}}> *</span>
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Quote Id'
+            <OutlinedInput sx={{ height: 40 }} placeholder='quoteId'
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionBankData( (prev) =>
@@ -366,9 +594,9 @@ function CreateTransactionBank({allowUatAccess, createTransactionBankData, setCr
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-                Receiving Country
+            Destination Country<span style={{color:'#ea5c57'}}> *</span>
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Receiving Country'
+            <OutlinedInput sx={{ height: 40 }} placeholder='receivingCountry'
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionBankData( (prev) =>
@@ -377,9 +605,9 @@ function CreateTransactionBank({allowUatAccess, createTransactionBankData, setCr
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-                Remittance Purpose
+            Reason for Transfer<span style={{color:'#ea5c57'}}> *</span>
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Remittance Purpose'
+            <OutlinedInput sx={{ height: 40 }} placeholder='remittancePurpose'
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionBankData( (prev) =>
@@ -388,9 +616,9 @@ function CreateTransactionBank({allowUatAccess, createTransactionBankData, setCr
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-                Source Of Funds
+            Source Of Funds<span style={{color:'#ea5c57'}}> *</span>
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Source Of Funds'
+            <OutlinedInput sx={{ height: 40 }} placeholder='sourceOfFunds'
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionBankData( (prev) =>
@@ -399,9 +627,9 @@ function CreateTransactionBank({allowUatAccess, createTransactionBankData, setCr
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between' pb={30}>
             <Typography color="#575757" fontWeight='500'>
-                Relationship Sender
+            Relationship - Sender & Beneficiary<span style={{color:'#ea5c57'}}> *</span>
             </Typography>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Relationship Sender' 
+            <OutlinedInput sx={{ height: 40 }} placeholder='relationshipSender' 
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionBankData( (prev) =>

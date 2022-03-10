@@ -131,7 +131,27 @@ function App() {
     receivingCountry: "IN",
     remittancePurpose: "Family Maintainance",
     sourceOfFunds: "Salary",
-    relationshipSender: "Brother"
+    relationshipSender: "Brother",
+    /* optional Fields */
+    provider:"",
+    receiverMsisdn:"",
+    receiverBankAccountType:"",
+    bankCode:"",
+    senderTitle:"",
+    receiverNationality:"",
+    receiverDOB:"",
+    receiverIdType:"",
+    receiverIdNumber:"",
+    receiverIssueDate:"",
+    receiverExpiryDate:"",
+    receiverIssuerCountry:"",
+    receiverAddressLine1:"",
+    receiverAddressLine2:"",
+    receiverAddressLine3:"",
+    receiverCity:"",
+    receiverState:"",
+    receiverPostalCode:"",
+    receiverCountry:"",
   })
   const [createTransactionMobileData, setCreateTransactionMobileData] = useState({
     amount: "500",

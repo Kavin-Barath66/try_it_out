@@ -11,6 +11,7 @@ import Select from '@mui/material/Select';
 import { Stack, OutlinedInput, Button, Box, Typography, TextField, Container } from '@mui/material'
 import terrapayLogo from '../../assets/img/terrapay_logo.png'
 import { config } from '../../assets/config/config';
+import {requestBodyData} from '../../Utils/FilterParams'
 const apiUrl = config.api.url;
 
 
@@ -74,11 +75,14 @@ function TryitHeader(props) {
                 'Content-Type': 'application/json'
             }
         }
+        let requestBodyDataInfo = {
+          "reason": `${props.cancelTransactionData.reason}`,
+          "txnId": `${props.cancelTransactionData.txId}`,
+        }
+        const requestBody = requestBodyData(requestBodyDataInfo)
         axios.post(`${apiUrl}/v1/try-it/cancel-transaction`,
-        {
-            "reason": `${props.cancelTransactionData.reason}`,
-            "txnId": `${props.cancelTransactionData.txId}`,
-        },{ headers: options.headers }
+        requestBody,
+        { headers: options.headers }
         ).then(function (response) {
             console.log(JSON.stringify(response.data));
             props.setResponseScreen(true)
@@ -103,11 +107,14 @@ function TryitHeader(props) {
                 'Content-Type': 'application/json'
             }
         }
+        let requestBodyDataInfo = {
+          "reversalReason": `${props.reverseTransactionData.reason}`,
+          "txnId": `${props.reverseTransactionData.txId}`,
+        }
+        const requestBody = requestBodyData(requestBodyDataInfo)
         axios.post(`${apiUrl}/v1/try-it/reverse-transaction`,
-        {
-            "reversalReason": `${props.reverseTransactionData.reason}`,
-            "txnId": `${props.reverseTransactionData.txId}`,
-        },{ headers: options.headers }
+        requestBody,
+        { headers: options.headers }
         ).then(function (response) {
             console.log(JSON.stringify(response.data));
             props.setResponseScreen(true)

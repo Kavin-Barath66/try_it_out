@@ -23,7 +23,7 @@ function CorridorQuotation({allowUatAccess, corridorQuotationData, setCorridorQu
           select
           disabled={!allowUatAccess}
           InputProps={{ style: { height: 40 } }}
-          InputLabelProps={{ style: { height: 40, marginTop:-7 } }}
+          InputLabelProps={corridorQuotationData.currency?{ style: { height: 40} }:{ style: { height: 40, marginTop:-7 } }}
         >
         <MenuItem value="">All</MenuItem>
           {currencyList && currencyList.length > 0 && currencyList.map((value, index) => {
