@@ -46,16 +46,16 @@ function App() {
   const [headerObject, setHeaderObject] = useState({})
 
   const [mobileAccountStatusData, setMobileAccountStatusData] = useState({
-    msisdn: '+255897378383',
+    msisdn: '+9779840002320',
     bnv: 'David Robinson',
-    snv:'Sender Name',
-    provider:'25501',
+    snv:'',
+    provider:'',
   })
   const [bankAccountStatusData, setBankAccountStatusData] = useState({
     accountId: '50100002965304',
-    bnv: 'Deepa%20Jain',
+    bnv: 'Deepa Jain',
     bankCode: 'HDFC0001626',
-    bankName: 'HDFC%20Bank',
+    bankName: 'HDFC Bank',
     country: 'IN',
     snv:'',
     msisdn:'',
@@ -80,7 +80,7 @@ function App() {
     sendingCurrency: 'USD',
     receivingCurrency: 'INR',
     senderMsisdn:'+9779840002320',
-    receiverMsisdn:'+9779840002320',
+    receiverMsisdn:'+255897378383',
   })
   const [createQuotationMobileData, setCreateQuotationMobileData] = useState({
     requestDate: '2017-06-20 12:27:16',
@@ -89,7 +89,7 @@ function App() {
     requestCurrency: 'INR',
     sendingCurrency: 'USD',
     receivingCurrency: 'INR',
-    senderMsisdn:'+9779840002320',
+    senderMsisdn:'+255897378383',
     receiverCountry:'IN',
     receiverBankaccountno:'50100002965304',
   })
@@ -110,7 +110,7 @@ function App() {
     senderNationality: "AE",
     senderDateOfBirth: "1967-05-28",
     senderGender: "M",
-    idType: "VOTER_CARD",
+    idType: "VOT",
     idNumber: "13321115521",
     issueDate: "1967-05-28",
     expiryDate: "2067-05-28",
@@ -271,7 +271,16 @@ const [bankTransactionB2BData, setBankTransactionB2BData] = useState({
   receivingCountry: "IN",
   remittancePurpose: "Business Travel",
   sourceOfFunds: "Business Income",
-  relationshipSender: "Employer"
+  relationshipSender: "Employer",
+  /* optional */
+  providerCode:'',
+  receiverMsisdn:'',
+  beneficiarySmsNotify:'',
+  receiverBankAccountType:'',
+  banksubcode:'',
+  accountIBAN:'',
+  accountAdditionalNo1:"",
+  accountAdditionalNo2:"",
 })
 
 const [mobileTransactionB2BData, setMobileTransactionB2BData] = useState({
@@ -330,7 +339,26 @@ const [mobileTransactionB2BData, setMobileTransactionB2BData] = useState({
   receivingCountry: "IN",
   remittancePurpose: "Business Travel",
   sourceOfFunds: "Business Income",
-  relationshipSender: "Employer"
+  relationshipSender: "Employer",
+  /* Optinal */
+  providerCode:'',
+  beneficiarySmsNotify:'',
+  receiverBankaccountno:'',
+  receiverBankAccountType:'',
+  bankCode:'',
+  bankName:'',
+  bankSubCode:'',
+  accountIBAN:'',
+  accountAdditionalNo1:'',
+  accountAdditionalNo2:'',
+  senderBusinessPINCode:'',
+  senderBusinessAddress2: "",
+  senderBusinessAddressZip:'',
+  senderBusinessRegistrationIssuedBy:'',
+  senderBusinessRegistrationIssuedAt:'',
+
+
+
 })
 {/* B2P */}
 const [bankTransactionB2PData, setBankTransactionB2PData] = useState({
@@ -339,13 +367,13 @@ const [bankTransactionB2PData, setBankTransactionB2PData] = useState({
   type: "b2p",
   descriptionText: "Gift for my brother",
   requestDate: "2021-05-23 08:19:36",
-  transRef: "SrcTxnId001",
-  senderMsisd:"+971810456234",
+  transRef: "SrcTxnId003435435dygy",
+  senderMsisd:"+9779840002320",
   receiverBankaccountno:"50100002965304",
   receiverBankName:"HDFC Bank",
   receiverBankCode:"HDFC0001626",
-  receiverFirstName: "Deepa",
-  receiverLastName: "Jain",
+  receiverFirstName: "David",
+  receiverLastName: "Robinson",
   sendingAmount: "35500.00",
   payinCcyCode: "USD",
   paymentMode: "cash",
@@ -378,11 +406,11 @@ const [mobileTransactionB2PData, setMobileTransactionB2PData] = useState({
   type: "b2p",
   descriptionText: "Gift for my brother",
   requestDate: "2021-05-23 08:19:36",
-  transRef: "SrcTxnId003",
-  senderMsisd:"+971810456234",
+  transRef: "SrcTxnId0098u3",
+  senderMsisd:"+9779840002320",
   receiverMsisd:"+971810456234",
-  receiverFirstName: "Deepa",
-  receiverLastName: "Jain",
+  receiverFirstName: "David",
+  receiverLastName: "Robinson",
   sendingAmount: "35500.00",
   payinCcyCode: "USD",
   paymentMode: "cash",

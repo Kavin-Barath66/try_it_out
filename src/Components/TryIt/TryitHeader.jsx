@@ -186,7 +186,7 @@ function TryitHeader(props) {
             });
     }
     const accountStatusMobileApi = () => {
-      var requestUrl=`${apiUrl}/v1/try-it/account-status?msisdn=${props.mobileAccountStatusData.msisdn}&bnv=${props.mobileAccountStatusData.bnv}`;
+      var requestUrl=`${apiUrl}/v1/try-it/account-status?msisdn=${props.mobileAccountStatusData.msisdn.replace("+", "%2B")}&bnv=${props.mobileAccountStatusData.bnv}`;
         var options = {
             headers: {
                 'X-USERNAME': `${props.userName}`,
@@ -279,28 +279,40 @@ function TryitHeader(props) {
                 'Content-Type': 'application/json'
             }
         }
+        let requestBodyDataInfo ={
+          "requestDate": `${props.createQuotationBank.requestDate}`,
+          "debitParty": [
+            {
+              "key": "msisdn",
+              "value": `${props.createQuotationBank.senderMsisdn}`,
+            }
+          ],
+          "creditParty": [
+            {
+              "key": "msisdn",
+              "value": `${props.createQuotationBank.receiverMsisdn}`
+            },
+            {
+              "key": "bankaccountno",
+              "value": `${props.createQuotationBank.bankaccountno}`
+            },
+            {
+              "key": "receivingCountry",
+              "value": `${props.createQuotationBank.receivingCountry}`
+            }
+          ],
+          "requestAmount": `${props.createQuotationBank.requestAmount}`,
+          "requestCurrency": `${props.createQuotationBank.requestCurrency}`,
+          "quotes": [
+            {
+              "sendingCurrency":`${props.createQuotationBank.sendingCurrency}`,
+              "receivingCurrency": `${props.createQuotationBank.receivingCurrency}`
+            }
+          ]
+      }
+      const requestBody = requestBodyData(requestBodyDataInfo)
         axios.post(`${apiUrl}/v1/try-it/quotation`,
-        {
-            "requestDate": `${props.createQuotationBank.requestDate}`,
-            "creditParty": [
-              {
-                "key": "bankaccountno",
-                "value": `${props.createQuotationBank.bankaccountno}`
-              },
-              {
-                "key": "receivingCountry",
-                "value": `${props.createQuotationBank.receivingCountry}`
-              }
-            ],
-            "requestAmount": `${props.createQuotationBank.requestAmount}`,
-            "requestCurrency": `${props.createQuotationBank.requestCurrency}`,
-            "quotes": [
-              {
-                "sendingCurrency":`${props.createQuotationBank.sendingCurrency}`,
-                "receivingCurrency": `${props.createQuotationBank.receivingCurrency}`
-              }
-            ]
-        },
+        requestBody,
         { headers: options.headers }
         ).then(function (response) {
             console.log(JSON.stringify(response.data));
@@ -326,14 +338,27 @@ function TryitHeader(props) {
                 'Content-Type': 'application/json'
             }
         }
-        axios.post(`${apiUrl}/v1/try-it/quotation`,
-        {
+        let requestBodyDataInfo = {
             "requestDate": `${props.createQuotationMobileData.requestDate}`,
+            "debitParty": [
+              {
+                "key": "msisdn",
+                "value": `${props.createQuotationMobileData.senderMsisdn}`,
+              }
+            ],
             "creditParty": [
                 {
                     "key": "msisdn",
                     "value": `${props.createQuotationMobileData.reciverMsisdn}`
-                }
+                },
+                {
+                  "key": "bankaccountno",
+                  "value": `${props.createQuotationMobileData.receiverBankaccountno}`
+                },
+                {
+                  "key": "receivingCountry",
+                  "value": `${props.createQuotationMobileData.receiverCountry}`
+                },
             ],
             "requestAmount": `${props.createQuotationMobileData.requestAmount}`,
             "requestCurrency": `${props.createQuotationMobileData.requestCurrency}`,
@@ -343,7 +368,10 @@ function TryitHeader(props) {
                     "receivingCurrency": `${props.createQuotationMobileData.receivingCurrency}`
                 }
             ]
-        },
+        }
+        const requestBody = requestBodyData(requestBodyDataInfo)
+        axios.post(`${apiUrl}/v1/try-it/quotation`,
+        requestBody,
         { headers: options.headers }
         ).then(function (response) {
             console.log(JSON.stringify(response.data));
@@ -434,7 +462,7 @@ function TryitHeader(props) {
             "debitParty": [
               {
                 "key": "msisdn",
-                "value": `${props.createTransactionBankData.senderMsisd}`
+                "value": `${props.createTransactionBankData.senderMsisd.replace("+", "%2B")}`
               }
             ],
             "creditParty": [
@@ -1631,7 +1659,7 @@ function TryitHeader(props) {
                 {props.allowUatAccess? <CustomButtom sx={{ textAlign: 'center', minWidth: '180px', alignSelf: 'center', letterSpacing: 1, backgroundColor: '#ea5c57' }} variant='contained' /* disabled={checkProperties(props.headerObject)} */ onClick={tryItOutHandler}>TRY IT OUT</CustomButtom>:
                 <CustomButtom sx={{ textAlign: 'center', minWidth: '180px', alignSelf: 'center', letterSpacing: 1, backgroundColor: '#ea5c57' }} variant='contained' /* disabled={checkProperties(props.headerObject)} */ onClick={allowStaticScreen}>TRY IT OUT</CustomButtom>}
                 {!props.allowUatAccess && <Typography sx={{textAlign: 'center', minWidth: '180px', alignSelf: 'center'}} color="white" fonstSize={12} height={40} fontWeight='500'>
-                      Click here to <span style={{cursor:'pointer', color:'#ea5c57'}}onClick={allowTryingWithRealTime} > Login!</span>
+                      Click here to <span style={{cursor:'pointer', color:'#ea5c57'}}onClick={allowTryingWithRealTime} > Login</span>
                 </Typography>}
         </Stack>
         </Stack>
