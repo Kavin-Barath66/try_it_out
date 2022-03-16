@@ -12,6 +12,7 @@ import { Stack, OutlinedInput, Button, Box, Typography, TextField, Container } f
 import terrapayLogo from '../../assets/img/terrapay_logo.png'
 import { config } from '../../assets/config/config';
 import {requestBodyData} from '../../Utils/FilterParams'
+import { options } from 'joi';
 const apiUrl = config.api.url;
 
 
@@ -37,7 +38,7 @@ function TryitHeader(props) {
 
     const getLedgerBalanceApi = () => {
       var requestUrl = `${apiUrl}/v1/try-it/ledger-balance?`;
-        var options = {
+      var options = {
             headers: {
                 'X-USERNAME': `${props.userName}`,
                 'X-PASSWORD':  `${props.password}`,
@@ -46,6 +47,11 @@ function TryitHeader(props) {
                 'Accept': 'application/json'
             }
         }
+        if(props.environment==="uat") {
+        options.headers['X-ENVIRONMENT'] = 'uat'
+      }else if(props.environment==="sandbox"){
+        options.headers['X-ENVIRONMENT'] = 'sandbox'
+      }
         axios.get(requestUrl 
           +(props.ledgerBalanceData.currency && `currency=${props.ledgerBalanceData.currency}`)
           , { headers: options.headers },
@@ -75,6 +81,11 @@ function TryitHeader(props) {
                 'Content-Type': 'application/json'
             }
         }
+        if(props.environment==="uat") {
+        options.headers['X-ENVIRONMENT'] = 'uat'
+      }else if(props.environment==="sandbox"){
+        options.headers['X-ENVIRONMENT'] = 'sandbox'
+      }
         let requestBodyDataInfo = {
           "reason": `${props.cancelTransactionData.reason}`,
           "txnId": `${props.cancelTransactionData.txId}`,
@@ -107,6 +118,11 @@ function TryitHeader(props) {
                 'Content-Type': 'application/json'
             }
         }
+        if(props.environment==="uat") {
+        options.headers['X-ENVIRONMENT'] = 'uat'
+      }else if(props.environment==="sandbox"){
+        options.headers['X-ENVIRONMENT'] = 'sandbox'
+      }
         let requestBodyDataInfo = {
           "reversalReason": `${props.reverseTransactionData.reason}`,
           "txnId": `${props.reverseTransactionData.txId}`,
@@ -138,6 +154,11 @@ function TryitHeader(props) {
                 'X-ORIGINCOUNTRY': 'US'
             }
         }
+        if(props.environment==="uat") {
+        options.headers['X-ENVIRONMENT'] = 'uat'
+      }else if(props.environment==="sandbox"){
+        options.headers['X-ENVIRONMENT'] = 'sandbox'
+      }
         axios.get(`${apiUrl}/v1/try-it/transaction?transactionReference=${props.transRef}`,
             { headers: options.headers },
         ).then(function (response) {
@@ -166,6 +187,11 @@ function TryitHeader(props) {
                 'Content-Type': 'application/json'
             }
         }
+        if(props.environment==="uat") {
+        options.headers['X-ENVIRONMENT'] = 'uat'
+      }else if(props.environment==="sandbox"){
+        options.headers['X-ENVIRONMENT'] = 'sandbox'
+      }
         axios.get(requestUrl 
           +(props.bankAccountStatusData.snv && `&senderName=${props.bankAccountStatusData.snv}`)
           +(props.bankAccountStatusData.msisdn && `&msisdn=${props.bankAccountStatusData.msisdn}`)
@@ -197,6 +223,11 @@ function TryitHeader(props) {
                 'Content-Type': 'application/json'
             }
         }
+        if(props.environment==="uat") {
+        options.headers['X-ENVIRONMENT'] = 'uat'
+      }else if(props.environment==="sandbox"){
+        options.headers['X-ENVIRONMENT'] = 'sandbox'
+      }
         axios.get(requestUrl 
             +(props.mobileAccountStatusData.provider && `&provider=${props.mobileAccountStatusData.provider}`)
             +(props.mobileAccountStatusData.snv && `&senderName=${props.mobileAccountStatusData.snv}`)
@@ -224,6 +255,11 @@ function TryitHeader(props) {
                 'Content-Type': 'application/json'
             }
         }
+        if(props.environment==="uat") {
+        options.headers['X-ENVIRONMENT'] = 'uat'
+      }else if(props.environment==="sandbox"){
+        options.headers['X-ENVIRONMENT'] = 'sandbox'
+      }
         axios.get(`${apiUrl}/v1/try-it/bank-list?countryCode=${props.getBankListData.country}`,{ headers: options.headers }
         ).then(function (response) {
             console.log(JSON.stringify(response.data));
@@ -252,6 +288,11 @@ function TryitHeader(props) {
                 'Content-Type': 'application/json'
             }
         }
+        if(props.environment==="uat") {
+        options.headers['X-ENVIRONMENT'] = 'uat'
+      }else if(props.environment==="sandbox"){
+        options.headers['X-ENVIRONMENT'] = 'sandbox'
+      }
         axios.get(requestUrl 
           +(props.corridorQuotationData.currency && `currency=${props.corridorQuotationData.currency}`)
         ,{ headers: options.headers }
@@ -279,6 +320,11 @@ function TryitHeader(props) {
                 'Content-Type': 'application/json'
             }
         }
+        if(props.environment==="uat") {
+        options.headers['X-ENVIRONMENT'] = 'uat'
+      }else if(props.environment==="sandbox"){
+        options.headers['X-ENVIRONMENT'] = 'sandbox'
+      }
         let requestBodyDataInfo ={
           "requestDate": `${props.createQuotationBank.requestDate}`,
           "debitParty": [
@@ -338,6 +384,11 @@ function TryitHeader(props) {
                 'Content-Type': 'application/json'
             }
         }
+        if(props.environment==="uat") {
+        options.headers['X-ENVIRONMENT'] = 'uat'
+      }else if(props.environment==="sandbox"){
+        options.headers['X-ENVIRONMENT'] = 'sandbox'
+      }
         let requestBodyDataInfo = {
             "requestDate": `${props.createQuotationMobileData.requestDate}`,
             "debitParty": [
@@ -397,6 +448,11 @@ function TryitHeader(props) {
                 'Content-Type': 'application/json'
             }
         }
+        if(props.environment==="uat") {
+        options.headers['X-ENVIRONMENT'] = 'uat'
+      }else if(props.environment==="sandbox"){
+        options.headers['X-ENVIRONMENT'] = 'sandbox'
+      }
         axios.post(`${apiUrl}/v1/try-it/transaction?transactionReference=${props.viewTransactionBankData.transRef}`,
         {},
         { headers: options.headers }
@@ -424,6 +480,11 @@ function TryitHeader(props) {
                 'Content-Type': 'application/json'
             }
         }
+        if(props.environment==="uat") {
+        options.headers['X-ENVIRONMENT'] = 'uat'
+      }else if(props.environment==="sandbox"){
+        options.headers['X-ENVIRONMENT'] = 'sandbox'
+      }
         axios.post(`${apiUrl}/v1/try-it/transaction?transactionReference=${props.viewTransactionMobileData.transRef}`,
         {},
         { headers: options.headers }
@@ -451,6 +512,11 @@ function TryitHeader(props) {
                 'Content-Type': 'application/json'
             }
         }
+        if(props.environment==="uat") {
+        options.headers['X-ENVIRONMENT'] = 'uat'
+      }else if(props.environment==="sandbox"){
+        options.headers['X-ENVIRONMENT'] = 'sandbox'
+      }
         axios.post(`${apiUrl}/v1/try-it/transaction`,
         {
             "amount": `${props.createTransactionBankData.amount}`,
@@ -548,6 +614,11 @@ function TryitHeader(props) {
                 'Content-Type': 'application/json'
             }
         }
+        if(props.environment==="uat") {
+        options.headers['X-ENVIRONMENT'] = 'uat'
+      }else if(props.environment==="sandbox"){
+        options.headers['X-ENVIRONMENT'] = 'sandbox'
+      }
         axios.post(`${apiUrl}/v1/try-it/transaction`,
         {
             "amount": `${props.createTransactionMobileData.amount}`,
@@ -638,6 +709,11 @@ function TryitHeader(props) {
                 'Content-Type': 'application/json'
             }
         }
+         if(props.environment==="uat") {
+        options.headers['X-ENVIRONMENT'] = 'uat'
+      }else if(props.environment==="sandbox"){
+        options.headers['X-ENVIRONMENT'] = 'sandbox'
+      }
         axios.post(`${apiUrl}/v1/try-it/transaction`,
         {
             "amount": `${props.bankTransactionB2BData.amount}`,
@@ -752,6 +828,11 @@ function TryitHeader(props) {
                 'Content-Type': 'application/json'
             }
         }
+        if(props.environment==="uat") {
+        options.headers['X-ENVIRONMENT'] = 'uat'
+      }else if(props.environment==="sandbox"){
+        options.headers['X-ENVIRONMENT'] = 'sandbox'
+      }
         axios.post(`${apiUrl}/v1/try-it/transaction`,
         {
             "amount": `${props.mobileTransactionB2BData.amount}`,
@@ -856,6 +937,11 @@ function TryitHeader(props) {
                 'Content-Type': 'application/json'
             }
         }
+        if(props.environment==="uat") {
+        options.headers['X-ENVIRONMENT'] = 'uat'
+      }else if(props.environment==="sandbox"){
+        options.headers['X-ENVIRONMENT'] = 'sandbox'
+      }
         axios.post(`${apiUrl}/v1/try-it/transaction`,
         {
             "amount": `${props.bankTransactionB2PData.amount}`,
@@ -950,6 +1036,11 @@ function TryitHeader(props) {
                 'Content-Type': 'application/json'
             }
         }
+        if(props.environment==="uat") {
+        options.headers['X-ENVIRONMENT'] = 'uat'
+      }else if(props.environment==="sandbox"){
+        options.headers['X-ENVIRONMENT'] = 'sandbox'
+      }
         axios.post(`${apiUrl}/v1/try-it/transaction`,
         {
             "amount": `${props.mobileTransactionB2PData.amount}`,
@@ -1037,6 +1128,11 @@ function TryitHeader(props) {
                 'Content-Type': 'application/json'
             }
         }
+        if(props.environment==="uat") {
+        options.headers['X-ENVIRONMENT'] = 'uat'
+      }else if(props.environment==="sandbox"){
+        options.headers['X-ENVIRONMENT'] = 'sandbox'
+      }
         axios.post(`${apiUrl}/v1/try-it/transaction`,
         {
             "amount": `${props.bankTransactionP2BData.amount}`,
@@ -1163,6 +1259,11 @@ function TryitHeader(props) {
                 'Content-Type': 'application/json'
             }
         }
+        if(props.environment==="uat") {
+        options.headers['X-ENVIRONMENT'] = 'uat'
+      }else if(props.environment==="sandbox"){
+        options.headers['X-ENVIRONMENT'] = 'sandbox'
+      }
         axios.post(`${apiUrl}/v1/try-it/transaction`,
         {
             "amount": `${props.mobileTransactionP2BData.amount}`,
@@ -1363,8 +1464,6 @@ function TryitHeader(props) {
     }
 
 
-
-
     function checkProperties(obj) {
         let local;
         Object.entries(obj).map((key) => {
@@ -1384,7 +1483,6 @@ function TryitHeader(props) {
     const allowStaticScreen = () =>{
         props.setResponseScreen(true)
     }
-
 
     return (
         <Box sx={{position:'fixed', width:'100%'}} className="tryit-header" >
@@ -1573,8 +1671,8 @@ function TryitHeader(props) {
                         onChange={({ target }) => props.setEnvironment(target.value)}
                         input={<OutlinedInput label="Environment" 
                         disabled={!props.allowUatAccess} />} >
-                        <MenuItem value='Sandbox'>Sandbox</MenuItem>
-                        <MenuItem value='Production'>Production</MenuItem>
+                        <MenuItem value='sandbox'>Sandbox</MenuItem>
+                        <MenuItem value='uat'>UAT</MenuItem>
                     </Select>
                 </FormControl>
                 <TextField
