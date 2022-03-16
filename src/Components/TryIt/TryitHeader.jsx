@@ -176,7 +176,7 @@ function TryitHeader(props) {
     }
 
     const accountStatusBankApi = () => {
-        var requestUrl=`${apiUrl}/v1/try-it/account-status?accountId=${props.bankAccountStatusData.accountId}&bnv=${props.bankAccountStatusData.bnv}&bankcode=${props.bankAccountStatusData.bankCode}&bankname=${props.bankAccountStatusData.bankName}&country=${props.bankAccountStatusData.country}`;
+        var requestUrl=`${apiUrl}/v1/try-it/account-status?accountId=${props.bankAccountStatusData.accountId}&bnv=${props.bankAccountStatusData.bnv}&bankcode=${props.bankAccountStatusData.bankCode}&bankname=${encodeURIComponent(props.bankAccountStatusData.bankName)}&country=${props.bankAccountStatusData.country}`;
         var options = {
             headers: {
                 'X-USERNAME': `${props.userName}`,
@@ -194,7 +194,7 @@ function TryitHeader(props) {
       }
         axios.get(requestUrl 
           +(props.bankAccountStatusData.snv && `&senderName=${props.bankAccountStatusData.snv}`)
-          +(props.bankAccountStatusData.msisdn && `&msisdn=${props.bankAccountStatusData.msisdn}`)
+          +(props.bankAccountStatusData.msisdn && `&msisdn=${encodeURIComponent(props.bankAccountStatusData.msisdn)}`)
           +(props.bankAccountStatusData.provider && `&provider=${props.bankAccountStatusData.provider}`)
           +(props.bankAccountStatusData.bankSubCode && `&bankSubCode=${props.bankAccountStatusData.bankSubCode}`)
           ,{ headers: options.headers })
@@ -212,7 +212,7 @@ function TryitHeader(props) {
             });
     }
     const accountStatusMobileApi = () => {
-      var requestUrl=`${apiUrl}/v1/try-it/account-status?msisdn=${props.mobileAccountStatusData.msisdn}&bnv=${props.mobileAccountStatusData.bnv}`;
+      var requestUrl=`${apiUrl}/v1/try-it/account-status?msisdn=${encodeURIComponent(props.mobileAccountStatusData.msisdn)}&bnv=${encodeURIComponent(props.mobileAccountStatusData.bnv)}`;
         var options = {
             headers: {
                 'X-USERNAME': `${props.userName}`,
@@ -230,7 +230,7 @@ function TryitHeader(props) {
       }
         axios.get(requestUrl 
             +(props.mobileAccountStatusData.provider && `&provider=${props.mobileAccountStatusData.provider}`)
-            +(props.mobileAccountStatusData.snv && `&senderName=${props.mobileAccountStatusData.snv}`)
+            +(props.mobileAccountStatusData.snv && `&senderName=${encodeURIComponent(props.mobileAccountStatusData.snv)}`)
             ,{ headers: options.headers})
             .then(function (response) {
             console.log(JSON.stringify(response.data));
