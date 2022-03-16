@@ -212,7 +212,7 @@ function TryitHeader(props) {
             });
     }
     const accountStatusMobileApi = () => {
-      var requestUrl=`${apiUrl}/v1/try-it/account-status?msisdn=${props.mobileAccountStatusData.msisdn.replace("+", "%2B")}&bnv=${props.mobileAccountStatusData.bnv}`;
+      var requestUrl=`${apiUrl}/v1/try-it/account-status?msisdn=${props.mobileAccountStatusData.msisdn}&bnv=${props.mobileAccountStatusData.bnv}`;
         var options = {
             headers: {
                 'X-USERNAME': `${props.userName}`,
