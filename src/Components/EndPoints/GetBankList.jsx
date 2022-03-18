@@ -1,5 +1,5 @@
 import React from 'react'
-import { Stack, Button, Box, Typography, OutlinedInput} from '@mui/material'
+import { Stack, Button, Box, Typography, OutlinedInput, FormControl, FormHelperText} from '@mui/material'
 
 function GetBankList({allowUatAccess, setGetBankListData, getBankListData}) {
   return (
@@ -12,52 +12,89 @@ function GetBankList({allowUatAccess, setGetBankListData, getBankListData}) {
             <Typography color="#575757" fontWeight='500'>
             Destination Country Code<span style={{color:'#ea5c57'}}> *</span>
             </Typography>
+            <FormControl sx={{height:45}}> 
             <OutlinedInput sx={{ height: 40 }} 
             placeholder="countryCode"
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setGetBankListData( (prev) =>
                 ({...prev, country:target.value}))} 
-            value={getBankListData.country} />
+            value={getBankListData.country} 
+            error={!getBankListData.country && true}
+          />
+          {!getBankListData.country && (
+            <FormHelperText error sx={{marginLeft:'0px', fontSize:'12px', color:'#ea5c57'}} >
+              {!getBankListData.country && "Mandatory Field"}
+            </FormHelperText>
+          )}
+            </FormControl>
         </Stack>
 
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
             Last Updated Date/Time<span style={{color:'#ea5c57'}}> *</span>
             </Typography>
+            <FormControl sx={{height:45}}> 
             <OutlinedInput sx={{ height: 40 }} 
             placeholder="lastUpdatedOn"
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setGetBankListData( (prev) =>
                 ({...prev, lastUpdatedOn:target.value}))} 
-            value={getBankListData.lastUpdatedOn} />
+            value={getBankListData.lastUpdatedOn} 
+            error={!getBankListData.lastUpdatedOn && true}
+            />
+            {!getBankListData.lastUpdatedOn && (
+              <FormHelperText error sx={{marginLeft:'0px', fontSize:'12px', color:'#ea5c57'}} >
+                {!getBankListData.lastUpdatedOn && "Mandatory Field"}
+              </FormHelperText>
+            )}
+            </FormControl>
         </Stack>
 
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
             Full name of Beneficiary Bank<span style={{color:'#ea5c57'}}> *</span>
             </Typography>
+            <FormControl sx={{height:45}}>    
             <OutlinedInput sx={{ height: 40 }} 
             placeholder="bankName"
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setGetBankListData( (prev) =>
                 ({...prev, bankName:target.value}))} 
-            value={getBankListData.bankName} />
+            value={getBankListData.bankName} 
+            error={!getBankListData.bankName && true}
+            />
+            {!getBankListData.bankName && (
+              <FormHelperText error sx={{marginLeft:'0px', fontSize:'12px', color:'#ea5c57'}} >
+                {!getBankListData.bankName && "Mandatory Field"}
+              </FormHelperText>
+            )}
+            </FormControl>
         </Stack>
 
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
             Bank Code<span style={{color:'#ea5c57'}}> *</span>
             </Typography>
+            <FormControl sx={{height:45}}>  
             <OutlinedInput sx={{ height: 40 }} 
             placeholder="bankCode"
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setGetBankListData( (prev) =>
                 ({...prev, bankCode:target.value}))} 
-            value={getBankListData.bankCode} />
+            value={getBankListData.bankCode} 
+            error={!getBankListData.bankCode && true}
+            />
+            {!getBankListData.bankCode && (
+              <FormHelperText error sx={{marginLeft:'0px', fontSize:'12px', color:'#ea5c57'}} >
+                {!getBankListData.bankCode && "Mandatory Field"}
+              </FormHelperText>
+            )}
+
+            </FormControl>
         </Stack>
 
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
@@ -77,13 +114,22 @@ function GetBankList({allowUatAccess, setGetBankListData, getBankListData}) {
             <Typography color="#575757" fontWeight='500'>
             Account Status<span style={{color:'#ea5c57'}}> *</span>
             </Typography>
+            <FormControl sx={{height:45}}>  
             <OutlinedInput sx={{ height: 40 }} 
             placeholder="status"
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setGetBankListData( (prev) =>
                 ({...prev, status:target.value}))} 
-            value={getBankListData.status} />
+            value={getBankListData.status} 
+            error={!getBankListData.status && true}
+            />
+            {!getBankListData.status && (
+              <FormHelperText error sx={{marginLeft:'0px', fontSize:'12px', color:'#ea5c57'}} >
+                {!getBankListData.status && "Mandatory Field"}
+              </FormHelperText>
+            )}
+            </FormControl>
         </Stack>
     </Stack>
     </>

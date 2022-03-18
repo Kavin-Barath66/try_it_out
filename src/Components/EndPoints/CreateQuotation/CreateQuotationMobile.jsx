@@ -3,7 +3,7 @@ import { styled } from '@mui/system'
 import { useState } from "react";
 import axios from 'axios'
 import MenuItem from '@mui/material/MenuItem';
-import { Stack, OutlinedInput, Button, Box, Typography, TextField, Container} from '@mui/material'
+import { Stack, OutlinedInput, Button, Box, Typography, TextField, Container, FormControl, FormHelperText} from '@mui/material'
 
 function CreateQuotationMobile({allowUatAccess, createQuotationMobileData, setCreateQuotationMobileData,}) {
     
@@ -19,103 +19,153 @@ function CreateQuotationMobile({allowUatAccess, createQuotationMobileData, setCr
         <Typography color="#575757" fontWeight='500'>
         Creation Date/Time<span style={{color:'#ea5c57'}}> *</span>
         </Typography>
-        <OutlinedInput sx={{ height: 40 }} placeholder='requestDate'
+        <FormControl sx={{height:45}}> <OutlinedInput sx={{ height: 40 }} placeholder='requestDate'
         disabled={!allowUatAccess} 
         onChange={({ target }) =>
         setCreateQuotationMobileData( (prev) =>
             ({...prev, requestDate:target.value}))} 
-        value={createQuotationMobileData.requestDate} />
+        value={createQuotationMobileData.requestDate} 
+        error={!createQuotationMobileData.requestDate && true}
+          />
+          {!createQuotationMobileData.requestDate && (
+            <FormHelperText error sx={{marginLeft:'0px', fontSize:'12px', color:'#ea5c57'}} >
+              {!createQuotationMobileData.requestDate && "Mandatory Field"}
+            </FormHelperText>
+          )}
+        </FormControl>
     </Stack>
     <Stack direction='row' alignItems='center' justifyContent='space-between'>
         <Typography color="#575757" fontWeight='500'>
         Request Quotation Amount<span style={{color:'#ea5c57'}}> *</span>
         </Typography>
-        <OutlinedInput sx={{ height: 40 }} placeholder='requestAmount' 
+        <FormControl sx={{height:45}}> <OutlinedInput sx={{ height: 40 }} placeholder='requestAmount' 
         disabled={!allowUatAccess} 
         onChange={({ target }) =>
         setCreateQuotationMobileData( (prev) =>
             ({...prev, requestAmount:target.value}))} 
-        value={createQuotationMobileData.requestAmount} />
+        value={createQuotationMobileData.requestAmount} 
+        error={!createQuotationMobileData.requestAmount && true}
+        />
+        {!createQuotationMobileData.requestAmount && (
+          <FormHelperText error sx={{marginLeft:'0px', fontSize:'12px', color:'#ea5c57'}} >
+            {!createQuotationMobileData.requestAmount && "Mandatory Field"}
+          </FormHelperText>
+        )}
+        </FormControl>
     </Stack>
     <Stack direction='row' alignItems='center' justifyContent='space-between'>
         <Typography color="#575757" fontWeight='500'>
         Request Currency<span style={{color:'#ea5c57'}}> *</span>
         </Typography>
-        <OutlinedInput sx={{ height: 40 }} placeholder='requestCurrency'
+        <FormControl sx={{height:45}}> <OutlinedInput sx={{ height: 40 }} placeholder='requestCurrency'
         disabled={!allowUatAccess} 
         onChange={({ target }) =>
         setCreateQuotationMobileData( (prev) =>
             ({...prev, requestCurrency:target.value}))} 
-        value={createQuotationMobileData.requestCurrency} />
+        value={createQuotationMobileData.requestCurrency} 
+        error={!createQuotationMobileData.requestCurrency && true}
+        />
+        {!createQuotationMobileData.requestCurrency && (
+          <FormHelperText error sx={{marginLeft:'0px', fontSize:'12px', color:'#ea5c57'}} >
+            {!createQuotationMobileData.requestCurrency && "Mandatory Field"}
+          </FormHelperText>
+        )}
+        </FormControl>
     </Stack>
     <Stack direction='row' alignItems='center' justifyContent='space-between'>
         <Typography color="#575757" fontWeight='500'>
         Sender Mobile Number
         </Typography>
-        <OutlinedInput sx={{ height: 40 }} placeholder='msisdn debitParty' 
+        <FormControl sx={{height:45}}> <OutlinedInput sx={{ height: 40 }} placeholder='msisdn debitParty' 
         disabled={!allowUatAccess} 
         onChange={({ target }) =>
         setCreateQuotationMobileData( (prev) =>
             ({...prev, senderMsisdn:target.value}))} 
         value={createQuotationMobileData.senderMsisdn}
         />
+        </FormControl>
     </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
         <Typography color="#575757" fontWeight='500'>
         Beneficiary Mobile Number<span style={{color:'#ea5c57'}}> *</span>
         </Typography>
-        <OutlinedInput sx={{ height: 40 }} placeholder='msisdn creditParty' 
+        <FormControl sx={{height:45}}> <OutlinedInput sx={{ height: 40 }} placeholder='msisdn creditParty' 
         disabled={!allowUatAccess} 
         onChange={({ target }) =>
         setCreateQuotationMobileData( (prev) =>
             ({...prev, reciverMsisdn:target.value}))} 
-        value={createQuotationMobileData.reciverMsisdn} />
+        value={createQuotationMobileData.reciverMsisdn} 
+        error={!createQuotationMobileData.reciverMsisdn && true}
+        />
+        {!createQuotationMobileData.reciverMsisdn && (
+          <FormHelperText error sx={{marginLeft:'0px', fontSize:'12px', color:'#ea5c57'}} >
+            {!createQuotationMobileData.reciverMsisdn && "Mandatory Field"}
+          </FormHelperText>
+        )}
+        </FormControl>
     </Stack>
     <Stack direction='row' alignItems='center' justifyContent='space-between'>
         <Typography color="#575757" fontWeight='500'>
         Receiver Bank Account
         </Typography>
-        <OutlinedInput sx={{ height: 40 }} placeholder='bankaccountno creditParty' 
+        <FormControl sx={{height:45}}> <OutlinedInput sx={{ height: 40 }} placeholder='bankaccountno creditParty' 
         disabled={!allowUatAccess} 
         onChange={({ target }) =>
         setCreateQuotationMobileData( (prev) =>
             ({...prev, receiverBankaccountno:target.value}))} 
         value={createQuotationMobileData.receiverBankaccountno}
-        />
+        /></FormControl>
     </Stack>
     <Stack direction='row' alignItems='center' justifyContent='space-between'>
         <Typography color="#575757" fontWeight='500'>
         Destination Country
         </Typography>
-        <OutlinedInput sx={{ height: 40 }} placeholder='receivingCountry creditParty' 
+        <FormControl sx={{height:45}}> <OutlinedInput sx={{ height: 40 }} placeholder='receivingCountry creditParty' 
         disabled={!allowUatAccess} 
         onChange={({ target }) =>
         setCreateQuotationMobileData( (prev) =>
             ({...prev, receiverCountry:target.value}))} 
         value={createQuotationMobileData.receiverCountry}
         />
+        </FormControl>
     </Stack>
     <Stack direction='row' alignItems='center' justifyContent='space-between'>
         <Typography color="#575757" fontWeight='500'>
         Currency of Debitor<span style={{color:'#ea5c57'}}> *</span>
         </Typography>
-        <OutlinedInput sx={{ height: 40 }} placeholder='sendingCurrency' 
+        <FormControl sx={{height:45}}> <OutlinedInput sx={{ height: 40 }} placeholder='sendingCurrency' 
         disabled={!allowUatAccess} 
         onChange={({ target }) =>
         setCreateQuotationMobileData( (prev) =>
             ({...prev, sendingCurrency:target.value}))} 
-        value={createQuotationMobileData.sendingCurrency} />
+        value={createQuotationMobileData.sendingCurrency} 
+        error={!createQuotationMobileData.sendingCurrency && true}
+        />
+        {!createQuotationMobileData.sendingCurrency && (
+          <FormHelperText error sx={{marginLeft:'0px', fontSize:'12px', color:'#ea5c57'}} >
+            {!createQuotationMobileData.sendingCurrency && "Mandatory Field"}
+          </FormHelperText>
+        )}
+        </FormControl>
     </Stack>
     <Stack direction='row' alignItems='center' justifyContent='space-between' pb={30}>
         <Typography color="#575757" fontWeight='500'>
         Currency of Creditor<span style={{color:'#ea5c57'}}> *</span>
         </Typography>
-        <OutlinedInput sx={{ height: 40 }} placeholder='receivingCurrency' 
+        <FormControl sx={{height:45}}> <OutlinedInput sx={{ height: 40 }} placeholder='receivingCurrency' 
         disabled={!allowUatAccess} 
         onChange={({ target }) =>
         setCreateQuotationMobileData( (prev) =>
             ({...prev, receivingCurrency:target.value}))} 
-        value={createQuotationMobileData.receivingCurrency} />
+        value={createQuotationMobileData.receivingCurrency} 
+        error={!createQuotationMobileData.receivingCurrency && true}
+        />
+        {!createQuotationMobileData.receivingCurrency && (
+          <FormHelperText error sx={{marginLeft:'0px', fontSize:'12px', color:'#ea5c57'}} >
+            {!createQuotationMobileData.receivingCurrency && "Mandatory Field"}
+          </FormHelperText>
+        )}
+        </FormControl>
     </Stack>
     </Stack>
     </>

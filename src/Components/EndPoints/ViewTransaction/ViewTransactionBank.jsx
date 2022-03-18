@@ -3,7 +3,7 @@ import { styled } from '@mui/system'
 import { useState } from "react";
 import axios from 'axios'
 import MenuItem from '@mui/material/MenuItem';
-import { Stack, OutlinedInput, Button, Box, Typography, TextField, Container} from '@mui/material'
+import { Stack, OutlinedInput, Button, Box, Typography, TextField, Container, FormControl, FormHelperText} from '@mui/material'
 
 function ViewTransactionBank({allowUatAccess, viewTransactionBankData, setViewTransactionBankData}) {
     
@@ -18,12 +18,20 @@ function ViewTransactionBank({allowUatAccess, viewTransactionBankData, setViewTr
           <Typography color="#575757" fontWeight='500'>
             Transaction Reference<span style={{color:'#ea5c57'}}> *</span>
           </Typography>
-          <OutlinedInput sx={{ height: 40 }} placeholder='transactionReference' 
+          <FormControl sx={{height:45}}> <OutlinedInput sx={{ height: 40 }} placeholder='transactionReference' 
           disabled={!allowUatAccess}
           onChange={({ target }) =>
           setViewTransactionBankData( (prev) =>
           ({...prev, transRef:target.value}))} 
-          value={viewTransactionBankData.transRef} />
+          value={viewTransactionBankData.transRef}
+          error={!viewTransactionBankData.transRef && true}
+          />
+          {!viewTransactionBankData.transRef && (
+            <FormHelperText error sx={{marginLeft:'0px', fontSize:'12px', color:'#ea5c57'}} >
+              {!viewTransactionBankData.transRef && "Mandatory Field"}
+            </FormHelperText>
+          )}
+        </FormControl>
       </Stack>
     </Stack>
     </>

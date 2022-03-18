@@ -1532,25 +1532,25 @@ function TryitHeader(props) {
                         input={<OutlinedInput label="API End Point"
                         />}
                         MenuProps={MenuProps}>
-                        <MenuItem value='Account Status Mobile'>Account Status Mobile</MenuItem>
-                        <MenuItem value='Account Status Bank'>Account Status Bank</MenuItem>
-                        <MenuItem value='Create Quotation Mobile'>Create Quotation Mobile</MenuItem>
-                        <MenuItem value='Create Quotation Bank'>Create Quotation Bank</MenuItem>
+                        <MenuItem value='Account Status Mobile'>Account Status - Mobile</MenuItem>
+                        <MenuItem value='Account Status Bank'>Account Status - Bank</MenuItem>
+                        <MenuItem value='Create Quotation Mobile'>Create Quotation - Mobile</MenuItem>
+                        <MenuItem value='Create Quotation Bank'>Create Quotation - Bank</MenuItem>
                         {/* <MenuItem value='View Transaction Mobile'>View Transaction Mobile</MenuItem> */}
+                        <MenuItem value='Create Transaction Mobile'>Create Transaction - Mobile</MenuItem>
+                        <MenuItem value='Create Transaction Bank'>Create Transaction - Bank</MenuItem>
+                        <MenuItem value='P2B Transaction Mobile'>P2B Transaction - Mobile</MenuItem>
+                        <MenuItem value='P2B Transaction Bank'>P2B Transaction - Bank</MenuItem>
+                        <MenuItem value='B2P Transaction Mobile'>B2P Transaction - Mobile</MenuItem>
+                        <MenuItem value='B2P Transaction Bank'>B2P Transaction - Bank</MenuItem>
+                        <MenuItem value='B2B Transaction Mobile'>B2B Transaction - Mobile</MenuItem>
+                        <MenuItem value='B2B Transaction Bank'>B2B Transaction - Bank</MenuItem>
                         <MenuItem value='View Transaction Bank'>View Transaction</MenuItem>
-                        <MenuItem value='Create Transaction Bank'>Create Transaction Bank</MenuItem>
-                        <MenuItem value='Create Transaction Mobile'>Create Transaction Mobile</MenuItem>
                         <MenuItem value='Ledger Balance'>Ledger Balance</MenuItem>
                         <MenuItem value='Corridor Quotation'>Corridor Quotation</MenuItem>
-                        <MenuItem value='Get Bank List'>Get Bank List</MenuItem>
                         <MenuItem value='Cancel Transaction'>Cancel Transaction</MenuItem>
                         <MenuItem value='Reverse Transaction'>Reverse Transaction</MenuItem>
-                        <MenuItem value='B2B Transaction Bank'>B2B Transaction Bank</MenuItem>
-                        <MenuItem value='B2B Transaction Mobile'>B2B Transaction Mobile</MenuItem>
-                        <MenuItem value='P2B Transaction Bank'>P2B Transaction Bank</MenuItem>
-                        <MenuItem value='P2B Transaction Mobile'>P2B Transaction Mobile</MenuItem>
-                        <MenuItem value='B2P Transaction Bank'>B2P Transaction Bank</MenuItem>
-                        <MenuItem value='B2P Transaction Mobile'>B2P Transaction Mobile</MenuItem>
+                        <MenuItem value='Get Bank List'>Get Bank List</MenuItem>
                     </Select>
                 </FormControl>
                 <TextField

@@ -215,10 +215,10 @@ function B2BTransactionMobile({allowUatAccess, mobileTransactionB2BData, setMobi
           ({...prev, receiverBankaccountno:target.value}))} 
           value={mobileTransactionB2BData.receiverBankaccountno}/>
         </Stack>
-        {/* Receive Bank Account Type */}
+        {/* Receive Bank Account Type 
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-            Receiver Bank Account Type{/* <span style={{color:'#ea5c57'}}> *</span> */}
+            Receiver Bank Account Type
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='bankaccountno' 
             disabled={!allowUatAccess}  
@@ -226,7 +226,7 @@ function B2BTransactionMobile({allowUatAccess, mobileTransactionB2BData, setMobi
             setMobileTransactionB2BData( (prev) =>
           ({...prev, receiverBankAccountType:target.value}))} 
           value={mobileTransactionB2BData.receiverBankAccountType}/>
-        </Stack>
+        </Stack>*/}
          {/* Bank Code*/}
          <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
@@ -802,7 +802,7 @@ function B2BTransactionMobile({allowUatAccess, mobileTransactionB2BData, setMobi
 
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-                Quote Id
+                Quote Id<span style={{color:'#ea5c57'}}> *</span>
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Quote Id' 
             disabled={!allowUatAccess}  onChange={({ target }) =>
@@ -812,7 +812,7 @@ function B2BTransactionMobile({allowUatAccess, mobileTransactionB2BData, setMobi
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-                Receiving Country
+                Receiving Country<span style={{color:'#ea5c57'}}> *</span>
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Receiving Country' 
             disabled={!allowUatAccess}  onChange={({ target }) =>
@@ -822,7 +822,7 @@ function B2BTransactionMobile({allowUatAccess, mobileTransactionB2BData, setMobi
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-                Remittance Purpose
+                Remittance Purpose<span style={{color:'#ea5c57'}}> *</span>
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Remittance Purpose'
             disabled={!allowUatAccess}  onChange={({ target }) =>
@@ -832,7 +832,7 @@ function B2BTransactionMobile({allowUatAccess, mobileTransactionB2BData, setMobi
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-                Source Of Funds
+                Source Of Funds<span style={{color:'#ea5c57'}}> *</span>
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='Source Of Funds' 
             disabled={!allowUatAccess}  onChange={({ target }) =>

@@ -16,53 +16,9 @@ function P2BTransactionMobile({allowUatAccess, mobileTransactionP2BData, setMobi
     <Stack height="100%" width={600} spacing={5} sx={{ p: 4 }} >
     <Stack direction='row' alignItems='center' justifyContent='space-between'>
         <Typography color="#575757" fontWeight='500'>
-        Amount
+        Creation Date/Time<span style={{color:'#ea5c57'}}> *</span>
         </Typography>
-        <OutlinedInput sx={{ height: 40 }} placeholder='Amount'
-        disabled={!allowUatAccess}     
-        onChange={({ target }) =>
-        setMobileTransactionP2BData( (prev) =>
-        ({...prev, amount:target.value}))} 
-        value={mobileTransactionP2BData.amount} />
-    </Stack>
-    <Stack direction='row' alignItems='center' justifyContent='space-between'>
-        <Typography color="#575757" fontWeight='500'>
-        Currency
-        </Typography>
-        <OutlinedInput sx={{ height: 40 }} placeholder='Currency'
-        disabled={!allowUatAccess}     
-        onChange={({ target }) =>
-        setMobileTransactionP2BData( (prev) =>
-        ({...prev, currency:target.value}))} 
-        value={mobileTransactionP2BData.currency} />
-    </Stack>
-    <Stack direction='row' alignItems='center' justifyContent='space-between'>
-        <Typography color="#575757" fontWeight='500'>
-        Type
-        </Typography>
-        <OutlinedInput sx={{ height: 40 }} placeholder='Type'
-        disabled={!allowUatAccess}     
-        onChange={({ target }) =>
-        setMobileTransactionP2BData( (prev) =>
-        ({...prev, type:target.value}))} 
-        value={mobileTransactionP2BData.type} />
-    </Stack>
-    <Stack direction='row' alignItems='center' justifyContent='space-between'>
-        <Typography color="#575757" fontWeight='500'>
-        Description Text
-        </Typography>
-        <OutlinedInput sx={{ height: 40 }} placeholder='Description Text'
-        disabled={!allowUatAccess}     
-        onChange={({ target }) =>
-        setMobileTransactionP2BData( (prev) =>
-        ({...prev, descriptionText:target.value}))} 
-        value={mobileTransactionP2BData.descriptionText} />
-    </Stack>
-    <Stack direction='row' alignItems='center' justifyContent='space-between'>
-        <Typography color="#575757" fontWeight='500'>
-        Request Date
-        </Typography>
-        <OutlinedInput sx={{ height: 40 }} placeholder='Transaction Reference' 
+        <OutlinedInput sx={{ height: 40 }} placeholder='requestDate' 
         disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
@@ -71,9 +27,53 @@ function P2BTransactionMobile({allowUatAccess, mobileTransactionP2BData, setMobi
     </Stack>
     <Stack direction='row' alignItems='center' justifyContent='space-between'>
         <Typography color="#575757" fontWeight='500'>
-        Transaction Reference
+        Destination Amount Payable<span style={{color:'#ea5c57'}}> *</span>
         </Typography>
-        <OutlinedInput sx={{ height: 40 }} placeholder='Transaction Reference' 
+        <OutlinedInput sx={{ height: 40 }} placeholder='amount'
+        disabled={!allowUatAccess}     
+        onChange={({ target }) =>
+        setMobileTransactionP2BData( (prev) =>
+        ({...prev, amount:target.value}))} 
+        value={mobileTransactionP2BData.amount} />
+    </Stack>
+    <Stack direction='row' alignItems='center' justifyContent='space-between'>
+        <Typography color="#575757" fontWeight='500'>
+        Destination Currency<span style={{color:'#ea5c57'}}> *</span>
+        </Typography>
+        <OutlinedInput sx={{ height: 40 }} placeholder='currency'
+        disabled={!allowUatAccess}     
+        onChange={({ target }) =>
+        setMobileTransactionP2BData( (prev) =>
+        ({...prev, currency:target.value}))} 
+        value={mobileTransactionP2BData.currency} />
+    </Stack>
+    <Stack direction='row' alignItems='center' justifyContent='space-between'>
+        <Typography color="#575757" fontWeight='500'>
+        Transaction Type<span style={{color:'#ea5c57'}}> *</span>
+        </Typography>
+        <OutlinedInput sx={{ height: 40 }} placeholder='type'
+        disabled={!allowUatAccess}     
+        onChange={({ target }) =>
+        setMobileTransactionP2BData( (prev) =>
+        ({...prev, type:target.value}))} 
+        value={mobileTransactionP2BData.type} />
+    </Stack>
+    <Stack direction='row' alignItems='center' justifyContent='space-between'>
+        <Typography color="#575757" fontWeight='500'>
+        Free format Text Description
+        </Typography>
+        <OutlinedInput sx={{ height: 40 }} placeholder='descriptionText'
+        disabled={!allowUatAccess}     
+        onChange={({ target }) =>
+        setMobileTransactionP2BData( (prev) =>
+        ({...prev, descriptionText:target.value}))} 
+        value={mobileTransactionP2BData.descriptionText} />
+    </Stack>
+    <Stack direction='row' alignItems='center' justifyContent='space-between'>
+        <Typography color="#575757" fontWeight='500'>
+        Transaction Reference<span style={{color:'#ea5c57'}}> *</span>
+        </Typography>
+        <OutlinedInput sx={{ height: 40 }} placeholder='requestingOrganisationTransactionReference' 
         disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
@@ -82,9 +82,97 @@ function P2BTransactionMobile({allowUatAccess, mobileTransactionP2BData, setMobi
     </Stack>
     <Stack direction='row' alignItems='center' justifyContent='space-between'>
         <Typography color="#575757" fontWeight='500'>
-        Sender MSISDN
+        Provider Code 
         </Typography>
-        <OutlinedInput sx={{ height: 40 }} placeholder='Sender MSISDN'
+        <OutlinedInput sx={{ height: 40 }} placeholder='provider' 
+        disabled={!allowUatAccess}     
+        onChange={({ target }) =>
+        setMobileTransactionP2BData( (prev) =>
+        ({...prev, providerCode:target.value}))} 
+        value={mobileTransactionP2BData.providerCode}/>
+    </Stack>
+    <Stack direction='row' alignItems='center' justifyContent='space-between'>
+        <Typography color="#575757" fontWeight='500'>
+        Payin Amount<span style={{color:'#ea5c57'}}> *</span>
+        </Typography>
+        <OutlinedInput sx={{ height: 40 }} placeholder='sendingAmount' 
+        disabled={!allowUatAccess}     
+        onChange={({ target }) =>
+        setMobileTransactionP2BData( (prev) =>
+        ({...prev, sendingAmount:target.value}))} 
+        value={mobileTransactionP2BData.sendingAmount}/>
+    </Stack>
+    <Stack direction='row' alignItems='center' justifyContent='space-between'>
+        <Typography color="#575757" fontWeight='500'>
+        Payin Currency<span style={{color:'#ea5c57'}}> *</span>
+        </Typography>
+        <OutlinedInput sx={{ height: 40 }} placeholder='payinCcyCode'
+        disabled={!allowUatAccess}     
+        onChange={({ target }) =>
+        setMobileTransactionP2BData( (prev) =>
+        ({...prev, payinCcyCode:target.value}))} 
+        value={mobileTransactionP2BData.payinCcyCode} />
+    </Stack>
+    <Stack direction='row' alignItems='center' justifyContent='space-between'>
+        <Typography color="#575757" fontWeight='500'>
+        Type of Payment<span style={{color:'#ea5c57'}}> *</span>
+        </Typography>
+        <OutlinedInput sx={{ height: 40 }} placeholder='paymentMode'
+        disabled={!allowUatAccess}     
+        onChange={({ target }) =>
+        setMobileTransactionP2BData( (prev) =>
+        ({...prev, paymentMode:target.value}))} 
+        value={mobileTransactionP2BData.paymentMode} />
+    </Stack>
+    <Stack direction='row' alignItems='center' justifyContent='space-between'>
+        <Typography color="#575757" fontWeight='500'>
+        Authentication Partner Code<span style={{color:'#ea5c57'}}> *</span>
+        </Typography>
+        <OutlinedInput sx={{ height: 40 }} placeholder='authenticationPartnerCode' 
+        disabled={!allowUatAccess}     
+        onChange={({ target }) =>
+        setMobileTransactionP2BData( (prev) =>
+        ({...prev, authenticationPartnerCode:target.value}))} 
+        value={mobileTransactionP2BData.authenticationPartnerCode}/>
+    </Stack>
+    <Stack direction='row' alignItems='center' justifyContent='space-between'>
+        <Typography color="#575757" fontWeight='500'>
+        Payment Option<span style={{color:'#ea5c57'}}> *</span>
+        </Typography>
+        <OutlinedInput sx={{ height: 40 }} placeholder='paymentOption'
+        disabled={!allowUatAccess}     
+        onChange={({ target }) =>
+        setMobileTransactionP2BData( (prev) =>
+        ({...prev, paymentOption:target.value}))} 
+        value={mobileTransactionP2BData.paymentOption} />
+    </Stack>
+    <Stack direction='row' alignItems='center' justifyContent='space-between'>
+        <Typography color="#575757" fontWeight='500'>
+        Send Partner Code<span style={{color:'#ea5c57'}}> *</span>
+        </Typography>
+        <OutlinedInput sx={{ height: 40 }} placeholder='sendingPartnerCode'
+        disabled={!allowUatAccess}     
+        onChange={({ target }) =>
+        setMobileTransactionP2BData( (prev) =>
+        ({...prev, sendingPartnerCode:target.value}))} 
+        value={mobileTransactionP2BData.sendingPartnerCode}  />
+    </Stack>
+    <Stack direction='row' alignItems='center' justifyContent='space-between'>
+        <Typography color="#575757" fontWeight='500'>
+        Receive Partner Code
+        </Typography>
+        <OutlinedInput sx={{ height: 40 }} placeholder='receivingPartnerCode'
+        disabled={!allowUatAccess}     
+        onChange={({ target }) =>
+        setMobileTransactionP2BData( (prev) =>
+        ({...prev, receivingPartnerCode:target.value}))} 
+        value={mobileTransactionP2BData.receivingPartnerCode} />
+    </Stack>
+    <Stack direction='row' alignItems='center' justifyContent='space-between'>
+        <Typography color="#575757" fontWeight='500'>
+        Sender Mobile Number<span style={{color:'#ea5c57'}}> *</span>
+        </Typography>
+        <OutlinedInput sx={{ height: 40 }} placeholder='msisdn debitParty'
         disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
@@ -93,9 +181,9 @@ function P2BTransactionMobile({allowUatAccess, mobileTransactionP2BData, setMobi
     </Stack>
     <Stack direction='row' alignItems='center' justifyContent='space-between'>
         <Typography color="#575757" fontWeight='500'>
-        Receiver MSISDN
+        Beneficiary Mobile Number<span style={{color:'#ea5c57'}}> *</span>
         </Typography>
-        <OutlinedInput sx={{ height: 40 }} placeholder='Sender MSISDN'
+        <OutlinedInput sx={{ height: 40 }} placeholder='msisdn creditParty'
         disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
@@ -104,9 +192,105 @@ function P2BTransactionMobile({allowUatAccess, mobileTransactionP2BData, setMobi
     </Stack>
     <Stack direction='row' alignItems='center' justifyContent='space-between'>
         <Typography color="#575757" fontWeight='500'>
-        Nationality
+        SMS Notification
         </Typography>
-        <OutlinedInput sx={{ height: 40 }} placeholder='Nationality'
+        <OutlinedInput sx={{ height: 40 }} placeholder='beneficiarySmsNotify'
+        disabled={!allowUatAccess}     
+        onChange={({ target }) =>
+        setMobileTransactionP2BData( (prev) =>
+        ({...prev, beneficiarySmsNotify:target.value}))} 
+        value={mobileTransactionP2BData.beneficiarySmsNotify} />
+    </Stack>
+    <Stack direction='row' alignItems='center' justifyContent='space-between'>
+        <Typography color="#575757" fontWeight='500'>
+        Receive Bank Account Number
+        </Typography>
+        <OutlinedInput sx={{ height: 40 }} placeholder='beneficiarySmsNotify'
+        disabled={!allowUatAccess}     
+        onChange={({ target }) =>
+        setMobileTransactionP2BData( (prev) =>
+        ({...prev, receiverBankaccountno:target.value}))} 
+        value={mobileTransactionP2BData.receiverBankaccountno} />
+    </Stack>
+    <Stack direction='row' alignItems='center' justifyContent='space-between'>
+        <Typography color="#575757" fontWeight='500'>
+        Bank Code
+        </Typography>
+        <OutlinedInput sx={{ height: 40 }} placeholder='sortcode'
+        disabled={!allowUatAccess}     
+        onChange={({ target }) =>
+        setMobileTransactionP2BData( (prev) =>
+        ({...prev, bankCode:target.value}))} 
+        value={mobileTransactionP2BData.bankCode} />
+    </Stack>
+    <Stack direction='row' alignItems='center' justifyContent='space-between'>
+        <Typography color="#575757" fontWeight='500'>
+        Full Name of Beneficiary Bank
+        </Typography>
+        <OutlinedInput sx={{ height: 40 }} placeholder='organisationid'
+        disabled={!allowUatAccess}     
+        onChange={({ target }) =>
+        setMobileTransactionP2BData( (prev) =>
+        ({...prev, bankName:target.value}))} 
+        value={mobileTransactionP2BData.bankName} />
+    </Stack>
+    <Stack direction='row' alignItems='center' justifyContent='space-between'>
+        <Typography color="#575757" fontWeight='500'>
+        Bank Sub Code
+        </Typography>
+        <OutlinedInput sx={{ height: 40 }} placeholder='banksubcode'
+        disabled={!allowUatAccess}     
+        onChange={({ target }) =>
+        setMobileTransactionP2BData( (prev) =>
+        ({...prev, bankSubCode:target.value}))} 
+        value={mobileTransactionP2BData.bankSubCode} />
+    </Stack>
+    <Stack direction='row' alignItems='center' justifyContent='space-between'>
+        <Typography color="#575757" fontWeight='500'>
+        Receive Account IBAN Number
+        </Typography>
+        <OutlinedInput sx={{ height: 40 }} placeholder='accountIBAN'
+        disabled={!allowUatAccess}     
+        onChange={({ target }) =>
+        setMobileTransactionP2BData( (prev) =>
+        ({...prev, accountIBAN:target.value}))} 
+        value={mobileTransactionP2BData.accountIBAN} />
+    </Stack>
+    <Stack direction='row' alignItems='center' justifyContent='space-between'>
+        <Typography color="#575757" fontWeight='500'>
+        Account Number Additional field 1 
+        </Typography>
+        <OutlinedInput sx={{ height: 40 }} placeholder='accountIBAN'
+        disabled={!allowUatAccess}     
+        onChange={({ target }) =>
+        setMobileTransactionP2BData( (prev) =>
+        ({...prev, accountAdditionalNo1:target.value}))} 
+        value={mobileTransactionP2BData.accountAdditionalNo1} />
+    </Stack>
+    <Stack direction='row' alignItems='center' justifyContent='space-between'>
+        <Typography color="#575757" fontWeight='500'>
+        Account Number Additional field 2
+        </Typography>
+        <OutlinedInput sx={{ height: 40 }} placeholder='accountIBAN'
+        disabled={!allowUatAccess}     
+        onChange={({ target }) =>
+        setMobileTransactionP2BData( (prev) =>
+        ({...prev, accountAdditionalNo2:target.value}))} 
+        value={mobileTransactionP2BData.accountAdditionalNo2} />
+    </Stack>
+
+
+
+
+
+
+
+    <Typography fontWeight={600} fontSize={20} variant='h6' color="#404040">Sender Details:-</Typography>
+    <Stack direction='row' alignItems='center' justifyContent='space-between'>
+        <Typography color="#575757" fontWeight='500'>
+        Nationality (Sender)<span style={{color:'#ea5c57'}}> *</span>
+        </Typography>
+        <OutlinedInput sx={{ height: 40 }} placeholder='nationality'
         disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
@@ -115,23 +299,22 @@ function P2BTransactionMobile({allowUatAccess, mobileTransactionP2BData, setMobi
     </Stack>
     <Stack direction='row' alignItems='center' justifyContent='space-between'>
         <Typography color="#575757" fontWeight='500'>
-        Date Of Birth
+        Date of Birth<span style={{color:'#ea5c57'}}> *</span>
         </Typography>
-        <OutlinedInput sx={{ height: 40 }} placeholder='Date Of Birth'
+        <OutlinedInput sx={{ height: 40 }} placeholder='dateOfBirth'
         disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
         ({...prev, dateOfBirth:target.value}))} 
         value={mobileTransactionP2BData.dateOfBirth} />
     </Stack>
-    
     <Stack direction='row' alignItems='center' justifyContent='space-between'>
         <Typography color="#575757" fontWeight='500'>
-        Gender
+        Gender (Sender)
         </Typography>
         <TextField
               sx={{ width: 205 }}
-              label="Gender"
+              label="gender"
               disabled={!allowUatAccess}     
               onChange={({ target }) =>
             setMobileTransactionP2BData( (prev) =>
@@ -144,14 +327,45 @@ function P2BTransactionMobile({allowUatAccess, mobileTransactionP2BData, setMobi
               <MenuItem value='M'>Male</MenuItem>
               <MenuItem value='F'>Female</MenuItem>
             </TextField>
-
-
     </Stack>
     <Stack direction='row' alignItems='center' justifyContent='space-between'>
         <Typography color="#575757" fontWeight='500'>
-        ID Type
+        Primary Contact Country Code (Sender)<span style={{color:'#ea5c57'}}> *</span>
         </Typography>
-        <OutlinedInput sx={{ height: 40 }} placeholder='ID Type'
+        <OutlinedInput sx={{ height: 40 }} placeholder='primaryContactCountryCode'
+        disabled={!allowUatAccess}     
+        onChange={({ target }) =>
+        setMobileTransactionP2BData( (prev) =>
+        ({...prev, senderBusinessPrimaryContactCountryCode:target.value}))} 
+        value={mobileTransactionP2BData.senderBusinessPrimaryContactCountryCode} />
+    </Stack>
+    <Stack direction='row' alignItems='center' justifyContent='space-between'>
+        <Typography color="#575757" fontWeight='500'>
+        Primary Contact Number (Sender)<span style={{color:'#ea5c57'}}> *</span>
+        </Typography>
+        <OutlinedInput sx={{ height: 40 }} placeholder='businessPrimaryContactNo'
+        disabled={!allowUatAccess}     
+        onChange={({ target }) =>
+        setMobileTransactionP2BData( (prev) =>
+        ({...prev, senderBusinessPrimaryContactNo:target.value}))} 
+        value={mobileTransactionP2BData.senderBusinessPrimaryContactNo} />
+    </Stack>
+    <Stack direction='row' alignItems='center' justifyContent='space-between'>
+        <Typography color="#575757" fontWeight='500'>
+        Primary Contact Number Type (Sender) <span style={{color:'#ea5c57'}}> *</span>
+        </Typography>
+        <OutlinedInput sx={{ height: 40 }} placeholder='primaryContactNoType'
+        disabled={!allowUatAccess}     
+        onChange={({ target }) =>
+        setMobileTransactionP2BData( (prev) =>
+        ({...prev, senderPrimaryContactNoType:target.value}))} 
+        value={mobileTransactionP2BData.senderPrimaryContactNoType} />
+    </Stack>
+    <Stack direction='row' alignItems='center' justifyContent='space-between'>
+        <Typography color="#575757" fontWeight='500'>
+        Id Document Type (Sender)<span style={{color:'#ea5c57'}}> *</span>
+        </Typography>
+        <OutlinedInput sx={{ height: 40 }} placeholder='idType'
         disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
@@ -160,9 +374,9 @@ function P2BTransactionMobile({allowUatAccess, mobileTransactionP2BData, setMobi
     </Stack>
     <Stack direction='row' alignItems='center' justifyContent='space-between'>
         <Typography color="#575757" fontWeight='500'>
-        ID Number
+        Id Number (Sender)<span style={{color:'#ea5c57'}}> *</span>
         </Typography>
-        <OutlinedInput sx={{ height: 40 }} placeholder='ID Number'
+        <OutlinedInput sx={{ height: 40 }} placeholder='idNumber'
         disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
@@ -171,9 +385,9 @@ function P2BTransactionMobile({allowUatAccess, mobileTransactionP2BData, setMobi
     </Stack>
     <Stack direction='row' alignItems='center' justifyContent='space-between'>
         <Typography color="#575757" fontWeight='500'>
-        Issue Date
+        Id Document Issue Date (Sender)
         </Typography>
-        <OutlinedInput sx={{ height: 40 }} placeholder='Issue Date'
+        <OutlinedInput sx={{ height: 40 }} placeholder='issueDate'
         disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
@@ -182,9 +396,9 @@ function P2BTransactionMobile({allowUatAccess, mobileTransactionP2BData, setMobi
     </Stack>  
     <Stack direction='row' alignItems='center' justifyContent='space-between'>
         <Typography color="#575757" fontWeight='500'>
-        Expiry Date
+        Id Document Expiry Date (Sender)<span style={{color:'#ea5c57'}}> *</span>
         </Typography>
-        <OutlinedInput sx={{ height: 40 }} placeholder='Expiry Date'
+        <OutlinedInput sx={{ height: 40 }} placeholder='expiryDate'
         disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
@@ -193,9 +407,9 @@ function P2BTransactionMobile({allowUatAccess, mobileTransactionP2BData, setMobi
     </Stack> 
     <Stack direction='row' alignItems='center' justifyContent='space-between'>
         <Typography color="#575757" fontWeight='500'>
-        Issuer Country
+        Id Issuer Country (Sender)
         </Typography>
-        <OutlinedInput sx={{ height: 40 }} placeholder='Issuer Country'
+        <OutlinedInput sx={{ height: 40 }} placeholder='issuerCountry'
         disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
@@ -204,9 +418,9 @@ function P2BTransactionMobile({allowUatAccess, mobileTransactionP2BData, setMobi
     </Stack> 
     <Stack direction='row' alignItems='center' justifyContent='space-between'>
         <Typography color="#575757" fontWeight='500'>
-        Address Line 1
+        Address Line1 (Sender Address)<span style={{color:'#ea5c57'}}> *</span>
         </Typography>
-        <OutlinedInput sx={{ height: 40 }} placeholder='Address Line 1'
+        <OutlinedInput sx={{ height: 40 }} placeholder='addressLine1'
         disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
@@ -215,9 +429,9 @@ function P2BTransactionMobile({allowUatAccess, mobileTransactionP2BData, setMobi
     </Stack> 
     <Stack direction='row' alignItems='center' justifyContent='space-between'>
         <Typography color="#575757" fontWeight='500'>
-        Address Line 2
+        Address Line2 (Sender Address)
         </Typography>
-        <OutlinedInput sx={{ height: 40 }} placeholder='Address Line 2'
+        <OutlinedInput sx={{ height: 40 }} placeholder='addressLine2'
         disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
@@ -226,9 +440,9 @@ function P2BTransactionMobile({allowUatAccess, mobileTransactionP2BData, setMobi
     </Stack> 
     <Stack direction='row' alignItems='center' justifyContent='space-between'>
         <Typography color="#575757" fontWeight='500'>
-        Address Line 3
+        AAddress Line3 (Sender Address)
         </Typography>
-        <OutlinedInput sx={{ height: 40 }} placeholder='Address Line 3' 
+        <OutlinedInput sx={{ height: 40 }} placeholder='addressLine3' 
         disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
@@ -237,9 +451,9 @@ function P2BTransactionMobile({allowUatAccess, mobileTransactionP2BData, setMobi
     </Stack> 
     <Stack direction='row' alignItems='center' justifyContent='space-between'>
         <Typography color="#575757" fontWeight='500'>
-        City
+        City/Town (Sender Address)<span style={{color:'#ea5c57'}}> *</span>
         </Typography>
-        <OutlinedInput sx={{ height: 40 }} placeholder='City' 
+        <OutlinedInput sx={{ height: 40 }} placeholder='city' 
         disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
@@ -248,9 +462,9 @@ function P2BTransactionMobile({allowUatAccess, mobileTransactionP2BData, setMobi
     </Stack> 
     <Stack direction='row' alignItems='center' justifyContent='space-between'>
         <Typography color="#575757" fontWeight='500'>
-        State Province
+        State (Sender Address)
         </Typography>
-        <OutlinedInput sx={{ height: 40 }} placeholder='State Province' 
+        <OutlinedInput sx={{ height: 40 }} placeholder='stateProvince' 
         disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
@@ -259,9 +473,9 @@ function P2BTransactionMobile({allowUatAccess, mobileTransactionP2BData, setMobi
     </Stack> 
     <Stack direction='row' alignItems='center' justifyContent='space-between'>
         <Typography color="#575757" fontWeight='500'>
-        Postal Code
+        Postal Code (Sender Address)
         </Typography>
-        <OutlinedInput sx={{ height: 40 }} placeholder='Postal Code' 
+        <OutlinedInput sx={{ height: 40 }} placeholder='postalCode' 
         disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
@@ -270,9 +484,9 @@ function P2BTransactionMobile({allowUatAccess, mobileTransactionP2BData, setMobi
     </Stack> 
     <Stack direction='row' alignItems='center' justifyContent='space-between'>
         <Typography color="#575757" fontWeight='500'>
-        Country
+        Country (Sender Address)<span style={{color:'#ea5c57'}}> *</span>
         </Typography>
-        <OutlinedInput sx={{ height: 40 }} placeholder='Country'
+        <OutlinedInput sx={{ height: 40 }} placeholder='country'
         disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
@@ -281,9 +495,20 @@ function P2BTransactionMobile({allowUatAccess, mobileTransactionP2BData, setMobi
     </Stack>
     <Stack direction='row' alignItems='center' justifyContent='space-between'>
         <Typography color="#575757" fontWeight='500'>
-            Sender First Name
+        Title (Sender)
         </Typography>
-        <OutlinedInput sx={{ height: 40 }} placeholder='Sender First Name'
+        <OutlinedInput sx={{ height: 40 }} placeholder='title'
+        disabled={!allowUatAccess}     
+        onChange={({ target }) =>
+        setMobileTransactionP2BData( (prev) =>
+        ({...prev, senderTitle:target.value}))} 
+        value={mobileTransactionP2BData.senderTitle} />
+    </Stack>
+    <Stack direction='row' alignItems='center' justifyContent='space-between'>
+        <Typography color="#575757" fontWeight='500'>
+        First Name (Sender)<span style={{color:'#ea5c57'}}> *</span>
+        </Typography>
+        <OutlinedInput sx={{ height: 40 }} placeholder='firstName'
         disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
@@ -292,9 +517,9 @@ function P2BTransactionMobile({allowUatAccess, mobileTransactionP2BData, setMobi
     </Stack>
     <Stack direction='row' alignItems='center' justifyContent='space-between'>
         <Typography color="#575757" fontWeight='500'>
-            Sender Middle Name
+        Middle Name (Sender)
         </Typography>
-        <OutlinedInput sx={{ height: 40 }} placeholder='Sender Last Name' 
+        <OutlinedInput sx={{ height: 40 }} placeholder='middleName' 
         disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
@@ -303,97 +528,26 @@ function P2BTransactionMobile({allowUatAccess, mobileTransactionP2BData, setMobi
     </Stack>
     <Stack direction='row' alignItems='center' justifyContent='space-between'>
         <Typography color="#575757" fontWeight='500'>
-            Sender Last Name
+        Last Name (Sender)<span style={{color:'#ea5c57'}}> *</span>
         </Typography>
-        <OutlinedInput sx={{ height: 40 }} placeholder='Sender Last Name' 
+        <OutlinedInput sx={{ height: 40 }} placeholder='lastName' 
         disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
         ({...prev, lastName:target.value}))} 
         value={mobileTransactionP2BData.lastName}/>
     </Stack>
+    
+
+
+
+
+    <Typography fontWeight={600} fontSize={20} variant='h6' color="#404040">Receiver Details:-</Typography>
     <Stack direction='row' alignItems='center' justifyContent='space-between'>
         <Typography color="#575757" fontWeight='500'>
-            Sending Amount
+        Recipient Company Name<span style={{color:'#ea5c57'}}> *</span>
         </Typography>
-        <OutlinedInput sx={{ height: 40 }} placeholder='Receiver Full Name' 
-        disabled={!allowUatAccess}     
-        onChange={({ target }) =>
-        setMobileTransactionP2BData( (prev) =>
-        ({...prev, sendingAmount:target.value}))} 
-        value={mobileTransactionP2BData.sendingAmount}/>
-    </Stack>
-    <Stack direction='row' alignItems='center' justifyContent='space-between'>
-        <Typography color="#575757" fontWeight='500'>
-            Paying Currency Code
-        </Typography>
-        <OutlinedInput sx={{ height: 40 }} placeholder='Paying Currency Code'
-        disabled={!allowUatAccess}     
-        onChange={({ target }) =>
-        setMobileTransactionP2BData( (prev) =>
-        ({...prev, payinCcyCode:target.value}))} 
-        value={mobileTransactionP2BData.payinCcyCode} />
-    </Stack>
-    <Stack direction='row' alignItems='center' justifyContent='space-between'>
-        <Typography color="#575757" fontWeight='500'>
-            Payment Mode
-        </Typography>
-        <OutlinedInput sx={{ height: 40 }} placeholder='Payment Mode'
-        disabled={!allowUatAccess}     
-        onChange={({ target }) =>
-        setMobileTransactionP2BData( (prev) =>
-        ({...prev, paymentMode:target.value}))} 
-        value={mobileTransactionP2BData.paymentMode} />
-    </Stack>
-    <Stack direction='row' alignItems='center' justifyContent='space-between'>
-        <Typography color="#575757" fontWeight='500'>
-            Authentication Partner Code
-        </Typography>
-        <OutlinedInput sx={{ height: 40 }} placeholder='Authentication Partner Code' 
-        disabled={!allowUatAccess}     
-        onChange={({ target }) =>
-        setMobileTransactionP2BData( (prev) =>
-        ({...prev, authenticationPartnerCode:target.value}))} 
-        value={mobileTransactionP2BData.authenticationPartnerCode}/>
-    </Stack>
-    <Stack direction='row' alignItems='center' justifyContent='space-between'>
-        <Typography color="#575757" fontWeight='500'>
-            Payment Option
-        </Typography>
-        <OutlinedInput sx={{ height: 40 }} placeholder='Payment Option'
-        disabled={!allowUatAccess}     
-        onChange={({ target }) =>
-        setMobileTransactionP2BData( (prev) =>
-        ({...prev, paymentOption:target.value}))} 
-        value={mobileTransactionP2BData.paymentOption} />
-    </Stack>
-    <Stack direction='row' alignItems='center' justifyContent='space-between'>
-        <Typography color="#575757" fontWeight='500'>
-            Sending Partner Code
-        </Typography>
-        <OutlinedInput sx={{ height: 40 }} placeholder='Sending Partner Code'
-        disabled={!allowUatAccess}     
-        onChange={({ target }) =>
-        setMobileTransactionP2BData( (prev) =>
-        ({...prev, sendingPartnerCode:target.value}))} 
-        value={mobileTransactionP2BData.sendingPartnerCode}  />
-    </Stack>
-    <Stack direction='row' alignItems='center' justifyContent='space-between'>
-        <Typography color="#575757" fontWeight='500'>
-            Receiving Partner Code
-        </Typography>
-        <OutlinedInput sx={{ height: 40 }} placeholder='Receiving Partner Code'
-        disabled={!allowUatAccess}     
-        onChange={({ target }) =>
-        setMobileTransactionP2BData( (prev) =>
-        ({...prev, receivingPartnerCode:target.value}))} 
-        value={mobileTransactionP2BData.receivingPartnerCode} />
-    </Stack>
-    <Stack direction='row' alignItems='center' justifyContent='space-between'>
-        <Typography color="#575757" fontWeight='500'>
-            Business Name
-        </Typography>
-        <OutlinedInput sx={{ height: 40 }} placeholder='Business Name'
+        <OutlinedInput sx={{ height: 40 }} placeholder='businessName'
         disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
@@ -402,9 +556,9 @@ function P2BTransactionMobile({allowUatAccess, mobileTransactionP2BData, setMobi
     </Stack>
     <Stack direction='row' alignItems='center' justifyContent='space-between'>
         <Typography color="#575757" fontWeight='500'>
-            Business PINCODE
+        Recipient Company PIN Code
         </Typography>
-        <OutlinedInput sx={{ height: 40 }} placeholder='Business PINCODE'
+        <OutlinedInput sx={{ height: 40 }} placeholder='businessPINCode'
         disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
@@ -413,9 +567,9 @@ function P2BTransactionMobile({allowUatAccess, mobileTransactionP2BData, setMobi
     </Stack>
     <Stack direction='row' alignItems='center' justifyContent='space-between'>
         <Typography color="#575757" fontWeight='500'>
-            Business Address 1
+        Recipient Registered Address 1
         </Typography>
-        <OutlinedInput sx={{ height: 40 }} placeholder='Business Address 1' 
+        <OutlinedInput sx={{ height: 40 }} placeholder='businessAddress1' 
         disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
@@ -424,9 +578,9 @@ function P2BTransactionMobile({allowUatAccess, mobileTransactionP2BData, setMobi
     </Stack>
     <Stack direction='row' alignItems='center' justifyContent='space-between'>
         <Typography color="#575757" fontWeight='500'>
-            Business Address 2
+        Recipient Registered Address 2
         </Typography>
-        <OutlinedInput sx={{ height: 40 }} placeholder='Business Address 2' 
+        <OutlinedInput sx={{ height: 40 }} placeholder='businessAddress2' 
         disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
@@ -435,9 +589,9 @@ function P2BTransactionMobile({allowUatAccess, mobileTransactionP2BData, setMobi
     </Stack>
     <Stack direction='row' alignItems='center' justifyContent='space-between'>
         <Typography color="#575757" fontWeight='500'>
-            Business Address City
+        Recipient Registered City
         </Typography>
-        <OutlinedInput sx={{ height: 40 }} placeholder='Business Address City' 
+        <OutlinedInput sx={{ height: 40 }} placeholder='businessAddressCity' 
         disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
@@ -446,9 +600,9 @@ function P2BTransactionMobile({allowUatAccess, mobileTransactionP2BData, setMobi
     </Stack>
     <Stack direction='row' alignItems='center' justifyContent='space-between'>
         <Typography color="#575757" fontWeight='500'>
-            Business Address State
+        Recipient Registered State
         </Typography>
-        <OutlinedInput sx={{ height: 40 }} placeholder='Business Address State' 
+        <OutlinedInput sx={{ height: 40 }} placeholder='businessAddressState' 
         disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
@@ -457,9 +611,9 @@ function P2BTransactionMobile({allowUatAccess, mobileTransactionP2BData, setMobi
     </Stack>
     <Stack direction='row' alignItems='center' justifyContent='space-between'>
         <Typography color="#575757" fontWeight='500'>
-            Business Address Country Code
+        Recipient Registered Country Code<span style={{color:'#ea5c57'}}> *</span>
         </Typography>
-        <OutlinedInput sx={{ height: 40 }} placeholder='Business Address Country Code' 
+        <OutlinedInput sx={{ height: 40 }} placeholder='businessAddressCountryCode' 
         disabled={!allowUatAccess}    
          onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
@@ -468,9 +622,9 @@ function P2BTransactionMobile({allowUatAccess, mobileTransactionP2BData, setMobi
     </Stack>
     <Stack direction='row' alignItems='center' justifyContent='space-between'>
         <Typography color="#575757" fontWeight='500'>
-            Business Address Zip Code
+        Recipient Registered Address Zip Code
         </Typography>
-        <OutlinedInput sx={{ height: 40 }} placeholder='Business Address Zip Code' 
+        <OutlinedInput sx={{ height: 40 }} placeholder='businessAddressZip' 
         disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
@@ -479,9 +633,9 @@ function P2BTransactionMobile({allowUatAccess, mobileTransactionP2BData, setMobi
     </Stack>
     <Stack direction='row' alignItems='center' justifyContent='space-between'>
         <Typography color="#575757" fontWeight='500'>
-            Business Address Contact Country Code
+        Recipient Company Primary Contact Country Code
         </Typography>
-        <OutlinedInput sx={{ height: 40 }} placeholder='Business Address Contact Country Code' 
+        <OutlinedInput sx={{ height: 40 }} placeholder='businessPrimaryContactCountryCode' 
         disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
@@ -490,9 +644,9 @@ function P2BTransactionMobile({allowUatAccess, mobileTransactionP2BData, setMobi
     </Stack>
     <Stack direction='row' alignItems='center' justifyContent='space-between'>
         <Typography color="#575757" fontWeight='500'>
-            Business Address Contact Number
+        Recipient Company Primary Contact Number
         </Typography>
-        <OutlinedInput sx={{ height: 40 }} placeholder='Business Address Contact Number' 
+        <OutlinedInput sx={{ height: 40 }} placeholder='businessPrimaryContactNo' 
         disabled={!allowUatAccess}    
          onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
@@ -501,9 +655,9 @@ function P2BTransactionMobile({allowUatAccess, mobileTransactionP2BData, setMobi
     </Stack>
     <Stack direction='row' alignItems='center' justifyContent='space-between'>
         <Typography color="#575757" fontWeight='500'>
-            Business Address Contact Number Type
+        Recipient Company Primary Contact Number type
         </Typography>
-        <OutlinedInput sx={{ height: 40 }} placeholder='Business Address Contact Number Type'
+        <OutlinedInput sx={{ height: 40 }} placeholder='businessPrimaryContactNoType'
         disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
@@ -512,9 +666,9 @@ function P2BTransactionMobile({allowUatAccess, mobileTransactionP2BData, setMobi
     </Stack>
     <Stack direction='row' alignItems='center' justifyContent='space-between'>
         <Typography color="#575757" fontWeight='500'>
-            Business Description
+        Recipient Type of Company
         </Typography>
-        <OutlinedInput sx={{ height: 40 }} placeholder='Business Description' 
+        <OutlinedInput sx={{ height: 40 }} placeholder='businessDescription' 
         disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
@@ -523,9 +677,9 @@ function P2BTransactionMobile({allowUatAccess, mobileTransactionP2BData, setMobi
     </Stack>
     <Stack direction='row' alignItems='center' justifyContent='space-between'>
         <Typography color="#575757" fontWeight='500'>
-            Business Email
+        Recipient Company Email Id
         </Typography>
-        <OutlinedInput sx={{ height: 40 }} placeholder='Business Email'
+        <OutlinedInput sx={{ height: 40 }} placeholder='businessEmail'
         disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
@@ -534,9 +688,9 @@ function P2BTransactionMobile({allowUatAccess, mobileTransactionP2BData, setMobi
     </Stack>
     <Stack direction='row' alignItems='center' justifyContent='space-between'>
         <Typography color="#575757" fontWeight='500'>
-            Business Country Code
+        Recipient Company Country Code
         </Typography>
-        <OutlinedInput sx={{ height: 40 }} placeholder='Business Country Code'
+        <OutlinedInput sx={{ height: 40 }} placeholder='businessCountryCode'
         disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
@@ -545,9 +699,9 @@ function P2BTransactionMobile({allowUatAccess, mobileTransactionP2BData, setMobi
     </Stack>
     <Stack direction='row' alignItems='center' justifyContent='space-between'>
         <Typography color="#575757" fontWeight='500'>
-            Business Registration Type
+        Recipient Type of Registration
         </Typography>
-        <OutlinedInput sx={{ height: 40 }} placeholder='Business Registration Type'
+        <OutlinedInput sx={{ height: 40 }} placeholder='businessRegistrationType'
         disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
@@ -556,9 +710,9 @@ function P2BTransactionMobile({allowUatAccess, mobileTransactionP2BData, setMobi
     </Stack>
     <Stack direction='row' alignItems='center' justifyContent='space-between'>
         <Typography color="#575757" fontWeight='500'>
-            Business Registration Number
+        Recipient Company Incorporation Number
         </Typography>
-        <OutlinedInput sx={{ height: 40 }} placeholder='Business Registration Number' 
+        <OutlinedInput sx={{ height: 40 }} placeholder='businessRegistrationNumber' 
         disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
@@ -567,9 +721,9 @@ function P2BTransactionMobile({allowUatAccess, mobileTransactionP2BData, setMobi
     </Stack>
     <Stack direction='row' alignItems='center' justifyContent='space-between'>
         <Typography color="#575757" fontWeight='500'>
-            Business Registration Issued By
+        Recipient Company Incorporation Issued by
         </Typography>
-        <OutlinedInput sx={{ height: 40 }} placeholder='Business Registration Issued By'
+        <OutlinedInput sx={{ height: 40 }} placeholder='businessRegistrationIssuedBy'
         disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
@@ -578,9 +732,9 @@ function P2BTransactionMobile({allowUatAccess, mobileTransactionP2BData, setMobi
     </Stack>
     <Stack direction='row' alignItems='center' justifyContent='space-between'>
         <Typography color="#575757" fontWeight='500'>
-            Business Registration Issued At
+        Recipient Company Incorporation Issued at
         </Typography>
-        <OutlinedInput sx={{ height: 40 }} placeholder='Business Registration Issued At'
+        <OutlinedInput sx={{ height: 40 }} placeholder='businessRegistrationIssuedAt'
         disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
@@ -589,9 +743,9 @@ function P2BTransactionMobile({allowUatAccess, mobileTransactionP2BData, setMobi
     </Stack>
     <Stack direction='row' alignItems='center' justifyContent='space-between'>
         <Typography color="#575757" fontWeight='500'>
-            Business Registration Issued Date
+        Recipient Company Incorporation Issued Date
         </Typography>
-        <OutlinedInput sx={{ height: 40 }} placeholder='Business Registration Issued Date'
+        <OutlinedInput sx={{ height: 40 }} placeholder='businessRegistrationIssueDate'
         disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
@@ -600,9 +754,9 @@ function P2BTransactionMobile({allowUatAccess, mobileTransactionP2BData, setMobi
     </Stack>
     <Stack direction='row' alignItems='center' justifyContent='space-between'>
         <Typography color="#575757" fontWeight='500'>
-            Business ID ValidThru
+        Recipient Company Incorporation Expiry Date
         </Typography>
-        <OutlinedInput sx={{ height: 40 }} placeholder='Business ID ValidThru'
+        <OutlinedInput sx={{ height: 40 }} placeholder='businessIDValidThru'
         disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
@@ -611,9 +765,9 @@ function P2BTransactionMobile({allowUatAccess, mobileTransactionP2BData, setMobi
     </Stack>
     <Stack direction='row' alignItems='center' justifyContent='space-between'>
         <Typography color="#575757" fontWeight='500'>
-            Type Of Business
+        Recipient Type of Company
         </Typography>
-        <OutlinedInput sx={{ height: 40 }} placeholder='Type Of Business' 
+        <OutlinedInput sx={{ height: 40 }} placeholder='typeofbusiness' 
         disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
@@ -622,29 +776,24 @@ function P2BTransactionMobile({allowUatAccess, mobileTransactionP2BData, setMobi
     </Stack>
     <Stack direction='row' alignItems='center' justifyContent='space-between'>
         <Typography color="#575757" fontWeight='500'>
-            Business POBox
+        Recipient Company PO Box
         </Typography>
-        <OutlinedInput sx={{ height: 40 }} placeholder='Business POBox'
+        <OutlinedInput sx={{ height: 40 }} placeholder='businessPObox'
         disabled={!allowUatAccess}     
         onChange={({ target }) =>
         setMobileTransactionP2BData( (prev) =>
         ({...prev, businessPObox:target.value}))} 
         value={mobileTransactionP2BData.businessPObox} />
     </Stack>
+
+
+
+
+
+
     <Stack direction='row' alignItems='center' justifyContent='space-between'>
         <Typography color="#575757" fontWeight='500'>
-            Business Mobile
-        </Typography>
-        <OutlinedInput sx={{ height: 40 }} placeholder='Business Mobile'
-        disabled={!allowUatAccess}     
-        onChange={({ target }) =>
-        setMobileTransactionP2BData( (prev) =>
-        ({...prev, businessMobile:target.value}))} 
-        value={mobileTransactionP2BData.businessMobile} />
-    </Stack>
-    <Stack direction='row' alignItems='center' justifyContent='space-between'>
-        <Typography color="#575757" fontWeight='500'>
-            Quote Id
+            Quote Id<span style={{color:'#ea5c57'}}> *</span>
         </Typography>
         <OutlinedInput sx={{ height: 40 }} placeholder='Quote Id'
         disabled={!allowUatAccess}     
@@ -655,7 +804,7 @@ function P2BTransactionMobile({allowUatAccess, mobileTransactionP2BData, setMobi
     </Stack>
     <Stack direction='row' alignItems='center' justifyContent='space-between'>
         <Typography color="#575757" fontWeight='500'>
-            Receiving Country
+        Destination Country<span style={{color:'#ea5c57'}}> *</span>
         </Typography>
         <OutlinedInput sx={{ height: 40 }} placeholder='Receiving Country'
         disabled={!allowUatAccess}     
@@ -666,7 +815,7 @@ function P2BTransactionMobile({allowUatAccess, mobileTransactionP2BData, setMobi
     </Stack>
     <Stack direction='row' alignItems='center' justifyContent='space-between'>
         <Typography color="#575757" fontWeight='500'>
-            Remittance Purpose
+        Remittance Purpose<span style={{color:'#ea5c57'}}> *</span>
         </Typography>
         <OutlinedInput sx={{ height: 40 }} placeholder='Remittance Purpose'
         disabled={!allowUatAccess}     
@@ -677,7 +826,7 @@ function P2BTransactionMobile({allowUatAccess, mobileTransactionP2BData, setMobi
     </Stack>
     <Stack direction='row' alignItems='center' justifyContent='space-between'>
         <Typography color="#575757" fontWeight='500'>
-            Source Of Funds
+        Source of Funds<span style={{color:'#ea5c57'}}> *</span>
         </Typography>
         <OutlinedInput sx={{ height: 40 }} placeholder='Source Of Funds' 
         disabled={!allowUatAccess}     
@@ -688,7 +837,7 @@ function P2BTransactionMobile({allowUatAccess, mobileTransactionP2BData, setMobi
     </Stack>
     <Stack direction='row' alignItems='center' justifyContent='space-between' pb={30}>
         <Typography color="#575757" fontWeight='500'>
-            Relationship Sender
+        Relationship - Sender & Beneficiary
         </Typography>
         <OutlinedInput sx={{ height: 40 }} placeholder='Relationship Sender'
         disabled={!allowUatAccess}     

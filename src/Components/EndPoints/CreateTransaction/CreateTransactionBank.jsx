@@ -140,7 +140,7 @@ function CreateTransactionBank({allowUatAccess, createTransactionBankData, setCr
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-            Bank Code
+            Bank Code<span style={{color:'#ea5c57'}}> *</span>
             </Typography>
             <OutlinedInput sx={{ height: 40 }} placeholder='sortcode creditParty' 
             disabled={!allowUatAccess}

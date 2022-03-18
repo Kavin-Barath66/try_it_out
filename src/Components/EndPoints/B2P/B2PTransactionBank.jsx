@@ -14,11 +14,22 @@ function B2PTransactionBank({allowUatAccess, bankTransactionB2PData, setBankTran
         <Typography py={2} textAlign='center' fontWeight={600} fontSize={20} variant='h6' color="#404040">B2P Transaction Bank</Typography>
     </Stack>
     <Stack height="100%" width={600} spacing={5} sx={{ p: 4 }} >
+    <Stack direction='row' alignItems='center' justifyContent='space-between'>
+        <Typography color="#575757" fontWeight='500'>
+        Creation Date/Time<span style={{color:'#ea5c57'}}> *</span>
+        </Typography>
+        <OutlinedInput sx={{ height: 40 }} placeholder='requestDate' 
+        disabled={!allowUatAccess}       
+        onChange={({ target }) =>
+        setBankTransactionB2PData( (prev) =>
+        ({...prev, requestDate:target.value}))} 
+        value={bankTransactionB2PData.requestDate} />
+    </Stack>
       <Stack direction='row' alignItems='center' justifyContent='space-between'>
           <Typography color="#575757" fontWeight='500'>
-          Amount
+          Destination Amount Payable<span style={{color:'#ea5c57'}}> *</span>
           </Typography>
-          <OutlinedInput sx={{ height: 40 }} placeholder='Amount'
+          <OutlinedInput sx={{ height: 40 }} placeholder='amount'
           disabled={!allowUatAccess}       
           onChange={({ target }) =>
           setBankTransactionB2PData( (prev) =>
@@ -27,9 +38,9 @@ function B2PTransactionBank({allowUatAccess, bankTransactionB2PData, setBankTran
       </Stack>
       <Stack direction='row' alignItems='center' justifyContent='space-between'>
           <Typography color="#575757" fontWeight='500'>
-            Currency
+          Destination Currency<span style={{color:'#ea5c57'}}> *</span>
           </Typography>
-          <OutlinedInput sx={{ height: 40 }} placeholder='Currency' 
+          <OutlinedInput sx={{ height: 40 }} placeholder='currency' 
           disabled={!allowUatAccess}       
           onChange={({ target }) =>
           setBankTransactionB2PData( (prev) =>
@@ -38,9 +49,9 @@ function B2PTransactionBank({allowUatAccess, bankTransactionB2PData, setBankTran
       </Stack>
       <Stack direction='row' alignItems='center' justifyContent='space-between'>
           <Typography color="#575757" fontWeight='500'>
-            Type
+          Transaction Type<span style={{color:'#ea5c57'}}> *</span>
           </Typography>
-          <OutlinedInput sx={{ height: 40 }} placeholder='Type' 
+          <OutlinedInput sx={{ height: 40 }} placeholder='type' 
           disabled={!allowUatAccess}       
           onChange={({ target }) =>
           setBankTransactionB2PData( (prev) =>
@@ -49,9 +60,9 @@ function B2PTransactionBank({allowUatAccess, bankTransactionB2PData, setBankTran
       </Stack>
       <Stack direction='row' alignItems='center' justifyContent='space-between'>
           <Typography color="#575757" fontWeight='500'>
-            Description Text
+          Free format Text Description
           </Typography>
-          <OutlinedInput sx={{ height: 40 }} placeholder='Description Text' 
+          <OutlinedInput sx={{ height: 40 }} placeholder='descriptionText' 
           disabled={!allowUatAccess}       
           onChange={({ target }) =>
           setBankTransactionB2PData( (prev) =>
@@ -60,20 +71,9 @@ function B2PTransactionBank({allowUatAccess, bankTransactionB2PData, setBankTran
       </Stack>
       <Stack direction='row' alignItems='center' justifyContent='space-between'>
           <Typography color="#575757" fontWeight='500'>
-            Request Date
+            Transaction Reference<span style={{color:'#ea5c57'}}> *</span>
           </Typography>
-          <OutlinedInput sx={{ height: 40 }} placeholder='Transaction Reference' 
-          disabled={!allowUatAccess}       
-          onChange={({ target }) =>
-          setBankTransactionB2PData( (prev) =>
-          ({...prev, requestDate:target.value}))} 
-          value={bankTransactionB2PData.requestDate} />
-      </Stack>
-      <Stack direction='row' alignItems='center' justifyContent='space-between'>
-          <Typography color="#575757" fontWeight='500'>
-            Transaction Reference
-          </Typography>
-          <OutlinedInput sx={{ height: 40 }} placeholder='Transaction Reference' 
+          <OutlinedInput sx={{ height: 40 }} placeholder='requestingOrganisationTransactionReference' 
           disabled={!allowUatAccess}       
           onChange={({ target }) =>
           setBankTransactionB2PData( (prev) =>
@@ -82,75 +82,20 @@ function B2PTransactionBank({allowUatAccess, bankTransactionB2PData, setBankTran
       </Stack>
       <Stack direction='row' alignItems='center' justifyContent='space-between'>
           <Typography color="#575757" fontWeight='500'>
-            Sender MSISDN
+          Provider Code
           </Typography>
-          <OutlinedInput sx={{ height: 40 }} placeholder='Sender MSISDN' 
+          <OutlinedInput sx={{ height: 40 }} placeholder='provider' 
           disabled={!allowUatAccess}       
           onChange={({ target }) =>
           setBankTransactionB2PData( (prev) =>
-          ({...prev, senderMsisd:target.value}))} 
-          value={bankTransactionB2PData.senderMsisd} />
+          ({...prev, providerCode:target.value}))} 
+          value={bankTransactionB2PData.providerCode} />
       </Stack>
       <Stack direction='row' alignItems='center' justifyContent='space-between'>
           <Typography color="#575757" fontWeight='500'>
-                Receiver Bank Account Number
+          Payin Amount<span style={{color:'#ea5c57'}}> *</span>
           </Typography>
-          <OutlinedInput sx={{ height: 40 }} placeholder='Receiver Bank Account Number' 
-          disabled={!allowUatAccess}       
-          onChange={({ target }) =>
-          setBankTransactionB2PData( (prev) =>
-          ({...prev, receiverBankaccountno:target.value}))} 
-          value={bankTransactionB2PData.receiverBankaccountno}  />
-      </Stack>
-      <Stack direction='row' alignItems='center' justifyContent='space-between'>
-          <Typography color="#575757" fontWeight='500'>
-                Receiver Bank Account Name
-          </Typography>
-          <OutlinedInput sx={{ height: 40 }} placeholder='Receiver Bank Account Name' 
-          disabled={!allowUatAccess}       
-          onChange={({ target }) =>
-          setBankTransactionB2PData( (prev) =>
-          ({...prev, receiverBankName:target.value}))} 
-          value={bankTransactionB2PData.receiverBankName} />
-      </Stack>
-      <Stack direction='row' alignItems='center' justifyContent='space-between'>
-          <Typography color="#575757" fontWeight='500'>
-                Receiver Bank Code
-          </Typography>
-          <OutlinedInput sx={{ height: 40 }} placeholder='Receiver Bank Code' 
-          disabled={!allowUatAccess}       
-          onChange={({ target }) =>
-          setBankTransactionB2PData( (prev) =>
-          ({...prev, receiverBankCode:target.value}))} 
-          value={bankTransactionB2PData.receiverBankCode} />
-      </Stack>
-      <Stack direction='row' alignItems='center' justifyContent='space-between'>
-          <Typography color="#575757" fontWeight='500'>
-                Receiver FirstName
-          </Typography>
-          <OutlinedInput sx={{ height: 40 }} placeholder='Receiver Fullname' 
-          disabled={!allowUatAccess}       
-          onChange={({ target }) =>
-          setBankTransactionB2PData( (prev) =>
-          ({...prev, receiverFirstName:target.value}))} 
-          value={bankTransactionB2PData.receiverFirstName} />
-      </Stack>
-      <Stack direction='row' alignItems='center' justifyContent='space-between'>
-          <Typography color="#575757" fontWeight='500'>
-                Receiver LastName
-          </Typography>
-          <OutlinedInput sx={{ height: 40 }} placeholder='Receiver Fullname' 
-          disabled={!allowUatAccess}       
-          onChange={({ target }) =>
-          setBankTransactionB2PData( (prev) =>
-          ({...prev, receiverLastName:target.value}))} 
-          value={bankTransactionB2PData.receiverLastName} />
-      </Stack>
-      <Stack direction='row' alignItems='center' justifyContent='space-between'>
-          <Typography color="#575757" fontWeight='500'>
-                Sending Amount
-          </Typography>
-          <OutlinedInput sx={{ height: 40 }} placeholder='Sending Amount' 
+          <OutlinedInput sx={{ height: 40 }} placeholder='sendingAmount' 
           disabled={!allowUatAccess}       
           onChange={({ target }) =>
           setBankTransactionB2PData( (prev) =>
@@ -159,9 +104,9 @@ function B2PTransactionBank({allowUatAccess, bankTransactionB2PData, setBankTran
       </Stack>
       <Stack direction='row' alignItems='center' justifyContent='space-between'>
           <Typography color="#575757" fontWeight='500'>
-                Paying Currency
+          Payin Currency<span style={{color:'#ea5c57'}}> *</span>
           </Typography>
-          <OutlinedInput sx={{ height: 40 }} placeholder='Paying Currency' 
+          <OutlinedInput sx={{ height: 40 }} placeholder='payinCcyCode' 
           disabled={!allowUatAccess}       
           onChange={({ target }) =>
           setBankTransactionB2PData( (prev) =>
@@ -170,9 +115,9 @@ function B2PTransactionBank({allowUatAccess, bankTransactionB2PData, setBankTran
       </Stack>
       <Stack direction='row' alignItems='center' justifyContent='space-between'>
           <Typography color="#575757" fontWeight='500'>
-                Payment Mode
+          Type of Payment<span style={{color:'#ea5c57'}}> *</span>
           </Typography>
-          <OutlinedInput sx={{ height: 40 }} placeholder='Payment Mode' 
+          <OutlinedInput sx={{ height: 40 }} placeholder='paymentMode' 
           disabled={!allowUatAccess}       
           onChange={({ target }) =>
           setBankTransactionB2PData( (prev) =>
@@ -181,9 +126,9 @@ function B2PTransactionBank({allowUatAccess, bankTransactionB2PData, setBankTran
       </Stack>
       <Stack direction='row' alignItems='center' justifyContent='space-between'>
           <Typography color="#575757" fontWeight='500'>
-                Authentication Partner Code
+          Authentication Partner Code<span style={{color:'#ea5c57'}}> *</span>
           </Typography>
-          <OutlinedInput sx={{ height: 40 }} placeholder='Authentication Partner Code' 
+          <OutlinedInput sx={{ height: 40 }} placeholder='authenticationPartnerCode' 
           disabled={!allowUatAccess}       
           onChange={({ target }) =>
           setBankTransactionB2PData( (prev) =>
@@ -192,9 +137,9 @@ function B2PTransactionBank({allowUatAccess, bankTransactionB2PData, setBankTran
       </Stack>
       <Stack direction='row' alignItems='center' justifyContent='space-between'>
           <Typography color="#575757" fontWeight='500'>
-                Payment Option
+          Payment Option<span style={{color:'#ea5c57'}}> *</span>
           </Typography>
-          <OutlinedInput sx={{ height: 40 }} placeholder=' Payment Option' 
+          <OutlinedInput sx={{ height: 40 }} placeholder='paymentOption' 
           disabled={!allowUatAccess}       
           onChange={({ target }) =>
           setBankTransactionB2PData( (prev) =>
@@ -203,9 +148,9 @@ function B2PTransactionBank({allowUatAccess, bankTransactionB2PData, setBankTran
       </Stack>
       <Stack direction='row' alignItems='center' justifyContent='space-between'>
           <Typography color="#575757" fontWeight='500'>
-                Sending Partner Code
+          Send Partner Code<span style={{color:'#ea5c57'}}> *</span>
           </Typography>
-          <OutlinedInput sx={{ height: 40 }} placeholder='Sending Partner Code' 
+          <OutlinedInput sx={{ height: 40 }} placeholder='sendingPartnerCode' 
           disabled={!allowUatAccess}       
           onChange={({ target }) =>
           setBankTransactionB2PData( (prev) =>
@@ -214,9 +159,9 @@ function B2PTransactionBank({allowUatAccess, bankTransactionB2PData, setBankTran
       </Stack>
       <Stack direction='row' alignItems='center' justifyContent='space-between'>
           <Typography color="#575757" fontWeight='500'>
-                Receiving Partner Code
+          Receive Partner Code
           </Typography>
-          <OutlinedInput sx={{ height: 40 }} placeholder='Receiving Partner Code' 
+          <OutlinedInput sx={{ height: 40 }} placeholder='receivingPartnerCode' 
           disabled={!allowUatAccess}       
           onChange={({ target }) =>
           setBankTransactionB2PData( (prev) =>
@@ -225,9 +170,134 @@ function B2PTransactionBank({allowUatAccess, bankTransactionB2PData, setBankTran
       </Stack>
       <Stack direction='row' alignItems='center' justifyContent='space-between'>
           <Typography color="#575757" fontWeight='500'>
-                Business Name
+          Sender Mobile Number<span style={{color:'#ea5c57'}}> *</span>
           </Typography>
-          <OutlinedInput sx={{ height: 40 }} placeholder='Business Name' 
+          <OutlinedInput sx={{ height: 40 }} placeholder='msisdn debitParty' 
+          disabled={!allowUatAccess}       
+          onChange={({ target }) =>
+          setBankTransactionB2PData( (prev) =>
+          ({...prev, senderMsisd:target.value}))} 
+          value={bankTransactionB2PData.senderMsisd} />
+      </Stack>
+      <Stack direction='row' alignItems='center' justifyContent='space-between'>
+          <Typography color="#575757" fontWeight='500'>
+          Beneficiary Mobile Number 
+          </Typography>
+          <OutlinedInput sx={{ height: 40 }} placeholder='msisdn creditParty' 
+          disabled={!allowUatAccess}       
+          onChange={({ target }) =>
+          setBankTransactionB2PData( (prev) =>
+          ({...prev, receiverMsisdn:target.value}))} 
+          value={bankTransactionB2PData.receiverMsisdn} />
+      </Stack>
+      <Stack direction='row' alignItems='center' justifyContent='space-between'>
+          <Typography color="#575757" fontWeight='500'>
+          SMS Notification
+          </Typography>
+          <OutlinedInput sx={{ height: 40 }} placeholder='beneficiarySmsNotify' 
+          disabled={!allowUatAccess}       
+          onChange={({ target }) =>
+          setBankTransactionB2PData( (prev) =>
+          ({...prev, beneficiarySmsNotify:target.value}))} 
+          value={bankTransactionB2PData.beneficiarySmsNotify} />
+      </Stack>
+      <Stack direction='row' alignItems='center' justifyContent='space-between'>
+          <Typography color="#575757" fontWeight='500'>
+          Receive Bank Account Number<span style={{color:'#ea5c57'}}> *</span>
+          </Typography>
+          <OutlinedInput sx={{ height: 40 }} placeholder='bankaccountno' 
+          disabled={!allowUatAccess}       
+          onChange={({ target }) =>
+          setBankTransactionB2PData( (prev) =>
+          ({...prev, receiverBankaccountno:target.value}))} 
+          value={bankTransactionB2PData.receiverBankaccountno}  />
+      </Stack>
+      <Stack direction='row' alignItems='center' justifyContent='space-between'>
+          <Typography color="#575757" fontWeight='500'>
+          Receive Bank Account Type
+          </Typography>
+          <OutlinedInput sx={{ height: 40 }} placeholder='accounttype' 
+          disabled={!allowUatAccess}       
+          onChange={({ target }) =>
+          setBankTransactionB2PData( (prev) =>
+          ({...prev, receiverBankAccountType:target.value}))} 
+          value={bankTransactionB2PData.receiverBankAccountType}  />
+      </Stack>
+      <Stack direction='row' alignItems='center' justifyContent='space-between'>
+          <Typography color="#575757" fontWeight='500'>
+          Bank Code<span style={{color:'#ea5c57'}}> *</span>
+          </Typography>
+          <OutlinedInput sx={{ height: 40 }} placeholder='sortcode' 
+          disabled={!allowUatAccess}       
+          onChange={({ target }) =>
+          setBankTransactionB2PData( (prev) =>
+          ({...prev, receiverBankCode:target.value}))} 
+          value={bankTransactionB2PData.receiverBankCode} />
+      </Stack>
+      <Stack direction='row' alignItems='center' justifyContent='space-between'>
+          <Typography color="#575757" fontWeight='500'>
+          Full Name of Beneficiary Bank<span style={{color:'#ea5c57'}}> *</span>
+          </Typography>
+          <OutlinedInput sx={{ height: 40 }} placeholder='organisationid' 
+          disabled={!allowUatAccess}       
+          onChange={({ target }) =>
+          setBankTransactionB2PData( (prev) =>
+          ({...prev, receiverBankName:target.value}))} 
+          value={bankTransactionB2PData.receiverBankName} />
+      </Stack>
+      <Stack direction='row' alignItems='center' justifyContent='space-between'>
+          <Typography color="#575757" fontWeight='500'>
+          Bank Sub Code
+          </Typography>
+          <OutlinedInput sx={{ height: 40 }} placeholder='sortcode' 
+          disabled={!allowUatAccess}       
+          onChange={({ target }) =>
+          setBankTransactionB2PData( (prev) =>
+          ({...prev, bankSubCode:target.value}))} 
+          value={bankTransactionB2PData.bankSubCode} />
+      </Stack>
+      <Stack direction='row' alignItems='center' justifyContent='space-between'>
+          <Typography color="#575757" fontWeight='500'>
+          Receive Account IBAN Number<span style={{color:'#ea5c57'}}> *</span>
+          </Typography>
+          <OutlinedInput sx={{ height: 40 }} placeholder='accountIBAN' 
+          disabled={!allowUatAccess}       
+          onChange={({ target }) =>
+          setBankTransactionB2PData( (prev) =>
+          ({...prev, accountIBAN:target.value}))} 
+          value={bankTransactionB2PData.accountIBAN} />
+      </Stack>
+      <Stack direction='row' alignItems='center' justifyContent='space-between'>
+          <Typography color="#575757" fontWeight='500'>
+          Account Number Additional field 1
+          </Typography>
+          <OutlinedInput sx={{ height: 40 }} placeholder='accountAdditionalNo1' 
+          disabled={!allowUatAccess}       
+          onChange={({ target }) =>
+          setBankTransactionB2PData( (prev) =>
+          ({...prev, accountAdditionalNo1:target.value}))} 
+          value={bankTransactionB2PData.accountAdditionalNo1} />
+      </Stack>
+      <Stack direction='row' alignItems='center' justifyContent='space-between'>
+        <Typography color="#575757" fontWeight='500'>
+        Account Number Additional field 2
+        </Typography>
+        <OutlinedInput sx={{ height: 40 }} placeholder='accountAdditionalNo2' 
+        disabled={!allowUatAccess}       
+        onChange={({ target }) =>
+        setBankTransactionB2PData( (prev) =>
+        ({...prev, accountAdditionalNo2:target.value}))} 
+        value={bankTransactionB2PData.accountAdditionalNo2} />
+    </Stack>
+
+
+
+    <Typography fontWeight={600} fontSize={20} variant='h6' color="#404040" >Sender Details:-</Typography>
+      <Stack direction='row' alignItems='center' justifyContent='space-between'>
+          <Typography color="#575757" fontWeight='500'>
+          Company Name<span style={{color:'#ea5c57'}}> *</span>
+          </Typography>
+          <OutlinedInput sx={{ height: 40 }} placeholder='businessName' 
           disabled={!allowUatAccess}       
           onChange={({ target }) =>
           setBankTransactionB2PData( (prev) =>
@@ -236,9 +306,20 @@ function B2PTransactionBank({allowUatAccess, bankTransactionB2PData, setBankTran
       </Stack>
       <Stack direction='row' alignItems='center' justifyContent='space-between'>
           <Typography color="#575757" fontWeight='500'>
-          Business Address1
+          Company PIN Code
           </Typography>
-          <OutlinedInput sx={{ height: 40 }} placeholder='Business Address1' 
+          <OutlinedInput sx={{ height: 40 }} placeholder='businessPINCode' 
+          disabled={!allowUatAccess}       
+          onChange={({ target }) =>
+          setBankTransactionB2PData( (prev) =>
+          ({...prev, senderBusinessPINCode:target.value}))} 
+          value={bankTransactionB2PData.senderBusinessPINCode} />
+      </Stack>
+      <Stack direction='row' alignItems='center' justifyContent='space-between'>
+          <Typography color="#575757" fontWeight='500'>
+          Registered Address 1<span style={{color:'#ea5c57'}}> *</span>
+          </Typography>
+          <OutlinedInput sx={{ height: 40 }} placeholder='businessAddress1' 
           disabled={!allowUatAccess}       
           onChange={({ target }) =>
           setBankTransactionB2PData( (prev) =>
@@ -247,9 +328,20 @@ function B2PTransactionBank({allowUatAccess, bankTransactionB2PData, setBankTran
       </Stack>
       <Stack direction='row' alignItems='center' justifyContent='space-between'>
           <Typography color="#575757" fontWeight='500'>
-          Business Address City
+          Registered Address 2
           </Typography>
-          <OutlinedInput sx={{ height: 40 }} placeholder='Business Address City' 
+          <OutlinedInput sx={{ height: 40 }} placeholder='businessAddress2' 
+          disabled={!allowUatAccess}       
+          onChange={({ target }) =>
+          setBankTransactionB2PData( (prev) =>
+          ({...prev, senderBusinessAddress2:target.value}))} 
+          value={bankTransactionB2PData.senderBusinessAddress2} />
+      </Stack>
+      <Stack direction='row' alignItems='center' justifyContent='space-between'>
+          <Typography color="#575757" fontWeight='500'>
+          Registered City
+          </Typography>
+          <OutlinedInput sx={{ height: 40 }} placeholder='businessAddressCity' 
           disabled={!allowUatAccess}       
           onChange={({ target }) =>
           setBankTransactionB2PData( (prev) =>
@@ -258,9 +350,9 @@ function B2PTransactionBank({allowUatAccess, bankTransactionB2PData, setBankTran
       </Stack>
       <Stack direction='row' alignItems='center' justifyContent='space-between'>
           <Typography color="#575757" fontWeight='500'>
-          Business Address Country Code
+          Registered Country Code
           </Typography>
-          <OutlinedInput sx={{ height: 40 }} placeholder='Business Address Primary Country Code'
+          <OutlinedInput sx={{ height: 40 }} placeholder='businessAddressCountryCode'
           disabled={!allowUatAccess}       
           onChange={({ target }) =>
           setBankTransactionB2PData( (prev) =>
@@ -269,9 +361,20 @@ function B2PTransactionBank({allowUatAccess, bankTransactionB2PData, setBankTran
       </Stack>
       <Stack direction='row' alignItems='center' justifyContent='space-between'>
           <Typography color="#575757" fontWeight='500'>
-          Business Address Primary Country Code
+          Registered Address Zip Code 
           </Typography>
-          <OutlinedInput sx={{ height: 40 }} placeholder='Business Address Primary Country Code'
+          <OutlinedInput sx={{ height: 40 }} placeholder='businessAddressZip'
+          disabled={!allowUatAccess}       
+          onChange={({ target }) =>
+          setBankTransactionB2PData( (prev) =>
+          ({...prev, senderBusinessAddressZip:target.value}))} 
+          value={bankTransactionB2PData.senderBusinessAddressZip} />
+      </Stack>
+      <Stack direction='row' alignItems='center' justifyContent='space-between'>
+          <Typography color="#575757" fontWeight='500'>
+          Company Primary Contact Country Code<span style={{color:'#ea5c57'}}> *</span>
+          </Typography>
+          <OutlinedInput sx={{ height: 40 }} placeholder='businessPrimaryContactCountryCode'
           disabled={!allowUatAccess}       
           onChange={({ target }) =>
           setBankTransactionB2PData( (prev) =>
@@ -280,9 +383,9 @@ function B2PTransactionBank({allowUatAccess, bankTransactionB2PData, setBankTran
       </Stack>
       <Stack direction='row' alignItems='center' justifyContent='space-between'>
           <Typography color="#575757" fontWeight='500'>
-          Business Address Primary Contact Code
+          Company Primary Contact Number<span style={{color:'#ea5c57'}}> *</span>
           </Typography>
-          <OutlinedInput sx={{ height: 40 }} placeholder='Business Address Primary Contact Code' 
+          <OutlinedInput sx={{ height: 40 }} placeholder='businessPrimaryContactNo' 
           disabled={!allowUatAccess}       
           onChange={({ target }) =>
           setBankTransactionB2PData( (prev) =>
@@ -291,9 +394,9 @@ function B2PTransactionBank({allowUatAccess, bankTransactionB2PData, setBankTran
       </Stack>
       <Stack direction='row' alignItems='center' justifyContent='space-between'>
           <Typography color="#575757" fontWeight='500'>
-            Business Description
+          Type of Company
           </Typography>
-          <OutlinedInput sx={{ height: 40 }} placeholder='Business Description' 
+          <OutlinedInput sx={{ height: 40 }} placeholder='businessDescription' 
           disabled={!allowUatAccess}       
           onChange={({ target }) =>
           setBankTransactionB2PData( (prev) =>
@@ -302,64 +405,9 @@ function B2PTransactionBank({allowUatAccess, bankTransactionB2PData, setBankTran
       </Stack>
       <Stack direction='row' alignItems='center' justifyContent='space-between'>
           <Typography color="#575757" fontWeight='500'>
-          Business Country Code
+          Company Email Id<span style={{color:'#ea5c57'}}> *</span>
           </Typography>
-          <OutlinedInput sx={{ height: 40 }} placeholder='Business Country Code' 
-          disabled={!allowUatAccess}       
-          onChange={({ target }) =>
-          setBankTransactionB2PData( (prev) =>
-          ({...prev, businessCountryCode:target.value}))} 
-          value={bankTransactionB2PData.businessCountryCode} />
-      </Stack>
-      <Stack direction='row' alignItems='center' justifyContent='space-between'>
-          <Typography color="#575757" fontWeight='500'>
-          Business Registeration Type
-          </Typography>
-          <OutlinedInput sx={{ height: 40 }} placeholder='Business Registeration Type' 
-          disabled={!allowUatAccess}       
-          onChange={({ target }) =>
-          setBankTransactionB2PData( (prev) =>
-          ({...prev, businessRegistrationType:target.value}))} 
-          value={bankTransactionB2PData.businessRegistrationType} />
-      </Stack>
-      <Stack direction='row' alignItems='center' justifyContent='space-between'>
-          <Typography color="#575757" fontWeight='500'>
-          Business Registeration Number
-          </Typography>
-          <OutlinedInput sx={{ height: 40 }} placeholder='Business Registeration Number' 
-          disabled={!allowUatAccess}       
-          onChange={({ target }) =>
-          setBankTransactionB2PData( (prev) =>
-          ({...prev, businessRegistrationNumber:target.value}))} 
-          value={bankTransactionB2PData.businessRegistrationNumber} />
-      </Stack>
-      <Stack direction='row' alignItems='center' justifyContent='space-between'>
-          <Typography color="#575757" fontWeight='500'>
-          Business Registration IssueDate
-          </Typography>
-          <OutlinedInput sx={{ height: 40 }} placeholder='Business Registration IssueDate' 
-          disabled={!allowUatAccess}       
-          onChange={({ target }) =>
-          setBankTransactionB2PData( (prev) =>
-          ({...prev, businessRegistrationIssueDate:target.value}))} 
-          value={bankTransactionB2PData.businessRegistrationIssueDate} />
-      </Stack>
-      <Stack direction='row' alignItems='center' justifyContent='space-between'>
-          <Typography color="#575757" fontWeight='500'>
-          Business ID ValidThru
-          </Typography>
-          <OutlinedInput sx={{ height: 40 }} placeholder='Business ID ValidThru' 
-          disabled={!allowUatAccess}       
-          onChange={({ target }) =>
-          setBankTransactionB2PData( (prev) =>
-          ({...prev, businessIDValidThru:target.value}))} 
-          value={bankTransactionB2PData.businessIDValidThru} />
-      </Stack>
-      <Stack direction='row' alignItems='center' justifyContent='space-between'>
-          <Typography color="#575757" fontWeight='500'>
-          Business Email
-          </Typography>
-          <OutlinedInput sx={{ height: 40 }} placeholder='Business Email' 
+          <OutlinedInput sx={{ height: 40 }} placeholder='businessEmail' 
           disabled={!allowUatAccess}       
           onChange={({ target }) =>
           setBankTransactionB2PData( (prev) =>
@@ -368,7 +416,221 @@ function B2PTransactionBank({allowUatAccess, bankTransactionB2PData, setBankTran
       </Stack>
       <Stack direction='row' alignItems='center' justifyContent='space-between'>
           <Typography color="#575757" fontWeight='500'>
-          Quoted Id
+          Company Country Code<span style={{color:'#ea5c57'}}> *</span>
+          </Typography>
+          <OutlinedInput sx={{ height: 40 }} placeholder='businessCountryCode' 
+          disabled={!allowUatAccess}       
+          onChange={({ target }) =>
+          setBankTransactionB2PData( (prev) =>
+          ({...prev, businessCountryCode:target.value}))} 
+          value={bankTransactionB2PData.businessCountryCode} />
+      </Stack>
+      <Stack direction='row' alignItems='center' justifyContent='space-between'>
+          <Typography color="#575757" fontWeight='500'>
+          Type of Registration<span style={{color:'#ea5c57'}}> *</span>
+          </Typography>
+          <OutlinedInput sx={{ height: 40 }} placeholder='businessRegistrationType' 
+          disabled={!allowUatAccess}       
+          onChange={({ target }) =>
+          setBankTransactionB2PData( (prev) =>
+          ({...prev, businessRegistrationType:target.value}))} 
+          value={bankTransactionB2PData.businessRegistrationType} />
+      </Stack>
+      <Stack direction='row' alignItems='center' justifyContent='space-between'>
+          <Typography color="#575757" fontWeight='500'>
+          Company Incorporation Issued by 
+          </Typography>
+          <OutlinedInput sx={{ height: 40 }} placeholder='businessRegistrationIssuedBy' 
+          disabled={!allowUatAccess}       
+          onChange={({ target }) =>
+          setBankTransactionB2PData( (prev) =>
+          ({...prev, senderBusinessRegistrationIssuedBy:target.value}))} 
+          value={bankTransactionB2PData.senderBusinessRegistrationIssuedBy} />
+      </Stack>
+      <Stack direction='row' alignItems='center' justifyContent='space-between'>
+          <Typography color="#575757" fontWeight='500'>
+          Company Incorporation Issued at  
+          </Typography>
+          <OutlinedInput sx={{ height: 40 }} placeholder='businessRegistrationIssuedAt' 
+          disabled={!allowUatAccess}       
+          onChange={({ target }) =>
+          setBankTransactionB2PData( (prev) =>
+          ({...prev, senderBusinessRegistrationIssuedAt:target.value}))} 
+          value={bankTransactionB2PData.senderBusinessRegistrationIssuedAt} />
+      </Stack>
+      <Stack direction='row' alignItems='center' justifyContent='space-between'>
+          <Typography color="#575757" fontWeight='500'>
+          Company Incorporation Number<span style={{color:'#ea5c57'}}> *</span>
+          </Typography>
+          <OutlinedInput sx={{ height: 40 }} placeholder='businessRegistrationNumber' 
+          disabled={!allowUatAccess}       
+          onChange={({ target }) =>
+          setBankTransactionB2PData( (prev) =>
+          ({...prev, businessRegistrationNumber:target.value}))} 
+          value={bankTransactionB2PData.businessRegistrationNumber} />
+      </Stack>
+      <Stack direction='row' alignItems='center' justifyContent='space-between'>
+          <Typography color="#575757" fontWeight='500'>
+          Company Incorporation Issued Date
+          </Typography>
+          <OutlinedInput sx={{ height: 40 }} placeholder='businessRegistrationIssueDate' 
+          disabled={!allowUatAccess}       
+          onChange={({ target }) =>
+          setBankTransactionB2PData( (prev) =>
+          ({...prev, businessRegistrationIssueDate:target.value}))} 
+          value={bankTransactionB2PData.businessRegistrationIssueDate} />
+      </Stack>
+      <Stack direction='row' alignItems='center' justifyContent='space-between'>
+          <Typography color="#575757" fontWeight='500'>
+          Company Incorporation Expiry Date<span style={{color:'#ea5c57'}}> *</span>
+          </Typography>
+          <OutlinedInput sx={{ height: 40 }} placeholder='businessIDValidThru' 
+          disabled={!allowUatAccess}       
+          onChange={({ target }) =>
+          setBankTransactionB2PData( (prev) =>
+          ({...prev, businessIDValidThru:target.value}))} 
+          value={bankTransactionB2PData.businessIDValidThru} />
+      </Stack>
+
+
+
+
+
+
+
+    {/* Receiver */}
+    <Typography fontWeight={600} fontSize={20} variant='h6' color="#404040">Recipient Details:-</Typography>   
+    <Stack direction='row' alignItems='center' justifyContent='space-between'>
+          <Typography color="#575757" fontWeight='500'>
+          Recipient Nationality
+          </Typography>
+          <OutlinedInput sx={{ height: 40 }} placeholder='nationality' 
+          disabled={!allowUatAccess}       
+          onChange={({ target }) =>
+          setBankTransactionB2PData( (prev) =>
+          ({...prev, receiverNationality:target.value}))} 
+          value={bankTransactionB2PData.receiverNationality} />
+      </Stack>
+    <Stack direction='row' alignItems='center' justifyContent='space-between'>
+          <Typography color="#575757" fontWeight='500'>
+          Recipient Primary Contact Country Code
+          </Typography>
+          <OutlinedInput sx={{ height: 40 }} placeholder='primaryContactCountryCode' 
+          disabled={!allowUatAccess}       
+          onChange={({ target }) =>
+          setBankTransactionB2PData( (prev) =>
+          ({...prev, receiverPrimaryContactCountryCode:target.value}))} 
+          value={bankTransactionB2PData.receiverPrimaryContactCountryCode} />
+      </Stack>
+    <Stack direction='row' alignItems='center' justifyContent='space-between'>
+          <Typography color="#575757" fontWeight='500'>
+          Recipient Primary Contact Number
+          </Typography>
+          <OutlinedInput sx={{ height: 40 }} placeholder='primaryContactNo' 
+          disabled={!allowUatAccess}       
+          onChange={({ target }) =>
+          setBankTransactionB2PData( (prev) =>
+          ({...prev, receiverPrimaryContactNo:target.value}))} 
+          value={bankTransactionB2PData.receiverPrimaryContactNo} />
+      </Stack>
+    <Stack direction='row' alignItems='center' justifyContent='space-between'>
+          <Typography color="#575757" fontWeight='500'>
+          Recipient Primary Contact Number Type
+          </Typography>
+          <OutlinedInput sx={{ height: 40 }} placeholder='primaryContactNoType' 
+          disabled={!allowUatAccess}       
+          onChange={({ target }) =>
+          setBankTransactionB2PData( (prev) =>
+          ({...prev, receiverPrimaryContactNoType:target.value}))} 
+          value={bankTransactionB2PData.receiverPrimaryContactNoType} />
+      </Stack>
+    <Stack direction='row' alignItems='center' justifyContent='space-between'>
+          <Typography color="#575757" fontWeight='500'>
+          Recipient First Name<span style={{color:'#ea5c57'}}> *</span>
+          </Typography>
+          <OutlinedInput sx={{ height: 40 }} placeholder='firstName' 
+          disabled={!allowUatAccess}       
+          onChange={({ target }) =>
+          setBankTransactionB2PData( (prev) =>
+          ({...prev, receiverFirstName:target.value}))} 
+          value={bankTransactionB2PData.receiverFirstName} />
+      </Stack>
+      <Stack direction='row' alignItems='center' justifyContent='space-between'>
+          <Typography color="#575757" fontWeight='500'>
+          Recipient Last Name<span style={{color:'#ea5c57'}}> *</span>
+          </Typography>
+          <OutlinedInput sx={{ height: 40 }} placeholder='firstName' 
+          disabled={!allowUatAccess}       
+          onChange={({ target }) =>
+          setBankTransactionB2PData( (prev) =>
+          ({...prev, receiverLastName:target.value}))} 
+          value={bankTransactionB2PData.receiverLastName} />
+      </Stack>
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+            Recipient Id Document Type 
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='idType' 
+            disabled={!allowUatAccess}       
+            onChange={({ target }) =>
+            setBankTransactionB2PData( (prev) =>
+            ({...prev, receiverIdType:target.value}))} 
+            value={bankTransactionB2PData.receiverIdType} />
+        </Stack>
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+            Recipient Id Number  
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='idNumber' 
+            disabled={!allowUatAccess}       
+            onChange={({ target }) =>
+            setBankTransactionB2PData( (prev) =>
+            ({...prev, receiverIdNumber:target.value}))} 
+            value={bankTransactionB2PData.receiverIdNumber} />
+        </Stack>
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+            Recipient Id Document Issue Date  
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='issueDate' 
+            disabled={!allowUatAccess}       
+            onChange={({ target }) =>
+            setBankTransactionB2PData( (prev) =>
+            ({...prev, receiverIssueDate:target.value}))} 
+            value={bankTransactionB2PData.receiverIssueDate} />
+        </Stack>
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+            Recipient Id Document Expiry Date  
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='expiryDate' 
+            disabled={!allowUatAccess}       
+            onChange={({ target }) =>
+            setBankTransactionB2PData( (prev) =>
+            ({...prev, receiverExpiryDate:target.value}))} 
+            value={bankTransactionB2PData.receiverExpiryDate} />
+        </Stack>
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+            Recipient Id Issuer Country 
+            </Typography>
+            <OutlinedInput sx={{ height: 40 }} placeholder='issuerCountry' 
+            disabled={!allowUatAccess}       
+            onChange={({ target }) =>
+            setBankTransactionB2PData( (prev) =>
+            ({...prev, receiverIssuerCountry:target.value}))} 
+            value={bankTransactionB2PData.receiverIssuerCountry} />
+        </Stack>
+
+
+
+
+
+
+
+      <Stack direction='row' alignItems='center' justifyContent='space-between'>
+          <Typography color="#575757" fontWeight='500'>
+          Quoted Id<span style={{color:'#ea5c57'}}> *</span>
           </Typography>
           <OutlinedInput sx={{ height: 40 }} placeholder='Quoted Id' 
           disabled={!allowUatAccess}       
@@ -379,7 +641,7 @@ function B2PTransactionBank({allowUatAccess, bankTransactionB2PData, setBankTran
       </Stack>
       <Stack direction='row' alignItems='center' justifyContent='space-between'>
           <Typography color="#575757" fontWeight='500'>
-          Receiving Country
+          Receiving Country<span style={{color:'#ea5c57'}}> *</span>
           </Typography>
           <OutlinedInput sx={{ height: 40 }} placeholder='Receiving Country' 
           disabled={!allowUatAccess}       
@@ -390,7 +652,7 @@ function B2PTransactionBank({allowUatAccess, bankTransactionB2PData, setBankTran
       </Stack>
       <Stack direction='row' alignItems='center' justifyContent='space-between'>
           <Typography color="#575757" fontWeight='500'>
-          Remittance Purpose
+          Remittance Purpose<span style={{color:'#ea5c57'}}> *</span>
           </Typography>
           <OutlinedInput sx={{ height: 40 }} placeholder='Receiving Country' 
           disabled={!allowUatAccess}       
@@ -401,7 +663,7 @@ function B2PTransactionBank({allowUatAccess, bankTransactionB2PData, setBankTran
       </Stack>
       <Stack direction='row' alignItems='center' justifyContent='space-between'>
           <Typography color="#575757" fontWeight='500'>
-            Source Of Fund
+            Source Of Fund<span style={{color:'#ea5c57'}}> *</span>
           </Typography>
           <OutlinedInput sx={{ height: 40 }} placeholder='Source Of Fund' 
           disabled={!allowUatAccess}       
