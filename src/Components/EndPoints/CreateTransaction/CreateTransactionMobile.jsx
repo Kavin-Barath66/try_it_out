@@ -185,7 +185,7 @@ function CreateTransactionMobile({allowUatAccess, createTransactionMobileData, s
         </Stack>
 
 
-        {/* Beneficary bank account */}
+        {/* Beneficary bank account 
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
             Beneficiary Bank Account No
@@ -199,8 +199,8 @@ function CreateTransactionMobile({allowUatAccess, createTransactionMobileData, s
             value={createTransactionMobileData.senderBankAccountno}
             />
             </FormControl>
-        </Stack>
-        {/* receiver bank account */}
+        </Stack>*/}
+        {/* receiver bank account
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
             Receive Bank Account Type<span style={{color:'#ea5c57'}}> *</span>
@@ -220,9 +220,9 @@ function CreateTransactionMobile({allowUatAccess, createTransactionMobileData, s
               </FormHelperText>
             )}
             </FormControl>
-            </Stack>
+            </Stack> */}
 
-        {/* bank code */}
+        {/* bank code 
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
             Bank Code
@@ -236,8 +236,8 @@ function CreateTransactionMobile({allowUatAccess, createTransactionMobileData, s
             value={createTransactionMobileData.bankCode}
             />
             </FormControl>
-        </Stack>
-        {/* Full name of Beneficiary Bank */}
+        </Stack>*/}
+        {/* Full name of Beneficiary Bank
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
             Full name of Beneficiary Bank
@@ -251,8 +251,8 @@ function CreateTransactionMobile({allowUatAccess, createTransactionMobileData, s
             value={createTransactionMobileData.bankName}
             />
             </FormControl>
-        </Stack>
-        {/* Branch code*/}
+        </Stack> */}
+        {/* Branch code
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
             Branch code
@@ -266,7 +266,7 @@ function CreateTransactionMobile({allowUatAccess, createTransactionMobileData, s
             value={createTransactionMobileData.bankSubCode}
             />
             </FormControl>
-        </Stack>
+        </Stack>*/}
 
 
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
@@ -783,7 +783,20 @@ function CreateTransactionMobile({allowUatAccess, createTransactionMobileData, s
             </FormControl>
         </Stack>
 
-
+        {/* Title (Receiver) */}
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
+            Title (Receiver)
+            </Typography>
+            <FormControl sx={{height:45}}>
+            <OutlinedInput sx={{ height: 40 }} placeholder='title'
+            disabled={!allowUatAccess} 
+            onChange={({ target }) =>
+            setCreateTransactionMobileData( (prev) =>
+            ({...prev, receiverTitle:target.value}))} 
+            value={createTransactionMobileData.receiverTitle}/>
+            </FormControl>
+        </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
             First Name (Receiver)<span style={{color:'#ea5c57'}}> *</span>
@@ -804,6 +817,20 @@ function CreateTransactionMobile({allowUatAccess, createTransactionMobileData, s
             )}
             </FormControl>
         </Stack>
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+        <Typography color="#575757" fontWeight='500'>
+        middlename Name (Receiver)
+        </Typography>
+        <FormControl sx={{height:45}}>
+    <OutlinedInput sx={{ height: 40 }} placeholder='firstName'
+        disabled={!allowUatAccess}
+        onChange={({ target }) =>
+        setCreateTransactionMobileData( (prev) =>
+        ({...prev, receiverMiddleName:target.value}))} 
+        value={createTransactionMobileData.receiverMiddleName} 
+        />
+        </FormControl>
+    </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
             Last Name (Receiver)<span style={{color:'#ea5c57'}}> *</span>

@@ -650,76 +650,102 @@ function TryitHeader(props) {
                 'Content-Type': 'application/json'
             }
         }
+        let requestBodyDataInfo={
+          "amount": `${props.createTransactionMobileData.amount}`,
+          "currency": `${props.createTransactionMobileData.currency}`,
+          "type": `${props.createTransactionMobileData.type}`,
+          "descriptionText": `${props.createTransactionMobileData.descriptionText}`,
+          "requestDate": `${props.createTransactionMobileData.requestDate}`,
+          "requestingOrganisationTransactionReference": `${props.createTransactionMobileData.transRef}`,
+          "provider": `${props.createTransactionMobileData.providerCode}`,
+          "debitParty": [
+              {
+                  "key": "msisdn",
+                  "value": `${props.createTransactionMobileData.senderMsisdn}`
+              }
+          ],
+          "creditParty": [
+              {
+                  "key": "msisdn",
+                  "value":`${props.createTransactionMobileData.receiverMsisdn}`
+              }
+          ],
+          "senderKyc": {
+              "nationality": `${props.createTransactionMobileData.nationality}`,
+              "dateOfBirth": `${props.createTransactionMobileData.dateOfBirth}`,
+              "gender": `${props.createTransactionMobileData.gender}`,
+              "idDocument": [
+                  {
+                      "idType": `${props.createTransactionMobileData.idType}`,
+                      "idNumber": `${props.createTransactionMobileData.idNumber}`,
+                      "issueDate": `${props.createTransactionMobileData.issueDate}`,
+                      "expiryDate": `${props.createTransactionMobileData.expiryDate}`,
+                      "issuerCountry": `${props.createTransactionMobileData.issuerCountry}`
+                  }
+              ],
+              "postalAddress": {
+                  "addressLine1": `${props.createTransactionMobileData.addressLine1}`,
+                  "addressLine2": `${props.createTransactionMobileData.addressLine2}`,
+                  "addressLine3": `${props.createTransactionMobileData.addressLine3}`,
+                  "city":`${props.createTransactionMobileData.city}`,
+                  "stateProvince": `${props.createTransactionMobileData.stateProvince}`,
+                  "postalCode": `${props.createTransactionMobileData.postalCode}`,
+                  "country": `${props.createTransactionMobileData.country}`
+              },
+              "subjectName": {
+                  "title":  `${props.createTransactionMobileData.senderTitle}`,
+                  "firstName":  `${props.createTransactionMobileData.firstName}`,
+                  "middleName": `${props.createTransactionMobileData.middleName}`,
+                  "lastName":  `${props.createTransactionMobileData.lastName}`,
+                  "fullName":  `${!props.createTransactionMobileData.middleName?props.createTransactionMobileData.firstName+" "+props.createTransactionMobileData.lastName
+                    :props.createTransactionMobileData.middleName? props.createTransactionMobileData.firstName+" "+props.createTransactionMobileData.middleName+" "+props.createTransactionMobileData.lastName:null}`,
+              }
+          },
+          "recipientKyc": {
+              "nationality": `${props.createTransactionMobileData.receiverNationality}`,
+              "dateOfBirth": `${props.createTransactionMobileData.receiverDOB}`,
+              "idDocument": [
+                  {
+                      "idType": `${props.createTransactionMobileData.receiverIdType}`,
+                      "idNumber": `${props.createTransactionMobileData.receiverIdNumber}`,
+                      "issueDate": `${props.createTransactionMobileData.receiverIssueDate}`,
+                      "expiryDate": `${props.createTransactionMobileData.receiverExpiryDate}`,
+                      "issuerCountry": `${props.createTransactionMobileData.receiverIssuerCountry}`
+                  }
+              ],
+              "postalAddress": {
+                  "addressLine1": `${props.createTransactionMobileData.receiverAddressLine1}`,
+                  "addressLine2": `${props.createTransactionMobileData.receiverAddressLine2}`,
+                  "addressLine3": `${props.createTransactionMobileData.receiverAddressLine3}`,
+                  "city": `${props.createTransactionMobileData.receiverCity}`,
+                  "stateProvince": `${props.createTransactionMobileData.receiverState}`,
+                  "postalCode": `${props.createTransactionMobileData.receiverPostalCode}`,
+                  "country": `${props.createTransactionMobileData.receiverCountry}`
+              },
+              "subjectName": {
+                  "title": `${props.createTransactionMobileData.receiverTitle}`,
+                  "firstName": `${props.createTransactionMobileData.receiverFirstName}`,
+                  "middleName": `${props.createTransactionMobileData.receiverMiddleName}`,
+                  "lastName": `${props.createTransactionMobileData.receiverLastName}`,
+                  "fullName": `${!props.createTransactionMobileData.receiverMiddleName? props.createTransactionMobileData.receiverFirstName+" "+props.createTransactionMobileData.receiverLastName:
+                                  props.createTransactionMobileData.receiverMiddleName? props.createTransactionMobileData.receiverFirstName+" "+props.createTransactionMobileData.receiverMiddleName+" "+props.createTransactionMobileData.receiverLastName:null}`,
+              }
+          },
+          "internationalTransferInformation": {
+              "quoteId": `${props.createTransactionMobileData.quoteId}`,
+              "receivingCountry": `${props.createTransactionMobileData.receivingCountry}`,
+              "remittancePurpose": `${props.createTransactionMobileData.remittancePurpose}`,
+              "sourceOfFunds":`${props.createTransactionMobileData.sourceOfFunds}`,
+              "relationshipSender": `${props.createTransactionMobileData.relationshipSender}`
+          }
+      }
         if(props.environment==="uat") {
         options.headers['X-ENVIRONMENT'] = 'uat'
       }else if(props.environment==="sandbox"){
         options.headers['X-ENVIRONMENT'] = 'sandbox'
       }
         axios.post(`${apiUrl}/v1/try-it/transaction`,
-        {
-            "amount": `${props.createTransactionMobileData.amount}`,
-            "currency": `${props.createTransactionMobileData.currency}`,
-            "type": `${props.createTransactionMobileData.type}`,
-            "descriptionText": `${props.createTransactionMobileData.descriptionText}`,
-            "requestDate": `${props.createTransactionMobileData.requestDate}`,
-            "requestingOrganisationTransactionReference": `${props.createTransactionMobileData.transRef}`,
-            "debitParty": [
-              {
-                "key": "msisdn",
-                "value": `${props.createTransactionMobileData.senderMsisdn}`
-              }
-            ],
-            "creditParty": [
-              {
-                "key": "msisdn",
-                "value": `${props.createTransactionMobileData.receiverMsisdn}`
-              }
-            ],
-            "senderKyc": {
-              "nationality": `${props.createTransactionMobileData.nationality}`,
-              "dateOfBirth": `${props.createTransactionMobileData.dateOfBirth}`,
-              "gender": `${props.createTransactionMobileData.gender}`,
-              "idDocument": [
-                {
-                  "idType": `${props.createTransactionMobileData.idType}`,
-                  "idNumber": `${props.createTransactionMobileData.idNumber}`,
-                  "issueDate": `${props.createTransactionMobileData.issueDate}`,
-                  "expiryDate": `${props.createTransactionMobileData.expiryDate}`,
-                  "issuerCountry": `${props.createTransactionMobileData.issuerCountry}`
-                }
-              ],
-              "postalAddress": {
-                "addressLine1": `${props.createTransactionMobileData.addressLine1}`,
-                "addressLine2": `${props.createTransactionMobileData.addressLine2}`,
-                "addressLine3": `${props.createTransactionMobileData.addressLine3}`,
-                "city": `${props.createTransactionMobileData.city}`,
-                "stateProvince":`${props.createTransactionMobileData.stateProvince}`,
-                "postalCode": `${props.createTransactionMobileData.postalCode}`,
-                "country": `${props.createTransactionMobileData.country}`
-              },
-              "subjectName": {
-                "firstName": `${props.createTransactionMobileData.firstName}`,
-                "middleName":`${props.createTransactionMobileData.middleName}`,
-                "lastName": `${props.createTransactionMobileData.lastName}`,
-                "fullName": `${props.createTransactionMobileData.firstName+
-                    props.createTransactionMobileData.middleName+props.createTransactionMobileData.lastName}`
-              }
-            },
-            "recipientKyc": {
-              "subjectName": {
-                "firstName": `${props.createTransactionMobileData.receiverFirstName}`,
-                "lastName": `${props.createTransactionMobileData.receiverLastName}`,
-                "fullName": `${props.createTransactionMobileData.receiverFirstName+props.createTransactionMobileData.receiverLastName}`
-              }
-            },
-            "internationalTransferInformation": {
-              "quoteId": `${props.createTransactionMobileData.quoteId}`,
-              "receivingCountry": `${props.createTransactionMobileData.receivingCountry}`,
-              "remittancePurpose": `${props.createTransactionMobileData.remittancePurpose}`,
-              "sourceOfFunds": `${props.createTransactionMobileData.sourceOfFunds}`,
-              "relationshipSender": `${props.createTransactionMobileData.relationshipSender}`
-            }
-          },
+        requestBodyDataInfo,
         { headers: options.headers }
         ).then(function (response) {
             console.log(JSON.stringify(response.data));
