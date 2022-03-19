@@ -512,83 +512,119 @@ function TryitHeader(props) {
                 'Content-Type': 'application/json'
             }
         }
+        let requestBodyDataInfo={
+        "amount": `${props.createTransactionBankData.amount}`,
+        "currency": `${props.createTransactionBankData.currency}`,
+        "type": `${props.createTransactionBankData.type}`,
+        "descriptionText": `${props.createTransactionBankData.descriptionText}`,
+        "requestDate": `${props.createTransactionBankData.requestDate}`,
+        "requestingOrganisationTransactionReference": `${props.createTransactionBankData.transRef}`,
+        /* "provider": `${props.createTransactionBankData.provider}`, */  
+          "debitParty": [
+         {
+           "key": "msisdn",
+           "value": `${encodeURIComponent(props.createTransactionBankData.senderMsisd)}`
+         }
+       ],
+       "creditParty": [
+        {
+          "key": "bankaccountno",
+          "value": `${props.createTransactionBankData.receiverBankaccountno}`
+        },
+        {
+          "key": "organisationid",
+          "value": `${props.createTransactionBankData.receiverBankName}`
+        },
+        {
+          "key": "sortcode",
+          "value":`${props.createTransactionBankData.receiverBankCode}`
+        },
+         /* {
+           "key": "accounttype",
+           "value": `${props.createTransactionBankData.receiverBankAccountType}`
+         }, */
+         {
+           "key": "banksubcode",
+           "value": `${props.createTransactionBankData.bankSubCode}`
+         },
+         {
+           "key": "msisdn",
+           "value": `${encodeURIComponent(props.createTransactionBankData.receiverMsisdn)}`
+         }
+       ],
+       "senderKyc": {
+         "nationality": `${props.createTransactionBankData.senderNationality}`,
+         "dateOfBirth": `${props.createTransactionBankData.senderDateOfBirth}`,
+         "gender": `${props.createTransactionBankData.senderGender}`,
+         "idDocument": [
+           {
+             "idType": `${props.createTransactionBankData.idType}`,
+             "idNumber":`${props.createTransactionBankData.idNumber}`,
+             "issueDate": `${props.createTransactionBankData.issueDate}`,
+             "expiryDate": `${props.createTransactionBankData.expiryDate}`,
+             "issuerCountry":`${props.createTransactionBankData.issuerCountry}`
+           }
+         ],
+         "postalAddress": {
+           "addressLine1": `${props.createTransactionBankData.addressLine1}`,
+           "addressLine2": `${props.createTransactionBankData.addressLine2}`,
+           "addressLine3": `${props.createTransactionBankData.addressLine3}`,
+           "city": `${props.createTransactionBankData.city}`,
+           "stateProvince": `${props.createTransactionBankData.stateProvince}`,
+           "postalCode": `${props.createTransactionBankData.postalCode}`,
+           "country": `${props.createTransactionBankData.country}`
+         },
+         "subjectName": {
+          /*  "title": `${props.createTransactionBankData.senderTitle}`, */
+           "firstName": `${props.createTransactionBankData.firstName}`,
+           "middleName": `${props.createTransactionBankData.middleName}`,
+           "lastName": `${props.createTransactionBankData.lastName}`,
+           "fullName":`${props.createTransactionBankData.firstName+" "+props.createTransactionBankData.lastName}`
+         }
+       },
+       "recipientKyc": {
+         "nationality": `${props.createTransactionBankData.receiverNationality}`,
+         "dateOfBirth": `${props.createTransactionBankData.receiverDOB}`,
+         "idDocument": [
+           {
+             "idType": `${props.createTransactionBankData.receiverIdType}`,
+             "idNumber": `${props.createTransactionBankData.receiverIdNumber}`,
+             "issueDate": `${props.createTransactionBankData.receiverIssueDate}`,
+             "expiryDate": `${props.createTransactionBankData.receiverExpiryDate}`,
+             "issuerCountry": `${props.createTransactionBankData.receiverIssuerCountry}`
+           }
+         ],
+         "postalAddress": {
+           "addressLine1": `${props.createTransactionBankData.receiverAddressLine1}`,
+           "addressLine2": `${props.createTransactionBankData.receiverAddressLine2}`,
+           "addressLine3": `${props.createTransactionBankData.receiverAddressLine3}`,
+           "city": `${props.createTransactionBankData.receiverCity}`,
+           "stateProvince": `${props.createTransactionBankData.receiverState}`,
+           "postalCode": `${props.createTransactionBankData.receiverPostalCode}`,
+           "country": `${props.createTransactionBankData.receiverCountry}`
+         },
+         "subjectName": {
+           "firstName": `${props.createTransactionBankData.receiverFirstName}`,
+           "lastName": `${props.createTransactionBankData.receiverLastName}`,
+           "fullName": `${props.createTransactionBankData.receiverFirstName+" "+props.createTransactionBankData.receiverLastName}`
+         }
+       },
+       "internationalTransferInformation": {
+         "quoteId": `${props.createTransactionBankData.quoteId}`,
+         "receivingCountry": `${props.createTransactionBankData.receivingCountry}`,
+         "remittancePurpose": `${props.createTransactionBankData.remittancePurpose}`,
+         "sourceOfFunds": `${props.createTransactionBankData.sourceOfFunds}`,
+         "relationshipSender": `${props.createTransactionBankData.relationshipSender}`
+       }
+     }
+     /* const requestBody = requestBodyData(requestBodyDataInfo) */
         if(props.environment==="uat") {
         options.headers['X-ENVIRONMENT'] = 'uat'
       }else if(props.environment==="sandbox"){
         options.headers['X-ENVIRONMENT'] = 'sandbox'
       }
         axios.post(`${apiUrl}/v1/try-it/transaction`,
-        {
-            "amount": `${props.createTransactionBankData.amount}`,
-            "currency": `${props.createTransactionBankData.currency}`,
-            "type": `${props.createTransactionBankData.type}`,
-            "descriptionText": `${props.createTransactionBankData.descriptionText}`,
-            "requestDate": `${props.createTransactionBankData.requestDate}`,
-            "requestingOrganisationTransactionReference": `${props.createTransactionBankData.transRef}`,
-            "debitParty": [
-              {
-                "key": "msisdn",
-                "value": `${props.createTransactionBankData.senderMsisd.replace("+", "%2B")}`
-              }
-            ],
-            "creditParty": [
-              {
-                "key": "bankaccountno",
-                "value": `${props.createTransactionBankData.receiverBankaccountno}`
-              },
-              {
-                "key": "organisationid",
-                "value": `${props.createTransactionBankData.receiverBankName}`
-              },
-              {
-                "key": "sortcode",
-                "value": `${props.createTransactionBankData.receiverBankCode}`
-              }
-            ],
-            "senderKyc": {
-              "nationality": `${props.createTransactionBankData.senderNationality}`,
-              "dateOfBirth": `${props.createTransactionBankData.senderDateOfBirth}`,
-              "gender": `${props.createTransactionBankData.senderGender}`,
-              "idDocument": [
-                {
-                  "idType": `${props.createTransactionBankData.idType}`,
-                  "idNumber": `${props.createTransactionBankData.idNumber}`,
-                  "issueDate": `${props.createTransactionBankData.issueDate}`,
-                  "expiryDate": `${props.createTransactionBankData.expiryDate}`,
-                  "issuerCountry": `${props.createTransactionBankData.issuerCountry}`
-                }
-              ],
-              "postalAddress": {
-                "addressLine1": `${props.createTransactionBankData.addressLine1}`,
-                "addressLine2": `${props.createTransactionBankData.addressLine2}`,
-                "addressLine3": `${props.createTransactionBankData.addressLine3}`,
-                "city": `${props.createTransactionBankData.city}`,
-                "stateProvince":`${props.createTransactionBankData.stateProvince}`,
-                "postalCode": `${props.createTransactionBankData.postalCode}`,
-                "country": `${props.createTransactionBankData.country}`
-              },
-              "subjectName": {
-                "firstName": `${props.createTransactionBankData.firstName}`,
-                "middleName": `${props.createTransactionBankData.middleName}`,
-                "lastName": `${props.createTransactionBankData.lastName}`,
-                "fullName": `${props.createTransactionBankData.firstName+props.createTransactionBankData.middleName+props.createTransactionBankData.lastName}`
-              }
-            },
-            "recipientKyc": {
-              "subjectName": {
-                "firstName": `${props.createTransactionBankData.receiverFirstName}`,
-                "lastName": `${props.createTransactionBankData.receiverLastName}`,
-                "fullName":`${props.createTransactionBankData.receiverFirstName + props.createTransactionBankData.receiverFirstName}`,
-              }
-            },
-            "internationalTransferInformation": {
-              "quoteId": `${props.createTransactionBankData.quoteId}`,
-              "receivingCountry": `${props.createTransactionBankData.receivingCountry}`,
-              "remittancePurpose": `${props.createTransactionBankData.remittancePurpose}`,
-              "sourceOfFunds": `${props.createTransactionBankData.sourceOfFunds}`,
-              "relationshipSender": `${props.createTransactionBankData.relationshipSender}`
-            }
-          },
+        requestBodyDataInfo,
         { headers: options.headers }
         ).then(function (response) {
             console.log(JSON.stringify(response.data));

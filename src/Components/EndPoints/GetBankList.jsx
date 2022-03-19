@@ -30,7 +30,7 @@ function GetBankList({allowUatAccess, setGetBankListData, getBankListData}) {
             </FormControl>
         </Stack>
 
-        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+       {/*  <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
             Last Updated Date/Time<span style={{color:'#ea5c57'}}> *</span>
             </Typography>
@@ -130,7 +130,7 @@ function GetBankList({allowUatAccess, setGetBankListData, getBankListData}) {
               </FormHelperText>
             )}
             </FormControl>
-        </Stack>
+        </Stack> */}
     </Stack>
     </>
   )
