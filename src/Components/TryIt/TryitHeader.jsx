@@ -11,7 +11,7 @@ import Select from '@mui/material/Select';
 import { Stack, OutlinedInput, Button, Box, Typography, TextField, Container } from '@mui/material'
 import terrapayLogo from '../../assets/img/terrapay_logo.png'
 import { config } from '../../assets/config/config';
-import {requestBodyData} from '../../Utils/FilterParams'
+import {requestBodyData, quotationRequestBodyData} from '../../Utils/FilterParams'
 import { options } from 'joi';
 const apiUrl = config.api.url;
 
@@ -24,6 +24,153 @@ const MenuProps = {
         },
     },
 };
+
+/* function requestBodyData1 () {
+  var data={
+    "amount": "100000.01",
+    "currency": "NGN",
+    "type": "",
+    "descriptionText": "Gift for my brother",
+    "requestDate": "2017-03-20T06:19:36.969Z",
+    "requestingOrganisationTransactionReference": "partnerRefId1234",
+    "provider": "23401",
+      "debitParty": [
+     {
+       "key": "msisdn",
+       "value": ""
+     } 
+     ],
+   "creditParty": [
+     {
+       "key": "msisdn",
+       "value": "+23410706056"
+     }
+   ],
+   "senderKyc": {
+     "nationality": "",
+     "dateOfBirth": "1986-06-28",
+     "gender": "M",
+     "idDocument": [
+       {
+         "idType": "",
+         "idNumber": "123456789",
+         "issueDate": "2003-09-26",
+         "expiryDate": "2033-09-26",
+         "issuerCountry": "FR"
+       }
+     ],
+     "postalAddress": {
+       "addressLine1": "",
+       "addressLine2": "park street",
+       "addressLine3": "walton's road",
+       "city": "Lyon",
+       "stateProvince": "Lyon",
+       "postalCode": "",
+       "country": "FR"
+       },
+     "subjectName": {
+       "title": "Mr.",
+       "firstName": "Einstein",
+       "middleName": "",
+       "lastName": "Bela",
+       "fullName": "Einstien James Bela"
+     }
+   },
+   "recipientKyc":{
+     "nationality": "",
+     "dateOfBirth": "1986-06-28",
+     "idDocument": [
+           {
+         "idType": "",
+         "idNumber": "123456789",
+         "issueDate": "2003-09-26",
+         "expiryDate": "2033-09-26",
+         "issuerCountry": "FR"
+           }
+     ],
+     "postalAddress": {
+       "addressLine1": "49 ",
+       "addressLine2": "park street",
+       "addressLine3": "walton's road",
+       "city": "Lyon",
+       "stateProvince": "Lyon",
+       "postalCode": "123456",
+       "country": "FR"
+     },
+     "subjectName": {
+       "title": "Mr.",
+       "firstName": "Einstein",
+       "middleName": "James",
+       "lastName": "Bela",
+       "fullName": "Einstien James Bela"
+     }
+   },
+   "internationalTransferInformation": {
+     "quoteId": "QT037fQXs3LGWXea4",
+     "receivingCountry": "NG",
+     "remittancePurpose": "Gift",
+     "sourceOfFunds": "Salary",
+     "relationshipSender": "Brother"
+   }
+ }
+  var data1=[
+        {
+            "sendingCurrency": "USD",
+            "receivingCurrency": "NPR"
+        },
+        {
+          "sdsf": "USD",
+          "adfadf": "NPR"
+        }
+    ]
+  debugger
+  for (var propName in data) {
+    if (Array.isArray(data[propName])) {
+      data[propName]&&data[propName].map((item)=>{
+        for(var propName2 in item){
+          let propSymb = Object.keys(item).length==2;
+          if(propSymb && item.hasOwnProperty('key') && item.hasOwnProperty('value')){
+            delete item['key'];
+            delete item['value'];
+          }
+          if (!item[propName2]) {
+            delete item[propName2];
+          }
+        }
+      })
+    } 
+    if (!data[propName]) {
+      delete data[propName];
+    }
+  }
+  console.log("sdfdaf", data)
+    return data
+}
+  requestBodyData1()
+ */
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 function TryitHeader(props) {
     const navigate = useNavigate();
@@ -356,7 +503,7 @@ function TryitHeader(props) {
             }
           ]
       }
-      const requestBody = requestBodyData(requestBodyDataInfo)
+      const requestBody = quotationRequestBodyData(requestBodyDataInfo)
         axios.post(`${apiUrl}/v1/try-it/quotation`,
         requestBody,
         { headers: options.headers }
@@ -420,7 +567,7 @@ function TryitHeader(props) {
                 }
             ]
         }
-        const requestBody = requestBodyData(requestBodyDataInfo)
+        const requestBody = quotationRequestBodyData(requestBodyDataInfo)
         axios.post(`${apiUrl}/v1/try-it/quotation`,
         requestBody,
         { headers: options.headers }
