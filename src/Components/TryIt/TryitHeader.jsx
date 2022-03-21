@@ -821,6 +821,10 @@ function TryitHeader(props) {
           ],
             "creditParty": [
           {
+            "key": "msisdn",
+            "value": `${props.bankTransactionB2BData.receiverMsisdn}`
+          },
+          {
             "key": "bankaccountno",
             "value": `${props.bankTransactionB2BData.receiverBankaccountno}`
           },
@@ -853,8 +857,16 @@ function TryitHeader(props) {
             "value": `${props.bankTransactionB2BData.accountIBAN}`
           },
           {
+            "key": "beneficiarySmsNotify",
+            "value":  `${props.bankTransactionB2BData.beneficiarySmsNotify}`
+          },
+          {
             "key": "accountAdditionalNo1",
             "value":  `${props.bankTransactionB2BData.accountAdditionalNo1}`
+          },
+          {
+            "key": "accountAdditionalNo2",
+            "value":  `${props.bankTransactionB2BData.accountAdditionalNo2}`
           }
           ],
             "senderKyc": {
@@ -872,9 +884,12 @@ function TryitHeader(props) {
           "business": {
             "senderKyc": {
               "businessName": `${props.bankTransactionB2BData.senderBusinessName}`,
+              "businessPINCode": `${props.bankTransactionB2BData.senderBusinessPINCode}`,
               "businessAddress1": `${props.bankTransactionB2BData.senderBusinessAddress1}`,
+              "businessAddress2": `${props.bankTransactionB2BData.senderBusinessAddress2}`,
               "businessAddressCity": `${props.bankTransactionB2BData.senderBusinessAddressCity}`,
               "businessAddressCountryCode": `${props.bankTransactionB2BData.senderBusinessAddressCountryCode}`,
+              "businessAddressZip":`${props.bankTransactionB2BData.senderBusinessAddressZip}`,
               "businessPrimaryContactCountryCode": `${props.bankTransactionB2BData.senderBusinessPrimaryContactCountryCode}`,
               "businessPrimaryContactNo": `${props.bankTransactionB2BData.senderBusinessPrimaryContactNo}`,
               "businessDescription": `${props.bankTransactionB2BData.senderBusinessDescription}`,
@@ -882,6 +897,8 @@ function TryitHeader(props) {
               "businessCountryCode": `${props.bankTransactionB2BData.senderBusinessCountryCode}`,
               "businessRegistrationType": `${props.bankTransactionB2BData.senderBusinessRegistrationType}`,
               "businessRegistrationNumber": `${props.bankTransactionB2BData.senderBusinessRegistrationNumber}`,
+              "businessRegistrationIssuedBy":`${props.bankTransactionB2BData.senderBusinessRegistrationIssuedBy}`,
+			        "businessRegistrationIssuedAt": `${props.bankTransactionB2BData.senderbusinessRegistrationIssuedAt}`,
               "businessRegistrationIssueDate": `${props.bankTransactionB2BData.senderBusinessRegistrationIssueDate}`,
               "businessIDValidThru": `${props.bankTransactionB2BData.senderBusinessIDValidThru}`
             },
@@ -1405,6 +1422,14 @@ function TryitHeader(props) {
           ],
           "creditParty": [
               {
+                  "key": "msisdn",
+                  "value":`${props.bankTransactionP2BData.receiverMsisdn}`,
+              },
+              {
+                "key": "beneficiarySmsNotify",
+                "value":`${props.bankTransactionP2BData.beneficiarySmsNotify}`,
+              },
+              {
                   "key": "bankaccountno",
                   "value": `${props.bankTransactionP2BData.receiverBankaccountno}`
               },
@@ -1439,7 +1464,11 @@ function TryitHeader(props) {
               {
                   "key": "accountAdditionalNo1",
                   "value":  `${props.bankTransactionP2BData.accountAdditionalNo1}`
-              }
+              },
+              {
+                "key": "accountAdditionalNo2",
+                "value":  `${props.bankTransactionP2BData.accountAdditionalNo2}`
+            }
           ],
           "senderKyc": {
               "nationality": `${props.bankTransactionP2BData.nationality}`,

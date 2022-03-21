@@ -266,6 +266,9 @@ function App() {
 
     senderMsisdn: "+971810456234",
 
+    receiverMsisdn:'',
+    beneficiarySmsNotify:'',
+    accountAdditionalNo2:"",
     receiverBankaccountno:"232201001600",
     receiverBankAccountType:'',
     receiverBankCode:"CNRB0000232",
@@ -283,9 +286,12 @@ function App() {
     sourceOfFunds: "Business Income",
 
     senderBusinessName: "sample business",
+    senderBusinessPINCode:"",
     senderBusinessAddress1: "alton's road",
+    senderBusinessAddress2:"",
     senderBusinessAddressCity: "Lyon",
     senderBusinessAddressCountryCode: "US",
+    senderBusinessAddressZip:"",
     senderBusinessPrimaryContactCountryCode: "US",
     senderBusinessPrimaryContactNo: "3472034605",
     senderBusinessDescription: "Electronics",
@@ -293,6 +299,8 @@ function App() {
     senderBusinessCountryCode: "US",
     senderBusinessRegistrationType: "Private Limited Company",
     senderBusinessRegistrationNumber: "23123456789",
+    senderBusinessRegistrationIssuedBy:"",
+    senderbusinessRegistrationIssuedAt:"",
     senderBusinessRegistrationIssueDate: "2001-09-26",
     senderBusinessIDValidThru: "2033-09-26",
 
@@ -319,16 +327,6 @@ function App() {
     recepientBypeofbusiness: "Electronics",
     recepientBusinessPObox: "12345",
     recepientBusinessMobile: "343234433",
-
-    /* optional */
-    receiverMsisdn:'',
-    beneficiarySmsNotify:'',
-    accountAdditionalNo2:"",
-    senderBusinessPINCode:"",
-    senderBusinessAddress2:"",
-    senderBusinessAddressZip:"",
-    senderBusinessRegistrationIssuedBy:"",
-    senderbusinessRegistrationIssuedAt:"",
   })
 
   const [mobileTransactionB2BData, setMobileTransactionB2BData] = useState({
@@ -566,15 +564,18 @@ function App() {
 
       senderMsisdn:"+4491509874561",
 
+      receiverMsisdn:"",
+      beneficiarySmsNotify:"",
       receiverBankaccountno:"1441001378741",
       receiverBankAccountType:"",
-      bankSubCode:"",
-      receiverBankName:"Bank of Ghana",
       receiverBankCode:"STBGGHAC",
-      branchName:"Bank of Ghana",
+      receiverBankName:"Bank of Ghana",
+      bankSubCode:"",
+      branchName:"",
       accountName:"",
       accountIBAN:"",
       accountAdditionalNo1:"",
+      accountAdditionalNo2:"",
 
       nationality: "KE",
       dateOfBirth: "1967-05-28",
@@ -630,12 +631,6 @@ function App() {
       typeofbusiness: "Electronics",
       businessPObox: "12345",
       businessMobile: "343234432",
-      /* Optional */
-      
-      accountAdditionalNo2:"",
-      receiverMsisdn:"",
-      beneficiarySmsNotify:"",
-     
   })
   const [mobileTransactionP2BData, setMobileTransactionP2BData] = useState({
     amount: "500",
