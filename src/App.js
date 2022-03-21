@@ -55,7 +55,7 @@ function App() {
 
   const [bankAccountStatusData, setBankAccountStatusData] = useState({
     accountId: '50100002965304',
-    bnv: 'David Robinson',
+    bnv: 'Deepa Jain',/* for normal  David Robinson*/
     bankCode: '12345',
     bankName: 'HDFC Bank',
     country: 'IN',
@@ -420,9 +420,12 @@ function App() {
     descriptionText: "Gift for my brother",
     requestDate: "2021-05-23 08:19:36",
     transRef: "21003b6f-8899-4dd5-815a-9efb445491ee",
+    providerCode:"",
 
     senderMsisd:"+971810456234",
 
+    receiverMsisdn:"",
+    beneficiarySmsNotify:"",
     receiverBankaccountno:"50100002965304",
     receiverBankAccountType:"",
     receiverBankCode:"HDFC0001626",
@@ -432,12 +435,20 @@ function App() {
     branchName:"HDFC Bank",
     accountIBAN:"",
     accountAdditionalNo1:"",
+    accountAdditionalNo2:"",
+
 
     receiverPrimaryContactCountryCode:"",
     receiverPrimaryContactNo:"",
     receiverPrimaryContactNoType:"",
     receiverFirstName: "Deepa",
     receiverLastName: "Jain",
+    receiverNationality:"",
+    receiverIdType:"",
+    receiverIdNumber:"",
+    receiverIssueDate:"",
+    receiverExpiryDate:"",
+    receiverIssuerCountry:"",
 
     sendingAmount: "35500.00",
     payinCcyCode: "USD",
@@ -448,18 +459,24 @@ function App() {
     receivingPartnerCode: "343432223",
 
     businessName: "sample business",
+    senderBusinessPINCode:"",
     businessAddress1: "alton's road",
+    senderBusinessAddress2:"",
     businessAddressCity: "Lyon",
     businessAddressCountryCode: "NG",
+    senderBusinessAddressZip:"",
     businessPrimaryContactCountryCode: "US",
     businessPrimaryContactNo: "3472034605",
     businessDescription: "Electronics",
+    businessEmail: "test@testemail.com",
     businessCountryCode: "US",
     businessRegistrationType: "Private Limited Company",
+    senderBusinessRegistrationIssuedBy:"",
+    senderBusinessRegistrationIssuedAt:"",
     businessRegistrationNumber: "23123456789",
     businessRegistrationIssueDate: "2001-09-26",
     businessIDValidThru: "2033-09-26",
-    businessEmail: "test@testemail.com",
+
     
     quoteId: "QR037C1NZWQLJ42P1F",
     receivingCountry: "IN",
@@ -467,22 +484,6 @@ function App() {
     sourceOfFunds: "Business Income",
     relationshipSender: "Employer",
 
-    /* Optional */
-    providerCode:"",
-    receiverMsisdn:"",
-    beneficiarySmsNotify:"",
-    accountAdditionalNo2:"",
-    senderBusinessPINCode:"",
-    senderBusinessAddress2:"",
-    senderBusinessAddressZip:"",
-    senderBusinessRegistrationIssuedBy:"",
-    senderBusinessRegistrationIssuedAt:"",
-    receiverNationality:"",
-    receiverIdType:"",
-    receiverIdNumber:"",
-    receiverIssueDate:"",
-    receiverExpiryDate:"",
-    receiverIssuerCountry:"",
   })
 
   const [mobileTransactionB2PData, setMobileTransactionB2PData] = useState({
@@ -808,6 +809,36 @@ function App() {
     }
   const MandatoryBankB2PFields = {
     requestDate: `${bankTransactionB2PData.requestDate}`,
+    senderMsisd: `${bankTransactionB2PData.senderMsisd}`,
+    amount: `${bankTransactionB2PData.amount}`,
+    currency: `${bankTransactionB2PData.currency}`,
+    type: `${bankTransactionB2PData.type}`,
+    transRef: `${bankTransactionB2PData.transRef}`,
+    sendingAmount: `${bankTransactionB2PData.sendingAmount}`,
+    payinCcyCode: `${bankTransactionB2PData.payinCcyCode}`,
+    paymentMode: `${bankTransactionB2PData.paymentMode}`,
+    authenticationPartnerCode: `${bankTransactionB2PData.authenticationPartnerCode}`,
+    paymentOption: `${bankTransactionB2PData.paymentOption}`,
+    sendingPartnerCode: `${bankTransactionB2PData.sendingPartnerCode}`,
+    receiverBankaccountno: `${bankTransactionB2PData.receiverBankaccountno}`,
+    receiverBankCode: `${bankTransactionB2PData.receiverBankCode}`,
+    receiverBankName: `${bankTransactionB2PData.receiverBankName}`,
+    businessName: `${bankTransactionB2PData.businessName}`,
+    businessAddress1: `${bankTransactionB2PData.businessAddress1}`,
+    businessPrimaryContactCountryCode: `${bankTransactionB2PData.businessPrimaryContactCountryCode}`,
+    businessPrimaryContactNo: `${bankTransactionB2PData.businessPrimaryContactNo}`,
+    businessEmail: `${bankTransactionB2PData.businessEmail}`,
+    businessCountryCode: `${bankTransactionB2PData.businessCountryCode}`,
+    businessRegistrationType: `${bankTransactionB2PData.businessRegistrationType}`,
+    businessRegistrationNumber: `${bankTransactionB2PData.businessRegistrationNumber}`,
+    businessIDValidThru: `${bankTransactionB2PData.businessIDValidThru}`,
+    quoteId: `${bankTransactionB2PData.quoteId}`,
+    receivingCountry: `${bankTransactionB2PData.receivingCountry}`,
+    remittancePurpose: `${bankTransactionB2PData.remittancePurpose}`,
+    sourceOfFunds: `${bankTransactionB2PData.sourceOfFunds}`,
+    relationshipSender: `${bankTransactionB2PData.relationshipSender}`,
+    receiverFirstName: `${bankTransactionB2PData.receiverFirstName}`,
+    receiverLastName: `${bankTransactionB2PData.receiverLastName}`,
     }
   const MandatoryMobileB2PFields = {
     requestDate: `${mobileTransactionB2PData.requestDate}`,

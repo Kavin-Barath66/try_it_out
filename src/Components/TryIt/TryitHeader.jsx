@@ -1143,6 +1143,7 @@ function TryitHeader(props) {
           "descriptionText": `${props.bankTransactionB2PData.descriptionText}`,
           "requestDate": `${props.bankTransactionB2PData.requestDate}`,
           "requestingOrganisationTransactionReference": `${props.bankTransactionB2PData.transRef}`,
+          "provider":`${props.bankTransactionB2PData.providerCode}`,
           "debitParty": [
             {
               "key": "msisdn",
@@ -1150,6 +1151,10 @@ function TryitHeader(props) {
             }
           ],
           "creditParty": [
+            {
+              "key": "msisdn",
+              "value": `${props.bankTransactionB2PData.receiverMsisdn}`
+            },
             {
               "key": "bankaccountno",
               "value": `${props.bankTransactionB2PData.receiverBankaccountno}`
@@ -1183,15 +1188,33 @@ function TryitHeader(props) {
               "value": `${props.bankTransactionB2PData.accountIBAN}`
             },
             {
+              "key": "beneficiarySmsNotify",
+              "value": `${props.bankTransactionB2PData.beneficiarySmsNotify}`
+            },
+            {
               "key": "accountAdditionalNo1",
               "value":`${props.bankTransactionB2PData.accountAdditionalNo1}`
+            },
+            {
+              "key": "accountAdditionalNo2",
+              "value":`${props.bankTransactionB2PData.accountAdditionalNo2}`
             }
           ],
           "senderKyc": {},
           "recipientKyc": {
+              "nationality":`${props.bankTransactionB2PData.receiverNationality}`,
               "primaryContactCountryCode": `${props.bankTransactionB2PData.receiverPrimaryContactCountryCode}`,
               "primaryContactNo": `${props.bankTransactionB2PData.receiverPrimaryContactNo}`,
               "primaryContactNoType": `${props.bankTransactionB2PData.receiverPrimaryContactNoType}`,
+              "idDocument": [
+                {
+                    "idType": `${props.bankTransactionB2PData.receiverIdType}`,
+                    "idNumber": `${props.bankTransactionB2PData.receiverIdNumber}`,
+                    "issueDate":`${props.bankTransactionB2PData.receiverIssueDate}`,
+                    "expiryDate":`${props.bankTransactionB2PData.receiverExpiryDate}`,
+                    "issuerCountry": `${props.bankTransactionB2PData.receiverIssuerCountry}`
+                }
+              ],
               "subjectName":{
                 "firstName": `${props.bankTransactionB2PData.receiverFirstName}`,
                 "lastName": `${props.bankTransactionB2PData.receiverLastName}`,
@@ -1208,7 +1231,9 @@ function TryitHeader(props) {
           "business": {
               "senderKyc": {
                 "businessName": `${props.bankTransactionB2PData.businessName}`,
+                "businessPINCode": `${props.bankTransactionB2PData.senderBusinessPINCode}`,
                 "businessAddress1": `${props.bankTransactionB2PData.businessAddress1}`,
+                "businessAddress2": `${props.bankTransactionB2PData.senderBusinessAddress2}`,
                 "businessAddressCity": `${props.bankTransactionB2PData.businessAddressCity}`,
                 "businessAddressCountryCode": `${props.bankTransactionB2PData.businessAddressCountryCode}`,
                 "businessPrimaryContactCountryCode": `${props.bankTransactionB2PData.businessPrimaryContactCountryCode}`,
@@ -1216,6 +1241,8 @@ function TryitHeader(props) {
                 "businessDescription": `${props.bankTransactionB2PData.businessDescription}`,
                 "businessCountryCode": `${props.bankTransactionB2PData.businessCountryCode}`,
                 "businessRegistrationType": `${props.bankTransactionB2PData.businessRegistrationType}`,
+                "businessRegistrationIssuedBy": `${props.bankTransactionB2PData.senderBusinessRegistrationIssuedBy}`,
+                "businessRegistrationIssuedAt": `${props.bankTransactionB2PData.senderBusinessRegistrationIssuedBy}`,
                 "businessRegistrationNumber": `${props.bankTransactionB2PData.businessRegistrationNumber}`,
                 "businessRegistrationIssueDate": `${props.bankTransactionB2PData.businessRegistrationIssueDate}`,
                 "businessIDValidThru": `${props.bankTransactionB2PData.businessIDValidThru}`,
