@@ -34,11 +34,11 @@ function App() {
   const [transRef, setTransRef] = useState("SrcTxnId001")
   const [getBankListData, setGetBankListData] = useState({ 
     country: 'BD',
-    lastUpdatedOn:'',
+    /*  lastUpdatedOn:'',
     bankName:'',
     bankCode:'',
     providerCode:'',
-    status:''
+    status:'' */
     })
   
   const [allowUatAccess, setAllowUatAccess] = useState(false)
@@ -51,6 +51,7 @@ function App() {
     snv:'',
     provider:'',
   })
+
   const [bankAccountStatusData, setBankAccountStatusData] = useState({
     accountId: '50100002965304',
     bnv: 'David Robinson',
@@ -62,15 +63,19 @@ function App() {
     provider:'',
     bankSubCode:'',
   })
+
   const [cancelTransactionData, setCancelTransactionData] = useState({
     reason: 'cancelling',
     txId: 'SrcTxnId4561',
   })
-  const [corridorQuotationData, setCorridorQuotationData] = useState({ currency: 'USD' })
+
   const [reverseTransactionData, setReverseTransactionData] = useState({
     reason: 'reversing',
     txId: 'TPOT000000723616',
   })
+
+  const [corridorQuotationData, setCorridorQuotationData] = useState({ currency: 'USD' })
+
   const [createQuotationBank, setCreateQuotationBank] = useState({
     requestDate: '2017-06-20 12:27:16',
     bankaccountno: '50100002965304',
@@ -82,6 +87,7 @@ function App() {
     senderMsisdn:'+9779840002444',
     receiverMsisdn:'+9779840002320',
   })
+
   const [createQuotationMobileData, setCreateQuotationMobileData] = useState({
     requestDate: '2017-06-20 12:27:16',
     reciverMsisdn: '+9779840002320',
@@ -93,18 +99,19 @@ function App() {
     receiverCountry:'',
     receiverBankaccountno:'',
   })
-  const [ledgerBalanceData, setLedgerBalanceData] = useState({ currency: 'USD' })
+
+  const [ledgerBalanceData, setLedgerBalanceData] = useState({ currency: '' })
 
   const [viewTransactionMobileData, setViewTransactionMobileData] = useState({transRef:"SrcTxnId001"})
 
   const [viewTransactionBankData, setViewTransactionBankData] = useState({transRef:"SrcTxnId001"})
   
   const [createTransactionBankData, setCreateTransactionBankData] = useState({
+    requestDate: "2022-03-19 11:40:48",
     amount: "500",
     currency: "INR",
     type: "inttransfer",
     descriptionText: "Gift for my brother",
-    requestDate: "2022-03-19 11:40:48",
     transRef: "SrcTxnId009232898",
     provider:"23401",/* for bank we are notsending provider in request body */
 
@@ -165,8 +172,8 @@ function App() {
     remittancePurpose: "Family Maintainance",
     sourceOfFunds: "Salary",
     relationshipSender: "Brother",
-    
   })
+
   const [createTransactionMobileData, setCreateTransactionMobileData] = useState({
     amount: "500.00",
     currency: "NPR",
@@ -237,24 +244,41 @@ function App() {
     bankSubCode:'2343',
 })
 
+
   const [bankTransactionB2BData, setBankTransactionB2BData] = useState({
-    amount: "500",
+    requestDate: "2021-05-23 08:19:36",
     currency: "INR",
     type: "b2b",
+    amount: "500",
     descriptionText: "Gift for my brother",
-    requestDate: "2021-05-23 08:19:36",
     transRef: "SrcTxnId004",
-    senderMsisdn: "+971810456234",
-    receiverBankaccountno:"50100002965304",
-    receiverBankName:"HDFC Bank",
-    receiverBankCode:"HDFC0001626",
     sendingAmount: "35500.00",
     payinCcyCode: "USD",
+    providerCode:'',
     paymentMode: "cash",
     authenticationPartnerCode: "4534",
     paymentOption: "Mobile Wallet",
     sendingPartnerCode: "343432223",
     receivingPartnerCode: "343432223",
+
+    senderMsisdn: "+971810456234",
+
+    receiverBankaccountno:"50100002965304",
+    receiverBankAccountType:'',
+    receiverBankCode:"HDFC0001626",
+    receiverBankName:"HDFC Bank",
+    banksubcode:'',
+    /* bankBranchName */
+    /* accountName */
+    accountIBAN:'',
+    accountAdditionalNo1:"",
+
+    quoteId: "QR037C1NA1XDKDL53E",
+    receivingCountry: "IN",
+    remittancePurpose: "Business Travel",
+    relationshipSender: "Employer",
+    sourceOfFunds: "Business Income",
+
     senderBusinessName: "sample business",
     senderBusinessAddress1: "alton's road",
     senderBusinessAddressCity: "Lyon",
@@ -262,12 +286,13 @@ function App() {
     senderBusinessPrimaryContactCountryCode: "US",
     senderBusinessPrimaryContactNo: "3472034605",
     senderBusinessDescription: "Electronics",
+    senderBusinessEmail: "test@testemail.com",
     senderBusinessCountryCode: "US",
     senderBusinessRegistrationType: "Private Limited Company",
     senderBusinessRegistrationNumber: "23123456789",
     senderBusinessRegistrationIssueDate: "2001-09-26",
     senderBusinessIDValidThru: "2033-09-26",
-    senderBusinessEmail: "test@testemail.com",
+
     recepientBusinessName: "Oyugi Randy Electric Sale Pvt. Ltd.",
     recepientBusinessPINCode: "123456",
     recepientBusinessAddress1: "24",
@@ -289,21 +314,12 @@ function App() {
     recepientBusinessRegistrationIssueDate: "2002-08-26",
     recepientBusinessIDValidThru: "2036-09-26",
     recepientBypeofbusiness: "Electronics",
-    recepientBusinessMobile: "343234433",
     recepientBusinessPObox: "12345",
-    quoteId: "QR037C1NA1XDKDL53E",
-    receivingCountry: "IN",
-    remittancePurpose: "Business Travel",
-    sourceOfFunds: "Business Income",
-    relationshipSender: "Employer",
+    recepientBusinessMobile: "343234433",
+
     /* optional */
-    providerCode:'',
     receiverMsisdn:'',
     beneficiarySmsNotify:'',
-    receiverBankAccountType:'',
-    banksubcode:'',
-    accountIBAN:'',
-    accountAdditionalNo1:"",
     accountAdditionalNo2:"",
     senderBusinessPINCode:"",
     senderBusinessAddress2:"",
@@ -385,9 +401,6 @@ function App() {
     senderBusinessAddressZip:'',
     senderBusinessRegistrationIssuedBy:'',
     senderBusinessRegistrationIssuedAt:'',
-
-
-
   })
   {/* B2P */}
   const [bankTransactionB2PData, setBankTransactionB2PData] = useState({
@@ -668,32 +681,119 @@ function App() {
     senderPrimaryContactNoType:"",
     senderTitle:"",
   })
-
+  const MandatoryMobileAccountFields={
+    msisdn: `${mobileAccountStatusData.msisdn}`,
+    bnv:  `${mobileAccountStatusData.bnv}`,
+  }
+  const MandatoryBankAccountFields={
+    accountId: `${bankAccountStatusData.accountId}`,
+    bnv:  `${bankAccountStatusData.bnv}`,
+    bankName:`${bankAccountStatusData.bankName}`,
+    country: `${bankAccountStatusData.country}`,
+  }
+  const MandatoryBankQuotationFields = {
+    requestDate: `${createQuotationBank.requestDate}`,
+    requestAmount:  `${createQuotationBank.requestAmount}`,
+    requestCurrency:`${createQuotationBank.requestCurrency}`,
+    sendingCurrency: `${createQuotationBank.sendingCurrency}`,
+    receivingCurrency: `${createQuotationBank.receivingCurrency}`,
+    bankaccountno: `${createQuotationBank.bankaccountno}`,
+    receivingCountry: `${createQuotationBank.receivingCountry}`
+  }
+  const MandatoryMobileQuotationFields = {
+    requestDate: `${createQuotationMobileData.requestDate}`,
+    requestAmount:  `${createQuotationMobileData.requestAmount}`,
+    requestCurrency:`${createQuotationMobileData.requestCurrency}`,
+    reciverMsisdn: `${createQuotationMobileData.reciverMsisdn}`,
+    sendingCurrency: `${createQuotationMobileData.sendingCurrency}`,
+    receivingCurrency: `${createQuotationMobileData.receivingCurrency}`
+  } 
+  const MandatoryCancelTransFields = {
+    txId: `${cancelTransactionData.txId}`,
+  }
+  const MandatoryReverseTransFields = {
+    txId: `${reverseTransactionData.txId}`,
+  }
+  const MandatoryMobileCreateTransFields = {
+    requestDate: `${createTransactionMobileData.requestDate}`,
+    amount: `${createTransactionMobileData.amount}`,
+    currency: `${createTransactionMobileData.currency}`,
+    type: `${createTransactionMobileData.type}`,
+    transRef: `${createTransactionMobileData.transRef}`,
+    senderMsisdn: `${createTransactionMobileData.senderMsisdn}`,
+    receiverMsisdn: `${createTransactionMobileData.receiverMsisdn}`,
+    nationality: `${createTransactionMobileData.nationality}`,
+    dateOfBirth: `${createTransactionMobileData.dateOfBirth}`,
+    idType: `${createTransactionMobileData.idType}`,
+    idNumber: `${createTransactionMobileData.idNumber}`,
+    expiryDate: `${createTransactionMobileData.expiryDate}`,
+    addressLine1: `${createTransactionMobileData.addressLine1}`,
+    city: `${createTransactionMobileData.city}`,
+    country: `${createTransactionMobileData.country}`,
+    firstName: `${createTransactionMobileData.firstName}`,
+    lastName: `${createTransactionMobileData.lastName}`,
+    receiverFirstName: `${createTransactionMobileData.receiverFirstName}`,
+    receiverLastName: `${createTransactionMobileData.receiverLastName}`,
+    quoteId: `${createTransactionMobileData.quoteId}`,
+    receivingCountry: `${createTransactionMobileData.receivingCountry}`,
+    remittancePurpose: `${createTransactionMobileData.remittancePurpose}`,
+    sourceOfFunds: `${createTransactionMobileData.sourceOfFunds}`,
+    relationshipSender: `${createTransactionMobileData.relationshipSender}`,
+  }
+  const MandatoryBankCreateTransFields = {
+    requestDate: `${createTransactionBankData.requestDate}`,
+    amount: `${createTransactionBankData.amount}`,
+    currency: `${createTransactionBankData.currency}`,
+    type: `${createTransactionBankData.type}`,
+    transRef: `${createTransactionBankData.transRef}`,
+    senderMsisd: `${createTransactionBankData.senderMsisd}`,
+    receiverBankaccountno: `${createTransactionBankData.receiverBankaccountno}`,
+    receiverBankCode: `${createTransactionBankData.receiverBankCode}`,
+    receiverBankName: `${createTransactionBankData.receiverBankName}`,
+    bankSubCode: `${createTransactionBankData.bankSubCode}`,
+    senderNationality: `${createTransactionBankData.senderNationality}`,
+    senderDateOfBirth: `${createTransactionBankData.senderDateOfBirth}`,
+    idType: `${createTransactionBankData.idType}`,
+    idNumber: `${createTransactionBankData.idNumber}`,
+    expiryDate: `${createTransactionBankData.expiryDate}`,
+    addressLine1: `${createTransactionBankData.addressLine1}`,
+    city: `${createTransactionBankData.city}`,
+    country: `${createTransactionBankData.country}`,
+    firstName: `${createTransactionBankData.firstName}`,
+    lastName: `${createTransactionBankData.lastName}`,
+    receiverFirstName: `${createTransactionBankData.receiverFirstName}`,
+    receiverLastName: `${createTransactionBankData.receiverLastName}`,
+    quoteId: `${createTransactionBankData.quoteId}`,
+    receivingCountry: `${createTransactionBankData.receivingCountry}`,
+    remittancePurpose: `${createTransactionBankData.remittancePurpose}`,
+    sourceOfFunds: `${createTransactionBankData.sourceOfFunds}`,
+    relationshipSender: `${createTransactionBankData.relationshipSender}`,
+  }
   useEffect(() => {
     if (endPoint === 'Account Status Mobile') {
-      setHeaderObject(mobileAccountStatusData)
+      setHeaderObject(MandatoryMobileAccountFields)
     } else if(endPoint === "Account Status Bank"){
-      setHeaderObject(bankAccountStatusData)
+      setHeaderObject(MandatoryBankAccountFields)
     }else if(endPoint === "Cancel Transaction"){
-      setHeaderObject(cancelTransactionData)
+      setHeaderObject(MandatoryCancelTransFields)
     }else if (endPoint === "Get Bank List") {
       setHeaderObject(getBankListData);
     }else if (endPoint === "Corridor Quotation") {
       setHeaderObject(corridorQuotationData);
     }else if (endPoint === "Reverse Transaction") {
-      setHeaderObject(reverseTransactionData);
+      setHeaderObject(MandatoryReverseTransFields);
     } else if (endPoint === "Create Quotation Bank") {
-      setHeaderObject(createQuotationBank);
+      setHeaderObject(MandatoryBankQuotationFields);
     } else if (endPoint === "Create Quotation Mobile") {
-      setHeaderObject(createQuotationMobileData);
+      setHeaderObject(MandatoryMobileQuotationFields);
     } else if (endPoint === "View Transaction Bank") {
       setHeaderObject(viewTransactionBankData);
   } else if (endPoint === "View Transaction Mobile") {
       setHeaderObject(viewTransactionMobileData);
   }else if (endPoint === "Create Transaction Bank") {
-    setHeaderObject(createTransactionBankData);
+    setHeaderObject(MandatoryBankCreateTransFields);
   }else if (endPoint === "Create Transaction Mobile") {
-    setHeaderObject(createTransactionMobileData);
+    setHeaderObject(MandatoryMobileCreateTransFields);
   } else if (endPoint === "B2B Transaction Bank") {
     setHeaderObject(bankTransactionB2BData);
   }else if (endPoint === "B2B Transaction Mobile") {

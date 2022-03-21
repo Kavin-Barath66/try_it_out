@@ -918,6 +918,120 @@ function TryitHeader(props) {
                 'Content-Type': 'application/json'
             }
         }
+        var requestBodyDataInfo ={
+	"currency": "NGN",
+	"type": "b2b",
+	"requestDate": "2020-01-02 10:51:16",
+	"amount": "35500.00",
+	"descriptionText": "Gift for my brother",
+	"requestingOrganisationTransactionReference": "12345868378400387540",
+	"sendingAmount": "35500.00",
+	"payinCcyCode": "USD",
+	"provider": "23401",
+	"paymentMode": "cash",
+	"authenticationPartnerCode": "4534",
+	"paymentOption": "Mobile Wallet",
+	"sendingPartnerCode": "343432223",
+	"receivingPartnerCode": "343432223",
+	"debitParty": [
+	{
+		"key": "msisdn",
+		"value": "+4491509874561"
+	} 
+	],
+		"creditParty": [
+	{
+		"key": "bankaccountno",
+		"value": "1976010126"
+	},
+	{
+		"key": "accounttype",
+		"value": "CHECKING"
+	},
+	{
+		"key": "sortcode",
+		"value": "CITINGLA"
+	},
+	{
+		"key": "organisationid",
+		"value": "Citi Bank"
+	},
+	{
+		"key": "banksubcode",
+		"value": "0001"
+	},
+	{
+		"key": "bankBranchName",
+		"value": "Citi Bank"
+	},
+	{
+		"key": "accountName",
+		"value": "Rajesh"
+	},
+	{
+		"key": "accountIBAN",
+		"value": "GB29NWBK60161331926819"
+	},
+	{
+		"key": "accountAdditionalNo1",
+		"value": "2656915085434"
+	}
+	],
+		"senderKyc": {
+
+	},
+		"recipientKyc": {
+
+	},
+		"internationalTransferInformation": {
+			"quoteId": "QT0FEO4OZZ28PLCA5",
+			"receivingCountry": "NG",
+			"remittancePurpose": "Advanced Goods Payments",
+			"sourceOfFunds": "Savings"
+	},
+	"business": {
+		"senderKyc": {
+			"businessName": "sample business",
+			"businessAddress1": "walton's road",
+			"businessAddressCity": "Lyon",
+			"businessAddressCountryCode": "US",
+			"businessPrimaryContactCountryCode": "US",
+			"businessPrimaryContactNo": "3472034605",
+			"businessDescription": "Electronics",
+			"businessEmail": "rs.electronics@gmail.com",
+			"businessCountryCode": "US",
+			"businessRegistrationType": "Private Limited Company",
+			"businessRegistrationNumber": "23123456789",
+			"businessRegistrationIssueDate": "2020-09-26",
+			"businessIDValidThru": "2033-09-26"
+		},
+		"recepientKyc": {
+			"businessName": "Oyugi Randy Electric Sale Pvt. Ltd.",
+			"businessPINCode": "123456",
+			"businessAddress1": "24",
+			"businessAddress2": "walton's road",
+			"businessAddressCity": "newyork",
+			"businessAddressState": "NYC",
+			"businessAddressCountryCode": "NG",
+			"businessAddressZip": "123456",
+			"businessPrimaryContactCountryCode": "NG",
+			"businessPrimaryContactNo": "232323212",
+			"businessPrimaryContactNoType": "Mobile",
+			"businessDescription": "Electronics wholesale",
+			"businessEmail": "rs.electronics@gmail.com",
+			"businessCountryCode": "NG",
+			"businessRegistrationType": "Private Limited Company",
+			"businessRegistrationNumber": "2312345678912",
+			"businessRegistrationIssuedBy": "NYC_TRADE",
+			"businessRegistrationIssuedAt": "NYC",
+			"businessRegistrationIssueDate": "2002-08-26",
+			"businessIDValidThru": "2036-09-26",
+			"typeofbusiness": "Electronics",
+			"businessPObox": "12345",
+			"businessMobile": "343234433"
+		}
+	}	
+}
          if(props.environment==="uat") {
         options.headers['X-ENVIRONMENT'] = 'uat'
       }else if(props.environment==="sandbox"){
@@ -1963,7 +2077,7 @@ function TryitHeader(props) {
                 (props.endPoint==="Get Bank List")?<CustomButtom  sx={{textAlign:'center', minWidth:'180px', alignSelf: 'center', letterSpacing: 1, backgroundColor:'#ea5c57'}} variant='contained' onClick={getAccountStatus} >TRY IT OUT</CustomButtom>: */}
 
                 {/* <CustomButtom  sx={{textAlign:'center', minWidth:'180px', alignSelf: 'center', letterSpacing: 1, backgroundColor:'#ea5c57'}} variant='contained' onClick={tryItOutHandler} >TRY IT OUT</CustomButtom> */}
-                {props.allowUatAccess? <CustomButtom sx={{ textAlign: 'center', minWidth: '180px', alignSelf: 'center', letterSpacing: 1, backgroundColor: '#ea5c57' }} variant='contained' /* disabled={checkProperties(props.headerObject)} */ onClick={tryItOutHandler}>TRY IT OUT</CustomButtom>:
+                {props.allowUatAccess? <CustomButtom sx={{ textAlign: 'center', minWidth: '180px', alignSelf: 'center', letterSpacing: 1, backgroundColor: '#ea5c57' }} variant='contained' disabled={checkProperties(props.headerObject)} onClick={tryItOutHandler}>TRY IT OUT</CustomButtom>:
                 <CustomButtom sx={{ textAlign: 'center', minWidth: '180px', alignSelf: 'center', letterSpacing: 1, backgroundColor: '#ea5c57' }} variant='contained' /* disabled={checkProperties(props.headerObject)} */ onClick={allowStaticScreen}>TRY IT OUT</CustomButtom>}
                 {!props.allowUatAccess && <Typography sx={{textAlign: 'center', minWidth: '180px', alignSelf: 'center'}} color="white" fonstSize={12} height={40} fontWeight='500'>
                       Click here to <span style={{cursor:'pointer', color:'#ea5c57'}}onClick={allowTryingWithRealTime} > Login</span>
