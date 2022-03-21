@@ -26,7 +26,8 @@ import MobileTransactionP2B from './Pages/MobileTransactionP2B';
 
 function App() {
   /* header */
-  const [environment, setEnvironment] = useState("")
+  const [environment, setEnvironment] = useState("sandbox")
+  const [country, setCountry] = useState("US")
   const [endPoint, setEndPoint] = useState("")
   const [userName, setuserName] = useState("OpenTurfDev")
   const [password, setPassword] = useState("85d6dcc27d9fb21c7c346cdbcee2b56a84eba0f542a846de06658d2d094afd56")
@@ -113,13 +114,13 @@ function App() {
     type: "inttransfer",
     descriptionText: "Gift for my brother",
     transRef: "SrcTxnId009232898",
-    provider:"23401",/* for bank we are notsending provider in request body */
+    provider:"",
 
     senderMsisd: "+9779840002444",
 
     receiverBankaccountno:"50100002965304",
     receiverBankName: "HDFC Bank",
-    receiverBankAccountType:"Savings",/* we are not sending account type in request body */
+    receiverBankAccountType:"",
     receiverBankCode: "HDFC0001626",
     bankSubCode:"HDFC0001626",
     receiverMsisdn:"+9779840002320",
@@ -142,7 +143,7 @@ function App() {
     postalCode: "507000",
     country: "US",
 
-    senderTitle:"",/* we are not sending title in request body */
+    senderTitle:"",
     firstName: "Test",
     middleName: "",
     lastName: "Sender2",
@@ -186,6 +187,11 @@ function App() {
     senderMsisdn: "+4491509874561",
     
     receiverMsisdn:"+9779840002320",
+    receiverBankAccountno:'',
+    bankCode:'',
+    bankName:'',
+    bankSubCode:'',
+
 
     nationality: "FR",
     dateOfBirth: "1986-06-28",
@@ -237,14 +243,11 @@ function App() {
     relationshipSender: "Brother",
 
     /* these are not in request body & docs*/
-    senderBankAccountno:'12312',
-    receiverBankAccountType:'accountType',
-    bankCode:'HDFC23',
-    bankName:'HDFC',
-    bankSubCode:'2343',
+    receiverBankAccountType:'',
+    
 })
 
-
+  
   const [bankTransactionB2BData, setBankTransactionB2BData] = useState({
     requestDate: "2021-05-23 08:19:36",
     currency: "INR",
@@ -263,13 +266,13 @@ function App() {
 
     senderMsisdn: "+971810456234",
 
-    receiverBankaccountno:"50100002965304",
+    receiverBankaccountno:"232201001600",
     receiverBankAccountType:'',
-    receiverBankCode:"HDFC0001626",
-    receiverBankName:"HDFC Bank",
+    receiverBankCode:"CNRB0000232",
+    receiverBankName:"Canara Bank",
     banksubcode:'',
-    /* bankBranchName */
-    /* accountName */
+    accountBranchName:'',
+    accountName:'Devki Luggage Center',
     accountIBAN:'',
     accountAdditionalNo1:"",
 
@@ -329,21 +332,30 @@ function App() {
   })
 
   const [mobileTransactionB2BData, setMobileTransactionB2BData] = useState({
-    amount: "500",
     currency: "INR",
     type: "b2b",
-    descriptionText: "Gift for my brother",
     requestDate: "2021-05-23 08:19:36",
+    amount: "500",
+    descriptionText: "Gift for my brother",
     transRef: "SrcTxnId004",
-    senderMsisdn: "+971810456234",
-    receiverMsisdn:"+2349061114853",
     sendingAmount: "35500.00",
     payinCcyCode: "USD",
+    providerCode:'',
     paymentMode: "cash",
     authenticationPartnerCode: "4534",
     paymentOption: "Mobile Wallet",
     sendingPartnerCode: "343432223",
     receivingPartnerCode: "343432223",
+
+    senderMsisdn: "+971810456234",
+
+    receiverMsisdn:"+2349061114853",
+
+    quoteId: "QR037C1NA1XDKDL53E",
+    receivingCountry: "IN",
+    remittancePurpose: "Business Travel",
+    sourceOfFunds: "Business Income",
+
     senderBusinessName: "sample business",
     senderBusinessAddress1: "alton's road",
     senderBusinessAddressCity: "Lyon",
@@ -351,12 +363,13 @@ function App() {
     senderBusinessPrimaryContactCountryCode: "US",
     senderBusinessPrimaryContactNo: "3472034605",
     senderBusinessDescription: "Electronics",
+    senderBusinessEmail: "test@testemail.com",
     senderBusinessCountryCode: "US",
     senderBusinessRegistrationType: "Private Limited Company",
     senderBusinessRegistrationNumber: "23123456789",
     senderBusinessRegistrationIssueDate: "2001-09-26",
     senderBusinessIDValidThru: "2033-09-26",
-    senderBusinessEmail: "test@testemail.com",
+  
     recepientBusinessName: "Oyugi Randy Electric Sale Pvt. Ltd.",
     recepientBusinessPINCode: "123456",
     recepientBusinessAddress1: "24",
@@ -378,15 +391,11 @@ function App() {
     recepientBusinessRegistrationIssueDate: "2002-08-26",
     recepientBusinessIDValidThru: "2036-09-26",
     recepientBypeofbusiness: "Electronics",
-    recepientBusinessMobile: "343234433",
     recepientBusinessPObox: "12345",
-    quoteId: "QR037C1NA1XDKDL53E",
-    receivingCountry: "IN",
-    remittancePurpose: "Business Travel",
-    sourceOfFunds: "Business Income",
+    recepientBusinessMobile: "343234433",
+   
     relationshipSender: "Employer",
     /* Optinal */
-    providerCode:'',
     beneficiarySmsNotify:'',
     receiverBankaccountno:'',
     receiverBankAccountType:'',
@@ -402,6 +411,7 @@ function App() {
     senderBusinessRegistrationIssuedBy:'',
     senderBusinessRegistrationIssuedAt:'',
   })
+
   {/* B2P */}
   const [bankTransactionB2PData, setBankTransactionB2PData] = useState({
     amount: "500",
@@ -409,13 +419,26 @@ function App() {
     type: "b2p",
     descriptionText: "Gift for my brother",
     requestDate: "2021-05-23 08:19:36",
-    transRef: "SrcTxnId003435435dygy",
-    senderMsisd:"+9779840002320",
+    transRef: "21003b6f-8899-4dd5-815a-9efb445491ee",
+
+    senderMsisd:"+971810456234",
+
     receiverBankaccountno:"50100002965304",
-    receiverBankName:"HDFC Bank",
+    receiverBankAccountType:"",
     receiverBankCode:"HDFC0001626",
-    receiverFirstName: "David",
-    receiverLastName: "Robinson",
+    receiverBankName:"HDFC Bank",
+    bankSubCode:"",
+    accountName:"",
+    branchName:"HDFC Bank",
+    accountIBAN:"",
+    accountAdditionalNo1:"",
+
+    receiverPrimaryContactCountryCode:"",
+    receiverPrimaryContactNo:"",
+    receiverPrimaryContactNoType:"",
+    receiverFirstName: "Deepa",
+    receiverLastName: "Jain",
+
     sendingAmount: "35500.00",
     payinCcyCode: "USD",
     paymentMode: "cash",
@@ -423,10 +446,11 @@ function App() {
     paymentOption: "Mobile Wallet",
     sendingPartnerCode: "343432223",
     receivingPartnerCode: "343432223",
+
     businessName: "sample business",
     businessAddress1: "alton's road",
     businessAddressCity: "Lyon",
-    businessAddressCountryCode: "US",
+    businessAddressCountryCode: "NG",
     businessPrimaryContactCountryCode: "US",
     businessPrimaryContactNo: "3472034605",
     businessDescription: "Electronics",
@@ -436,19 +460,17 @@ function App() {
     businessRegistrationIssueDate: "2001-09-26",
     businessIDValidThru: "2033-09-26",
     businessEmail: "test@testemail.com",
+    
     quoteId: "QR037C1NZWQLJ42P1F",
     receivingCountry: "IN",
     remittancePurpose: "Business Travel",
     sourceOfFunds: "Business Income",
     relationshipSender: "Employer",
+
     /* Optional */
     providerCode:"",
     receiverMsisdn:"",
     beneficiarySmsNotify:"",
-    receiverBankAccountType:"",
-    bankSubCode:"",
-    accountIBAN:"",
-    accountAdditionalNo1:"",
     accountAdditionalNo2:"",
     senderBusinessPINCode:"",
     senderBusinessAddress2:"",
@@ -456,15 +478,13 @@ function App() {
     senderBusinessRegistrationIssuedBy:"",
     senderBusinessRegistrationIssuedAt:"",
     receiverNationality:"",
-    receiverPrimaryContactCountryCode:"",
-    receiverPrimaryContactNo:"",
-    receiverPrimaryContactNoType:"",
     receiverIdType:"",
     receiverIdNumber:"",
     receiverIssueDate:"",
     receiverExpiryDate:"",
     receiverIssuerCountry:"",
   })
+
   const [mobileTransactionB2PData, setMobileTransactionB2PData] = useState({
     amount: "500",
     currency: "INR",
@@ -526,43 +546,67 @@ function App() {
     receiverExpiryDate:'',
     receiverIssuerCountry:''
   })
+
     const [bankTransactionP2BData, setBankTransactionP2BData] = useState({
-      amount: "500",
-      currency: "INR",
+      currency: "GHS",
       type: "p2b",
-      descriptionText: "Gift for my brother",
       requestDate: "2021-05-23 08:19:36",
-      transRef: "SrcTxnId005",
-      senderMsisdn:"+971810456234",
-      receiverBankaccountno:"50100002965304",
-      receiverBankName:"HDFC Bank",
-      receiverBankCode:"HDFC0001626",
-      nationality: "AE",
-      dateOfBirth: "1967-05-28",
-      gender: "M",
-      idType: "VOTER_CARD",
-      idNumber: "13321115521",
-      issueDate: "1967-05-28",
-      expiryDate: "2067-05-28",
-      issuerCountry: "AE",
-      addressLine1: "49  park street",
-      addressLine2: "12",
-      addressLine3: "12",
-      city: "12",
-      stateProvince: "12",
-      postalCode: "50000",
-      country: "US",
-      firstName: "Test",
-      middleName: " ",
-      lastName: "Sender2",
-      sendingAmount: "35500.00",
+      amount: "765.00",
+      descriptionText: "Gift for my brother",
+      transRef: "1f4bd226-b86b-48c1-a434-ac9ff59d2f14",
+      sendingAmount: "765.00",
       payinCcyCode: "USD",
+      providerCode:"",
       paymentMode: "cash",
       authenticationPartnerCode: "4534",
       paymentOption: "Mobile Wallet",
       sendingPartnerCode: "343432223",
       receivingPartnerCode: "343432223",
-      businessName: "Oyugi Randy Electric Sale Pvt. Ltd.",
+
+      senderMsisdn:"+4491509874561",
+
+      receiverBankaccountno:"1441001378741",
+      receiverBankAccountType:"",
+      bankSubCode:"",
+      receiverBankName:"Bank of Ghana",
+      receiverBankCode:"STBGGHAC",
+      branchName:"Bank of Ghana",
+      accountName:"",
+      accountIBAN:"",
+      accountAdditionalNo1:"",
+
+      nationality: "KE",
+      dateOfBirth: "1967-05-28",
+      gender: "M",
+      senderBusinessPrimaryContactCountryCode:"KE",
+      senderBusinessPrimaryContactNo:"2349061114853",
+      senderBusinessPrimaryContactNoType:"personal",
+      idType: "nationalidcard",
+      idNumber: "13321115521",
+      issueDate: "",
+      expiryDate: "2067-05-28",
+      issuerCountry: "",
+
+      addressLine1: "49  park street",
+      addressLine2: "park street",
+      addressLine3: "12",
+      city: "Lyon",
+      stateProvince: "",
+      postalCode: "",
+      country: "KE",
+
+      senderTitle:"",
+      firstName: "Einstein",
+      middleName: "James",
+      lastName: "Bela",
+      
+      quoteId: "QT037CTYFDSF1EY5A",
+      receivingCountry: "GH",
+      remittancePurpose: "Business Travel",
+      sourceOfFunds: "Business Income",
+      relationshipSender: "Employer",
+
+      businessName: "Tilly Tires Ltd",
       businessPINCode: "123456",
       businessAddress1: "24",
       businessAddress2: "walton's road",
@@ -584,27 +628,14 @@ function App() {
       businessIDValidThru: "2036-09-26",
       typeofbusiness: "Electronics",
       businessPObox: "12345",
-      businessMobile: "343234433",
-      quoteId: "QR037C1NA6ZXBSQ88B",
-      receivingCountry: "IN",
-      remittancePurpose: "Business Travel",
-      sourceOfFunds: "Business Income",
-      relationshipSender: "Employer",
+      businessMobile: "343234432",
       /* Optional */
-      providerCode:"",
-      bankSubCode:"",
-      accountIBAN:"",
-      accountAdditionalNo1:"",
+      
       accountAdditionalNo2:"",
-      senderBusinessPrimaryContactCountryCode:"",
-      senderBusinessPrimaryContactNo:"",
-      senderBusinessPrimaryContactNoType:"",
-      senderTitle:"",
       receiverMsisdn:"",
       beneficiarySmsNotify:"",
-      receiverBankAccountType:"",
+     
   })
-
   const [mobileTransactionP2BData, setMobileTransactionP2BData] = useState({
     amount: "500",
     currency: "INR",
@@ -769,6 +800,24 @@ function App() {
     sourceOfFunds: `${createTransactionBankData.sourceOfFunds}`,
     relationshipSender: `${createTransactionBankData.relationshipSender}`,
   }
+  const MandatoryBankB2BFields = {
+    requestDate: `${bankTransactionB2BData.requestDate}`,
+    }
+  const MandatoryMobileB2BFields = {
+    requestDate: `${mobileTransactionB2BData.requestDate}`,
+    }
+  const MandatoryBankB2PFields = {
+    requestDate: `${bankTransactionB2PData.requestDate}`,
+    }
+  const MandatoryMobileB2PFields = {
+    requestDate: `${mobileTransactionB2PData.requestDate}`,
+    }
+  const MandatoryBankP2BFields = {
+    requestDate: `${bankTransactionP2BData.requestDate}`,
+    }
+  const MandatoryMobileP2BFields = {
+    requestDate: `${mobileTransactionP2BData.requestDate}`,
+    }
   useEffect(() => {
     if (endPoint === 'Account Status Mobile') {
       setHeaderObject(MandatoryMobileAccountFields)
@@ -795,17 +844,17 @@ function App() {
   }else if (endPoint === "Create Transaction Mobile") {
     setHeaderObject(MandatoryMobileCreateTransFields);
   } else if (endPoint === "B2B Transaction Bank") {
-    setHeaderObject(bankTransactionB2BData);
+    setHeaderObject(MandatoryBankB2BFields);
   }else if (endPoint === "B2B Transaction Mobile") {
-    setHeaderObject(mobileTransactionB2BData);
+    setHeaderObject(MandatoryMobileB2BFields);
   }else if (endPoint === "B2P Transaction Bank") {
-    setHeaderObject(bankTransactionB2PData);
+    setHeaderObject(MandatoryBankB2PFields);
   }else if (endPoint === "B2P Transaction Mobile") {
-    setHeaderObject(mobileTransactionB2PData);
+    setHeaderObject(MandatoryMobileB2PFields);
   }else if (endPoint === "P2B Transaction Bank") {
-    setHeaderObject(bankTransactionP2BData);
+    setHeaderObject(MandatoryBankP2BFields);
   }else if (endPoint === "P2B Transaction Mobile") {
-    setHeaderObject(mobileTransactionP2BData);
+    setHeaderObject(MandatoryMobileP2BFields);
   }
   }, [endPoint, mobileAccountStatusData, cancelTransactionData, bankAccountStatusData,createQuotationMobileData,createTransactionBankData,
     viewTransactionMobileData, getBankListData, corridorQuotationData, reverseTransactionData, createQuotationBank, viewTransactionBankData,
@@ -846,6 +895,8 @@ function App() {
         setEndPoint={setEndPoint}
         environment={environment}
         setEnvironment={setEnvironment}
+        country={country}
+        setCountry={setCountry}
         userName={userName}
         setuserName={setuserName}
         password={password}

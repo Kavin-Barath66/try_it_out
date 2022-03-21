@@ -80,7 +80,7 @@ function CreateTransactionMobile({allowUatAccess, createTransactionMobileData, s
             </Typography>
             <FormControl sx={{height:45}}>
         <OutlinedInput sx={{ height: 40 }} placeholder='type'
-            disabled={!allowUatAccess}
+            disabled={true}
             onChange={({ target }) =>
             setCreateTransactionMobileData( (prev) =>
             ({...prev, type:target.value}))} 
@@ -185,7 +185,7 @@ function CreateTransactionMobile({allowUatAccess, createTransactionMobileData, s
         </Stack>
 
 
-        {/* Beneficary bank account 
+        {/* Beneficary bank account */}
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
             Beneficiary Bank Account No
@@ -195,11 +195,11 @@ function CreateTransactionMobile({allowUatAccess, createTransactionMobileData, s
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionMobileData( (prev) =>
-            ({...prev, senderBankAccountno:target.value}))} 
-            value={createTransactionMobileData.senderBankAccountno}
+            ({...prev, receiverBankAccountno:target.value}))} 
+            value={createTransactionMobileData.receiverBankAccountno}
             />
             </FormControl>
-        </Stack>*/}
+        </Stack>
         {/* receiver bank account
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
@@ -222,7 +222,7 @@ function CreateTransactionMobile({allowUatAccess, createTransactionMobileData, s
             </FormControl>
             </Stack> */}
 
-        {/* bank code 
+        {/* bank code */}
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
             Bank Code
@@ -236,8 +236,8 @@ function CreateTransactionMobile({allowUatAccess, createTransactionMobileData, s
             value={createTransactionMobileData.bankCode}
             />
             </FormControl>
-        </Stack>*/}
-        {/* Full name of Beneficiary Bank
+        </Stack>
+        {/* Full name of Beneficiary Bank*/}
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
             Full name of Beneficiary Bank
@@ -251,11 +251,11 @@ function CreateTransactionMobile({allowUatAccess, createTransactionMobileData, s
             value={createTransactionMobileData.bankName}
             />
             </FormControl>
-        </Stack> */}
-        {/* Branch code
+        </Stack> 
+        {/* Branch code*/}
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-            Branch code
+            Bank Sub code
             </Typography>
             <FormControl sx={{height:45}}>
         <OutlinedInput sx={{ height: 40 }} placeholder='banksubcode' 
@@ -266,8 +266,7 @@ function CreateTransactionMobile({allowUatAccess, createTransactionMobileData, s
             value={createTransactionMobileData.bankSubCode}
             />
             </FormControl>
-        </Stack>*/}
-
+        </Stack>
 
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
@@ -819,7 +818,7 @@ function CreateTransactionMobile({allowUatAccess, createTransactionMobileData, s
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
         <Typography color="#575757" fontWeight='500'>
-        middlename Name (Receiver)
+        Middlename Name (Receiver)
         </Typography>
         <FormControl sx={{height:45}}>
     <OutlinedInput sx={{ height: 40 }} placeholder='firstName'

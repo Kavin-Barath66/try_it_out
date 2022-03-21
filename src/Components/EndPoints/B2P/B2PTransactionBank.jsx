@@ -290,7 +290,7 @@ function B2PTransactionBank({allowUatAccess, bankTransactionB2PData, setBankTran
           )}
           </FormControl>
       </Stack>
-      <Stack direction='row' alignItems='center' justifyContent='space-between'>
+      {/* <Stack direction='row' alignItems='center' justifyContent='space-between'>
           <Typography color="#575757" fontWeight='500'>
           Beneficiary Mobile Number 
           </Typography>
@@ -313,7 +313,7 @@ function B2PTransactionBank({allowUatAccess, bankTransactionB2PData, setBankTran
           setBankTransactionB2PData( (prev) =>
           ({...prev, beneficiarySmsNotify:target.value}))} 
           value={bankTransactionB2PData.beneficiarySmsNotify} /></FormControl>
-      </Stack>
+      </Stack> */}
       <Stack direction='row' alignItems='center' justifyContent='space-between'>
           <Typography color="#575757" fontWeight='500'>
           Receive Bank Account Number<span style={{color:'#ea5c57'}}> *</span>
@@ -400,7 +400,31 @@ function B2PTransactionBank({allowUatAccess, bankTransactionB2PData, setBankTran
       </Stack>
       <Stack direction='row' alignItems='center' justifyContent='space-between'>
           <Typography color="#575757" fontWeight='500'>
-          Receive Account IBAN Number<span style={{color:'#ea5c57'}}> *</span>
+          Account Name
+          </Typography>
+          <FormControl sx={{height:45}}>
+            <OutlinedInput sx={{ height: 40 }} placeholder='accountName' 
+          disabled={!allowUatAccess}       
+          onChange={({ target }) =>
+          setBankTransactionB2PData( (prev) =>
+          ({...prev, accountName:target.value}))} 
+          value={bankTransactionB2PData.accountName} /></FormControl>
+      </Stack>
+      <Stack direction='row' alignItems='center' justifyContent='space-between'>
+          <Typography color="#575757" fontWeight='500'>
+          Branch Name
+          </Typography>
+          <FormControl sx={{height:45}}>
+            <OutlinedInput sx={{ height: 40 }} placeholder='branchName' 
+          disabled={!allowUatAccess}       
+          onChange={({ target }) =>
+          setBankTransactionB2PData( (prev) =>
+          ({...prev, branchName:target.value}))} 
+          value={bankTransactionB2PData.branchName} /></FormControl>
+      </Stack>
+      <Stack direction='row' alignItems='center' justifyContent='space-between'>
+          <Typography color="#575757" fontWeight='500'>
+          Receive Account IBAN Number
           </Typography>
           <FormControl sx={{height:45}}>
             <OutlinedInput sx={{ height: 40 }} placeholder='accountIBAN' 
@@ -408,14 +432,8 @@ function B2PTransactionBank({allowUatAccess, bankTransactionB2PData, setBankTran
           onChange={({ target }) =>
           setBankTransactionB2PData( (prev) =>
           ({...prev, accountIBAN:target.value}))} 
-          value={bankTransactionB2PData.accountIBAN} 
-          error={!bankTransactionB2PData.accountIBAN && true}
+          value={bankTransactionB2PData.accountIBAN}
           />
-          {!bankTransactionB2PData.accountIBAN && (
-            <FormHelperText error sx={{marginLeft:'0px', fontSize:'12px', color:'#ea5c57'}} >
-              {!bankTransactionB2PData.accountIBAN && "Mandatory Field"}
-            </FormHelperText>
-          )}
           </FormControl>
       </Stack>
       <Stack direction='row' alignItems='center' justifyContent='space-between'>
@@ -430,7 +448,7 @@ function B2PTransactionBank({allowUatAccess, bankTransactionB2PData, setBankTran
           ({...prev, accountAdditionalNo1:target.value}))} 
           value={bankTransactionB2PData.accountAdditionalNo1} /></FormControl>
       </Stack>
-      <Stack direction='row' alignItems='center' justifyContent='space-between'>
+      {/* <Stack direction='row' alignItems='center' justifyContent='space-between'>
         <Typography color="#575757" fontWeight='500'>
         Account Number Additional field 2
         </Typography>
@@ -442,7 +460,7 @@ function B2PTransactionBank({allowUatAccess, bankTransactionB2PData, setBankTran
         ({...prev, accountAdditionalNo2:target.value}))} 
         value={bankTransactionB2PData.accountAdditionalNo2} /></FormControl>
     </Stack>
-
+ */}
 
 
     <Typography fontWeight={600} fontSize={20} variant='h6' color="#404040" >Sender Details:-</Typography>
@@ -466,7 +484,7 @@ function B2PTransactionBank({allowUatAccess, bankTransactionB2PData, setBankTran
           )}
           </FormControl>
       </Stack>
-      <Stack direction='row' alignItems='center' justifyContent='space-between'>
+      {/* <Stack direction='row' alignItems='center' justifyContent='space-between'>
           <Typography color="#575757" fontWeight='500'>
           Company PIN Code
           </Typography>
@@ -477,7 +495,7 @@ function B2PTransactionBank({allowUatAccess, bankTransactionB2PData, setBankTran
           setBankTransactionB2PData( (prev) =>
           ({...prev, senderBusinessPINCode:target.value}))} 
           value={bankTransactionB2PData.senderBusinessPINCode} /></FormControl>
-      </Stack>
+      </Stack> */}
       <Stack direction='row' alignItems='center' justifyContent='space-between'>
           <Typography color="#575757" fontWeight='500'>
           Registered Address 1<span style={{color:'#ea5c57'}}> *</span>
@@ -498,7 +516,7 @@ function B2PTransactionBank({allowUatAccess, bankTransactionB2PData, setBankTran
           )}
           </FormControl>
       </Stack>
-      <Stack direction='row' alignItems='center' justifyContent='space-between'>
+      {/* <Stack direction='row' alignItems='center' justifyContent='space-between'>
           <Typography color="#575757" fontWeight='500'>
           Registered Address 2
           </Typography>
@@ -509,7 +527,7 @@ function B2PTransactionBank({allowUatAccess, bankTransactionB2PData, setBankTran
           setBankTransactionB2PData( (prev) =>
           ({...prev, senderBusinessAddress2:target.value}))} 
           value={bankTransactionB2PData.senderBusinessAddress2} /></FormControl>
-      </Stack>
+      </Stack> */}
       <Stack direction='row' alignItems='center' justifyContent='space-between'>
           <Typography color="#575757" fontWeight='500'>
           Registered City
@@ -534,6 +552,7 @@ function B2PTransactionBank({allowUatAccess, bankTransactionB2PData, setBankTran
           ({...prev, businessAddressCountryCode:target.value}))} 
           value={bankTransactionB2PData.businessAddressCountryCode} /></FormControl>
       </Stack>
+      {/*  */}
       <Stack direction='row' alignItems='center' justifyContent='space-between'>
           <Typography color="#575757" fontWeight='500'>
           Registered Address Zip Code 
@@ -658,7 +677,7 @@ function B2PTransactionBank({allowUatAccess, bankTransactionB2PData, setBankTran
           )}
           </FormControl>
       </Stack>
-      <Stack direction='row' alignItems='center' justifyContent='space-between'>
+      {/* <Stack direction='row' alignItems='center' justifyContent='space-between'>
           <Typography color="#575757" fontWeight='500'>
           Company Incorporation Issued by 
           </Typography>
@@ -669,8 +688,8 @@ function B2PTransactionBank({allowUatAccess, bankTransactionB2PData, setBankTran
           setBankTransactionB2PData( (prev) =>
           ({...prev, senderBusinessRegistrationIssuedBy:target.value}))} 
           value={bankTransactionB2PData.senderBusinessRegistrationIssuedBy} /></FormControl>
-      </Stack>
-      <Stack direction='row' alignItems='center' justifyContent='space-between'>
+      </Stack> */}
+      {/* <Stack direction='row' alignItems='center' justifyContent='space-between'>
           <Typography color="#575757" fontWeight='500'>
           Company Incorporation Issued at  
           </Typography>
@@ -681,7 +700,7 @@ function B2PTransactionBank({allowUatAccess, bankTransactionB2PData, setBankTran
           setBankTransactionB2PData( (prev) =>
           ({...prev, senderBusinessRegistrationIssuedAt:target.value}))} 
           value={bankTransactionB2PData.senderBusinessRegistrationIssuedAt} /></FormControl>
-      </Stack>
+      </Stack> */}
       <Stack direction='row' alignItems='center' justifyContent='space-between'>
           <Typography color="#575757" fontWeight='500'>
           Company Incorporation Number<span style={{color:'#ea5c57'}}> *</span>
@@ -743,7 +762,7 @@ function B2PTransactionBank({allowUatAccess, bankTransactionB2PData, setBankTran
 
     {/* Receiver */}
     <Typography fontWeight={600} fontSize={20} variant='h6' color="#404040">Recipient Details:-</Typography>   
-    <Stack direction='row' alignItems='center' justifyContent='space-between'>
+   {/*  <Stack direction='row' alignItems='center' justifyContent='space-between'>
           <Typography color="#575757" fontWeight='500'>
           Recipient Nationality
           </Typography>
@@ -754,7 +773,7 @@ function B2PTransactionBank({allowUatAccess, bankTransactionB2PData, setBankTran
           setBankTransactionB2PData( (prev) =>
           ({...prev, receiverNationality:target.value}))} 
           value={bankTransactionB2PData.receiverNationality} /></FormControl>
-      </Stack>
+      </Stack> */}
     <Stack direction='row' alignItems='center' justifyContent='space-between'>
           <Typography color="#575757" fontWeight='500'>
           Recipient Primary Contact Country Code
@@ -831,7 +850,7 @@ function B2PTransactionBank({allowUatAccess, bankTransactionB2PData, setBankTran
           )}
           </FormControl>
       </Stack>
-        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+        {/* <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
             Recipient Id Document Type 
             </Typography>
@@ -890,7 +909,7 @@ function B2PTransactionBank({allowUatAccess, bankTransactionB2PData, setBankTran
             setBankTransactionB2PData( (prev) =>
             ({...prev, receiverIssuerCountry:target.value}))} 
             value={bankTransactionB2PData.receiverIssuerCountry} /></FormControl>
-        </Stack>
+        </Stack> */}
 
 
 

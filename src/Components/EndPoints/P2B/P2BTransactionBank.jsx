@@ -399,6 +399,30 @@ function P2BTransactionBank({allowUatAccess, bankTransactionP2BData, setBankTran
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
+            Account Name
+            </Typography>
+            <FormControl sx={{height:45}}>
+            <OutlinedInput sx={{ height: 40 }} placeholder='accountName'
+            disabled={!allowUatAccess}     
+            onChange={({ target }) =>
+            setBankTransactionP2BData( (prev) =>
+            ({...prev, accountName:target.value}))} 
+            value={bankTransactionP2BData.accountName} /></FormControl>
+        </Stack>
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+        <Typography color="#575757" fontWeight='500'>
+        Branch Name
+        </Typography>
+        <FormControl sx={{height:45}}>
+        <OutlinedInput sx={{ height: 40 }} placeholder='branchName'
+        disabled={!allowUatAccess}     
+        onChange={({ target }) =>
+        setBankTransactionP2BData( (prev) =>
+        ({...prev, branchName:target.value}))} 
+        value={bankTransactionP2BData.branchName} /></FormControl>
+    </Stack>
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500'>
             Receive Account IBAN Number<span style={{color:'#ea5c57'}}> *</span>
             </Typography>
             <FormControl sx={{height:45}}>
