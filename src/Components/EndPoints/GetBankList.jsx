@@ -1,5 +1,7 @@
 import React from 'react'
-import { Stack, Button, Box, Typography, OutlinedInput, FormControl, FormHelperText} from '@mui/material'
+import { countryList } from '../../Utils/country'
+import MenuItem from '@mui/material/MenuItem';
+import { Stack, Button, Box, Typography, TextField, OutlinedInput, FormControl, FormHelperText} from '@mui/material'
 
 function GetBankList({allowUatAccess, setGetBankListData, getBankListData}) {
   return (
@@ -13,15 +15,29 @@ function GetBankList({allowUatAccess, setGetBankListData, getBankListData}) {
             Destination Country Code<span style={{color:'#ea5c57'}}> *</span>
             </Typography>
             <FormControl sx={{height:45}}> 
-            <OutlinedInput sx={{ height: 40 }} 
-            placeholder="countryCode"
-            disabled={!allowUatAccess}
-            onChange={({ target }) =>
-            setGetBankListData( (prev) =>
-                ({...prev, country:target.value}))} 
-            value={getBankListData.country} 
-            error={!getBankListData.country && true}
-          />
+
+          <TextField
+            alignItems='center'
+              sx={{ width: 213}}
+              label="Country"
+              onChange={({ target }) =>
+              setGetBankListData( (prev) =>
+                  ({...prev, country:target.value}))} 
+              value={getBankListData.country} 
+              error={!getBankListData.country && true}
+              select
+              InputProps={{ style: { height: 40 } }}
+              InputLabelProps={getBankListData.country?{ style: { height: 40} }:{ style: { height: 40, marginTop:-7 }}} 
+            >
+              <MenuItem value="">Country</MenuItem>
+              {countryList && countryList.length > 0 && countryList.map((value, index) => {
+              return (
+                <MenuItem key={index} value={value.code}>{value.name}</MenuItem>
+              )
+            })}
+            </TextField>
+
+
           {!getBankListData.country && (
             <FormHelperText error sx={{marginLeft:'0px', fontSize:'12px', color:'#ea5c57'}} >
               {!getBankListData.country && "Mandatory Field"}

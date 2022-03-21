@@ -3,6 +3,7 @@ import { styled } from '@mui/system'
 import { useState } from "react";
 import axios from 'axios'
 import MenuItem from '@mui/material/MenuItem';
+import {countryList} from '../../../Utils/country'
 import { Stack, FormHelperText, OutlinedInput, Button, Box, Typography, TextField, Container, FormControl} from '@mui/material'
 
 function AccountStatusBank({allowUatAccess, bankAccountStatusData, setBankAccountStatusData}) {
@@ -110,7 +111,8 @@ function AccountStatusBank({allowUatAccess, bankAccountStatusData, setBankAccoun
         <Typography color="#575757" fontWeight='500'>
         Country Code<span style={{color:'#ea5c57'}}> *</span>
         </Typography><FormControl sx={{height:45}}>
-        <OutlinedInput sx={{ height: 40 }} 
+
+      { /*  <OutlinedInput sx={{ height: 40 }} 
         placeholder="country"
         disabled={!allowUatAccess}
         onChange={({ target }) =>
@@ -118,12 +120,33 @@ function AccountStatusBank({allowUatAccess, bankAccountStatusData, setBankAccoun
         ({...prev, country:target.value}))} 
         value={bankAccountStatusData.country} 
         error={!bankAccountStatusData.country && true}
-        />
-        {!bankAccountStatusData.country && (
+        /> */
+}
+
+        <TextField
+            alignItems='center'
+              sx={{ width: 213}}
+              label="Country"
+              value={bankAccountStatusData.country} 
+              onChange={({ target }) =>
+              setBankAccountStatusData( (prev) =>
+              ({...prev, country:target.value}))} 
+              /*  error={!bankAccountStatusData.country && true} */
+              select
+              InputProps={{ style: { height: 40 } }}
+              InputLabelProps={bankAccountStatusData.country?{ style: { height: 40} }:{ style: { height: 40, marginTop:-7 }}} 
+            >
+              {countryList && countryList.length > 0 && countryList.map((value, index) => {
+              return (
+                <MenuItem key={index} value={value.code}>{value.name}</MenuItem>
+              )
+            })}
+            </TextField>
+        {/* !bankAccountStatusData.country && (
           <FormHelperText error sx={{marginLeft:'0px', fontSize:'12px', color:'#ea5c57'}} >
             {!bankAccountStatusData.country && "Mandatory Field"}
           </FormHelperText>
-        )}
+        ) */}
         </FormControl>
         </Stack>
         {/* Optional & conditional fields */}
