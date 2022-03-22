@@ -4,6 +4,7 @@ import { useState } from "react";
 import axios from 'axios'
 import MenuItem from '@mui/material/MenuItem';
 import { Stack, OutlinedInput, Button, Box, Typography, TextField, Container, FormControl, FormHelperText} from '@mui/material'
+import { currencyList } from '../../../Utils/currency'
 
 function B2BTransactionBank({allowUatAccess, bankTransactionB2BData, setBankTransactionB2BData}) {
     
@@ -58,19 +59,24 @@ function B2BTransactionBank({allowUatAccess, bankTransactionB2BData, setBankTran
             Destination Currency<span style={{color:'#ea5c57'}}> *</span>
             </Typography>
             <FormControl sx={{height:45}}>
-            <OutlinedInput sx={{ height: 40 }} placeholder='currency'
-            disabled={!allowUatAccess}  
-            onChange={({ target }) =>
-            setBankTransactionB2BData( (prev) =>
-          ({...prev, currency:target.value}))} 
-          value={bankTransactionB2BData.currency} 
-          error={!bankTransactionB2BData.currency && true}
-            />
-            {!bankTransactionB2BData.currency && (
-              <FormHelperText error sx={{marginLeft:'0px', fontSize:'12px', color:'#ea5c57'}} >
-                {!bankTransactionB2BData.currency && "Mandatory Field"}
-              </FormHelperText>
-            )}
+            <TextField
+              sx={{ width: 213 }}
+              label="Currency" 
+              onChange={({ target }) =>
+              setBankTransactionB2BData( (prev) =>
+            ({...prev, currency:target.value}))} 
+            value={bankTransactionB2BData.currency} 
+              select
+              disabled={!allowUatAccess}
+              InputProps={{ style: { height: 40 } }}
+              InputLabelProps={bankTransactionB2BData.currency?{ style: { height: 40} }:{ style: { height: 40, marginTop:-7 } }}
+            >
+            {currencyList && currencyList.length > 0 && currencyList.map((value, index) => {
+              return (
+                <MenuItem key={index} value={value.id}>{value.id}</MenuItem>
+              )
+            })}
+          </TextField>
           </FormControl>
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
@@ -165,19 +171,24 @@ function B2BTransactionBank({allowUatAccess, bankTransactionB2BData, setBankTran
             Payin Currency Code<span style={{color:'#ea5c57'}}> *</span>
             </Typography>
             <FormControl sx={{height:45}}>
-            <OutlinedInput sx={{ height: 40 }} placeholder='payinCcyCode'
-            disabled={!allowUatAccess}  
-            onChange={({ target }) =>
-            setBankTransactionB2BData( (prev) =>
-          ({...prev, payinCcyCode:target.value}))} 
-          value={bankTransactionB2BData.payinCcyCode}  
-          error={!bankTransactionB2BData.payinCcyCode && true}
-          />
-          {!bankTransactionB2BData.payinCcyCode && (
-            <FormHelperText error sx={{marginLeft:'0px', fontSize:'12px', color:'#ea5c57'}} >
-              {!bankTransactionB2BData.payinCcyCode && "Mandatory Field"}
-            </FormHelperText>
-          )}
+          <TextField
+              sx={{ width: 213 }}
+              label="Currency" 
+              onChange={({ target }) =>
+              setBankTransactionB2BData( (prev) =>
+            ({...prev, payinCcyCode:target.value}))} 
+            value={bankTransactionB2BData.payinCcyCode} 
+              select
+              disabled={!allowUatAccess}
+              InputProps={{ style: { height: 40 } }}
+              InputLabelProps={bankTransactionB2BData.payinCcyCode?{ style: { height: 40} }:{ style: { height: 40, marginTop:-7 } }}
+            >
+            {currencyList && currencyList.length > 0 && currencyList.map((value, index) => {
+              return (
+                <MenuItem key={index} value={value.id}>{value.id}</MenuItem>
+              )
+            })}
+          </TextField>
           </FormControl>
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
@@ -431,7 +442,7 @@ function B2BTransactionBank({allowUatAccess, bankTransactionB2BData, setBankTran
       {/* Receive Account IBAN Number */}
       <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-            Receive Account IBAN Number<span style={{color:'#ea5c57'}}> *</span>
+            Receive Account IBAN Number
             </Typography>
             <FormControl sx={{height:45}}>
             <OutlinedInput sx={{ height: 40 }} placeholder='accountIBAN creditParty' 
@@ -440,13 +451,7 @@ function B2BTransactionBank({allowUatAccess, bankTransactionB2BData, setBankTran
             setBankTransactionB2BData( (prev) =>
           ({...prev, accountIBAN:target.value}))} 
           value={bankTransactionB2BData.accountIBAN}
-          error={!bankTransactionB2BData.accountIBAN && true}
           />
-          {!bankTransactionB2BData.accountIBAN && (
-            <FormHelperText error sx={{marginLeft:'0px', fontSize:'12px', color:'#ea5c57'}} >
-              {!bankTransactionB2BData.accountIBAN && "Mandatory Field"}
-            </FormHelperText>
-          )}
           </FormControl>
         </Stack>
       {/* Account Number Additional field 1 */}

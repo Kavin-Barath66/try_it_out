@@ -3,6 +3,7 @@ import { styled } from '@mui/system'
 import { useState } from "react";
 import axios from 'axios'
 import MenuItem from '@mui/material/MenuItem';
+import { currencyList } from '../../../Utils/currency'
 import { Stack, OutlinedInput, Button, Box, Typography, TextField, Container, FormControl, FormHelperText} from '@mui/material'
 
 function CreateTransactionMobile({allowUatAccess, createTransactionMobileData, setCreateTransactionMobileData}) {
@@ -59,19 +60,25 @@ function CreateTransactionMobile({allowUatAccess, createTransactionMobileData, s
             Destination Currency<span style={{color:'#ea5c57'}}> *</span>
             </Typography>
             <FormControl sx={{height:45}}>
-        <OutlinedInput sx={{ height: 40 }} placeholder='currency'
-            disabled={!allowUatAccess}
-            onChange={({ target }) =>
+
+          <TextField
+              sx={{ width: 213 }}
+              label="Currency" 
+              onChange={({ target }) =>
             setCreateTransactionMobileData( (prev) =>
           ({...prev, currency:target.value}))} 
-          value={createTransactionMobileData.currency} 
-          error={!createTransactionMobileData.currency && true}
-          />
-          {!createTransactionMobileData.currency && (
-            <FormHelperText error sx={{marginLeft:'0px', fontSize:'12px', color:'#ea5c57'}} >
-              {!createTransactionMobileData.currency && "Mandatory Field"}
-            </FormHelperText>
-          )}
+          value={createTransactionMobileData.currency}
+              select
+              disabled={!allowUatAccess}
+              InputProps={{ style: { height: 40 } }}
+              InputLabelProps={createTransactionMobileData.currency?{ style: { height: 40} }:{ style: { height: 40, marginTop:-7 } }}
+            >
+            {currencyList && currencyList.length > 0 && currencyList.map((value, index) => {
+              return (
+                <MenuItem key={index} value={value.id}>{value.id}</MenuItem>
+              )
+            })}
+          </TextField>
           </FormControl>
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>

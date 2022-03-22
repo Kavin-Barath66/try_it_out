@@ -62,7 +62,7 @@ function CreateQuotationBank({allowUatAccess, createQuotationBank, setCreateQuot
 
         <TextField
           sx={{ width: 213 }}
-          label="Currency"
+          label="Currency" 
           onChange={({ target }) =>
         setCreateQuotationBank( (prev) =>
             ({...prev, requestCurrency:target.value}))} 
