@@ -1906,7 +1906,7 @@ function TryitHeader(props) {
             <Stack width="20%" sx={{ marginRight: '100px' }} direction="column" justifyContent="center">
                 <img src={terrapayLogo} alt="terrapayLogo" />
             </Stack>
-            <Stack width="20%" spacing={3} justifyContent='center' direction='column' >
+            <Stack width="20%"  direction='column' >
             <FormControl>
                     <InputLabel
                         sx={!props.endPoint?{
@@ -1926,7 +1926,7 @@ function TryitHeader(props) {
                     </InputLabel>
                     <Select
                         sx={{
-                            width: '100%',
+                            width: 208,
                             "& .MuiOutlinedInput-notchedOutline": {
                                 borderColor: 'white',
                             },
