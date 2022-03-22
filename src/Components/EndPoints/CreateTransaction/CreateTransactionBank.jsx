@@ -80,7 +80,7 @@ function CreateTransactionBank({allowUatAccess, createTransactionBankData, setCr
             </Typography>
             <FormControl sx={{height:45}}>
         <OutlinedInput sx={{ height: 40 }} placeholder='types'
-            disabled={!allowUatAccess}
+            disabled={true}
             onChange={({ target }) =>
             setCreateTransactionBankData( (prev) =>
             ({...prev, type:target.value}))} 

@@ -79,7 +79,7 @@ function P2BTransactionBank({allowUatAccess, bankTransactionP2BData, setBankTran
             </Typography>
             <FormControl sx={{height:45}}>
             <OutlinedInput sx={{ height: 40 }} placeholder='type'
-            disabled={!allowUatAccess}     
+            disabled={true}     
             onChange={({ target }) =>
             setBankTransactionP2BData( (prev) =>
             ({...prev, type:target.value}))} 

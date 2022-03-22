@@ -79,7 +79,7 @@ function B2BTransactionBank({allowUatAccess, bankTransactionB2BData, setBankTran
             </Typography>
             <FormControl sx={{height:45}}>
             <OutlinedInput sx={{ height: 40 }} placeholder='type' 
-            disabled={!allowUatAccess}  
+            disabled={true}  
             onChange={({ target }) =>
             setBankTransactionB2BData( (prev) =>
           ({...prev, type:target.value}))} 
@@ -401,8 +401,8 @@ function B2BTransactionBank({allowUatAccess, bankTransactionB2BData, setBankTran
             disabled={!allowUatAccess}  
             onChange={({ target }) =>
             setBankTransactionB2BData( (prev) =>
-          ({...prev, receiverBankName:target.value}))} 
-          value={bankTransactionB2BData.receiverBankName}/></FormControl>
+          ({...prev, banksubcode:target.value}))} 
+          value={bankTransactionB2BData.banksubcode}/></FormControl>
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
@@ -438,13 +438,13 @@ function B2BTransactionBank({allowUatAccess, bankTransactionB2BData, setBankTran
             disabled={!allowUatAccess}  
             onChange={({ target }) =>
             setBankTransactionB2BData( (prev) =>
-          ({...prev, receiverBankName:target.value}))} 
-          value={bankTransactionB2BData.receiverBankName}
-          error={!bankTransactionB2BData.receiverBankName && true}
+          ({...prev, accountIBAN:target.value}))} 
+          value={bankTransactionB2BData.accountIBAN}
+          error={!bankTransactionB2BData.accountIBAN && true}
           />
-          {!bankTransactionB2BData.receiverBankName && (
+          {!bankTransactionB2BData.accountIBAN && (
             <FormHelperText error sx={{marginLeft:'0px', fontSize:'12px', color:'#ea5c57'}} >
-              {!bankTransactionB2BData.receiverBankName && "Mandatory Field"}
+              {!bankTransactionB2BData.accountIBAN && "Mandatory Field"}
             </FormHelperText>
           )}
           </FormControl>
@@ -459,8 +459,8 @@ function B2BTransactionBank({allowUatAccess, bankTransactionB2BData, setBankTran
             disabled={!allowUatAccess}  
             onChange={({ target }) =>
             setBankTransactionB2BData( (prev) =>
-          ({...prev, receiverBankName:target.value}))} 
-          value={bankTransactionB2BData.receiverBankName}/></FormControl>
+          ({...prev, accountAdditionalNo1:target.value}))} 
+          value={bankTransactionB2BData.accountAdditionalNo1}/></FormControl>
         </Stack>
       {/* Account Number Additional field 2 */}
       <Stack direction='row' alignItems='center' justifyContent='space-between'>
@@ -472,8 +472,8 @@ function B2BTransactionBank({allowUatAccess, bankTransactionB2BData, setBankTran
             disabled={!allowUatAccess}  
             onChange={({ target }) =>
             setBankTransactionB2BData( (prev) =>
-          ({...prev, receiverBankName:target.value}))} 
-          value={bankTransactionB2BData.receiverBankName}/></FormControl>
+          ({...prev, accountAdditionalNo2:target.value}))} 
+          value={bankTransactionB2BData.accountAdditionalNo2}/></FormControl>
         </Stack>
 
 

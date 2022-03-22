@@ -4,11 +4,14 @@ import './tryitHeader.css'
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios'
 import { useState } from "react";
+import dotIcon from '../../assets/img/dot.png'
+import userIcon from '../../assets/img/user-circle.svg'
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
-import { Stack, OutlinedInput, Button, Box, Typography, TextField, Container } from '@mui/material'
+import { countryList } from '../../Utils/country'
+import { Stack, OutlinedInput, Button, Box, Typography, TextField, Container , IconButton} from '@mui/material'
 import terrapayLogo from '../../assets/img/terrapay_logo.png'
 import { config } from '../../assets/config/config';
 import {requestBodyData, quotationRequestBodyData} from '../../Utils/FilterParams'
@@ -43,7 +46,7 @@ function TryitHeader(props) {
                 'X-USERNAME': `${props.userName}`,
                 'X-PASSWORD':  `${props.password}`,
                 'X-DATE': '2018-04-04 09:27:16',
-                'X-ORIGINCOUNTRY': 'US',
+                 'X-ORIGINCOUNTRY': `${props.country}`,
                 'Accept': 'application/json'
             }
         }
@@ -75,7 +78,7 @@ function TryitHeader(props) {
                 'X-USERNAME': `${props.userName}`,
                 'X-PASSWORD':  `${props.password}`,
                 'X-DATE': '2018-04-04 09:27:16',
-                'X-ORIGINCOUNTRY': 'US',
+                 'X-ORIGINCOUNTRY': `${props.country}`,
                 'Accept': 'application/json', 
                 'Content-Type': 'application/json'
             }
@@ -113,7 +116,7 @@ function TryitHeader(props) {
                 'X-USERNAME': `${props.userName}`,
                 'X-PASSWORD':  `${props.password}`,
                 'X-DATE': '2018-04-04 09:27:16',
-                'X-ORIGINCOUNTRY': 'US',
+                 'X-ORIGINCOUNTRY': `${props.country}`,
                 'Accept': 'application/json', 
                 'Content-Type': 'application/json'
             }
@@ -182,7 +185,7 @@ function TryitHeader(props) {
                 'X-USERNAME': `${props.userName}`,
                 'X-PASSWORD': `${props.password}`,
                 'X-DATE': '2018-04-04 09:27:16',
-                'X-ORIGINCOUNTRY': 'US',
+                 'X-ORIGINCOUNTRY': `${props.country}`,
                 'Accept': 'application/json', 
                 'Content-Type': 'application/json'
             }
@@ -219,7 +222,7 @@ function TryitHeader(props) {
                 'X-USERNAME': `${props.userName}`,
                 'X-PASSWORD':  `${props.password}`,
                 'X-DATE': '2018-04-04 09:27:16',
-                'X-ORIGINCOUNTRY': 'US',
+                 'X-ORIGINCOUNTRY': `${props.country}`,
                 'Accept': 'application/json', 
                 'Content-Type': 'application/json'
             }
@@ -252,7 +255,7 @@ function TryitHeader(props) {
                 'X-USERNAME': `${props.userName}`,
                 'X-PASSWORD':  `${props.password}`,
                 'X-DATE': '2018-04-04 09:27:16',
-                'X-ORIGINCOUNTRY': 'US',
+                 'X-ORIGINCOUNTRY': `${props.country}`,
                 'Accept': 'application/json', 
                 'Content-Type': 'application/json'
             }
@@ -286,7 +289,7 @@ function TryitHeader(props) {
                 'X-USERNAME': `${props.userName}`,
                 'X-PASSWORD':  `${props.password}`,
                 'X-DATE': '2018-04-04 09:27:16',
-                'X-ORIGINCOUNTRY': 'US',
+                'X-ORIGINCOUNTRY': `${props.country}`,
                 'Accept': 'application/json', 
                 'Content-Type': 'application/json'
             }
@@ -319,7 +322,7 @@ function TryitHeader(props) {
                 'X-USERNAME': `${props.userName}`,
                 'X-PASSWORD':  `${props.password}`,
                 'X-DATE': '2018-04-04 09:27:16',
-                'X-ORIGINCOUNTRY': 'US',
+                 'X-ORIGINCOUNTRY': `${props.country}`,
                 'Accept': 'application/json', 
                 'Content-Type': 'application/json'
             }
@@ -384,7 +387,7 @@ function TryitHeader(props) {
                 'X-USERNAME': `${props.userName}`,
                 'X-PASSWORD':  `${props.password}`,
                 'X-DATE': '2018-04-04 09:27:16',
-                'X-ORIGINCOUNTRY': 'US',
+                 'X-ORIGINCOUNTRY': `${props.country}`,
                 'Accept': 'application/json', 
                 'Content-Type': 'application/json'
             }
@@ -449,7 +452,7 @@ function TryitHeader(props) {
                 'X-USERNAME': `${props.userName}`,
                 'X-PASSWORD':  `${props.password}`,
                 'X-DATE': '2018-04-04 09:27:16',
-                'X-ORIGINCOUNTRY': 'US',
+                 'X-ORIGINCOUNTRY': `${props.country}`,
                 'Accept': 'application/json', 
                 'Content-Type': 'application/json'
             }
@@ -482,7 +485,7 @@ function TryitHeader(props) {
                 'X-USERNAME': `${props.userName}`,
                 'X-PASSWORD':  `${props.password}`,
                 'X-DATE': '2018-04-04 09:27:16',
-                'X-ORIGINCOUNTRY': 'US',
+                 'X-ORIGINCOUNTRY': `${props.country}`,
                 'Accept': 'application/json', 
                 'Content-Type': 'application/json'
             }
@@ -515,7 +518,7 @@ function TryitHeader(props) {
                 'X-USERNAME': `${props.userName}`,
                 'X-PASSWORD':  `${props.password}`,
                 'X-DATE': '2018-04-04 09:27:16',
-                'X-ORIGINCOUNTRY': 'US',
+                 'X-ORIGINCOUNTRY': `${props.country}`,
                 'Accept': 'application/json', 
                 'Content-Type': 'application/json'
             }
@@ -655,7 +658,7 @@ function TryitHeader(props) {
                 'X-USERNAME': `${props.userName}`,
                 'X-PASSWORD':  `${props.password}`,
                 'X-DATE': '2018-04-04 09:27:16',
-                'X-ORIGINCOUNTRY': 'US',
+                 'X-ORIGINCOUNTRY': `${props.country}`,
                 'Accept': 'application/json', 
                 'Content-Type': 'application/json'
             }
@@ -793,7 +796,7 @@ function TryitHeader(props) {
                 'X-USERNAME': `${props.userName}`,
                 'X-PASSWORD':  `${props.password}`,
                 'X-DATE': '2018-04-04 09:27:16',
-                'X-ORIGINCOUNTRY': 'US',
+                 'X-ORIGINCOUNTRY': `${props.country}`,
                 'Accept': 'application/json', 
                 'Content-Type': 'application/json'
             }
@@ -957,7 +960,7 @@ function TryitHeader(props) {
                 'X-USERNAME': `${props.userName}`,
                 'X-PASSWORD':  `${props.password}`,
                 'X-DATE': '2018-04-04 09:27:16',
-                'X-ORIGINCOUNTRY': 'US',
+                 'X-ORIGINCOUNTRY': `${props.country}`,
                 'Accept': 'application/json', 
                 'Content-Type': 'application/json'
             }
@@ -1148,7 +1151,7 @@ function TryitHeader(props) {
                 'X-USERNAME': `${props.userName}`,
                 'X-PASSWORD':  `${props.password}`,
                 'X-DATE': '2018-04-04 09:27:16',
-                'X-ORIGINCOUNTRY': 'US',
+                 'X-ORIGINCOUNTRY': `${props.country}`,
                 'Accept': 'application/json', 
                 'Content-Type': 'application/json'
             }
@@ -1302,7 +1305,7 @@ function TryitHeader(props) {
                 'X-USERNAME': `${props.userName}`,
                 'X-PASSWORD':  `${props.password}`,
                 'X-DATE': '2018-04-04 09:27:16',
-                'X-ORIGINCOUNTRY': 'US',
+                 'X-ORIGINCOUNTRY': `${props.country}`,
                 'Accept': 'application/json', 
                 'Content-Type': 'application/json'
             }
@@ -1394,7 +1397,7 @@ function TryitHeader(props) {
                 'X-USERNAME': `${props.userName}`,
                 'X-PASSWORD':  `${props.password}`,
                 'X-DATE': '2018-04-04 09:27:16',
-                'X-ORIGINCOUNTRY': 'US',
+                 'X-ORIGINCOUNTRY': `${props.country}`,
                 'Accept': 'application/json', 
                 'Content-Type': 'application/json'
             }
@@ -1667,7 +1670,7 @@ function TryitHeader(props) {
                 'X-USERNAME': `${props.userName}`,
                 'X-PASSWORD':  `${props.password}`,
                 'X-DATE': '2018-04-04 09:27:16',
-                'X-ORIGINCOUNTRY': 'US',
+                 'X-ORIGINCOUNTRY': `${props.country}`,
                 'Accept': 'application/json', 
                 'Content-Type': 'application/json'
             }
@@ -1899,12 +1902,12 @@ function TryitHeader(props) {
 
     return (
         <Box sx={{position:'fixed', width:'100%'}} className="tryit-header" >
-        <Stack spacing={8} p={3} m={0} justifyContent='space-between' direction='row' /* sx={{ backgroundColor: '#223871' }} */>
-            <Stack width="20%" sx={{ marginRight: '150px' }} direction="column" justifyContent="center">
+        <Stack spacing={6} p={3} m={0} justifyContent='space-between' direction='row' /* sx={{ backgroundColor: '#223871' }} */>
+            <Stack width="20%" sx={{ marginRight: '100px' }} direction="column" justifyContent="center">
                 <img src={terrapayLogo} alt="terrapayLogo" />
             </Stack>
-            <Stack width="30%" spacing={3} justifyContent='center' direction='column' >
-                <FormControl>
+            <Stack width="20%" spacing={3} justifyContent='center' direction='column' >
+            <FormControl>
                     <InputLabel
                         sx={!props.endPoint?{
                             color: 'white',
@@ -1966,6 +1969,69 @@ function TryitHeader(props) {
                         <MenuItem value='Get Bank List'>Get Bank List</MenuItem>
                     </Select>
                 </FormControl>
+            </Stack>
+
+            <Stack width="20%" spacing={3} justifyContent='center' direction='column' >
+            <FormControl>
+            <InputLabel id="demo-simple-select-autowidth-label" 
+            sx={!props.country?{
+                color: 'white',
+                '&.Mui-focused': {
+                    color: 'white',
+                },
+                marginTop:-0.7,
+            }:{
+              color: 'white',
+              '&.Mui-focused': {
+                  color: 'white',
+              },
+          }} 
+            disabled={!props.allowUatAccess} >
+            Country
+            </InputLabel>
+            <Select
+            sx={!props.allowUatAccess?{
+              width: '100%',
+              "& .MuiSvgIcon-root": {
+                  color: "rgba(0, 0, 0, 0.38)",
+              },
+              "& .MuiOutlinedInput-input": {
+                  color: 'white',
+              },
+              "& .MuiOutlinedInput-notchedOutline": {
+                  borderColor: 'white',
+                  '&.Mui-focused': {
+                      borderColor: 'white',
+                  },
+              },
+          }:{
+              width: '100%',
+              "& .MuiSvgIcon-root": {
+                  color: "white",
+              },
+              "& .MuiOutlinedInput-input": {
+                  color: 'white',
+              },
+              "& .MuiOutlinedInput-notchedOutline": {
+                  borderColor: 'white',
+                  '&.Mui-focused': {
+                      borderColor: 'white',
+                  },
+              },
+          }}
+                size="small"
+                value={props.country}
+                onChange={({ target }) => props.setCountry(target.value)}
+                input={<OutlinedInput label="Country" 
+                disabled={!props.allowUatAccess} />} >
+                {countryList && countryList.length > 0 && countryList.map((value, index) => {
+                  return (
+                    <MenuItem key={index} value={value.code}>{value.name}</MenuItem>
+                  )
+                })}
+            </Select>
+        </FormControl>
+
                 <TextField
                         sx={{
                           '& label': {
@@ -2014,24 +2080,8 @@ function TryitHeader(props) {
                     onChange={({ target }) => props.setuserName(target.value)} value={props.userName}
                     disabled={!props.allowUatAccess}
                 />
-                {/* <OutlinedInput
-                    disabled={!props.allowUatAccess}
-                    sx={{
-                    height: 40, width: '100%',
-                    "& .MuiOutlinedInput-input": {
-                        color: 'white',
-                    },
-                    "& .MuiOutlinedInput-notchedOutline": {
-                        borderColor: 'white',
-                        '&.Mui-focused fieldset': {
-                            borderColor: 'white',
-                        },
-                    },
-                    }} 
-                    placeholder='Username' onChange={({ target }) => props.setuserName(target.value)} value={props.userName}
-                /> */}
             </Stack>
-            <Stack width="30%" spacing={3} justifyContent='center' direction='column' >
+            <Stack width="20%" spacing={3} justifyContent='center' direction='column' >
                 <FormControl>
                     <InputLabel id="demo-simple-select-autowidth-label" 
                     sx={!props.environment?{
@@ -2137,28 +2187,6 @@ function TryitHeader(props) {
                     value={props.password} 
                     disabled={!props.allowUatAccess}
                 />
-                {/* <OutlinedInput sx={{
-                    height: 40, width: '100%',
-                    "& .MuiOutlinedInput-input": {
-                        color: 'white',
-                    },
-                    "& .MuiOutlinedInput-notchedOutline": {
-                        borderColor: 'white',
-                        '&.Mui-focused': {
-                            borderColor: 'white',
-                        },
-                    },
-                    "outlinedInputFocused": {
-                        borderStyle: 'none',
-                        borderColor: 'red',
-                        outlineWidth: 0,
-                        outline: 'none',
-                        backgroundColor: 'green'
-                    },
-                }}
-                placeholder='Password' onChange={({ target }) => props.setPassword(target.value)} value={props.password} 
-                disabled={!props.allowUatAccess}
-                />  */}
             </Stack>
             <Stack width="20%" spacing={3} direction='column' >
                 {/* {(props.endPoint==="Account Status Mobile" && props.mobileAccountStatusData.instrument && props.mobileAccountStatusData.bnv && props.mobileAccountStatusData.msisdn)?<CustomButtom  sx={{textAlign:'center', minWidth:'180px', alignSelf: 'center', letterSpacing: 1, backgroundColor:'#ea5c57'}} variant='contained' onClick={getAccountStatus} >TRY IT OUT</CustomButtom>:
