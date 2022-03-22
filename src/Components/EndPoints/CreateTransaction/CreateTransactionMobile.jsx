@@ -4,6 +4,7 @@ import { useState } from "react";
 import axios from 'axios'
 import MenuItem from '@mui/material/MenuItem';
 import { currencyList } from '../../../Utils/currency'
+import { countryList } from '../../../Utils/country'
 import { Stack, OutlinedInput, Button, Box, Typography, TextField, Container, FormControl, FormHelperText} from '@mui/material'
 
 function CreateTransactionMobile({allowUatAccess, createTransactionMobileData, setCreateTransactionMobileData}) {
@@ -14,7 +15,7 @@ function CreateTransactionMobile({allowUatAccess, createTransactionMobileData, s
     <Stack direction='row' alignItems='center' justifyContent='center'>
         <Typography py={2} textAlign='center' fontWeight={600} fontSize={20} variant='h6' color="#404040">Create Transaction Mobile</Typography>
     </Stack>
-    <Stack height="100%" width={600} spacing={5} sx={{ p: 4 }} >
+    <Stack height="100%" width={'100%'} spacing={5} sx={{ paddingTop: 4, paddingBottom:4, paddingRight:15, paddingLeft:15 }} >
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
             Creation Date/Time<span style={{color:'#ea5c57'}}> *</span>
@@ -280,19 +281,28 @@ function CreateTransactionMobile({allowUatAccess, createTransactionMobileData, s
             Nationality (Sender)<span style={{color:'#ea5c57'}}> *</span>
             </Typography>
             <FormControl sx={{height:45}}>
-        <OutlinedInput sx={{ height: 40 }} placeholder='nationality'
-            disabled={!allowUatAccess}
-            onChange={({ target }) =>
-            setCreateTransactionMobileData( (prev) =>
-            ({...prev, nationality:target.value}))} 
-            value={createTransactionMobileData.nationality} 
-            error={!createTransactionMobileData.nationality && true}
-            />
-            {!createTransactionMobileData.nationality && (
-              <FormHelperText error sx={{marginLeft:'0px', fontSize:'12px', color:'#ea5c57'}} >
-                {!createTransactionMobileData.nationality && "Mandatory Field"}
-              </FormHelperText>
-            )}
+
+            <TextField
+            alignItems='center'
+              sx={{ width: 213}}
+              label="Nationality"
+              disabled={!allowUatAccess}
+              onChange={({ target }) =>
+              setCreateTransactionMobileData( (prev) =>
+              ({...prev, nationality:target.value}))} 
+              value={createTransactionMobileData.nationality}  
+              select
+              InputProps={{ style: { height: 40 } }}
+              InputLabelProps={createTransactionMobileData.nationality?{ style: { height: 40} }:{ style: { height: 40, marginTop:-7 }}} 
+            >
+              <MenuItem value="">Country</MenuItem>
+              {countryList && countryList.length > 0 && countryList.map((value, index) => {
+              return (
+                <MenuItem key={index} value={value.code}>{value.name}</MenuItem>
+              )
+            })}
+            </TextField>
+
             </FormControl>
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
@@ -320,8 +330,8 @@ function CreateTransactionMobile({allowUatAccess, createTransactionMobileData, s
             Gender (Sender)
             </Typography>
             <TextField
-            sx={{ width: 205 }}
-            label="gender"
+            sx={{ width: 213 }}
+            label="Gender"
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionMobileData( (prev) =>
@@ -414,12 +424,28 @@ function CreateTransactionMobile({allowUatAccess, createTransactionMobileData, s
             Id Issuer Country (Sender)
             </Typography>
             <FormControl sx={{height:45}}>
-        <OutlinedInput sx={{ height: 40 }} placeholder='issuerCountry' 
-            disabled={!allowUatAccess}
-            onChange={({ target }) =>
+
+            <TextField
+            alignItems='center'
+              sx={{ width: 213}}
+              label="Issuer Country"
+              disabled={!allowUatAccess}
+              onChange={({ target }) =>
             setCreateTransactionMobileData( (prev) =>
             ({...prev, issuerCountry:target.value}))} 
-            value={createTransactionMobileData.issuerCountry} />
+            value={createTransactionMobileData.issuerCountry}
+              select
+              InputProps={{ style: { height: 40 } }}
+              InputLabelProps={createTransactionMobileData.issuerCountry?{ style: { height: 40} }:{ style: { height: 40, marginTop:-7 }}} 
+            >
+              <MenuItem value="">Country</MenuItem>
+              {countryList && countryList.length > 0 && countryList.map((value, index) => {
+              return (
+                <MenuItem key={index} value={value.code}>{value.name}</MenuItem>
+              )
+            })}
+            </TextField>
+
             </FormControl>
         </Stack> 
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
@@ -519,19 +545,28 @@ function CreateTransactionMobile({allowUatAccess, createTransactionMobileData, s
             Country (Sender Address)<span style={{color:'#ea5c57'}}> *</span>
             </Typography>
             <FormControl sx={{height:45}}>
-        <OutlinedInput sx={{ height: 40 }} placeholder='country' 
-            disabled={!allowUatAccess}
-            onChange={({ target }) =>
+
+            <TextField
+            alignItems='center'
+              sx={{ width: 213}}
+              label="Country"
+              disabled={!allowUatAccess}
+              onChange={({ target }) =>
             setCreateTransactionMobileData( (prev) =>
             ({...prev, country:target.value}))} 
             value={createTransactionMobileData.country}
-            error={!createTransactionMobileData.country && true}
-            />
-            {!createTransactionMobileData.country && (
-              <FormHelperText error sx={{marginLeft:'0px', fontSize:'12px', color:'#ea5c57'}} >
-                {!createTransactionMobileData.country && "Mandatory Field"}
-              </FormHelperText>
-            )}
+              select
+              InputProps={{ style: { height: 40 } }}
+              InputLabelProps={createTransactionMobileData.country?{ style: { height: 40} }:{ style: { height: 40, marginTop:-7 }}} 
+            >
+              <MenuItem value="">Country</MenuItem>
+              {countryList && countryList.length > 0 && countryList.map((value, index) => {
+              return (
+                <MenuItem key={index} value={value.code}>{value.name}</MenuItem>
+              )
+            })}
+            </TextField>
+
             </FormControl>
         </Stack>
 
@@ -611,12 +646,28 @@ function CreateTransactionMobile({allowUatAccess, createTransactionMobileData, s
             Nationality (Receiver)
             </Typography>
             <FormControl sx={{height:45}}>
-        <OutlinedInput sx={{ height: 40 }} placeholder='nationality'
-            disabled={!allowUatAccess}
-            onChange={({ target }) =>
+
+            <TextField
+            alignItems='center'
+              sx={{ width: 213}}
+              label="Nationality"
+              disabled={!allowUatAccess}
+              onChange={({ target }) =>
             setCreateTransactionMobileData( (prev) =>
             ({...prev, receiverNationality:target.value}))} 
-            value={createTransactionMobileData.receiverNationality} />
+            value={createTransactionMobileData.receiverNationality}
+              select
+              InputProps={{ style: { height: 40 } }}
+              InputLabelProps={createTransactionMobileData.receiverNationality?{ style: { height: 40} }:{ style: { height: 40, marginTop:-7 }}} 
+            >
+              <MenuItem value="">Country</MenuItem>
+              {countryList && countryList.length > 0 && countryList.map((value, index) => {
+              return (
+                <MenuItem key={index} value={value.code}>{value.name}</MenuItem>
+              )
+            })}
+            </TextField>
+
             </FormControl>
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
@@ -689,12 +740,28 @@ function CreateTransactionMobile({allowUatAccess, createTransactionMobileData, s
             Id Issuer Country (Receiver)
             </Typography>
             <FormControl sx={{height:45}}>
-        <OutlinedInput sx={{ height: 40 }} placeholder='issuerCountry'
-            disabled={!allowUatAccess}
-            onChange={({ target }) =>
+
+            <TextField
+            alignItems='center'
+              sx={{ width: 213}}
+              label="Issuer Country"
+              disabled={!allowUatAccess}
+              onChange={({ target }) =>
             setCreateTransactionMobileData( (prev) =>
             ({...prev, receiverIssuerCountry:target.value}))} 
-            value={createTransactionMobileData.receiverIssuerCountry} />
+            value={createTransactionMobileData.receiverIssuerCountry}
+              select
+              InputProps={{ style: { height: 40 } }}
+              InputLabelProps={createTransactionMobileData.receiverIssuerCountry?{ style: { height: 40} }:{ style: { height: 40, marginTop:-7 }}} 
+            >
+              <MenuItem value="">Country</MenuItem>
+              {countryList && countryList.length > 0 && countryList.map((value, index) => {
+              return (
+                <MenuItem key={index} value={value.code}>{value.name}</MenuItem>
+              )
+            })}
+            </TextField>
+
             </FormControl>
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
@@ -780,12 +847,28 @@ function CreateTransactionMobile({allowUatAccess, createTransactionMobileData, s
             Country (Receiver Address)
             </Typography>
             <FormControl sx={{height:45}}>
-        <OutlinedInput sx={{ height: 40 }} placeholder='country'
-            disabled={!allowUatAccess} 
-            onChange={({ target }) =>
+
+            <TextField
+            alignItems='center'
+              sx={{ width: 213}}
+              label="Country"
+              disabled={!allowUatAccess}
+              onChange={({ target }) =>
             setCreateTransactionMobileData( (prev) =>
             ({...prev, receiverCountry:target.value}))} 
-            value={createTransactionMobileData.receiverCountry}/>
+            value={createTransactionMobileData.receiverCountry}
+              select
+              InputProps={{ style: { height: 40 } }}
+              InputLabelProps={createTransactionMobileData.receiverCountry?{ style: { height: 40} }:{ style: { height: 40, marginTop:-7 }}} 
+            >
+              <MenuItem value="">Country</MenuItem>
+              {countryList && countryList.length > 0 && countryList.map((value, index) => {
+              return (
+                <MenuItem key={index} value={value.code}>{value.name}</MenuItem>
+              )
+            })}
+            </TextField>
+
             </FormControl>
         </Stack>
 
@@ -882,19 +965,28 @@ function CreateTransactionMobile({allowUatAccess, createTransactionMobileData, s
             Destination Country<span style={{color:'#ea5c57'}}> *</span>
             </Typography>
             <FormControl sx={{height:45}}>
-        <OutlinedInput sx={{ height: 40 }} placeholder='receivingCountry' 
-            disabled={!allowUatAccess}
-            onChange={({ target }) =>
+            
+            <TextField
+            alignItems='center'
+              sx={{ width: 213}}
+              label="Country"
+              disabled={!allowUatAccess}
+              onChange={({ target }) =>
             setCreateTransactionMobileData( (prev) =>
             ({...prev, receivingCountry:target.value}))} 
             value={createTransactionMobileData.receivingCountry}
-            error={!createTransactionMobileData.receivingCountry && true}
-            />
-            {!createTransactionMobileData.receivingCountry && (
-              <FormHelperText error sx={{marginLeft:'0px', fontSize:'12px', color:'#ea5c57'}} >
-                {!createTransactionMobileData.receivingCountry && "Mandatory Field"}
-              </FormHelperText>
-            )}
+              select
+              InputProps={{ style: { height: 40 } }}
+              InputLabelProps={createTransactionMobileData.receivingCountry?{ style: { height: 40} }:{ style: { height: 40, marginTop:-7 }}} 
+            >
+              <MenuItem value="">Country</MenuItem>
+              {countryList && countryList.length > 0 && countryList.map((value, index) => {
+              return (
+                <MenuItem key={index} value={value.code}>{value.name}</MenuItem>
+              )
+            })}
+            </TextField>
+
             </FormControl>
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>

@@ -13,7 +13,7 @@ function CancelTransaction({allowUatAccess, cancelTransactionData, setCancelTran
     <Stack direction='row' alignItems='center' justifyContent='center'>
         <Typography py={2} textAlign='center' fontWeight={600} fontSize={20} variant='h6' color="#404040">Cancel Transaction</Typography>
     </Stack>
-    <Stack height="100%" width={600} spacing={5} sx={{ p: 4 }} >
+    <Stack height="100%" width={'100%'} spacing={5} sx={{ paddingTop: 4, paddingBottom:4, paddingRight:15, paddingLeft:15 }}  >
       <Stack direction='row' alignItems='center' justifyContent='space-between'>
           <Typography color="#575757" fontWeight='500'>
           Reason For Cancelling

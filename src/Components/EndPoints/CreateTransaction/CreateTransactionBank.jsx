@@ -4,6 +4,7 @@ import { useState } from "react";
 import axios from 'axios'
 import MenuItem from '@mui/material/MenuItem';
 import { currencyList } from '../../../Utils/currency'
+import { countryList } from '../../../Utils/country'
 import { Stack, OutlinedInput, Button, Box, Typography, TextField, Container, FormControl, FormHelperText} from '@mui/material'
 
 function CreateTransactionBank({allowUatAccess, createTransactionBankData, setCreateTransactionBankData}) {
@@ -14,7 +15,7 @@ function CreateTransactionBank({allowUatAccess, createTransactionBankData, setCr
     <Stack direction='row' alignItems='center' justifyContent='center'>
         <Typography py={2} textAlign='center' fontWeight={600} fontSize={20} variant='h6' color="#404040">Create Transaction Bank</Typography>
     </Stack>
-    <Stack height="100%" width={600} spacing={5} sx={{ p: 4 }} >
+    <Stack height="100%" width={'100%'} spacing={5} sx={{ paddingTop: 4, paddingBottom:4, paddingRight:15, paddingLeft:15 }} >
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
             Creation Date/Time<span style={{color:'#ea5c57'}}> *</span>
@@ -289,19 +290,28 @@ function CreateTransactionBank({allowUatAccess, createTransactionBankData, setCr
             Nationality (Sender)<span style={{color:'#ea5c57'}}> *</span>
             </Typography>
             <FormControl sx={{height:45}}>
-        <OutlinedInput sx={{ height: 40 }} placeholder='nationality'
-            disabled={!allowUatAccess}
-            onChange={({ target }) =>
+        
+            <TextField
+            alignItems='center'
+              sx={{ width: 213}}
+              label="Nationality"
+              disabled={!allowUatAccess}
+              onChange={({ target }) =>
             setCreateTransactionBankData( (prev) =>
             ({...prev, senderNationality:target.value}))} 
             value={createTransactionBankData.senderNationality} 
-            error={!createTransactionBankData.senderNationality && true}
-            />
-            {!createTransactionBankData.senderNationality && (
-              <FormHelperText error sx={{marginLeft:'0px', fontSize:'12px', color:'#ea5c57'}} >
-                {!createTransactionBankData.senderNationality && "Mandatory Field"}
-              </FormHelperText>
-            )}
+              select
+              InputProps={{ style: { height: 40 } }}
+              InputLabelProps={createTransactionBankData.senderNationality?{ style: { height: 40} }:{ style: { height: 40, marginTop:-7 }}} 
+            >
+              <MenuItem value="">Country</MenuItem>
+              {countryList && countryList.length > 0 && countryList.map((value, index) => {
+              return (
+                <MenuItem key={index} value={value.code}>{value.name}</MenuItem>
+              )
+            })}
+            </TextField>
+
             </FormControl>
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
@@ -330,7 +340,7 @@ function CreateTransactionBank({allowUatAccess, createTransactionBankData, setCr
             </Typography>
             <TextField
               sx={{ width: 205 }}
-              label="gender"
+              label="Gender"
               disabled={!allowUatAccess}
               onChange={({ target }) =>
                 setCreateTransactionBankData( (prev) =>
@@ -422,12 +432,28 @@ function CreateTransactionBank({allowUatAccess, createTransactionBankData, setCr
             Id Issuer Country (Sender)
             </Typography>
             <FormControl sx={{height:45}}>
-        <OutlinedInput sx={{ height: 40 }} placeholder='issuerCountry' 
-            disabled={!allowUatAccess}
-            onChange={({ target }) =>
+
+            <TextField
+            alignItems='center'
+              sx={{ width: 213}}
+              label="Issuer Country"
+              disabled={!allowUatAccess}
+              onChange={({ target }) =>
             setCreateTransactionBankData( (prev) =>
             ({...prev, issuerCountry:target.value}))} 
-            value={createTransactionBankData.issuerCountry} />
+            value={createTransactionBankData.issuerCountry}
+              select
+              InputProps={{ style: { height: 40 } }}
+              InputLabelProps={createTransactionBankData.issuerCountry?{ style: { height: 40} }:{ style: { height: 40, marginTop:-7 }}} 
+            >
+              <MenuItem value="">Country</MenuItem>
+              {countryList && countryList.length > 0 && countryList.map((value, index) => {
+              return (
+                <MenuItem key={index} value={value.code}>{value.name}</MenuItem>
+              )
+            })}
+            </TextField>
+
             </FormControl>
         </Stack> 
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
@@ -527,19 +553,28 @@ function CreateTransactionBank({allowUatAccess, createTransactionBankData, setCr
             Country (Sender Address)<span style={{color:'#ea5c57'}}> *</span>
             </Typography>
             <FormControl sx={{height:45}}>
-        <OutlinedInput sx={{ height: 40 }} placeholder='country'
-            disabled={!allowUatAccess}
-            onChange={({ target }) =>
+
+            <TextField
+            alignItems='center'
+              sx={{ width: 213}}
+              label="Country"
+              disabled={!allowUatAccess}
+              onChange={({ target }) =>
             setCreateTransactionBankData( (prev) =>
             ({...prev, country:target.value}))} 
             value={createTransactionBankData.country}
-            error={!createTransactionBankData.country && true}
-            />
-            {!createTransactionBankData.country && (
-              <FormHelperText error sx={{marginLeft:'0px', fontSize:'12px', color:'#ea5c57'}} >
-                {!createTransactionBankData.country && "Mandatory Field"}
-              </FormHelperText>
-            )}
+              select
+              InputProps={{ style: { height: 40 } }}
+              InputLabelProps={createTransactionBankData.country?{ style: { height: 40} }:{ style: { height: 40, marginTop:-7 }}} 
+            >
+              <MenuItem value="">Country</MenuItem>
+              {countryList && countryList.length > 0 && countryList.map((value, index) => {
+              return (
+                <MenuItem key={index} value={value.code}>{value.name}</MenuItem>
+              )
+            })}
+            </TextField>
+
             </FormControl>
         </Stack>
         {/* Title (Sender) 
@@ -616,12 +651,27 @@ function CreateTransactionBank({allowUatAccess, createTransactionBankData, setCr
             Nationality (Receiver)
             </Typography>
             <FormControl sx={{height:45}}>
-        <OutlinedInput sx={{ height: 40 }} placeholder='nationality'
-            disabled={!allowUatAccess}
-            onChange={({ target }) =>
-            setCreateTransactionBankData( (prev) =>
-            ({...prev, receiverNationality:target.value}))} 
-            value={createTransactionBankData.receiverNationality} />
+
+            <TextField
+            alignItems='center'
+              sx={{ width: 213}}
+              label="Nationality"
+              disabled={!allowUatAccess}
+              onChange={({ target }) =>
+              setCreateTransactionBankData( (prev) =>
+              ({...prev, receiverNationality:target.value}))} 
+              value={createTransactionBankData.receiverNationality}
+              select
+              InputProps={{ style: { height: 40 } }}
+              InputLabelProps={createTransactionBankData.receiverNationality?{ style: { height: 40} }:{ style: { height: 40, marginTop:-7 }}} 
+            >
+              <MenuItem value="">Country</MenuItem>
+              {countryList && countryList.length > 0 && countryList.map((value, index) => {
+              return (
+                <MenuItem key={index} value={value.code}>{value.name}</MenuItem>
+              )
+            })}
+            </TextField>
             </FormControl>
         </Stack>
         {/* Date of Birth (Receiver)  */}
@@ -700,12 +750,28 @@ function CreateTransactionBank({allowUatAccess, createTransactionBankData, setCr
             Id Issuer Country (Receiver)
             </Typography>
             <FormControl sx={{height:45}}>
-        <OutlinedInput sx={{ height: 40 }} placeholder='issuerCountry'
-            disabled={!allowUatAccess}
-            onChange={({ target }) =>
+
+            <TextField
+            alignItems='center'
+              sx={{ width: 213}}
+              label="Issuer Country"
+              disabled={!allowUatAccess}
+              onChange={({ target }) =>
             setCreateTransactionBankData( (prev) =>
             ({...prev, receiverIssuerCountry:target.value}))} 
-            value={createTransactionBankData.receiverIssuerCountry} />
+            value={createTransactionBankData.receiverIssuerCountry}
+              select
+              InputProps={{ style: { height: 40 } }}
+              InputLabelProps={createTransactionBankData.receiverIssuerCountry?{ style: { height: 40} }:{ style: { height: 40, marginTop:-7 }}} 
+            >
+              <MenuItem value="">Country</MenuItem>
+              {countryList && countryList.length > 0 && countryList.map((value, index) => {
+              return (
+                <MenuItem key={index} value={value.code}>{value.name}</MenuItem>
+              )
+            })}
+            </TextField>
+
             </FormControl>
         </Stack>
         {/* Address Line1 (Receiver Address) */}
@@ -798,12 +864,29 @@ function CreateTransactionBank({allowUatAccess, createTransactionBankData, setCr
             Country (Receiver Address) 
             </Typography>
             <FormControl sx={{height:45}}>
-        <OutlinedInput sx={{ height: 40 }} placeholder='country'
-            disabled={!allowUatAccess}
-            onChange={({ target }) =>
-            setCreateTransactionBankData( (prev) =>
-            ({...prev, receiverCountry:target.value}))} 
-            value={createTransactionBankData.receiverCountry} />
+  
+            <TextField
+            alignItems='center'
+              sx={{ width: 213}}
+              label="Country"
+              disabled={!allowUatAccess}
+              onChange={({ target }) =>
+              setCreateTransactionBankData( (prev) =>
+              ({...prev, receiverCountry:target.value}))} 
+              value={createTransactionBankData.receiverCountry} 
+              select
+              InputProps={{ style: { height: 40 } }}
+              InputLabelProps={createTransactionBankData.receiverCountry?{ style: { height: 40} }:{ style: { height: 40, marginTop:-7 }}} 
+            >
+              <MenuItem value="">Country</MenuItem>
+              {countryList && countryList.length > 0 && countryList.map((value, index) => {
+              return (
+                <MenuItem key={index} value={value.code}>{value.name}</MenuItem>
+              )
+            })}
+            </TextField>
+
+
             </FormControl>
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
@@ -871,19 +954,28 @@ function CreateTransactionBank({allowUatAccess, createTransactionBankData, setCr
             Destination Country<span style={{color:'#ea5c57'}}> *</span>
             </Typography>
             <FormControl sx={{height:45}}>
-        <OutlinedInput sx={{ height: 40 }} placeholder='receivingCountry'
-            disabled={!allowUatAccess}
-            onChange={({ target }) =>
+
+            <TextField
+            alignItems='center'
+              sx={{ width: 213}}
+              label="Country"
+              disabled={!allowUatAccess}
+              onChange={({ target }) =>
             setCreateTransactionBankData( (prev) =>
             ({...prev, receivingCountry:target.value}))} 
             value={createTransactionBankData.receivingCountry} 
-            error={!createTransactionBankData.receivingCountry && true}
-            />
-            {!createTransactionBankData.receivingCountry && (
-              <FormHelperText error sx={{marginLeft:'0px', fontSize:'12px', color:'#ea5c57'}} >
-                {!createTransactionBankData.receivingCountry && "Mandatory Field"}
-              </FormHelperText>
-            )}
+              select
+              InputProps={{ style: { height: 40 } }}
+              InputLabelProps={createTransactionBankData.receivingCountry?{ style: { height: 40} }:{ style: { height: 40, marginTop:-7 }}} 
+            >
+              <MenuItem value="">Country</MenuItem>
+              {countryList && countryList.length > 0 && countryList.map((value, index) => {
+              return (
+                <MenuItem key={index} value={value.code}>{value.name}</MenuItem>
+              )
+            })}
+            </TextField>
+
             </FormControl>
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>

@@ -4,6 +4,7 @@ import { useState } from "react";
 import axios from 'axios'
 import MenuItem from '@mui/material/MenuItem';
 import { currencyList } from '../../../Utils/currency'
+import { countryList } from '../../../Utils/country'
 import { Stack, OutlinedInput, Button, Box, Typography, TextField, Container, FormControl, FormHelperText} from '@mui/material'
 
 function B2PTransactionBank({allowUatAccess, bankTransactionB2PData, setBankTransactionB2PData}) {
@@ -14,7 +15,7 @@ function B2PTransactionBank({allowUatAccess, bankTransactionB2PData, setBankTran
     <Stack direction='row' alignItems='center' justifyContent='center'>
         <Typography py={2} textAlign='center' fontWeight={600} fontSize={20} variant='h6' color="#404040">B2P Transaction Bank</Typography>
     </Stack>
-    <Stack height="100%" width={600} spacing={5} sx={{ p: 4 }} >
+    <Stack height="100%" width={'100%'} spacing={5} sx={{ paddingTop: 4, paddingBottom:4, paddingRight:15, paddingLeft:15 }} >
     <Stack direction='row' alignItems='center' justifyContent='space-between'>
         <Typography color="#575757" fontWeight='500'>
         Creation Date/Time<span style={{color:'#ea5c57'}}> *</span>
@@ -173,7 +174,7 @@ function B2PTransactionBank({allowUatAccess, bankTransactionB2PData, setBankTran
 
           <TextField
               sx={{ width: 213 }}
-              label="Currency" 
+              label="Payin Currency" 
               onChange={({ target }) =>
               setBankTransactionB2PData( (prev) =>
               ({...prev, payinCcyCode:target.value}))} 
@@ -558,12 +559,29 @@ function B2PTransactionBank({allowUatAccess, bankTransactionB2PData, setBankTran
           Registered Country Code
           </Typography>
           <FormControl sx={{height:45}}>
-            <OutlinedInput sx={{ height: 40 }} placeholder='businessAddressCountryCode'
-          disabled={!allowUatAccess}       
-          onChange={({ target }) =>
-          setBankTransactionB2PData( (prev) =>
-          ({...prev, businessAddressCountryCode:target.value}))} 
-          value={bankTransactionB2PData.businessAddressCountryCode} /></FormControl>
+          
+          <TextField
+            alignItems='center'
+              sx={{ width: 213}}
+              label="Country"
+              disabled={!allowUatAccess}
+              onChange={({ target }) =>
+              setBankTransactionB2PData( (prev) =>
+              ({...prev, businessAddressCountryCode:target.value}))} 
+              value={bankTransactionB2PData.businessAddressCountryCode} 
+              select
+              InputProps={{ style: { height: 40 } }}
+              InputLabelProps={bankTransactionB2PData.businessAddressCountryCode?{ style: { height: 40} }:{ style: { height: 40, marginTop:-7 }}} 
+            >
+              <MenuItem value="">Country</MenuItem>
+              {countryList && countryList.length > 0 && countryList.map((value, index) => {
+              return (
+                <MenuItem key={index} value={value.code}>{value.name}</MenuItem>
+              )
+            })}
+            </TextField>
+          
+          </FormControl>
       </Stack>
       {/*  */}
       <Stack direction='row' alignItems='center' justifyContent='space-between'>
@@ -583,19 +601,28 @@ function B2PTransactionBank({allowUatAccess, bankTransactionB2PData, setBankTran
           Company Primary Contact Country Code<span style={{color:'#ea5c57'}}> *</span>
           </Typography>
           <FormControl sx={{height:45}}>
-            <OutlinedInput sx={{ height: 40 }} placeholder='businessPrimaryContactCountryCode'
-          disabled={!allowUatAccess}       
-          onChange={({ target }) =>
+
+          <TextField
+            alignItems='center'
+              sx={{ width: 213}}
+              label="Country"
+              disabled={!allowUatAccess}
+              onChange={({ target }) =>
           setBankTransactionB2PData( (prev) =>
           ({...prev, businessPrimaryContactCountryCode:target.value}))} 
-          value={bankTransactionB2PData.businessPrimaryContactCountryCode} 
-          error={!bankTransactionB2PData.businessPrimaryContactCountryCode && true}
-          />
-          {!bankTransactionB2PData.businessPrimaryContactCountryCode && (
-            <FormHelperText error sx={{marginLeft:'0px', fontSize:'12px', color:'#ea5c57'}} >
-              {!bankTransactionB2PData.businessPrimaryContactCountryCode && "Mandatory Field"}
-            </FormHelperText>
-          )}
+          value={bankTransactionB2PData.businessPrimaryContactCountryCode}  
+              select
+              InputProps={{ style: { height: 40 } }}
+              InputLabelProps={bankTransactionB2PData.businessPrimaryContactCountryCode?{ style: { height: 40} }:{ style: { height: 40, marginTop:-7 }}} 
+            >
+              <MenuItem value="">Country</MenuItem>
+              {countryList && countryList.length > 0 && countryList.map((value, index) => {
+              return (
+                <MenuItem key={index} value={value.code}>{value.name}</MenuItem>
+              )
+            })}
+            </TextField>
+
           </FormControl>
       </Stack>
       <Stack direction='row' alignItems='center' justifyContent='space-between'>
@@ -655,19 +682,29 @@ function B2PTransactionBank({allowUatAccess, bankTransactionB2PData, setBankTran
           Company Country Code<span style={{color:'#ea5c57'}}> *</span>
           </Typography>
           <FormControl sx={{height:45}}>
-            <OutlinedInput sx={{ height: 40 }} placeholder='businessCountryCode' 
-          disabled={!allowUatAccess}       
-          onChange={({ target }) =>
-          setBankTransactionB2PData( (prev) =>
-          ({...prev, businessCountryCode:target.value}))} 
-          value={bankTransactionB2PData.businessCountryCode} 
-          error={!bankTransactionB2PData.businessCountryCode && true}
-          />
-          {!bankTransactionB2PData.businessCountryCode && (
-            <FormHelperText error sx={{marginLeft:'0px', fontSize:'12px', color:'#ea5c57'}} >
-              {!bankTransactionB2PData.businessCountryCode && "Mandatory Field"}
-            </FormHelperText>
-          )}
+
+          <TextField
+            alignItems='center'
+              sx={{ width: 213}}
+              label="Country"
+              disabled={!allowUatAccess}
+              disabled={!allowUatAccess}
+              onChange={({ target }) =>
+              setBankTransactionB2PData( (prev) =>
+              ({...prev, businessCountryCode:target.value}))} 
+              value={bankTransactionB2PData.businessCountryCode} 
+              select
+              InputProps={{ style: { height: 40 } }}
+              InputLabelProps={bankTransactionB2PData.businessCountryCode?{ style: { height: 40} }:{ style: { height: 40, marginTop:-7 }}} 
+            >
+              <MenuItem value="">Country</MenuItem>
+              {countryList && countryList.length > 0 && countryList.map((value, index) => {
+              return (
+                <MenuItem key={index} value={value.code}>{value.name}</MenuItem>
+              )
+            })}
+            </TextField>
+
           </FormControl>
       </Stack>
       <Stack direction='row' alignItems='center' justifyContent='space-between'>
@@ -780,12 +817,30 @@ function B2PTransactionBank({allowUatAccess, bankTransactionB2PData, setBankTran
           Recipient Nationality
           </Typography>
           <FormControl sx={{height:45}}>
-            <OutlinedInput sx={{ height: 40 }} placeholder='nationality' 
-          disabled={!allowUatAccess}       
-          onChange={({ target }) =>
+
+          <TextField
+          alignItems='center'
+            sx={{ width: 213}}
+            label="Nationality"
+            disabled={!allowUatAccess}
+            onChange={({ target }) =>
           setBankTransactionB2PData( (prev) =>
           ({...prev, receiverNationality:target.value}))} 
-          value={bankTransactionB2PData.receiverNationality} /></FormControl>
+          value={bankTransactionB2PData.receiverNationality}
+            select
+            InputProps={{ style: { height: 40 } }}
+            InputLabelProps={bankTransactionB2PData.receiverNationality?{ style: { height: 40} }:{ style: { height: 40, marginTop:-7 }}} 
+          >
+            <MenuItem value="">Country</MenuItem>
+            {countryList && countryList.length > 0 && countryList.map((value, index) => {
+            return (
+              <MenuItem key={index} value={value.code}>{value.name}</MenuItem>
+            )
+          })}
+          </TextField>
+
+          
+          </FormControl>
       </Stack>
     <Stack direction='row' alignItems='center' justifyContent='space-between'>
           <Typography color="#575757" fontWeight='500'>
@@ -955,19 +1010,28 @@ function B2PTransactionBank({allowUatAccess, bankTransactionB2PData, setBankTran
           Receiving Country<span style={{color:'#ea5c57'}}> *</span>
           </Typography>
           <FormControl sx={{height:45}}>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Receiving Country' 
-          disabled={!allowUatAccess}       
-          onChange={({ target }) =>
+
+          <TextField
+            alignItems='center'
+              sx={{ width: 213}}
+              label="Country"
+              disabled={!allowUatAccess}
+              onChange={({ target }) =>
           setBankTransactionB2PData( (prev) =>
           ({...prev, receivingCountry:target.value}))} 
           value={bankTransactionB2PData.receivingCountry}  
-          error={!bankTransactionB2PData.receivingCountry && true}
-          />
-          {!bankTransactionB2PData.receivingCountry && (
-            <FormHelperText error sx={{marginLeft:'0px', fontSize:'12px', color:'#ea5c57'}} >
-              {!bankTransactionB2PData.receivingCountry && "Mandatory Field"}
-            </FormHelperText>
-          )}
+              select
+              InputProps={{ style: { height: 40 } }}
+              InputLabelProps={bankTransactionB2PData.receivingCountry?{ style: { height: 40} }:{ style: { height: 40, marginTop:-7 }}} 
+            >
+              <MenuItem value="">Country</MenuItem>
+              {countryList && countryList.length > 0 && countryList.map((value, index) => {
+              return (
+                <MenuItem key={index} value={value.code}>{value.name}</MenuItem>
+              )
+            })}
+            </TextField>
+
           </FormControl>
       </Stack>
       <Stack direction='row' alignItems='center' justifyContent='space-between'>
