@@ -572,6 +572,7 @@ function B2BTransactionBank({allowUatAccess, bankTransactionB2BData, setBankTran
             alignItems='center'
               sx={{ width: 213}}
               label="Country"
+              disabled={!allowUatAccess} 
               onChange={({ target }) =>
                 setBankTransactionB2BData( (prev) =>
               ({...prev, senderBusinessAddressCountryCode:target.value}))} 
@@ -611,6 +612,7 @@ function B2BTransactionBank({allowUatAccess, bankTransactionB2BData, setBankTran
           <TextField
             alignItems='center'
               sx={{ width: 213}}
+              disabled={!allowUatAccess} 
               label="Country"
               onChange={({ target }) =>
             setBankTransactionB2BData( (prev) =>
@@ -691,6 +693,7 @@ function B2BTransactionBank({allowUatAccess, bankTransactionB2BData, setBankTran
             alignItems='center'
               sx={{ width: 213}}
               label="Country"
+              disabled={!allowUatAccess}  
               onChange={({ target }) =>
               setBankTransactionB2BData( (prev) =>
             ({...prev, senderBusinessCountryCode:target.value}))} 
@@ -898,6 +901,7 @@ function B2BTransactionBank({allowUatAccess, bankTransactionB2BData, setBankTran
           <TextField
             alignItems='center'
               sx={{ width: 213}}
+              disabled={!allowUatAccess}
               label="Country"
               onChange={({ target }) =>
             setBankTransactionB2BData( (prev) =>
@@ -938,6 +942,7 @@ function B2BTransactionBank({allowUatAccess, bankTransactionB2BData, setBankTran
           <TextField
             alignItems='center'
               sx={{ width: 213}}
+              disabled={!allowUatAccess}
               label="Country"
               onChange={({ target }) =>
               setBankTransactionB2BData( (prev) =>
@@ -1014,6 +1019,7 @@ function B2BTransactionBank({allowUatAccess, bankTransactionB2BData, setBankTran
           <TextField
             alignItems='center'
               sx={{ width: 213}}
+              disabled={!allowUatAccess}  
               label="Country"
               onChange={({ target }) =>
             setBankTransactionB2BData( (prev) =>
@@ -1212,6 +1218,7 @@ function B2BTransactionBank({allowUatAccess, bankTransactionB2BData, setBankTran
             alignItems='center'
               sx={{ width: 213}}
               label="Country"
+              disabled={!allowUatAccess} 
               onChange={({ target }) =>
             setBankTransactionB2BData( (prev) =>
           ({...prev, receivingCountry:target.value}))} 

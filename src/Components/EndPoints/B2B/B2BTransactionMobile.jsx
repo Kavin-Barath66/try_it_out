@@ -3,6 +3,8 @@ import { styled } from '@mui/system'
 import { useState } from "react";
 import axios from 'axios'
 import MenuItem from '@mui/material/MenuItem';
+import { currencyList } from '../../../Utils/currency'
+import { countryList } from '../../../Utils/country'
 import { Stack, OutlinedInput, Button, Box, Typography, TextField, Container, FormControl, FormHelperText} from '@mui/material'
 
 function B2BTransactionMobile({allowUatAccess, mobileTransactionB2BData, setMobileTransactionB2BData}) {
@@ -59,19 +61,24 @@ function B2BTransactionMobile({allowUatAccess, mobileTransactionB2BData, setMobi
             Destination Currency<span style={{color:'#ea5c57'}}> *</span>
             </Typography>
             <FormControl sx={{height:45}}>
-            <OutlinedInput sx={{ height: 40 }} placeholder='currency'
-            disabled={!allowUatAccess}  
-            onChange={({ target }) =>
-            setMobileTransactionB2BData( (prev) =>
-          ({...prev, currency:target.value}))} 
-          value={mobileTransactionB2BData.currency} 
-          error={!mobileTransactionB2BData.currency && true}
-          />
-          {!mobileTransactionB2BData.currency && (
-            <FormHelperText error sx={{marginLeft:'0px', fontSize:'12px', color:'#ea5c57'}} >
-              {!mobileTransactionB2BData.currency && "Mandatory Field"}
-            </FormHelperText>
-          )}
+            <TextField
+                sx={{ width: 213 }}
+                label="Currency" 
+                onChange={({ target }) =>
+                setMobileTransactionB2BData( (prev) =>
+              ({...prev, currency:target.value}))} 
+              value={mobileTransactionB2BData.currency} 
+                select
+                disabled={!allowUatAccess}
+                InputProps={{ style: { height: 40 } }}
+                InputLabelProps={mobileTransactionB2BData.currency?{ style: { height: 40} }:{ style: { height: 40, marginTop:-7 } }}
+                >
+                {currencyList && currencyList.length > 0 && currencyList.map((value, index) => {
+                return (
+                    <MenuItem key={index} value={value.id}>{value.id}</MenuItem>
+                )
+                })}
+            </TextField>
           </FormControl>
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
@@ -80,7 +87,7 @@ function B2BTransactionMobile({allowUatAccess, mobileTransactionB2BData, setMobi
             </Typography>
             <FormControl sx={{height:45}}>
             <OutlinedInput sx={{ height: 40 }} placeholder='type' 
-            disabled={!allowUatAccess}  
+            disabled={true}  
             onChange={({ target }) =>
             setMobileTransactionB2BData( (prev) =>
           ({...prev, type:target.value}))} 
@@ -163,20 +170,27 @@ function B2BTransactionMobile({allowUatAccess, mobileTransactionB2BData, setMobi
             <Typography color="#575757" fontWeight='500'>
                 Payin Currency Code<span style={{color:'#ea5c57'}}> *</span>
             </Typography>
-            <FormControl sx={{height:45}}>
-            <OutlinedInput sx={{ height: 40 }} placeholder='payinCcyCode'
-            disabled={!allowUatAccess}  
-            onChange={({ target }) =>
-            setMobileTransactionB2BData( (prev) =>
-          ({...prev, payinCcyCode:target.value}))} 
-          value={mobileTransactionB2BData.payinCcyCode}  
-          error={!mobileTransactionB2BData.payinCcyCode && true}
-          />
-          {!mobileTransactionB2BData.payinCcyCode && (
-            <FormHelperText error sx={{marginLeft:'0px', fontSize:'12px', color:'#ea5c57'}} >
-              {!mobileTransactionB2BData.payinCcyCode && "Mandatory Field"}
-            </FormHelperText>
-          )}
+            <FormControl sx={{height:45}}>            
+          <TextField
+              sx={{ width: 213 }}
+              label="Currency" 
+              onChange={({ target }) =>
+              setMobileTransactionB2BData( (prev) =>
+            ({...prev, payinCcyCode:target.value}))} 
+            value={mobileTransactionB2BData.payinCcyCode}
+              select
+              disabled={!allowUatAccess}
+              InputProps={{ style: { height: 40 } }}
+              InputLabelProps={mobileTransactionB2BData.payinCcyCode?{ style: { height: 40} }:{ style: { height: 40, marginTop:-7 } }}
+              >
+              {currencyList && currencyList.length > 0 && currencyList.map((value, index) => {
+              return (
+                  <MenuItem key={index} value={value.id}>{value.id}</MenuItem>
+              )
+              })}
+          </TextField>
+
+
           </FormControl>
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
@@ -512,11 +526,30 @@ function B2BTransactionMobile({allowUatAccess, mobileTransactionB2BData, setMobi
               Registered Country Code
             </Typography>
             <FormControl sx={{height:45}}>
-            <OutlinedInput sx={{ height: 40 }} placeholder='businessAddressCountryCode' 
-            disabled={!allowUatAccess}  onChange={({ target }) =>
+          
+          <TextField
+            alignItems='center'
+              sx={{ width: 213}}
+              label="Country"
+              disabled={!allowUatAccess}
+              onChange={({ target }) =>
             setMobileTransactionB2BData( (prev) =>
           ({...prev, senderBusinessAddressCountryCode:target.value}))} 
-          value={mobileTransactionB2BData.senderBusinessAddressCountryCode} /></FormControl>
+          value={mobileTransactionB2BData.senderBusinessAddressCountryCode} 
+              select
+              InputProps={{ style: { height: 40 } }}
+              InputLabelProps={mobileTransactionB2BData.senderBusinessAddressCountryCode?{ style: { height: 40} }:{ style: { height: 40, marginTop:-7 }}} 
+            >
+              <MenuItem value="">Country</MenuItem>
+              {countryList && countryList.length > 0 && countryList.map((value, index) => {
+              return (
+                <MenuItem key={index} value={value.code}>{value.name}</MenuItem>
+              )
+            })}
+            </TextField>
+
+          
+          </FormControl>
         </Stack>
         {/* Registered Address Zip Code */}
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
@@ -536,14 +569,28 @@ function B2BTransactionMobile({allowUatAccess, mobileTransactionB2BData, setMobi
             Company Primary Contact Country Code<span style={{color:'#ea5c57'}}> *</span>
             </Typography>
             <FormControl sx={{height:45}}>
-            <OutlinedInput sx={{ height: 40 }} placeholder='businessPrimaryContactCountryCode' 
-            disabled={!allowUatAccess}  
-            onChange={({ target }) =>
+          <TextField
+            alignItems='center'
+              sx={{ width: 213}}
+              label="Country"
+              disabled={!allowUatAccess}
+              onChange={({ target }) =>
             setMobileTransactionB2BData( (prev) =>
           ({...prev, senderBusinessPrimaryContactCountryCode:target.value}))} 
           value={mobileTransactionB2BData.senderBusinessPrimaryContactCountryCode} 
           error={!mobileTransactionB2BData.senderBusinessPrimaryContactCountryCode && true}
-          />
+              select
+              InputProps={{ style: { height: 40 } }}
+              InputLabelProps={mobileTransactionB2BData.senderBusinessPrimaryContactCountryCode?{ style: { height: 40} }:{ style: { height: 40, marginTop:-7 }}} 
+            >
+              <MenuItem value="">Country</MenuItem>
+              {countryList && countryList.length > 0 && countryList.map((value, index) => {
+              return (
+                <MenuItem key={index} value={value.code}>{value.name}</MenuItem>
+              )
+            })}
+            </TextField>
+
           {!mobileTransactionB2BData.senderBusinessPrimaryContactCountryCode && (
             <FormHelperText error sx={{marginLeft:'0px', fontSize:'12px', color:'#ea5c57'}} >
               {!mobileTransactionB2BData.senderBusinessPrimaryContactCountryCode && "Mandatory Field"}
@@ -608,14 +655,30 @@ function B2BTransactionMobile({allowUatAccess, mobileTransactionB2BData, setMobi
             Company Country Code<span style={{color:'#ea5c57'}}> *</span>
             </Typography>
             <FormControl sx={{height:45}}>
-            <OutlinedInput sx={{ height: 40 }} placeholder='businessCountryCode'
-            disabled={!allowUatAccess}  
-            onChange={({ target }) =>
+          <TextField
+            alignItems='center'
+              sx={{ width: 213}}
+              label="Country"
+              disabled={!allowUatAccess}
+              onChange={({ target }) =>
             setMobileTransactionB2BData( (prev) =>
           ({...prev, senderBusinessCountryCode:target.value}))} 
           value={mobileTransactionB2BData.senderBusinessCountryCode} 
           error={!mobileTransactionB2BData.senderBusinessCountryCode && true}
-          />
+              select
+              InputProps={{ style: { height: 40 } }}
+              InputLabelProps={mobileTransactionB2BData.senderBusinessCountryCode ?{ style: { height: 40} }:{ style: { height: 40, marginTop:-7 }}} 
+            >
+              <MenuItem value="">Country</MenuItem>
+              {countryList && countryList.length > 0 && countryList.map((value, index) => {
+              return (
+                <MenuItem key={index} value={value.code}>{value.name}</MenuItem>
+              )
+            })}
+            </TextField>
+
+
+
           {!mobileTransactionB2BData.senderBusinessCountryCode && (
             <FormHelperText error sx={{marginLeft:'0px', fontSize:'12px', color:'#ea5c57'}} >
               {!mobileTransactionB2BData.senderBusinessCountryCode && "Mandatory Field"}
@@ -810,14 +873,28 @@ function B2BTransactionMobile({allowUatAccess, mobileTransactionB2BData, setMobi
             Recipient Registered Country Code<span style={{color:'#ea5c57'}}> *</span>
             </Typography>
             <FormControl sx={{height:45}}>
-            <OutlinedInput sx={{ height: 40 }} placeholder='businessAddressCountryCode'
-            disabled={!allowUatAccess}  
-            onChange={({ target }) =>
-            setMobileTransactionB2BData( (prev) =>
-          ({...prev, recepientBusinessAddressCountryCode:target.value}))} 
-          value={mobileTransactionB2BData.recepientBusinessAddressCountryCode} 
-          error={!mobileTransactionB2BData.recepientBusinessAddressCountryCode && true}
-          />
+          <TextField
+            alignItems='center'
+              sx={{ width: 213}}
+              label="Country"
+              disabled={!allowUatAccess}
+              onChange={({ target }) =>
+              setMobileTransactionB2BData( (prev) =>
+            ({...prev, recepientBusinessAddressCountryCode:target.value}))} 
+            value={mobileTransactionB2BData.recepientBusinessAddressCountryCode} 
+            error={!mobileTransactionB2BData.recepientBusinessAddressCountryCode && true} 
+              select
+              InputProps={{ style: { height: 40 } }}
+              InputLabelProps={mobileTransactionB2BData.recepientBusinessAddressCountryCode?{ style: { height: 40} }:{ style: { height: 40, marginTop:-7 }}} 
+            >
+              <MenuItem value="">Country</MenuItem>
+              {countryList && countryList.length > 0 && countryList.map((value, index) => {
+              return (
+                <MenuItem key={index} value={value.code}>{value.name}</MenuItem>
+              )
+            })}
+            </TextField>
+
           {!mobileTransactionB2BData.recepientBusinessAddressCountryCode && (
             <FormHelperText error sx={{marginLeft:'0px', fontSize:'12px', color:'#ea5c57'}} >
               {!mobileTransactionB2BData.recepientBusinessAddressCountryCode && "Mandatory Field"}
@@ -842,12 +919,30 @@ function B2BTransactionMobile({allowUatAccess, mobileTransactionB2BData, setMobi
             Recipient Company Primary Contact Country Code
             </Typography>
             <FormControl sx={{height:45}}>
-            <OutlinedInput sx={{ height: 40 }} placeholder='businessPrimaryContactCountryCode' 
-            disabled={!allowUatAccess}  
-            onChange={({ target }) =>
+
+          <TextField
+            alignItems='center'
+              sx={{ width: 213}}
+              label="Country"
+              disabled={!allowUatAccess}
+              onChange={({ target }) =>
             setMobileTransactionB2BData( (prev) =>
           ({...prev, recepientBusinessPrimaryContactCountryCode:target.value}))} 
-          value={mobileTransactionB2BData.recepientBusinessPrimaryContactCountryCode}/></FormControl>
+          value={mobileTransactionB2BData.recepientBusinessPrimaryContactCountryCode}
+              select
+              InputProps={{ style: { height: 40 } }}
+              InputLabelProps={mobileTransactionB2BData.recepientBusinessPrimaryContactCountryCode?{ style: { height: 40} }:{ style: { height: 40, marginTop:-7 }}} 
+            >
+              <MenuItem value="">Country</MenuItem>
+              {countryList && countryList.length > 0 && countryList.map((value, index) => {
+              return (
+                <MenuItem key={index} value={value.code}>{value.name}</MenuItem>
+              )
+            })}
+            </TextField>
+
+          
+          </FormControl>
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
@@ -902,12 +997,27 @@ function B2BTransactionMobile({allowUatAccess, mobileTransactionB2BData, setMobi
             Recipient Company Country Code
             </Typography>
             <FormControl sx={{height:45}}>
-            <OutlinedInput sx={{ height: 40 }} placeholder='businessCountryCode' 
-            disabled={!allowUatAccess}  
-            onChange={({ target }) =>
-            setMobileTransactionB2BData( (prev) =>
-          ({...prev, recepientBusinessCountryCode:target.value}))} 
-          value={mobileTransactionB2BData.recepientBusinessCountryCode} /></FormControl>
+            <TextField
+              alignItems='center'
+                sx={{ width: 213}}
+                label="Country"
+                disabled={!allowUatAccess}
+                onChange={({ target }) =>
+              setMobileTransactionB2BData( (prev) =>
+            ({...prev, recepientBusinessCountryCode:target.value}))} 
+            value={mobileTransactionB2BData.recepientBusinessCountryCode}
+                select
+                InputProps={{ style: { height: 40 } }}
+                InputLabelProps={mobileTransactionB2BData.recepientBusinessCountryCode?{ style: { height: 40} }:{ style: { height: 40, marginTop:-7 }}} 
+              >
+                <MenuItem value="">Country</MenuItem>
+                {countryList && countryList.length > 0 && countryList.map((value, index) => {
+                return (
+                  <MenuItem key={index} value={value.code}>{value.name}</MenuItem>
+                )
+              })}
+              </TextField>
+          </FormControl>
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
@@ -1082,13 +1192,28 @@ function B2BTransactionMobile({allowUatAccess, mobileTransactionB2BData, setMobi
                 Receiving Country<span style={{color:'#ea5c57'}}> *</span>
             </Typography>
             <FormControl sx={{height:45}}>
-            <OutlinedInput sx={{ height: 40 }} placeholder='Receiving Country' 
-            disabled={!allowUatAccess}  onChange={({ target }) =>
-            setMobileTransactionB2BData( (prev) =>
-          ({...prev, receivingCountry:target.value}))} 
-          value={mobileTransactionB2BData.receivingCountry}
-          error={!mobileTransactionB2BData.receivingCountry && true}
-          />
+          <TextField
+            alignItems='center'
+              sx={{ width: 213}}
+              label="Country"
+              disabled={!allowUatAccess}
+              onChange={({ target }) =>
+              setMobileTransactionB2BData( (prev) =>
+            ({...prev, receivingCountry:target.value}))} 
+            value={mobileTransactionB2BData.receivingCountry}
+            error={!mobileTransactionB2BData.receivingCountry && true}
+              select
+              InputProps={{ style: { height: 40 } }}
+              InputLabelProps={mobileTransactionB2BData.receivingCountry?{ style: { height: 40} }:{ style: { height: 40, marginTop:-7 }}} 
+            >
+              <MenuItem value="">Country</MenuItem>
+              {countryList && countryList.length > 0 && countryList.map((value, index) => {
+              return (
+                <MenuItem key={index} value={value.code}>{value.name}</MenuItem>
+              )
+            })}
+            </TextField>
+
           {!mobileTransactionB2BData.receivingCountry && (
             <FormHelperText error sx={{marginLeft:'0px', fontSize:'12px', color:'#ea5c57'}} >
               {!mobileTransactionB2BData.receivingCountry && "Mandatory Field"}

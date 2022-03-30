@@ -5,17 +5,23 @@ import { useNavigate } from 'react-router-dom';
 import axios from 'axios'
 import { useState } from "react";
 import dotIcon from '../../assets/img/dot.png'
+import cancelIcon from '../../assets/img/cancel.png'
 import userIcon from '../../assets/img/user-circle.svg'
+import LoggedInUser from '../../assets/img/user2.png'
 import InputLabel from '@mui/material/InputLabel';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
 import { countryList } from '../../Utils/country'
-import { Stack, OutlinedInput, Button, Box, Typography, TextField, Container , IconButton} from '@mui/material'
+import { Stack, OutlinedInput, Button, Box, Typography, TextField, Container , IconButton, FormHelperText} from '@mui/material'
 import terrapayLogo from '../../assets/img/terrapay_logo.png'
 import { config } from '../../assets/config/config';
 import {requestBodyData, quotationRequestBodyData} from '../../Utils/FilterParams'
-import { options } from 'joi';
+import Dialog from '@mui/material/Dialog';
+import DialogActions from '@mui/material/DialogActions';
+import DialogContent from '@mui/material/DialogContent';
+import DialogContentText from '@mui/material/DialogContentText';
+import DialogTitle from '@mui/material/DialogTitle';
 const apiUrl = config.api.url;
 
 
@@ -30,6 +36,18 @@ const MenuProps = {
 
 function TryitHeader(props) {
     const navigate = useNavigate();
+    const [email, setEmail] = useState("")
+    const [otp, setOtp] = useState("")
+    const [partnerId, setPartnerId] =useState("")
+    const [userPartnerId, setUserPartnerId]  =useState("")
+    const [showOTPScreen, setShowOTPScreen] = useState(false);
+    /* Validation State */
+    const [isError, setIsError] = useState(false);
+    const [errorMessage, setErrorMessage] = useState("");
+    const [open, setOpen] = React.useState(false);
+    const handleClickOpen = () => {setIsError(false);setErrorMessage("");setEmail("");setOtp("");setShowOTPScreen(false);setOpen(true);};
+    const handleClose = () => {setOpen(false);};
+    const getCookieValue = (name) => (document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)')?.pop() || '')
 
     const CustomButtom = styled(Button)`
         &.Mui-disabled{
@@ -38,6 +56,88 @@ function TryitHeader(props) {
         }&:hover {
             background-color: #E4302A;
         }`
+        const CustomLoginButtom = styled(Button)`
+        &.Mui-disabled{
+        opacity:0.5;
+        color:white
+        }&:hover {
+            background-color: #E4302A;
+        }`
+
+    const devportalLogin = ()=>{
+      if(email===""){
+        setIsError(true);
+        setErrorMessage("Email required");
+      }else if(!email.match(/^(([^<>()[\]\\.,;:\s@\"]+(\.[^<>()[\]\\.,;:\s@\"]+)*)|(\".+\"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/)){
+        setIsError(true);
+        setErrorMessage("Invalid email");
+      }else if(email.length>254){
+        setIsError(true);
+        setErrorMessage("Length exceed 254 characters");
+      }else{
+        setIsError(false);
+        setErrorMessage("");
+        var requestUrl = `${apiUrl}/v1/dev/login`;
+        axios.post(requestUrl, {
+          emailId: email
+          }).then(function (response) {
+          if(response.data.status===200 && response.data.message==="Sent OTP Mail successfully!"){
+            setShowOTPScreen(true)
+            setPartnerId(response.data.data.partner_id)
+            setUserPartnerId(response.data.data.user_partner_id)
+          }
+        }) 
+        .catch(error => {
+          if (error.response) {
+            /* deleteCookie('refreshToken') */
+          }
+        })
+      }
+    }
+    
+    const devportalVerifyOtp = () =>{
+      if(otp===""){
+        setIsError(true);
+        setErrorMessage("OTP required");
+      }else if(!otp.match(/^\d+/)){
+        setIsError(true);
+        setErrorMessage("The OTP that you have entered is incorrect. Please enter the correct one.");
+      }else if(otp.length>4){
+        setIsError(true);
+        setErrorMessage("Length exceed 4 digits");
+      }else{
+        var requestUrl = `${apiUrl}/v1/dev/verify-otp`;
+        axios.post(requestUrl, {
+        otp: otp,
+        partner_id: partnerId,
+        user_partner_id: userPartnerId
+        }).then(function (response) {
+        if(response.data.status===200 && response.data.message==="Logged in successfully"){
+          setIsError(false);
+          setErrorMessage("");
+          props.setAllowUatAccess(true)
+          setOpen(false)
+        }
+        })
+        .catch(error => {
+          console.log("erorerer", error)
+          if (error.response) {
+            if (error.response.data.message === `Entered OTP doesn't match!`) {
+              console.log("ifasd allal", error.response.data.message)
+              setIsError(true);
+              setErrorMessage("The OTP that you have entered is incorrect. Please enter the correct one.");
+            } else {
+              setIsError(true);
+              setErrorMessage(error.response.data.message)
+              console.log("else allal", error.response.data.message)
+            }
+          }
+        })
+      }
+    }
+    const clearEmailField = () => {
+      setEmail("")
+    }
 
     const getLedgerBalanceApi = () => {
       var requestUrl = `${apiUrl}/v1/try-it/ledger-balance?`;
@@ -47,7 +147,8 @@ function TryitHeader(props) {
                 'X-PASSWORD':  `${props.password}`,
                 'X-DATE': '2018-04-04 09:27:16',
                  'X-ORIGINCOUNTRY': `${props.country}`,
-                'Accept': 'application/json'
+                'Accept': 'application/json',
+                'x-access-token': getCookieValue("accessToken"),
             }
         }
         if(props.environment==="uat") {
@@ -80,7 +181,8 @@ function TryitHeader(props) {
                 'X-DATE': '2018-04-04 09:27:16',
                  'X-ORIGINCOUNTRY': `${props.country}`,
                 'Accept': 'application/json', 
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'x-access-token': getCookieValue("accessToken"),
             }
         }
         if(props.environment==="uat") {
@@ -118,7 +220,8 @@ function TryitHeader(props) {
                 'X-DATE': '2018-04-04 09:27:16',
                  'X-ORIGINCOUNTRY': `${props.country}`,
                 'Accept': 'application/json', 
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'x-access-token': getCookieValue("accessToken"),
             }
         }
         if(props.environment==="uat") {
@@ -154,7 +257,8 @@ function TryitHeader(props) {
                 'X-USERNAME': `${props.userName}`,
                 'X-PASSWORD':  `${props.password}`,
                 'X-DATE': '2018-04-04 09:27:16',
-                'X-ORIGINCOUNTRY': 'US'
+                'X-ORIGINCOUNTRY': 'US',
+                'x-access-token': getCookieValue("accessToken"),
             }
         }
         if(props.environment==="uat") {
@@ -187,7 +291,8 @@ function TryitHeader(props) {
                 'X-DATE': '2018-04-04 09:27:16',
                  'X-ORIGINCOUNTRY': `${props.country}`,
                 'Accept': 'application/json', 
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'x-access-token': getCookieValue("accessToken"),
             }
         }
         if(props.environment==="uat") {
@@ -224,7 +329,8 @@ function TryitHeader(props) {
                 'X-DATE': '2018-04-04 09:27:16',
                  'X-ORIGINCOUNTRY': `${props.country}`,
                 'Accept': 'application/json', 
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'x-access-token': getCookieValue("accessToken"),
             }
         }
         if(props.environment==="uat") {
@@ -257,7 +363,8 @@ function TryitHeader(props) {
                 'X-DATE': '2018-04-04 09:27:16',
                  'X-ORIGINCOUNTRY': `${props.country}`,
                 'Accept': 'application/json', 
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'x-access-token': getCookieValue("accessToken"),
             }
         }
         if(props.environment==="uat") {
@@ -291,7 +398,8 @@ function TryitHeader(props) {
                 'X-DATE': '2018-04-04 09:27:16',
                 'X-ORIGINCOUNTRY': `${props.country}`,
                 'Accept': 'application/json', 
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'x-access-token': getCookieValue("accessToken"),
             }
         }
         if(props.environment==="uat") {
@@ -324,7 +432,8 @@ function TryitHeader(props) {
                 'X-DATE': '2018-04-04 09:27:16',
                  'X-ORIGINCOUNTRY': `${props.country}`,
                 'Accept': 'application/json', 
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'x-access-token': getCookieValue("accessToken"),
             }
         }
         if(props.environment==="uat") {
@@ -389,7 +498,8 @@ function TryitHeader(props) {
                 'X-DATE': '2018-04-04 09:27:16',
                  'X-ORIGINCOUNTRY': `${props.country}`,
                 'Accept': 'application/json', 
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'x-access-token': getCookieValue("accessToken"),
             }
         }
         if(props.environment==="uat") {
@@ -454,7 +564,8 @@ function TryitHeader(props) {
                 'X-DATE': '2018-04-04 09:27:16',
                  'X-ORIGINCOUNTRY': `${props.country}`,
                 'Accept': 'application/json', 
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'x-access-token': getCookieValue("accessToken"),
             }
         }
         if(props.environment==="uat") {
@@ -487,7 +598,8 @@ function TryitHeader(props) {
                 'X-DATE': '2018-04-04 09:27:16',
                  'X-ORIGINCOUNTRY': `${props.country}`,
                 'Accept': 'application/json', 
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'x-access-token': getCookieValue("accessToken"),
             }
         }
         if(props.environment==="uat") {
@@ -520,7 +632,8 @@ function TryitHeader(props) {
                 'X-DATE': '2018-04-04 09:27:16',
                  'X-ORIGINCOUNTRY': `${props.country}`,
                 'Accept': 'application/json', 
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'x-access-token': getCookieValue("accessToken"),
             }
         }
         let requestBodyDataInfo={
@@ -660,7 +773,8 @@ function TryitHeader(props) {
                 'X-DATE': '2018-04-04 09:27:16',
                  'X-ORIGINCOUNTRY': `${props.country}`,
                 'Accept': 'application/json', 
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'x-access-token': getCookieValue("accessToken"),
             }
         }
         let requestBodyDataInfo={
@@ -798,7 +912,8 @@ function TryitHeader(props) {
                 'X-DATE': '2018-04-04 09:27:16',
                  'X-ORIGINCOUNTRY': `${props.country}`,
                 'Accept': 'application/json', 
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'x-access-token': getCookieValue("accessToken"),
             }
         }
         var requestBodyDataInfo ={
@@ -962,7 +1077,8 @@ function TryitHeader(props) {
                 'X-DATE': '2018-04-04 09:27:16',
                  'X-ORIGINCOUNTRY': `${props.country}`,
                 'Accept': 'application/json', 
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'x-access-token': getCookieValue("accessToken"),
             }
         }
         var requestBodyDataInfo ={
@@ -1052,84 +1168,7 @@ function TryitHeader(props) {
         options.headers['X-ENVIRONMENT'] = 'sandbox'
       }
         axios.post(`${apiUrl}/v1/try-it/transaction`,
-        /* {
-            "amount": `${props.mobileTransactionB2BData.amount}`,
-            "currency": `${props.mobileTransactionB2BData.currency}`,
-            "type": `${props.mobileTransactionB2BData.type}`,
-            "descriptionText": `${props.mobileTransactionB2BData.descriptionText}`,
-            "requestDate": `${props.mobileTransactionB2BData.requestDate}`,
-            "requestingOrganisationTransactionReference": `${props.mobileTransactionB2BData.transRef}`,
-            "debitParty": [
-              {
-                "key": "msisdn",
-                "value": `${props.mobileTransactionB2BData.senderMsisdn}`
-              }
-            ],
-            "creditParty": [
-                {
-                    "key": "msisdn",
-                    "value": `${props.mobileTransactionB2BData.receiverMsisdn}`
-                }
-            ],
-            "senderKyc": {},
-            "recipientKyc": {},
-            "sendingAmount": `${props.mobileTransactionB2BData.sendingAmount}`,
-            "payinCcyCode": `${props.mobileTransactionB2BData.payinCcyCode}`,
-            "paymentMode": `${props.mobileTransactionB2BData.paymentMode}`,
-            "authenticationPartnerCode": `${props.mobileTransactionB2BData.authenticationPartnerCode}`,
-            "paymentOption": `${props.mobileTransactionB2BData.paymentOption}`,
-            "sendingPartnerCode": `${props.mobileTransactionB2BData.sendingPartnerCode}`,
-            "receivingPartnerCode": `${props.mobileTransactionB2BData.receivingPartnerCode}`,
-            "business": {
-              "senderKyc": {
-                "businessName": `${props.mobileTransactionB2BData.senderBusinessName}`,
-                "businessAddress1": `${props.mobileTransactionB2BData.senderBusinessAddress1}`,
-                "businessAddressCity": `${props.mobileTransactionB2BData.senderBusinessAddressCity}`,
-                "businessAddressCountryCode": `${props.mobileTransactionB2BData.senderBusinessAddressCountryCode}`,
-                "businessPrimaryContactCountryCode": `${props.mobileTransactionB2BData.senderBusinessPrimaryContactCountryCode}`,
-                "businessPrimaryContactNo": `${props.mobileTransactionB2BData.senderBusinessPrimaryContactNo}`,
-                "businessDescription": `${props.mobileTransactionB2BData.senderBusinessDescription}`,
-                "businessCountryCode": `${props.mobileTransactionB2BData.senderBusinessCountryCode}`,
-                "businessRegistrationType": `${props.mobileTransactionB2BData.senderBusinessRegistrationType}`,
-                "businessRegistrationNumber": `${props.mobileTransactionB2BData.senderBusinessRegistrationNumber}`,
-                "businessRegistrationIssueDate": `${props.mobileTransactionB2BData.senderBusinessRegistrationIssueDate}`,
-                "businessIDValidThru": `${props.mobileTransactionB2BData.senderBusinessIDValidThru}`,
-                "businessEmail": `${props.mobileTransactionB2BData.senderBusinessEmail}`
-              },
-              "recepientKyc": {
-                "businessName": `${props.mobileTransactionB2BData.recepientBusinessName}`,
-                "businessPINCode": `${props.mobileTransactionB2BData.recepientBusinessPINCode}`,
-                "businessAddress1": `${props.mobileTransactionB2BData.recepientBusinessAddress1}`,
-                "businessAddress2": `${props.mobileTransactionB2BData.recepientBusinessAddress2}`,
-                "businessAddressCity": `${props.mobileTransactionB2BData.recepientBusinessAddressCity}`,
-                "businessAddressState": `${props.mobileTransactionB2BData.recepientBusinessAddressState}`,
-                "businessAddressCountryCode": `${props.mobileTransactionB2BData.recepientBusinessAddressCountryCode}`,
-                "businessAddressZip": `${props.mobileTransactionB2BData.recepientBusinessAddressZip}`,
-                "businessPrimaryContactCountryCode": `${props.mobileTransactionB2BData.recepientBusinessPrimaryContactCountryCode}`,
-                "businessPrimaryContactNo": `${props.mobileTransactionB2BData.recepientBusinessPrimaryContactNo}`,
-                "businessPrimaryContactNoType": `${props.mobileTransactionB2BData.recepientBusinessPrimaryContactNoType}`,
-                "businessDescription": `${props.mobileTransactionB2BData.recepientBusinessDescription}`,
-                "businessEmail": `${props.mobileTransactionB2BData.recepientBusinessEmail}`,
-                "businessCountryCode": `${props.mobileTransactionB2BData.recepientBusinessCountryCode}`,
-                "businessRegistrationType": `${props.mobileTransactionB2BData.recepientBusinessRegistrationType}`,
-                "businessRegistrationNumber": `${props.mobileTransactionB2BData.recepientBusinessRegistrationNumber}`,
-                "businessRegistrationIssuedBy": `${props.mobileTransactionB2BData.recepientBusinessRegistrationIssuedBy}`,
-                "businessRegistrationIssuedAt": `${props.mobileTransactionB2BData.recepientBusinessRegistrationIssuedAt}`,
-                "businessRegistrationIssueDate": `${props.mobileTransactionB2BData.recepientBusinessRegistrationIssueDate}`,
-                "businessIDValidThru": `${props.mobileTransactionB2BData.recepientBusinessIDValidThru}`,
-                "typeofbusiness": `${props.mobileTransactionB2BData.recepientBypeofbusiness}`,
-                "businessPObox": `${props.mobileTransactionB2BData.recepientBusinessPObox}`,
-                "businessMobile": `${props.mobileTransactionB2BData.recepientBusinessMobile}`
-              }
-            },
-            "internationalTransferInformation": {
-              "quoteId": `${props.mobileTransactionB2BData.quoteId}`,
-              "receivingCountry": `${props.mobileTransactionB2BData.receivingCountry}`,
-              "remittancePurpose": `${props.mobileTransactionB2BData.remittancePurpose}`,
-              "sourceOfFunds": `${props.mobileTransactionB2BData.sourceOfFunds}`,
-              "relationshipSender": `${props.mobileTransactionB2BData.relationshipSender}`
-            }
-          } */requestBodyDataInfo,
+        requestBodyDataInfo,
         { headers: options.headers }
         ).then(function (response) {
             console.log(response.data);
@@ -1153,7 +1192,8 @@ function TryitHeader(props) {
                 'X-DATE': '2018-04-04 09:27:16',
                  'X-ORIGINCOUNTRY': `${props.country}`,
                 'Accept': 'application/json', 
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'x-access-token': getCookieValue("accessToken"),
             }
         }
         var requestBodyDataInfo ={
@@ -1307,7 +1347,8 @@ function TryitHeader(props) {
                 'X-DATE': '2018-04-04 09:27:16',
                  'X-ORIGINCOUNTRY': `${props.country}`,
                 'Accept': 'application/json', 
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'x-access-token': getCookieValue("accessToken"),
             }
         }
         if(props.environment==="uat") {
@@ -1399,7 +1440,8 @@ function TryitHeader(props) {
                 'X-DATE': '2018-04-04 09:27:16',
                  'X-ORIGINCOUNTRY': `${props.country}`,
                 'Accept': 'application/json', 
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'x-access-token': getCookieValue("accessToken"),
             }
         }
         var requestBodyDataInfo = {
@@ -1550,106 +1592,7 @@ function TryitHeader(props) {
         options.headers['X-ENVIRONMENT'] = 'sandbox'
       }
         axios.post(`${apiUrl}/v1/try-it/transaction`,
-        /* {
-            "amount": `${props.bankTransactionP2BData.amount}`,
-            "currency": `${props.bankTransactionP2BData.currency}`,
-            "type": `${props.bankTransactionP2BData.type}`,
-            "descriptionText": `${props.bankTransactionP2BData.descriptionText}`,
-            "requestDate": `${props.bankTransactionP2BData.requestDate}`,
-            "requestingOrganisationTransactionReference": `${props.bankTransactionP2BData.transRef}`,
-            "debitParty": [
-              {
-                "key": "msisdn",
-                "value":`${props.bankTransactionP2BData.senderMsisdn}`
-              }
-            ],
-            "creditParty": [
-              {
-                "key": "bankaccountno",
-                "value": `${props.bankTransactionP2BData.receiverBankaccountno}`
-              },
-              {
-                "key": "organisationid",
-                "value": `${props.bankTransactionP2BData.receiverBankName}`
-              },
-              {
-                "key": "sortcode",
-                "value": `${props.bankTransactionP2BData.receiverBankCode}`
-              }
-            ],
-            "senderKyc": {
-              "nationality": `${props.bankTransactionP2BData.nationality}`,
-              "dateOfBirth": `${props.bankTransactionP2BData.dateOfBirth}`,
-              "gender": `${props.bankTransactionP2BData.gender}`,
-              "idDocument": [
-                {
-                  "idType": `${props.bankTransactionP2BData.idType}`,
-                  "idNumber": `${props.bankTransactionP2BData.idNumber}`,
-                  "issueDate": `${props.bankTransactionP2BData.issueDate}`,
-                  "expiryDate": `${props.bankTransactionP2BData.expiryDate}`,
-                  "issuerCountry": `${props.bankTransactionP2BData.issuerCountry}`
-                }
-              ],
-              "postalAddress": {
-                "addressLine1": `${props.bankTransactionP2BData.addressLine1}`,
-                "addressLine2": `${props.bankTransactionP2BData.addressLine2}`,
-                "addressLine3": `${props.bankTransactionP2BData.addressLine3}`,
-                "city": `${props.bankTransactionP2BData.city}`,
-                "stateProvince": `${props.bankTransactionP2BData.stateProvince}`,
-                "postalCode": `${props.bankTransactionP2BData.postalCode}`,
-                "country": `${props.bankTransactionP2BData.country}`
-              },
-              "subjectName": {
-                "firstName": `${props.bankTransactionP2BData.firstName}`,
-                "middleName": `${props.bankTransactionP2BData.middleName}`,
-                "lastName": `${props.bankTransactionP2BData.lastName}`,
-                "fullName": `${props.bankTransactionP2BData.firstName+props.bankTransactionP2BData.middleName+props.bankTransactionP2BData.lastName}`
-              }
-            },
-            "recipientKyc": {},
-            "sendingAmount":  `${props.bankTransactionP2BData.sendingAmount}`,
-            "payinCcyCode":  `${props.bankTransactionP2BData.payinCcyCode}`,
-            "paymentMode":  `${props.bankTransactionP2BData.paymentMode}`,
-            "authenticationPartnerCode":  `${props.bankTransactionP2BData.authenticationPartnerCode}`,
-            "paymentOption":  `${props.bankTransactionP2BData.paymentOption}`,
-            "sendingPartnerCode":  `${props.bankTransactionP2BData.sendingPartnerCode}`,
-            "receivingPartnerCode":  `${props.bankTransactionP2BData.receivingPartnerCode}`,
-            "business": {
-              "senderKyc": {},
-              "recepientKyc": {
-                "businessName":  `${props.bankTransactionP2BData.businessName}`,
-                "businessPINCode":  `${props.bankTransactionP2BData.businessPINCode}`,
-                "businessAddress1":  `${props.bankTransactionP2BData.businessAddress1}`,
-                "businessAddress2": `${props.bankTransactionP2BData.businessAddress2}`,
-                "businessAddressCity":  `${props.bankTransactionP2BData.businessAddressCity}`,
-                "businessAddressState":  `${props.bankTransactionP2BData.businessAddressState}`,
-                "businessAddressCountryCode": `${props.bankTransactionP2BData.businessAddressCountryCode}`,
-                "businessAddressZip": `${props.bankTransactionP2BData.businessAddressZip}`,
-                "businessPrimaryContactCountryCode":  `${props.bankTransactionP2BData.businessPrimaryContactCountryCode}`,
-                "businessPrimaryContactNo":  `${props.bankTransactionP2BData.businessPrimaryContactNo}`,
-                "businessPrimaryContactNoType":  `${props.bankTransactionP2BData.businessPrimaryContactNoType}`,
-                "businessDescription":  `${props.bankTransactionP2BData.businessDescription}`,
-                "businessEmail":  `${props.bankTransactionP2BData.businessEmail}`,
-                "businessCountryCode": `${props.bankTransactionP2BData.businessCountryCode}`,
-                "businessRegistrationType": `${props.bankTransactionP2BData.businessRegistrationType}`,
-                "businessRegistrationNumber":  `${props.bankTransactionP2BData.businessRegistrationNumber}`,
-                "businessRegistrationIssuedBy":  `${props.bankTransactionP2BData.businessRegistrationIssuedBy}`,
-                "businessRegistrationIssuedAt":  `${props.bankTransactionP2BData.businessRegistrationIssuedAt}`,
-                "businessRegistrationIssueDate":  `${props.bankTransactionP2BData.businessRegistrationIssueDate}`,
-                "businessIDValidThru":  `${props.bankTransactionP2BData.businessIDValidThru}`,
-                "typeofbusiness":  `${props.bankTransactionP2BData.typeofbusiness}`,
-                "businessPObox":  `${props.bankTransactionP2BData.businessPObox}`,
-                "businessMobile":  `${props.bankTransactionP2BData.businessMobile}`
-              }
-            },
-            "internationalTransferInformation": {
-              "quoteId":  `${props.bankTransactionP2BData.quoteId}`,
-              "receivingCountry":  `${props.bankTransactionP2BData.receivingCountry}`,
-              "remittancePurpose":  `${props.bankTransactionP2BData.remittancePurpose}`,
-              "sourceOfFunds":  `${props.bankTransactionP2BData.sourceOfFunds}`,
-              "relationshipSender":  `${props.bankTransactionP2BData.relationshipSender}`
-            }
-          } */requestBodyDataInfo,
+        requestBodyDataInfo,
         { headers: options.headers }
         ).then(function (response) {
             console.log(response.data);
@@ -1672,7 +1615,8 @@ function TryitHeader(props) {
                 'X-DATE': '2018-04-04 09:27:16',
                  'X-ORIGINCOUNTRY': `${props.country}`,
                 'Accept': 'application/json', 
-                'Content-Type': 'application/json'
+                'Content-Type': 'application/json',
+                'x-access-token': getCookieValue("accessToken"),
             }
         }
         if(props.environment==="uat") {
@@ -1787,6 +1731,52 @@ function TryitHeader(props) {
                 props.setResponseScreen(true)
             });
     }
+    const path =window.location.pathname; 
+    useEffect(() => {
+        props.setResponseScreen(false)
+        if (path === `${process.env.REACT_APP_BASE_URL}/account-status-mobile`) {
+          props.setEndPoint("Account Status Mobile")
+        } else if (path === `${process.env.REACT_APP_BASE_URL}/account-status-bank`) {
+            props.setEndPoint("Account Status Bank")
+        } else if (path === `${process.env.REACT_APP_BASE_URL}/ledger`) {
+            props.setEndPoint("Ledger Balance")
+        } else if  (path === `${process.env.REACT_APP_BASE_URL}/corridor-quotation`) {
+            props.setEndPoint("Corridor Quotation")
+        } else if (path === `${process.env.REACT_APP_BASE_URL}/get-bank-list`){
+            props.setEndPoint("Get Bank List")
+        } else if (path ===  `${process.env.REACT_APP_BASE_URL}/create-quotation-mobile`) {
+            props.setEndPoint("Create Quotation Mobile")
+        } else if (path ===  `${process.env.REACT_APP_BASE_URL}/create-quotation-bank`) {
+            props.setEndPoint("Create Quotation Bank")
+        } else if (path ===  `${process.env.REACT_APP_BASE_URL}/cancel-transaction`) {
+            props.setEndPoint("Cancel Transaction")
+        } else if (path ===  `${process.env.REACT_APP_BASE_URL}/reverse-transaction`) {
+            props.setEndPoint("Reverse Transaction")
+        } else if (path ===  `${process.env.REACT_APP_BASE_URL}/view-transaction-bank`) {
+            props.setEndPoint("View Transaction Bank")
+        } else if (path ===  `${process.env.REACT_APP_BASE_URL}/view-transaction-mobile`) {
+            props.setEndPoint("View Transaction Mobile")
+        } else if (path ===  `${process.env.REACT_APP_BASE_URL}/create-transaction-bank`) {
+          props.setEndPoint("Create Transaction Bank")
+        } else if (path ===  `${process.env.REACT_APP_BASE_URL}/create-transaction-mobile`) {
+          props.setEndPoint("Create Transaction Mobile")
+        } else if (path ===  `${process.env.REACT_APP_BASE_URL}/b2b-transaction-bank`) {
+          props.setEndPoint("B2B Transaction Bank")
+        } else if (path ===  `${process.env.REACT_APP_BASE_URL}/b2b-transaction-mobile`) {
+          props.setEndPoint("B2B Transaction Mobile")
+        } else if (path ===  `${process.env.REACT_APP_BASE_URL}/p2b-transaction-bank`) {
+          props.setEndPoint("P2B Transaction Bank")
+        } else if (path ===  `${process.env.REACT_APP_BASE_URL}/p2b-transaction-mobile`) {
+          props.setEndPoint("P2B Transaction Mobile")
+        } else if (path ===  `${process.env.REACT_APP_BASE_URL}/b2p-transaction-bank`) {
+          props.setEndPoint("B2P Transaction Bank")
+        } else if (path === `${process.env.REACT_APP_BASE_URL}/b2p-transaction-mobile`) {
+          props.setEndPoint("B2P Transaction Mobile")
+        } else {
+          navigate(`${process.env.REACT_APP_BASE_URL}`)
+        }
+
+    },[path])
 
     useEffect(() => {
         props.setResponseScreen(false)
@@ -1829,7 +1819,7 @@ function TryitHeader(props) {
         } else if (props.endPoint === "B2P Transaction Mobile") {
             navigate(`${process.env.REACT_APP_BASE_URL}/b2p-transaction-mobile`)
         } else {
-            navigate("/")
+          navigate(`${process.env.REACT_APP_BASE_URL}`)
         }
     }, [props.endPoint])
 
@@ -1878,7 +1868,49 @@ function TryitHeader(props) {
             }
         }
     }
-
+    function getCookie(cname) {
+      let name = cname + "=";
+      let decodedCookie = decodeURIComponent(document.cookie);
+      let ca = decodedCookie.split(';');
+      for(let i = 0; i <ca.length; i++) {
+        let c = ca[i];
+        while (c.charAt(0) == ' ') {
+          c = c.substring(1);
+        }
+        if (c.indexOf(name) == 0) {
+          return c.substring(name.length, c.length);
+        }
+      }
+      return "";
+    }
+    console.log("accessToken", getCookie("accessToken"))
+    console.log("accessToken", getCookieValue("accessToken"))
+    
+    const verifySessionApi = () => {
+      var requestUrl = `${apiUrl}/v1/dev/verify-session`;
+      var options = {
+            headers: {
+                'x-access-token': getCookieValue("accessToken"),
+            }
+        }
+        axios.get(requestUrl,
+          { headers: options.headers },
+        ).then(function (response) {
+            console.log(JSON.stringify(response.data));
+            console.log(response.data.isSucess);
+            if(response.data.isSucess==true){
+              console.log("message",response.data.message )
+              console.log("partnerID",response.data.data )
+            }
+        })
+        .catch(function (error) {
+            console.log(error.response.data);
+        })
+    }
+    
+    useEffect(()=>{
+      verifySessionApi();
+    },[])
 
     function checkProperties(obj) {
         let local;
@@ -1893,9 +1925,7 @@ function TryitHeader(props) {
             return true
         }
     }
-    const allowTryingWithRealTime = () =>{
-        props.setAllowUatAccess(true)
-    }
+
     const allowStaticScreen = () =>{
         props.setResponseScreen(true)
     }
@@ -1906,71 +1936,6 @@ function TryitHeader(props) {
             <Stack width="20%" sx={{ marginRight: '100px' }} direction="column" justifyContent="center">
                 <img src={terrapayLogo} alt="terrapayLogo" />
             </Stack>
-            <Stack width="20%"  direction='column' >
-            <FormControl>
-                    <InputLabel
-                        sx={!props.endPoint?{
-                            color: 'white',
-                            '&.Mui-focused': {
-                                color: 'white',
-                            },
-                            marginTop:-0.7,
-                        }:{
-                          color: 'white',
-                          '&.Mui-focused': {
-                              color: 'white',
-                          },
-                      }}
-                        id="demo-simple-select-autowidth-label">
-                        API End Point
-                    </InputLabel>
-                    <Select
-                        sx={{
-                            width: 208,
-                            "& .MuiOutlinedInput-notchedOutline": {
-                                borderColor: 'white',
-                            },
-                            "& .MuiSvgIcon-root": {
-                                color: "white",
-                            },
-                            "& .MuiOutlinedInput-input": {
-                                color: 'white',
-                            },
-                            "& .MuiSelect-nativeInput": {
-                                '&.Mui-focused': {
-                                    borderColor: 'white',
-                                },
-                            },
-                        }}
-                        size="small"
-                        value={props.endPoint}
-                        onChange={({ target }) => props.setEndPoint(target.value)}
-                        input={<OutlinedInput label="API End Point"
-                        />}
-                        MenuProps={MenuProps}>
-                        <MenuItem value='Account Status Mobile'>Account Status - Mobile</MenuItem>
-                        <MenuItem value='Account Status Bank'>Account Status - Bank</MenuItem>
-                        <MenuItem value='Create Quotation Mobile'>Create Quotation - Mobile</MenuItem>
-                        <MenuItem value='Create Quotation Bank'>Create Quotation - Bank</MenuItem>
-                        {/* <MenuItem value='View Transaction Mobile'>View Transaction Mobile</MenuItem> */}
-                        <MenuItem value='Create Transaction Mobile'>Create Transaction - Mobile</MenuItem>
-                        <MenuItem value='Create Transaction Bank'>Create Transaction - Bank</MenuItem>
-                        <MenuItem value='P2B Transaction Mobile'>P2B Transaction - Mobile</MenuItem>
-                        <MenuItem value='P2B Transaction Bank'>P2B Transaction - Bank</MenuItem>
-                        <MenuItem value='B2P Transaction Mobile'>B2P Transaction - Mobile</MenuItem>
-                        <MenuItem value='B2P Transaction Bank'>B2P Transaction - Bank</MenuItem>
-                        <MenuItem value='B2B Transaction Mobile'>B2B Transaction - Mobile</MenuItem>
-                        <MenuItem value='B2B Transaction Bank'>B2B Transaction - Bank</MenuItem>
-                        <MenuItem value='View Transaction Bank'>View Transaction</MenuItem>
-                        <MenuItem value='Ledger Balance'>Ledger Balance</MenuItem>
-                        <MenuItem value='Corridor Quotation'>Corridor Quotation</MenuItem>
-                        <MenuItem value='Cancel Transaction'>Cancel Transaction</MenuItem>
-                        <MenuItem value='Reverse Transaction'>Reverse Transaction</MenuItem>
-                        <MenuItem value='Get Bank List'>Get Bank List</MenuItem>
-                    </Select>
-                </FormControl>
-            </Stack>
-
             <Stack width="20%" spacing={3} justifyContent='center' direction='column' >
             <FormControl>
             <InputLabel id="demo-simple-select-autowidth-label" 
@@ -1991,7 +1956,7 @@ function TryitHeader(props) {
             </InputLabel>
             <Select
             sx={!props.allowUatAccess?{
-              width: '100%',
+              width: '208px',
               "& .MuiSvgIcon-root": {
                   color: "rgba(0, 0, 0, 0.38)",
               },
@@ -2005,7 +1970,10 @@ function TryitHeader(props) {
                   },
               },
           }:{
-              width: '100%',
+              width: '208px',
+              "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                border: '1px solid white',
+              },
               "& .MuiSvgIcon-root": {
                   color: "white",
               },
@@ -2034,6 +2002,10 @@ function TryitHeader(props) {
 
                 <TextField
                         sx={{
+                          width: '208px',
+                          "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                            border: '1px solid white',
+                          },
                           '& label': {
                             color: 'white',
                           },
@@ -2101,7 +2073,7 @@ function TryitHeader(props) {
                     </InputLabel>
                     <Select
                     sx={!props.allowUatAccess?{
-                      width: '100%',
+                      width: '208px',
                       "& .MuiSvgIcon-root": {
                           color: "rgba(0, 0, 0, 0.38)",
                       },
@@ -2115,7 +2087,10 @@ function TryitHeader(props) {
                           },
                       },
                   }:{
-                      width: '100%',
+                      width: '208px',
+                      "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                        border: '1px solid white',
+                      },
                       "& .MuiSvgIcon-root": {
                           color: "white",
                       },
@@ -2140,6 +2115,10 @@ function TryitHeader(props) {
                 </FormControl>
                 <TextField
                         sx={{
+                          width: '208px',
+                          "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                            border: '1px solid white',
+                          },
                           '& label': {
                             color: 'white',
                           },
@@ -2188,6 +2167,74 @@ function TryitHeader(props) {
                     disabled={!props.allowUatAccess}
                 />
             </Stack>
+            <Stack width="20%"  direction='column' >
+            <FormControl>
+                    <InputLabel
+                        sx={!props.endPoint?{
+                            color: 'white',
+                            '&.Mui-focused': {
+                                color: 'white',
+                            },
+                            marginTop:-0.7,
+                        }:{
+                          color: 'white',
+                          '&.Mui-focused': {
+                              color: 'white',
+                          },
+                      }}
+                        id="demo-simple-select-autowidth-label">
+                        API End Point
+                    </InputLabel>
+                    <Select
+                        sx={{
+                            width: '208px',
+                            "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
+                              border: '1px solid white',
+                            },
+                            "& .MuiOutlinedInput-notchedOutline": {
+                                borderColor: 'white',
+                            },
+                            "& .MuiSvgIcon-root": {
+                                color: "white",
+                            },
+                            "& .MuiOutlinedInput-input": {
+                                color: 'white',
+                            },
+                            "& .MuiSelect-nativeInput": {
+                                '&.Mui-focused': {
+                                    borderColor: 'white',
+                                },
+                            },
+                            
+                        }}
+                        size="small"
+                        value={props.endPoint}
+                        onChange={({ target }) => props.setEndPoint(target.value)}
+                        input={<OutlinedInput label="API End Point"
+                        />}
+                        MenuProps={MenuProps}>
+                        <MenuItem value='Account Status Mobile'>Account Status - Mobile</MenuItem>
+                        <MenuItem value='Account Status Bank'>Account Status - Bank</MenuItem>
+                        <MenuItem value='Create Quotation Mobile'>Create Quotation - Mobile</MenuItem>
+                        <MenuItem value='Create Quotation Bank'>Create Quotation - Bank</MenuItem>
+                        {/* <MenuItem value='View Transaction Mobile'>View Transaction Mobile</MenuItem> */}
+                        <MenuItem value='Create Transaction Mobile'>Create Transaction - Mobile</MenuItem>
+                        <MenuItem value='Create Transaction Bank'>Create Transaction - Bank</MenuItem>
+                        <MenuItem value='P2B Transaction Mobile'>P2B Transaction - Mobile</MenuItem>
+                        <MenuItem value='P2B Transaction Bank'>P2B Transaction - Bank</MenuItem>
+                        <MenuItem value='B2P Transaction Mobile'>B2P Transaction - Mobile</MenuItem>
+                        <MenuItem value='B2P Transaction Bank'>B2P Transaction - Bank</MenuItem>
+                        <MenuItem value='B2B Transaction Mobile'>B2B Transaction - Mobile</MenuItem>
+                        <MenuItem value='B2B Transaction Bank'>B2B Transaction - Bank</MenuItem>
+                        <MenuItem value='View Transaction Bank'>View Transaction</MenuItem>
+                        <MenuItem value='Ledger Balance'>Ledger Balance</MenuItem>
+                        <MenuItem value='Corridor Quotation'>Corridor Quotation</MenuItem>
+                        <MenuItem value='Cancel Transaction'>Cancel Transaction</MenuItem>
+                        <MenuItem value='Reverse Transaction'>Reverse Transaction</MenuItem>
+                        <MenuItem value='Get Bank List'>Get Bank List</MenuItem>
+                    </Select>
+                </FormControl>
+            </Stack>
             <Stack width="20%" spacing={3} direction='column' >
                 {/* {(props.endPoint==="Account Status Mobile" && props.mobileAccountStatusData.instrument && props.mobileAccountStatusData.bnv && props.mobileAccountStatusData.msisdn)?<CustomButtom  sx={{textAlign:'center', minWidth:'180px', alignSelf: 'center', letterSpacing: 1, backgroundColor:'#ea5c57'}} variant='contained' onClick={getAccountStatus} >TRY IT OUT</CustomButtom>:
                 (props.endPoint==="View Transaction Mobile")?<CustomButtom  sx={{textAlign:'center', minWidth:'180px', alignSelf: 'center', letterSpacing: 1, backgroundColor:'#ea5c57'}} variant='contained' onClick={getViewTransaction} >TRY IT OUT</CustomButtom>:
@@ -2197,11 +2244,94 @@ function TryitHeader(props) {
                 {/* <CustomButtom  sx={{textAlign:'center', minWidth:'180px', alignSelf: 'center', letterSpacing: 1, backgroundColor:'#ea5c57'}} variant='contained' onClick={tryItOutHandler} >TRY IT OUT</CustomButtom> */}
                 {props.allowUatAccess? <CustomButtom sx={{ textAlign: 'center', minWidth: '180px', alignSelf: 'center', letterSpacing: 1, backgroundColor: '#ea5c57' }} variant='contained' disabled={checkProperties(props.headerObject)} onClick={tryItOutHandler}>TRY IT OUT</CustomButtom>:
                 <CustomButtom sx={{ textAlign: 'center', minWidth: '180px', alignSelf: 'center', letterSpacing: 1, backgroundColor: '#ea5c57' }} variant='contained' /* disabled={checkProperties(props.headerObject)} */ onClick={allowStaticScreen}>TRY IT OUT</CustomButtom>}
-                {!props.allowUatAccess && <Typography sx={{textAlign: 'center', minWidth: '180px', alignSelf: 'center'}} color="white" fonstSize={12} height={40} fontWeight='500'>
-                      Click here to <span style={{cursor:'pointer', color:'#ea5c57'}}onClick={allowTryingWithRealTime} > Login</span>
-                </Typography>}
+                {!props.allowUatAccess?
+                  <Typography sx={{textAlign: 'center', minWidth: '180px', alignSelf: 'center'}} color="white" fonstSize={12} height={40} fontWeight='500'>
+                        Click here to <span style={{cursor:'pointer', color:'#ea5c57'}}onClick={handleClickOpen} > Login</span>
+                  </Typography>:
+                  <Typography sx={{textAlign: 'center', minWidth: '180px', alignSelf: 'center'}} color="white" fonstSize={12} height={40} fontWeight='500'>
+                        <img src={LoggedInUser} width='30px' height='30px'/>
+                  </Typography>}
         </Stack>
         </Stack>
+
+        <Dialog open={open} onClose={handleClose}
+            PaperProps={{ sx: {
+                width: "600px", 
+                height: "400px",
+                padding:'0px 30px 30px 30px',
+            } }}
+        >
+            <DialogContent>
+              <Stack  direction="column" justifyContent="flex-start"alignItems="center" spacing={4} >
+              <Typography sx={{color:"#24262D", fontSize:'30px', fontFamily:'Poppins', fontWeight:700, marginBottom:'8px'}}>Login</Typography>
+              <Typography sx={{color:"#24262D", fontSize:'20px', fontFamily:'Poppins', fontWeight:'medium'}}>Let's login to your Terrapay account</Typography>
+              <Typography  sx={{color:"#24262D", fontSize:'14px', fontFamily:'Poppins', fontWeight:'medium'}}>What's your email address?</Typography>
+              </Stack>
+              <Stack  marginTop="18px" direction="column" justifyContent="flex-start" alignItems="center" spacing={2}>
+              {showOTPScreen?
+                <FormControl sx={{width:'100%', height:'60px'}}>
+                    <TextField
+                        sx={{width:'100%',
+                          "& .MuiInputBase-root": {
+                            height: 48,
+                            color:'black',
+                          }
+                        }}
+                        onChange={(e)=>{
+                          setOtp(e.target.value)
+                        }} 
+                        value={otp} 
+                        maxLength={4}
+                        error={isError}
+                        autoFocus
+                        size="medium"
+                        type="otp"
+                        variant="outlined"
+                        placeholder="Enter OTP"
+                        />
+                        {isError && (
+                          <FormHelperText error sx={{marginLeft:'0px', fontSize:'12px', color:'#E02424'}} >
+                            {errorMessage && errorMessage}
+                          </FormHelperText>
+                        )}
+                    </FormControl>
+                :<FormControl sx={{width:'100%', height:'60px'}}>
+                <Box sx={{width:'100%',position:'relative'}}>
+                  <TextField
+                      sx={{width:'100%',
+                        "& .MuiInputBase-root": {
+                          height: 48,
+                          color:'black',
+                        }
+                      }}
+                      onChange={(e)=>{
+                        setEmail(e.target.value)
+                      }} 
+                      value={email} 
+                      error={isError}
+                      maxLength={255}
+                      autoFocus
+                      size="medium"
+                      type="email"
+                      variant="outlined"
+                      placeholder="vamika556@gmail.com"
+                      />
+                      <img src={cancelIcon} onClick={clearEmailField} width="14px" height="14px" style={{top:17, right:17, position:'absolute', cursor:'pointer'}} />
+                  </Box>
+                    {isError && (
+                      <FormHelperText error sx={{marginLeft:'0px', fontSize:'12px', color:'#E02424'}} >
+                        {errorMessage && errorMessage}
+                      </FormHelperText>
+                    )}
+                </FormControl>}
+                  {showOTPScreen?
+                    <CustomLoginButtom onClick={devportalVerifyOtp} sx={{marginTop:'1px', fontWeight:'medium', fontSize:'16px', height:48, textAlign: 'center',width: '100%', alignSelf: 'center', letterSpacing: 1, backgroundColor: '#ea5c57' }} variant='contained'>Log In</CustomLoginButtom>
+                    :
+                    <CustomLoginButtom onClick={devportalLogin} sx={{marginTop:'1px', fontWeight:'medium', fontSize:'16px', height:48, textAlign: 'center',width: '100%', alignSelf: 'center', letterSpacing: 1, backgroundColor: '#ea5c57' }} variant='contained'>SUBMIT</CustomLoginButtom>
+                  }
+              </Stack>
+            </DialogContent>
+        </Dialog>
         </Box>
     )
 }

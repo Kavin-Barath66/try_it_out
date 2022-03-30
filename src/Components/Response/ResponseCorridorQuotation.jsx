@@ -3,6 +3,9 @@ import { Stack, Button, Box, Typography } from '@mui/material'
 import { styled } from '@mui/system'
 import { useState } from 'react'
 import ReactJson from 'react-json-view'
+import { config } from '../../assets/config/config'
+const apiUrl = config.api.url;
+
 
 function ResponseCorridorQuotation(props) {
     const [headerTab, setHeaderTab] = useState(false)
@@ -58,7 +61,7 @@ function ResponseCorridorQuotation(props) {
                             name={false}
                             src={{
                                 method: 'get',
-                                url: 'http://175.41.178.137/devportal/v1/try-it/quotation?currency=USD',
+                                url:  `${apiUrl}/quotation?currency=USD`,
                                 headers: { 
                                     'X-USERNAME': 'OpenTurfDev', 
                                     'X-PASSWORD': '85d6dcc27d9fb21c7c346cdbcee2b56a84eba0f542a846de06658d2d094afd56', 

@@ -142,6 +142,7 @@ function CreateQuotationMobile({allowUatAccess, createQuotationMobileData, setCr
             alignItems='center'
               sx={{ width: 213}}
               label="Country"
+              disabled={!allowUatAccess}
               onChange={({ target }) =>
               setCreateQuotationMobileData( (prev) =>
                   ({...prev, receiverCountry:target.value}))} 

@@ -3,6 +3,10 @@ import { Stack, Button, Box, Typography } from '@mui/material'
 import { styled } from '@mui/system'
 import { useState } from 'react'
 import ReactJson from 'react-json-view'
+import { config } from '../../../assets/config/config'
+const apiUrl = config.api.url;
+
+
 
 function ResponseCreateTransactionBank(props) {
     const [headerTab, setHeaderTab] = useState(false)
@@ -58,7 +62,7 @@ function ResponseCreateTransactionBank(props) {
                             name={false}
                             src={{
                                 method: 'post',
-                                url: 'https://uat-connect.terrapay.com:21211/eig/gsma/transactions',
+                                url: `${apiUrl}/transactions`,
                                 headers: { 
                                     'X-USERNAME': 'OpenTurfDev', 
                                     'X-PASSWORD': '85d6dcc27d9fb21c7c346cdbcee2b56a84eba0f542a846de06658d2d094afd56', 

@@ -6,6 +6,7 @@ import MenuItem from '@mui/material/MenuItem';
 import {countryList} from '../../../Utils/country'
 import { Stack, FormHelperText, OutlinedInput, Button, Box, Typography, TextField, Container, FormControl} from '@mui/material'
 
+
 function AccountStatusBank({allowUatAccess, bankAccountStatusData, setBankAccountStatusData}) {
     
     
@@ -127,6 +128,7 @@ function AccountStatusBank({allowUatAccess, bankAccountStatusData, setBankAccoun
             alignItems='center'
               sx={{ width: 213}}
               label="Country"
+              disabled={!allowUatAccess}
               value={bankAccountStatusData.country} 
               onChange={({ target }) =>
               setBankAccountStatusData( (prev) =>

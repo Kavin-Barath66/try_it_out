@@ -20,6 +20,7 @@ function GetBankList({allowUatAccess, setGetBankListData, getBankListData}) {
             alignItems='center'
               sx={{ width: 213}}
               label="Country"
+              disabled={!allowUatAccess} 
               onChange={({ target }) =>
               setGetBankListData( (prev) =>
                   ({...prev, country:target.value}))} 

@@ -3,6 +3,8 @@ import { Stack, Button, Box, Typography } from '@mui/material'
 import { styled } from '@mui/system'
 import { useState } from 'react'
 import ReactJson from 'react-json-view'
+import { config } from '../../../assets/config/config'
+const apiUrl = config.api.url;
 
 function ResponseAccountStatusBank(props) {
     const [headerTab, setHeaderTab] = useState(false)
@@ -57,7 +59,7 @@ function ResponseAccountStatusBank(props) {
                             name={false}
                             src={{
                                 method: 'get',
-                                url: 'https://uat-connect.terrapay.com:21211/eig/gsma/accounts/50100002965304/status?bnv=Deepa%20Jain&bankcode=HDFC0001626&bankname=HDFC%20Bank&country=IN',
+                                url: `${apiUrl}/50100002965304/status?bnv=Deepa%20Jain&bankcode=HDFC0001626&bankname=HDFC%20Bank&country=IN`,
                                 headers: { 
                                     'X-USERNAME': 'OpenTurfDev', 
                                     'X-PASSWORD': '85d6dcc27d9fb21c7c346cdbcee2b56a84eba0f542a846de06658d2d094afd56', 

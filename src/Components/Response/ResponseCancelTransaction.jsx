@@ -3,6 +3,9 @@ import { Stack, Button, Box, Typography } from '@mui/material'
 import { styled } from '@mui/system'
 import { useState } from 'react'
 import ReactJson from 'react-json-view'
+import { config } from '../../assets/config/config'
+const apiUrl = config.api.url;
+
 
 function ResponseCancelTransaction(props) {
     const [headerTab, setHeaderTab] = useState(false)
@@ -57,7 +60,7 @@ function ResponseCancelTransaction(props) {
                             name={false}
                             src={{
                                 method: 'get',
-                                url: 'https://uat-connect.terrapay.com:21211/eig/gsma/cancel-transaction',
+                                url: `${apiUrl}/cancel-transaction`,
                                 headers: { 
                                     'X-USERNAME': 'OpenTurfDev', 
                                     'X-PASSWORD': '85d6dcc27d9fb21c7c346cdbcee2b56a84eba0f542a846de06658d2d094afd56', 

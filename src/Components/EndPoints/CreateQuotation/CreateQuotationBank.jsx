@@ -143,6 +143,7 @@ function CreateQuotationBank({allowUatAccess, createQuotationBank, setCreateQuot
             alignItems='center'
               sx={{ width: 213}}
               label="Country"
+              disabled={!allowUatAccess}
               onChange={({ target }) =>
               setCreateQuotationBank( (prev) =>
                   ({...prev, receivingCountry:target.value}))} 
