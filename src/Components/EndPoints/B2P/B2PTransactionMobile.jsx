@@ -330,7 +330,7 @@ function B2PTransactionMobile({allowUatAccess, mobileTransactionB2PData, setMobi
         SMS Notification 
         </Typography>
         <FormControl sx={{height:45}}>
-            <OutlinedInput sx={{ height: 40 }} placeholder='msisdn debitParty' 
+            <OutlinedInput sx={{ height: 40 }} placeholder='beneficiarySmsNotify' 
         disabled={!allowUatAccess}       
         onChange={({ target }) =>
         setMobileTransactionB2PData( (prev) =>

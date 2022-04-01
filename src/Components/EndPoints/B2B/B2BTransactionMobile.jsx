@@ -351,7 +351,7 @@ function B2BTransactionMobile({allowUatAccess, mobileTransactionB2BData, setMobi
           ({...prev, receiverBankaccountno:target.value}))} 
           value={mobileTransactionB2BData.receiverBankaccountno}/></FormControl>
         </Stack>
-        {/* Receive Bank Account Type 
+        {/* Receive Bank Account Type */}
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
             Receiver Bank Account Type
@@ -362,8 +362,8 @@ function B2BTransactionMobile({allowUatAccess, mobileTransactionB2BData, setMobi
             onChange={({ target }) =>
             setMobileTransactionB2BData( (prev) =>
           ({...prev, receiverBankAccountType:target.value}))} 
-          value={mobileTransactionB2BData.receiverBankAccountType}/>
-        </Stack>*/}
+          value={mobileTransactionB2BData.receiverBankAccountType}/></FormControl>
+        </Stack>
          {/* Bank Code*/}
          <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
@@ -466,7 +466,7 @@ function B2BTransactionMobile({allowUatAccess, mobileTransactionB2BData, setMobi
         {/* Company Pin Code */}
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500'>
-            Company Pin Code
+            Company PIN Code
             </Typography>
             <FormControl sx={{height:45}}>
             <OutlinedInput sx={{ height: 40 }} placeholder='businessPINCode' 

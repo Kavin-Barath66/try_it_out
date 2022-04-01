@@ -22,7 +22,9 @@ import DialogActions from '@mui/material/DialogActions';
 import DialogContent from '@mui/material/DialogContent';
 import DialogContentText from '@mui/material/DialogContentText';
 import DialogTitle from '@mui/material/DialogTitle';
+import DevPortalCountDownTimer from './DevPortalCountDownTimer'
 const apiUrl = config.api.url;
+axios.defaults.withCredentials = true
 
 
 
@@ -41,6 +43,12 @@ function TryitHeader(props) {
     const [partnerId, setPartnerId] =useState("")
     const [userPartnerId, setUserPartnerId]  =useState("")
     const [showOTPScreen, setShowOTPScreen] = useState(false);
+    const [sandboxUsername, setSandboxUsername] = useState("");
+    const [uatUsername, setUatUsername] = useState("");
+    const [sandboxPassword, setSandboxPassword] = useState("");
+    const [uatPassword, setUatPassword] = useState("");
+    const [showTimer,setShowTimer] = useState(false)
+    const [hoursMinSecs,setHoursMinSecs] = useState ({hours:0, minutes: 10, seconds: 0})
     /* Validation State */
     const [isError, setIsError] = useState(false);
     const [errorMessage, setErrorMessage] = useState("");
@@ -64,6 +72,36 @@ function TryitHeader(props) {
             background-color: #E4302A;
         }`
 
+        const clearTimeOut = () => {
+          props.clearTimeOut()
+        }
+
+        const Root = styled('div')(({ theme }) => ({
+          [theme.breakpoints.down('md')]: {
+            width: '10%',
+            margin:"auto 0",
+          },
+          [theme.breakpoints.up('md')]: {
+            width: '15%',
+            margin:"auto 0",
+          },
+          [theme.breakpoints.up('lg')]: {
+            width: '20%',
+            margin:"auto 0",
+          },
+        }));
+        const SelectRoot = styled('div')(({ theme }) => ({
+          [theme.breakpoints.down('md')]: {
+            width: '100px',
+          },  
+          [theme.breakpoints.up('md')]: {
+            width: '130px'
+          },
+          [theme.breakpoints.up('lg')]: {
+            width: '208px',
+          },
+        }));
+
     const devportalLogin = ()=>{
       if(email===""){
         setIsError(true);
@@ -85,6 +123,8 @@ function TryitHeader(props) {
             setShowOTPScreen(true)
             setPartnerId(response.data.data.partner_id)
             setUserPartnerId(response.data.data.user_partner_id)
+            setShowTimer(true)
+            setHoursMinSecs({hours:0, minutes: 10, seconds: 0})
           }
         }) 
         .catch(error => {
@@ -95,6 +135,33 @@ function TryitHeader(props) {
       }
     }
     
+    const resendOTPApicall = ()=>{
+        setIsError(false);
+        setErrorMessage("");
+        setOtp("")
+        setShowTimer(false)
+        setHoursMinSecs({})
+        var requestUrl = `${apiUrl}/v1/dev/login`;
+        axios.post(requestUrl, {
+          emailId: email
+          }).then(function (response) {
+          if(response.data.status===200 && response.data.message==="Sent OTP Mail successfully!"){
+            setShowOTPScreen(true)
+            setPartnerId(response.data.data.partner_id)
+            setUserPartnerId(response.data.data.user_partner_id)
+            setShowTimer(true)
+            setHoursMinSecs({hours:0, minutes: 10, seconds: 0})
+          }
+        }) 
+        .catch(error => {
+          if (error.response) {
+            /* deleteCookie('refreshToken') */
+          }
+        })
+
+    }
+    
+
     const devportalVerifyOtp = () =>{
       if(otp===""){
         setIsError(true);
@@ -120,16 +187,13 @@ function TryitHeader(props) {
         }
         })
         .catch(error => {
-          console.log("erorerer", error)
           if (error.response) {
             if (error.response.data.message === `Entered OTP doesn't match!`) {
-              console.log("ifasd allal", error.response.data.message)
               setIsError(true);
               setErrorMessage("The OTP that you have entered is incorrect. Please enter the correct one.");
             } else {
               setIsError(true);
               setErrorMessage(error.response.data.message)
-              console.log("else allal", error.response.data.message)
             }
           }
         })
@@ -148,7 +212,7 @@ function TryitHeader(props) {
                 'X-DATE': '2018-04-04 09:27:16',
                  'X-ORIGINCOUNTRY': `${props.country}`,
                 'Accept': 'application/json',
-                'x-access-token': getCookieValue("accessToken"),
+                'x-tryIt-token': getCookieValue("accessToken"),
             }
         }
         if(props.environment==="uat") {
@@ -160,13 +224,11 @@ function TryitHeader(props) {
           +(props.ledgerBalanceData.currency && `currency=${props.ledgerBalanceData.currency}`)
           , { headers: options.headers },
         ).then(function (response) {
-            console.log(JSON.stringify(response.data));
             props.setResponseScreen(true)
             props.setApiResponseData(response.data)
             props.setApiResponseHeaderData(options.headers)
         })
         .catch(function (error) {
-            console.log(error);
             props.setApiResponseData(error.response.data)
             props.setResponseScreen(true)
             props.setApiResponseHeaderData(options.headers)
@@ -182,7 +244,7 @@ function TryitHeader(props) {
                  'X-ORIGINCOUNTRY': `${props.country}`,
                 'Accept': 'application/json', 
                 'Content-Type': 'application/json',
-                'x-access-token': getCookieValue("accessToken"),
+                'x-tryIt-token': getCookieValue("accessToken"),
             }
         }
         if(props.environment==="uat") {
@@ -199,13 +261,11 @@ function TryitHeader(props) {
         requestBody,
         { headers: options.headers }
         ).then(function (response) {
-            console.log(JSON.stringify(response.data));
             props.setResponseScreen(true)
             props.setApiResponseData(response.data)
             props.setApiResponseHeaderData(options.headers)
         })
             .catch(function (error) {
-                console.log(error);
                 props.setApiResponseData(error.response.data)
                 props.setResponseScreen(true)
                 props.setApiResponseHeaderData(options.headers)
@@ -221,7 +281,7 @@ function TryitHeader(props) {
                  'X-ORIGINCOUNTRY': `${props.country}`,
                 'Accept': 'application/json', 
                 'Content-Type': 'application/json',
-                'x-access-token': getCookieValue("accessToken"),
+                'x-tryIt-token': getCookieValue("accessToken"),
             }
         }
         if(props.environment==="uat") {
@@ -238,13 +298,11 @@ function TryitHeader(props) {
         requestBody,
         { headers: options.headers }
         ).then(function (response) {
-            console.log(JSON.stringify(response.data));
             props.setResponseScreen(true)
             props.setApiResponseData(response.data)
             props.setApiResponseHeaderData(options.headers)
         })
             .catch(function (error) {
-                console.log(error);
                 props.setApiResponseData(error.response.data)
                 props.setResponseScreen(true)
                 props.setApiResponseHeaderData(options.headers)
@@ -258,7 +316,7 @@ function TryitHeader(props) {
                 'X-PASSWORD':  `${props.password}`,
                 'X-DATE': '2018-04-04 09:27:16',
                 'X-ORIGINCOUNTRY': 'US',
-                'x-access-token': getCookieValue("accessToken"),
+                'x-tryIt-token': getCookieValue("accessToken"),
             }
         }
         if(props.environment==="uat") {
@@ -269,13 +327,11 @@ function TryitHeader(props) {
         axios.get(`${apiUrl}/v1/try-it/transaction?transactionReference=${props.transRef}`,
             { headers: options.headers },
         ).then(function (response) {
-            console.log(JSON.stringify(response.data));
             props.setResponseScreen(true)
             props.setApiResponseHeaderData(options.headers)
             props.setApiResponseData(response.data)
         })
             .catch(function (error) {
-                console.log(error);
                 props.setApiResponseData(error.response.data)
                 props.setApiResponseHeaderData(options.headers)
                 props.setResponseScreen(true)
@@ -292,7 +348,7 @@ function TryitHeader(props) {
                  'X-ORIGINCOUNTRY': `${props.country}`,
                 'Accept': 'application/json', 
                 'Content-Type': 'application/json',
-                'x-access-token': getCookieValue("accessToken"),
+                'x-tryIt-token': getCookieValue("accessToken"),
             }
         }
         if(props.environment==="uat") {
@@ -307,13 +363,11 @@ function TryitHeader(props) {
           +(props.bankAccountStatusData.bankSubCode && `&bankSubCode=${props.bankAccountStatusData.bankSubCode}`)
           ,{ headers: options.headers })
           .then(function (response) {
-            console.log(JSON.stringify(response.data));
             props.setResponseScreen(true)
             props.setApiResponseData(response.data)
             props.setApiResponseHeaderData(options.headers)
         })
             .catch(function (error) {
-                console.log(error);
                 props.setApiResponseData(error.response.data)
                 props.setApiResponseHeaderData(options.headers)
                 props.setResponseScreen(true)
@@ -330,7 +384,7 @@ function TryitHeader(props) {
                  'X-ORIGINCOUNTRY': `${props.country}`,
                 'Accept': 'application/json', 
                 'Content-Type': 'application/json',
-                'x-access-token': getCookieValue("accessToken"),
+                'x-tryIt-token': getCookieValue("accessToken"),
             }
         }
         if(props.environment==="uat") {
@@ -343,7 +397,6 @@ function TryitHeader(props) {
             +(props.mobileAccountStatusData.snv && `&senderName=${encodeURIComponent(props.mobileAccountStatusData.snv)}`)
             ,{ headers: options.headers})
             .then(function (response) {
-            console.log(JSON.stringify(response.data));
             props.setResponseScreen(true)
             props.setApiResponseData(response.data)
             props.setApiResponseHeaderData(options.headers)
@@ -364,7 +417,7 @@ function TryitHeader(props) {
                  'X-ORIGINCOUNTRY': `${props.country}`,
                 'Accept': 'application/json', 
                 'Content-Type': 'application/json',
-                'x-access-token': getCookieValue("accessToken"),
+                'x-tryIt-token': getCookieValue("accessToken"),
             }
         }
         if(props.environment==="uat") {
@@ -374,15 +427,11 @@ function TryitHeader(props) {
       }
         axios.get(`${apiUrl}/v1/try-it/bank-list?countryCode=${props.getBankListData.country}`,{ headers: options.headers }
         ).then(function (response) {
-            console.log(JSON.stringify(response.data));
-            console.log(response.data);
             props.setResponseScreen(true)
             props.setApiResponseData(response.data)
             props.setApiResponseHeaderData(options.headers)
         })
             .catch(function (error) {
-                console.log(error);
-                console.log(error.data);
                 props.setApiResponseData(error.response.data)
                 props.setApiResponseHeaderData(options.headers)
                 props.setResponseScreen(true)
@@ -399,7 +448,7 @@ function TryitHeader(props) {
                 'X-ORIGINCOUNTRY': `${props.country}`,
                 'Accept': 'application/json', 
                 'Content-Type': 'application/json',
-                'x-access-token': getCookieValue("accessToken"),
+                'x-tryIt-token': getCookieValue("accessToken"),
             }
         }
         if(props.environment==="uat") {
@@ -411,13 +460,11 @@ function TryitHeader(props) {
           +(props.corridorQuotationData.currency && `currency=${props.corridorQuotationData.currency}`)
         ,{ headers: options.headers }
         ).then(function (response) {
-            console.log(JSON.stringify(response.data));
             props.setResponseScreen(true)
             props.setApiResponseData(response.data)
             props.setApiResponseHeaderData(options.headers)
         })
             .catch(function (error) {
-                console.log(error);
                 props.setApiResponseData(error.response.data)
                 props.setApiResponseHeaderData(options.headers)
                 props.setResponseScreen(true)
@@ -433,7 +480,7 @@ function TryitHeader(props) {
                  'X-ORIGINCOUNTRY': `${props.country}`,
                 'Accept': 'application/json', 
                 'Content-Type': 'application/json',
-                'x-access-token': getCookieValue("accessToken"),
+                'x-tryIt-token': getCookieValue("accessToken"),
             }
         }
         if(props.environment==="uat") {
@@ -477,13 +524,11 @@ function TryitHeader(props) {
         requestBody,
         { headers: options.headers }
         ).then(function (response) {
-            console.log(JSON.stringify(response.data));
             props.setResponseScreen(true)
             props.setApiResponseData(response.data)
             props.setApiResponseHeaderData(options.headers)
         })
             .catch(function (error) {
-                console.log(error);
                 props.setApiResponseData(error.response.data)
                 props.setApiResponseHeaderData(options.headers)
                 props.setResponseScreen(true)
@@ -499,7 +544,7 @@ function TryitHeader(props) {
                  'X-ORIGINCOUNTRY': `${props.country}`,
                 'Accept': 'application/json', 
                 'Content-Type': 'application/json',
-                'x-access-token': getCookieValue("accessToken"),
+                'x-tryIt-token': getCookieValue("accessToken"),
             }
         }
         if(props.environment==="uat") {
@@ -543,13 +588,11 @@ function TryitHeader(props) {
         requestBody,
         { headers: options.headers }
         ).then(function (response) {
-            console.log(JSON.stringify(response.data));
             props.setResponseScreen(true)
             props.setApiResponseData(response.data)
             props.setApiResponseHeaderData(options.headers)
         })
             .catch(function (error) {
-                console.log(error);
                 props.setApiResponseData(error.response.data)
                 props.setApiResponseHeaderData(options.headers)
                 props.setResponseScreen(true)
@@ -565,7 +608,7 @@ function TryitHeader(props) {
                  'X-ORIGINCOUNTRY': `${props.country}`,
                 'Accept': 'application/json', 
                 'Content-Type': 'application/json',
-                'x-access-token': getCookieValue("accessToken"),
+                'x-tryIt-token': getCookieValue("accessToken"),
             }
         }
         if(props.environment==="uat") {
@@ -577,13 +620,11 @@ function TryitHeader(props) {
         {},
         { headers: options.headers }
         ).then(function (response) {
-            console.log(JSON.stringify(response.data));
             props.setResponseScreen(true)
             props.setApiResponseData(response.data)
             props.setApiResponseHeaderData(options.headers)
         })
             .catch(function (error) {
-                console.log(error);
                 props.setApiResponseData(error.response.data)
                 props.setApiResponseHeaderData(options.headers)
                 props.setResponseScreen(true)
@@ -599,7 +640,7 @@ function TryitHeader(props) {
                  'X-ORIGINCOUNTRY': `${props.country}`,
                 'Accept': 'application/json', 
                 'Content-Type': 'application/json',
-                'x-access-token': getCookieValue("accessToken"),
+                'x-tryIt-token': getCookieValue("accessToken"),
             }
         }
         if(props.environment==="uat") {
@@ -611,13 +652,11 @@ function TryitHeader(props) {
         {},
         { headers: options.headers }
         ).then(function (response) {
-            console.log(JSON.stringify(response.data));
             props.setResponseScreen(true)
             props.setApiResponseData(response.data)
             props.setApiResponseHeaderData(options.headers)
         })
             .catch(function (error) {
-                console.log(error);
                 props.setApiResponseData(error.response.data)
                 props.setApiResponseHeaderData(options.headers)
                 props.setResponseScreen(true)
@@ -633,7 +672,7 @@ function TryitHeader(props) {
                  'X-ORIGINCOUNTRY': `${props.country}`,
                 'Accept': 'application/json', 
                 'Content-Type': 'application/json',
-                'x-access-token': getCookieValue("accessToken"),
+                'x-tryIt-token': getCookieValue("accessToken"),
             }
         }
         let requestBodyDataInfo={
@@ -752,13 +791,11 @@ function TryitHeader(props) {
         requestBodyDataInfo,
         { headers: options.headers }
         ).then(function (response) {
-            console.log(JSON.stringify(response.data));
             props.setResponseScreen(true)
             props.setApiResponseData(response.data)
             props.setApiResponseHeaderData(options.headers)
         })
             .catch(function (error) {
-                console.log(error);
                 props.setApiResponseData(error.response.data)
                 props.setApiResponseHeaderData(options.headers)
                 props.setResponseScreen(true)
@@ -774,7 +811,7 @@ function TryitHeader(props) {
                  'X-ORIGINCOUNTRY': `${props.country}`,
                 'Accept': 'application/json', 
                 'Content-Type': 'application/json',
-                'x-access-token': getCookieValue("accessToken"),
+                'x-tryIt-token': getCookieValue("accessToken"),
             }
         }
         let requestBodyDataInfo={
@@ -891,13 +928,11 @@ function TryitHeader(props) {
         requestBodyDataInfo,
         { headers: options.headers }
         ).then(function (response) {
-            console.log(JSON.stringify(response.data));
             props.setResponseScreen(true)
             props.setApiResponseData(response.data)
             props.setApiResponseHeaderData(options.headers)
         })
             .catch(function (error) {
-                console.log(error);
                 props.setApiResponseData(error.response.data)
                 props.setApiResponseHeaderData(options.headers)
                 props.setResponseScreen(true)
@@ -913,7 +948,7 @@ function TryitHeader(props) {
                  'X-ORIGINCOUNTRY': `${props.country}`,
                 'Accept': 'application/json', 
                 'Content-Type': 'application/json',
-                'x-access-token': getCookieValue("accessToken"),
+                'x-tryIt-token': getCookieValue("accessToken"),
             }
         }
         var requestBodyDataInfo ={
@@ -1056,13 +1091,11 @@ function TryitHeader(props) {
         requestBodyDataInfo,
         { headers: options.headers }
         ).then(function (response) {
-            console.log(response.data);
             props.setResponseScreen(true)
             props.setApiResponseData(response.data)
             props.setApiResponseHeaderData(options.headers)
         })
             .catch(function (error) {
-                console.log(error);
                 props.setApiResponseData(error.response.data)
                 props.setApiResponseHeaderData(options.headers)
                 props.setResponseScreen(true)
@@ -1078,7 +1111,7 @@ function TryitHeader(props) {
                  'X-ORIGINCOUNTRY': `${props.country}`,
                 'Accept': 'application/json', 
                 'Content-Type': 'application/json',
-                'x-access-token': getCookieValue("accessToken"),
+                'x-tryIt-token': getCookieValue("accessToken"),
             }
         }
         var requestBodyDataInfo ={
@@ -1106,6 +1139,42 @@ function TryitHeader(props) {
           {
             "key": "msisdn",
             "value": `${props.mobileTransactionB2BData.receiverMsisdn}`
+          },
+          {
+            "key": "beneficiarySmsNotify",
+            "value":`${props.mobileTransactionB2BData.beneficiarySmsNotify}`,
+          },
+          {
+              "key": "bankaccountno",
+              "value":`${props.mobileTransactionB2BData.receiverBankaccountno}`,
+          },
+          {
+            "key": "accounttype",
+            "value":`${props.mobileTransactionB2BData.receiverBankAccountType}`,
+          },
+          {
+              "key": "banksubcode",
+              "value":`${props.mobileTransactionB2BData.bankSubCode}`,
+          },
+          {
+              "key": "organisationid",
+              "value": `${props.mobileTransactionB2BData.bankName}`,
+          },
+          {
+              "key": "sortcode",
+              "value": `${props.mobileTransactionB2BData.bankCode}`,
+          },
+          {
+              "key": "accountIBAN",
+              "value":`${props.mobileTransactionB2BData.accountIBAN}`,
+          },
+          {
+              "key": "accountAdditionalNo1",
+              "value": `${props.mobileTransactionB2BData.accountAdditionalNo1}`,
+          },
+          {
+            "key": "accountAdditionalNo2",
+            "value":  `${props.mobileTransactionB2BData.accountAdditionalNo2}`,
           }
           ],
             "senderKyc": {
@@ -1117,14 +1186,18 @@ function TryitHeader(props) {
               "quoteId": `${props.mobileTransactionB2BData.quoteId}`,
               "receivingCountry": `${props.mobileTransactionB2BData.receivingCountry}`,
               "remittancePurpose": `${props.mobileTransactionB2BData.remittancePurpose}`,
-              "sourceOfFunds": `${props.mobileTransactionB2BData.sourceOfFunds}`
+              "sourceOfFunds": `${props.mobileTransactionB2BData.sourceOfFunds}`,
+              "relationshipSender": `${props.mobileTransactionB2BData.relationshipSender}`,
           },
           "business": {
             "senderKyc": {
               "businessName": `${props.mobileTransactionB2BData.senderBusinessName}`,
+              "businessPINCode": `${props.mobileTransactionB2BData.senderBusinessPINCode}`,
               "businessAddress1": `${props.mobileTransactionB2BData.senderBusinessAddress1}`,
+              "businessAddress2": `${props.mobileTransactionB2BData.senderBusinessAddress2}`,
               "businessAddressCity": `${props.mobileTransactionB2BData.senderBusinessAddressCity}`,
               "businessAddressCountryCode": `${props.mobileTransactionB2BData.senderBusinessAddressCountryCode}`,
+              "businessAddressZip":  `${props.mobileTransactionB2BData.senderBusinessAddressZip}`,
               "businessPrimaryContactCountryCode": `${props.mobileTransactionB2BData.senderBusinessPrimaryContactCountryCode}`,
               "businessPrimaryContactNo": `${props.mobileTransactionB2BData.senderBusinessPrimaryContactNo}`,
               "businessDescription": `${props.mobileTransactionB2BData.senderBusinessDescription}`,
@@ -1132,6 +1205,8 @@ function TryitHeader(props) {
               "businessCountryCode": `${props.mobileTransactionB2BData.senderBusinessCountryCode}`,
               "businessRegistrationType":`${props.mobileTransactionB2BData.senderBusinessRegistrationType}`,
               "businessRegistrationNumber": `${props.mobileTransactionB2BData.senderBusinessRegistrationNumber}`,
+              "businessRegistrationIssuedBy": `${props.mobileTransactionB2BData.senderBusinessRegistrationIssuedBy}`,
+			        "businessRegistrationIssuedAt": `${props.mobileTransactionB2BData.senderBusinessRegistrationIssuedAt}`,
               "businessRegistrationIssueDate":`${props.mobileTransactionB2BData.senderBusinessRegistrationIssueDate}`,
               "businessIDValidThru": `${props.mobileTransactionB2BData.senderBusinessIDValidThru}`
             },
@@ -1171,13 +1246,12 @@ function TryitHeader(props) {
         requestBodyDataInfo,
         { headers: options.headers }
         ).then(function (response) {
-            console.log(response.data);
             props.setResponseScreen(true)
             props.setApiResponseData(response.data)
             props.setApiResponseHeaderData(options.headers)
         })
             .catch(function (error) {
-                console.log(error);
+
                 props.setApiResponseData(error.response.data)
                 props.setApiResponseHeaderData(options.headers)
                 props.setResponseScreen(true)
@@ -1193,7 +1267,7 @@ function TryitHeader(props) {
                  'X-ORIGINCOUNTRY': `${props.country}`,
                 'Accept': 'application/json', 
                 'Content-Type': 'application/json',
-                'x-access-token': getCookieValue("accessToken"),
+                'x-tryIt-token': getCookieValue("accessToken"),
             }
         }
         var requestBodyDataInfo ={
@@ -1327,13 +1401,11 @@ function TryitHeader(props) {
         requestBodyDataInfo,
         { headers: options.headers }
         ).then(function (response) {
-            console.log(response.data);
             props.setResponseScreen(true)
             props.setApiResponseData(response.data)
             props.setApiResponseHeaderData(options.headers)
         })
             .catch(function (error) {
-                console.log(error);
                 props.setApiResponseData(error.response.data)
                 props.setApiResponseHeaderData(options.headers)
                 props.setResponseScreen(true)
@@ -1348,7 +1420,7 @@ function TryitHeader(props) {
                  'X-ORIGINCOUNTRY': `${props.country}`,
                 'Accept': 'application/json', 
                 'Content-Type': 'application/json',
-                'x-access-token': getCookieValue("accessToken"),
+                'x-tryIt-token': getCookieValue("accessToken"),
             }
         }
         if(props.environment==="uat") {
@@ -1358,12 +1430,20 @@ function TryitHeader(props) {
       }
         axios.post(`${apiUrl}/v1/try-it/transaction`,
         {
-            "amount": `${props.mobileTransactionB2PData.amount}`,
             "currency": `${props.mobileTransactionB2PData.currency}`,
             "type": `${props.mobileTransactionB2PData.type}`,
-            "descriptionText": `${props.mobileTransactionB2PData.descriptionText}`,
             "requestDate": `${props.mobileTransactionB2PData.requestDate}`,
+            "amount": `${props.mobileTransactionB2PData.amount}`,
+            "descriptionText": `${props.mobileTransactionB2PData.descriptionText}`,
             "requestingOrganisationTransactionReference": `${props.mobileTransactionB2PData.transRef}`,
+            "sendingAmount": `${props.mobileTransactionB2PData.sendingAmount}`,
+            "provider": `${props.mobileTransactionB2PData.providerCode}`,
+            "payinCcyCode": `${props.mobileTransactionB2PData.payinCcyCode}`,
+            "paymentMode": `${props.mobileTransactionB2PData.paymentMode}`,
+            "authenticationPartnerCode": `${props.mobileTransactionB2PData.authenticationPartnerCode}`,
+            "paymentOption": `${props.mobileTransactionB2PData.paymentOption}`,
+            "sendingPartnerCode": `${props.mobileTransactionB2PData.sendingPartnerCode}`,
+            "receivingPartnerCode": `${props.mobileTransactionB2PData.receivingPartnerCode}`,
             "debitParty": [
               {
                 "key": "msisdn",
@@ -1374,38 +1454,81 @@ function TryitHeader(props) {
                 {
                     "key": "msisdn",
                     "value": `${props.mobileTransactionB2PData.receiverMsisd}`
-                }
+                },
+                {
+                  "key": "beneficiarySmsNotify",
+                  "value":`${props.mobileTransactionB2PData.beneficiarySmsNotify}`,
+                },
+                {
+                    "key": "bankaccountno",
+                    "value":`${props.mobileTransactionB2PData.bankaccountno}`,
+                },
+                {
+                    "key": "banksubcode",
+                    "value": `${props.mobileTransactionB2PData.bankSubCode}`,
+                },
+                {
+                    "key": "organisationid",
+                    "value": `${props.mobileTransactionB2PData.bankName}`,
+                },
+                {
+                    "key": "sortcode",
+                    "value": `${props.mobileTransactionB2PData.bankCode}`,
+                },
+                {
+                    "key": "accountIBAN",
+                    "value": `${props.mobileTransactionB2PData.accountIBAN}`,
+                },
+                {
+                    "key": "accountAdditionalNo1",
+                    "value": `${props.mobileTransactionB2PData.accountAdditionalNo1}`,
+                },
+                {
+                  "key": "accountAdditionalNo2",
+                  "value":  `${props.mobileTransactionB2PData.accountAdditionalNo2}`,
+              }
             ],
             "senderKyc": {},
             "recipientKyc": {
+              "nationality":`${props.mobileTransactionB2PData.receiverNationality}`,
+              "primaryContactCountryCode": `${props.mobileTransactionB2PData.receiverPrimaryContactCountryCode}`,
+              "primaryContactNo": `${props.mobileTransactionB2PData.receiverPrimaryContactNo}`,
+              "primaryContactNoType": `${props.mobileTransactionB2PData.receiverPrimaryContactNoType}`,
               "subjectName": {
                 "firstName": `${props.mobileTransactionB2PData.receiverFirstName}`,
                 "lastName": `${props.mobileTransactionB2PData.receiverLastName}`,
-                "fullName": `${props.mobileTransactionB2PData.receiverFirstName+props.mobileTransactionB2PData.receiverLastName}`
-              }
+                "fullName": `${props.mobileTransactionB2PData.receiverFirstName+" "+props.mobileTransactionB2PData.receiverLastName}`
+              },
+              "idDocument": [
+                {
+                    "idType": `${props.mobileTransactionB2PData.receiverIdType}`,
+                    "idNumber": `${props.mobileTransactionB2PData.receiverIdNumber}`,
+                    "issueDate":`${props.mobileTransactionB2PData.receiverIssueDate}`,
+                    "expiryDate":`${props.mobileTransactionB2PData.receiverExpiryDate}`,
+                    "issuerCountry": `${props.mobileTransactionB2PData.receiverIssuerCountry}`,
+                }
+              ]
             },
-            "sendingAmount": `${props.mobileTransactionB2PData.sendingAmount}`,
-            "payinCcyCode": `${props.mobileTransactionB2PData.payinCcyCode}`,
-            "paymentMode": `${props.mobileTransactionB2PData.paymentMode}`,
-            "authenticationPartnerCode": `${props.mobileTransactionB2PData.authenticationPartnerCode}`,
-            "paymentOption": `${props.mobileTransactionB2PData.paymentOption}`,
-            "sendingPartnerCode": `${props.mobileTransactionB2PData.sendingPartnerCode}`,
-            "receivingPartnerCode": `${props.mobileTransactionB2PData.receivingPartnerCode}`,
             "business": {
               "senderKyc": {
                 "businessName": `${props.mobileTransactionB2PData.businessName}`,
+                "businessPINCode": `${props.mobileTransactionB2PData.senderBusinessPINCode}`,
                 "businessAddress1": `${props.mobileTransactionB2PData.businessAddress1}`,
+                "businessAddress2": `${props.mobileTransactionB2PData.senderBusinessAddress2}`,
                 "businessAddressCity": `${props.mobileTransactionB2PData.businessAddressCity}`,
+                "businessAddressZip": `${props.mobileTransactionB2PData.senderBusinessAddressZip}`,
                 "businessAddressCountryCode": `${props.mobileTransactionB2PData.businessAddressCountryCode}`,
                 "businessPrimaryContactCountryCode": `${props.mobileTransactionB2PData.businessPrimaryContactCountryCode}`,
                 "businessPrimaryContactNo": `${props.mobileTransactionB2PData.businessPrimaryContactNo}`,
                 "businessDescription": `${props.mobileTransactionB2PData.businessDescription}`,
+                "businessEmail": `${props.mobileTransactionB2PData.businessEmail}`,
                 "businessCountryCode": `${props.mobileTransactionB2PData.businessCountryCode}`,
                 "businessRegistrationType": `${props.mobileTransactionB2PData.businessRegistrationType}`,
                 "businessRegistrationNumber": `${props.mobileTransactionB2PData.businessRegistrationNumber}`,
+                "businessRegistrationIssuedBy": `${props.mobileTransactionB2PData.senderBusinessRegistrationIssuedBy}`,
+                "businessRegistrationIssuedAt": `${props.mobileTransactionB2PData.senderBusinessRegistrationIssuedAt}`,
                 "businessRegistrationIssueDate": `${props.mobileTransactionB2PData.businessRegistrationIssueDate}`,
                 "businessIDValidThru": `${props.mobileTransactionB2PData.businessIDValidThru}`,
-                "businessEmail": `${props.mobileTransactionB2PData.businessEmail}`
               },
               "recepientKyc": {}
             },
@@ -1419,13 +1542,11 @@ function TryitHeader(props) {
           },
         { headers: options.headers }
         ).then(function (response) {
-            console.log(response.data);
             props.setResponseScreen(true)
             props.setApiResponseData(response.data)
             props.setApiResponseHeaderData(options.headers)
         })
             .catch(function (error) {
-                console.log(error);
                 props.setApiResponseData(error.response.data)
                 props.setApiResponseHeaderData(options.headers)
                 props.setResponseScreen(true)
@@ -1441,7 +1562,7 @@ function TryitHeader(props) {
                  'X-ORIGINCOUNTRY': `${props.country}`,
                 'Accept': 'application/json', 
                 'Content-Type': 'application/json',
-                'x-access-token': getCookieValue("accessToken"),
+                'x-tryIt-token': getCookieValue("accessToken"),
             }
         }
         var requestBodyDataInfo = {
@@ -1595,13 +1716,13 @@ function TryitHeader(props) {
         requestBodyDataInfo,
         { headers: options.headers }
         ).then(function (response) {
-            console.log(response.data);
+          /*   console.log(response.data); */
             props.setResponseScreen(true)
             props.setApiResponseData(response.data)
             props.setApiResponseHeaderData(options.headers)
         })
             .catch(function (error) {
-                console.log(error);
+               /*  console.log(error); */
                 props.setApiResponseData(error.response.data)
                 props.setApiResponseHeaderData(options.headers)
                 props.setResponseScreen(true)
@@ -1616,7 +1737,7 @@ function TryitHeader(props) {
                  'X-ORIGINCOUNTRY': `${props.country}`,
                 'Accept': 'application/json', 
                 'Content-Type': 'application/json',
-                'x-access-token': getCookieValue("accessToken"),
+                'x-tryIt-token': getCookieValue("accessToken"),
             }
         }
         if(props.environment==="uat") {
@@ -1632,6 +1753,7 @@ function TryitHeader(props) {
             "descriptionText": `${props.mobileTransactionP2BData.descriptionText}`,
             "requestDate": `${props.mobileTransactionP2BData.requestDate}`,
             "requestingOrganisationTransactionReference": `${props.mobileTransactionP2BData.transRef}`,
+            "provider": `${props.mobileTransactionP2BData.providerCode}`,
             "debitParty": [
               {
                 "key": "msisdn",
@@ -1642,12 +1764,47 @@ function TryitHeader(props) {
                 {
                     "key": "msisdn",
                     "value":`${props.mobileTransactionP2BData.receiverMsisdn}`
-                  }
+                },
+                {
+                  "key": "beneficiarySmsNotify",
+                  "value":`${props.mobileTransactionP2BData.beneficiarySmsNotify}`,
+                },
+                {
+                    "key": "bankaccountno",
+                    "value":`${props.mobileTransactionP2BData.receiverBankaccountno}`,
+                },
+                {
+                    "key": "banksubcode",
+                    "value":`${props.mobileTransactionP2BData.bankSubCode}`,
+                },
+                {
+                    "key": "organisationid",
+                    "value":`${props.mobileTransactionP2BData.bankName}`,
+                },
+                {
+                    "key": "sortcode",
+                    "value": `${props.mobileTransactionP2BData.bankCode}`,
+                },
+                {
+                    "key": "accountIBAN",
+                    "value": `${props.mobileTransactionP2BData.accountIBAN}`,
+                },
+                {
+                    "key": "accountAdditionalNo1",
+                    "value": `${props.mobileTransactionP2BData.accountAdditionalNo1}`,
+                },
+                {
+                  "key": "accountAdditionalNo2",
+                  "value": `${props.mobileTransactionP2BData.accountAdditionalNo2}`,
+                }
             ],
             "senderKyc": {
               "nationality": `${props.mobileTransactionP2BData.nationality}`,
               "dateOfBirth": `${props.mobileTransactionP2BData.dateOfBirth}`,
               "gender": `${props.mobileTransactionP2BData.gender}`,
+              "primaryContactCountryCode": `${props.mobileTransactionP2BData.senderBusinessPrimaryContactCountryCode}`,
+              "primaryContactNo": `${props.mobileTransactionP2BData.senderBusinessPrimaryContactNo}`,
+              "primaryContactNoType":`${props.mobileTransactionP2BData.senderPrimaryContactNoType}`,
               "idDocument": [
                 {
                   "idType": `${props.mobileTransactionP2BData.idType}`,
@@ -1667,10 +1824,12 @@ function TryitHeader(props) {
                 "country": `${props.mobileTransactionP2BData.country}`
               },
               "subjectName": {
+                "title": `${props.mobileTransactionP2BData.senderTitle}`,
                 "firstName": `${props.mobileTransactionP2BData.firstName}`,
                 "middleName": `${props.mobileTransactionP2BData.middleName}`,
                 "lastName": `${props.mobileTransactionP2BData.lastName}`,
-                "fullName": `${props.mobileTransactionP2BData.firstName+props.mobileTransactionP2BData.middleName+props.mobileTransactionP2BData.lastName}`
+                "fullName": `${!props.mobileTransactionP2BData.middleName? props.mobileTransactionP2BData.firstName+" "+props.mobileTransactionP2BData.lastName:
+                props.mobileTransactionP2BData.middleName? props.mobileTransactionP2BData.firstName+" "+props.mobileTransactionP2BData.middleName+" "+props.mobileTransactionP2BData.lastName:null}`
               }
             },
             "recipientKyc": {},
@@ -1719,13 +1878,13 @@ function TryitHeader(props) {
           },
         { headers: options.headers }
         ).then(function (response) {
-            console.log(response.data);
+            /* console.log(response.data); */
             props.setResponseScreen(true)
             props.setApiResponseData(response.data)
             props.setApiResponseHeaderData(options.headers)
         })
             .catch(function (error) {
-                console.log(error);
+              /*   console.log(error); */
                 props.setApiResponseData(error.response.data)
                 props.setApiResponseHeaderData(options.headers)
                 props.setResponseScreen(true)
@@ -1868,43 +2027,77 @@ function TryitHeader(props) {
             }
         }
     }
-    function getCookie(cname) {
-      let name = cname + "=";
-      let decodedCookie = decodeURIComponent(document.cookie);
-      let ca = decodedCookie.split(';');
-      for(let i = 0; i <ca.length; i++) {
-        let c = ca[i];
-        while (c.charAt(0) == ' ') {
-          c = c.substring(1);
-        }
-        if (c.indexOf(name) == 0) {
-          return c.substring(name.length, c.length);
+    
+   /*  const partnerSettingApi = () =>{
+      var requestUrl = `${apiUrl}/v1/dev/partner/settings/${partnerId}`;
+      var options = {
+        headers: {
+            'Cookie:':  "accessToken="+getCookieValue("accessToken"),
         }
       }
-      return "";
-    }
-    console.log("accessToken", getCookie("accessToken"))
-    console.log("accessToken", getCookieValue("accessToken"))
+        axios.get(requestUrl,
+          { headers: options.headers }
+          )
+          .then(function (response) {
+            if(response.data.isSuccess===true && response.data.message==="Successfully fetched partner settings"){
+              setSandboxUsername(response.data.data.sandbox_username)
+              setSandboxPassword(response.data.data.sandbox_password)
+              setUatUsername(response.data.data.uat_username)
+              setUatPassword(response.data.data.uat_password)
+            }
+        })
+        .catch(function (error) {
+            console.log(error.response.data);
+        })
+    } */
+
+    useEffect(()=>{
+        if(props.environment==="sandox"){
+          props.setuserName(sandboxUsername)
+          props.setPassword(sandboxPassword)
+        }
+        if(props.environment==="uat"){
+          props.setuserName(uatUsername)
+          props.setPassword(uatPassword)
+        }
+    },[props.environment])
+
     
     const verifySessionApi = () => {
       var requestUrl = `${apiUrl}/v1/dev/verify-session`;
       var options = {
             headers: {
-                'x-access-token': getCookieValue("accessToken"),
+                'x-tryIt-token':getCookieValue("accessToken"),
             }
         }
         axios.get(requestUrl,
           { headers: options.headers },
         ).then(function (response) {
-            console.log(JSON.stringify(response.data));
-            console.log(response.data.isSucess);
-            if(response.data.isSucess==true){
-              console.log("message",response.data.message )
-              console.log("partnerID",response.data.data )
+          /* console.log("partnerID",response.data.data.partnerId)
+          console.log("userPartnerId",response.data.data.userPartnerId)
+            console.log("sucess",response.data); */
+            if(response.data.isSuccess===true && response.data.message==="Token validate!"){
+              /* console.log("getting in ") */
+              setPartnerId(response.data.data.partnerId)
+              setUserPartnerId(response.data.data.userPartnerId)
+              props.setAllowUatAccess(true);
+              axios.get(`${apiUrl}/v1/dev/partner/settings/${response.data.data.partnerId}`, { headers: options.headers })
+                .then(function (response) {
+                  if(response.data.isSuccess===true && response.data.message==="Successfully fetched partner settings"){
+                    setSandboxUsername(response.data.data.sandbox_username)
+                    setSandboxPassword(response.data.data.sandbox_password)
+                    setUatUsername(response.data.data.uat_username)
+                    setUatPassword(response.data.data.uat_password)
+                  }
+              })
+              .catch(function (error) {
+                  /* console.log(error.response.data); */
+              })
             }
         })
         .catch(function (error) {
-            console.log(error.response.data);
+            /* console.log(error.response.data); */
+            setOpen(true)
         })
     }
     
@@ -1933,10 +2126,10 @@ function TryitHeader(props) {
     return (
         <Box sx={{position:'fixed', width:'100%'}} className="tryit-header" >
         <Stack spacing={6} p={3} m={0} justifyContent='space-between' direction='row' /* sx={{ backgroundColor: '#223871' }} */>
-            <Stack width="20%" sx={{ marginRight: '100px' }} direction="column" justifyContent="center">
-                <img src={terrapayLogo} alt="terrapayLogo" />
-            </Stack>
-            <Stack width="20%" spacing={3} justifyContent='center' direction='column' >
+        <Root><Stack  direction="column" justifyContent="center">
+              <img src={terrapayLogo} alt="terrapayLogo" />  
+            </Stack></Root>
+            <SelectRoot><Stack spacing={3} justifyContent='center' direction='column' >
             <FormControl>
             <InputLabel id="demo-simple-select-autowidth-label" 
             sx={!props.country?{
@@ -1956,7 +2149,7 @@ function TryitHeader(props) {
             </InputLabel>
             <Select
             sx={!props.allowUatAccess?{
-              width: '208px',
+              width: '100%',
               "& .MuiSvgIcon-root": {
                   color: "rgba(0, 0, 0, 0.38)",
               },
@@ -1970,7 +2163,7 @@ function TryitHeader(props) {
                   },
               },
           }:{
-              width: '208px',
+              width: '100%',
               "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
                 border: '1px solid white',
               },
@@ -1999,10 +2192,9 @@ function TryitHeader(props) {
                 })}
             </Select>
         </FormControl>
-
                 <TextField
                         sx={{
-                          width: '208px',
+                          width: '100%',
                           "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
                             border: '1px solid white',
                           },
@@ -2052,8 +2244,9 @@ function TryitHeader(props) {
                     onChange={({ target }) => props.setuserName(target.value)} value={props.userName}
                     disabled={!props.allowUatAccess}
                 />
-            </Stack>
-            <Stack width="20%" spacing={3} justifyContent='center' direction='column' >
+            </Stack></SelectRoot>
+
+            <SelectRoot><Stack spacing={3} justifyContent='center' direction='column' >
                 <FormControl>
                     <InputLabel id="demo-simple-select-autowidth-label" 
                     sx={!props.environment?{
@@ -2073,7 +2266,7 @@ function TryitHeader(props) {
                     </InputLabel>
                     <Select
                     sx={!props.allowUatAccess?{
-                      width: '208px',
+                      width: '100%',
                       "& .MuiSvgIcon-root": {
                           color: "rgba(0, 0, 0, 0.38)",
                       },
@@ -2087,7 +2280,7 @@ function TryitHeader(props) {
                           },
                       },
                   }:{
-                      width: '208px',
+                      width: '100%',
                       "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
                         border: '1px solid white',
                       },
@@ -2115,7 +2308,7 @@ function TryitHeader(props) {
                 </FormControl>
                 <TextField
                         sx={{
-                          width: '208px',
+                          width: '100%',
                           "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
                             border: '1px solid white',
                           },
@@ -2166,8 +2359,8 @@ function TryitHeader(props) {
                     value={props.password} 
                     disabled={!props.allowUatAccess}
                 />
-            </Stack>
-            <Stack width="20%"  direction='column' >
+            </Stack></SelectRoot>
+            <SelectRoot><Stack  direction='column' >
             <FormControl>
                     <InputLabel
                         sx={!props.endPoint?{
@@ -2187,7 +2380,7 @@ function TryitHeader(props) {
                     </InputLabel>
                     <Select
                         sx={{
-                            width: '208px',
+                            width: '100%',
                             "&.Mui-focused .MuiOutlinedInput-notchedOutline": {
                               border: '1px solid white',
                             },
@@ -2234,30 +2427,31 @@ function TryitHeader(props) {
                         <MenuItem value='Get Bank List'>Get Bank List</MenuItem>
                     </Select>
                 </FormControl>
-            </Stack>
-            <Stack width="20%" spacing={3} direction='column' >
+            </Stack></SelectRoot>
+            <SelectRoot>
+            <Stack /* width="20%" */ spacing={3} direction='column' >
                 {/* {(props.endPoint==="Account Status Mobile" && props.mobileAccountStatusData.instrument && props.mobileAccountStatusData.bnv && props.mobileAccountStatusData.msisdn)?<CustomButtom  sx={{textAlign:'center', minWidth:'180px', alignSelf: 'center', letterSpacing: 1, backgroundColor:'#ea5c57'}} variant='contained' onClick={getAccountStatus} >TRY IT OUT</CustomButtom>:
                 (props.endPoint==="View Transaction Mobile")?<CustomButtom  sx={{textAlign:'center', minWidth:'180px', alignSelf: 'center', letterSpacing: 1, backgroundColor:'#ea5c57'}} variant='contained' onClick={getViewTransaction} >TRY IT OUT</CustomButtom>:
                 (props.endPoint==="Ledger Balance")?<CustomButtom  sx={{textAlign:'center', minWidth:'180px', alignSelf: 'center', letterSpacing: 1, backgroundColor:'#ea5c57'}} variant='contained' onClick={getAccountStatus} >TRY IT OUT</CustomButtom>:
                 (props.endPoint==="Get Bank List")?<CustomButtom  sx={{textAlign:'center', minWidth:'180px', alignSelf: 'center', letterSpacing: 1, backgroundColor:'#ea5c57'}} variant='contained' onClick={getAccountStatus} >TRY IT OUT</CustomButtom>: */}
 
                 {/* <CustomButtom  sx={{textAlign:'center', minWidth:'180px', alignSelf: 'center', letterSpacing: 1, backgroundColor:'#ea5c57'}} variant='contained' onClick={tryItOutHandler} >TRY IT OUT</CustomButtom> */}
-                {props.allowUatAccess? <CustomButtom sx={{ textAlign: 'center', minWidth: '180px', alignSelf: 'center', letterSpacing: 1, backgroundColor: '#ea5c57' }} variant='contained' disabled={checkProperties(props.headerObject)} onClick={tryItOutHandler}>TRY IT OUT</CustomButtom>:
-                <CustomButtom sx={{ textAlign: 'center', minWidth: '180px', alignSelf: 'center', letterSpacing: 1, backgroundColor: '#ea5c57' }} variant='contained' /* disabled={checkProperties(props.headerObject)} */ onClick={allowStaticScreen}>TRY IT OUT</CustomButtom>}
+                {props.allowUatAccess? <CustomButtom sx={{ textAlign: 'center', minWidth: '80%', alignSelf: 'center', letterSpacing: 1, backgroundColor: '#ea5c57' }} variant='contained' disabled={checkProperties(props.headerObject)} onClick={tryItOutHandler}>TRY IT OUT</CustomButtom>:
+                <CustomButtom sx={{ textAlign: 'center', minWidth: '80%', alignSelf: 'center', letterSpacing: 1, backgroundColor: '#ea5c57' }} variant='contained' /* disabled={checkProperties(props.headerObject)} */ onClick={allowStaticScreen}>TRY IT OUT</CustomButtom>}
                 {!props.allowUatAccess?
-                  <Typography sx={{textAlign: 'center', minWidth: '180px', alignSelf: 'center'}} color="white" fonstSize={12} height={40} fontWeight='500'>
+                  <Typography sx={{textAlign: 'center', minWidth: '80%', alignSelf: 'center'}} color="white" fonstSize={12} height={40} fontWeight='500'>
                         Click here to <span style={{cursor:'pointer', color:'#ea5c57'}}onClick={handleClickOpen} > Login</span>
                   </Typography>:
-                  <Typography sx={{textAlign: 'center', minWidth: '180px', alignSelf: 'center'}} color="white" fonstSize={12} height={40} fontWeight='500'>
-                        <img src={LoggedInUser} width='30px' height='30px'/>
+                  <Typography sx={{textAlign: 'center', minWidth: '80%', alignSelf: 'center'}} color="white" fonstSize={12} height={40} fontWeight='500'>
+                        <img src={LoggedInUser} width='40px' height='40px' style={{marginTop:'5px'}}/>
                   </Typography>}
-        </Stack>
+        </Stack></SelectRoot>
         </Stack>
 
         <Dialog open={open} onClose={handleClose}
             PaperProps={{ sx: {
                 width: "600px", 
-                height: "400px",
+                height: "420px",
                 padding:'0px 30px 30px 30px',
             } }}
         >
@@ -2330,6 +2524,16 @@ function TryitHeader(props) {
                     <CustomLoginButtom onClick={devportalLogin} sx={{marginTop:'1px', fontWeight:'medium', fontSize:'16px', height:48, textAlign: 'center',width: '100%', alignSelf: 'center', letterSpacing: 1, backgroundColor: '#ea5c57' }} variant='contained'>SUBMIT</CustomLoginButtom>
                   }
               </Stack>
+              {showOTPScreen? <Stack direction="row"
+              justifyContent="space-between"
+              alignItems="center"
+              width='100%'
+              paddingTop='10px'
+              >
+                <span span>{showTimer &&  <DevPortalCountDownTimer hoursMinSecs={hoursMinSecs} clearTimeOut={clearTimeOut}/> }</span>
+                <span style={{fontFamily:'Poppins', color:'#ea5c57', fontWeight:'medium', fontSize:'12px',cursor:'pointer'}} onClick={resendOTPApicall}>Resend OTP?</span>
+              </Stack>: ""}
+              
             </DialogContent>
         </Dialog>
         </Box>
