@@ -2445,7 +2445,7 @@ function TryitHeader(props) {
               <Stack  direction="column" justifyContent="flex-start" alignItems="center" spacing={4} >
               <Typography sx={{color:"#24262D", fontSize:'30px', fontFamily:'Poppins', fontWeight:700, marginBottom:'8px'}}>Login</Typography>
               <Typography sx={{color:"#24262D", fontSize:'20px', fontFamily:'Poppins', fontWeight:'medium'}}>Let's login to your Terrapay account</Typography>
-              <Typography  sx={{color:"#24262D", fontSize:'14px', fontFamily:'Poppins', fontWeight:'medium'}}>What's your email address?</Typography>
+              <Typography  sx={{color:"#24262D", fontSize:'14px', fontFamily:'Poppins', fontWeight:'medium'}}>{showOTPScreen? "Enter OTP which is sent to your mail" : "What's your email address?"}</Typography>
               </Stack>
               <Stack  marginTop="18px" direction="column" justifyContent="flex-start" alignItems="center" spacing={2}>
               {showOTPScreen?
