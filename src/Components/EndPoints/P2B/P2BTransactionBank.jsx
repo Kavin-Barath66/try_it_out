@@ -533,7 +533,7 @@ function P2BTransactionBank({allowUatAccess, bankTransactionP2BData, setBankTran
             Gender (Sender)
             </Typography>
                 <TextField
-                sx={{ width: 205 }}
+                sx={{ width: 218 }}
                 label="Gender"
                 disabled={!allowUatAccess}     
                 onChange={({ target }) =>
@@ -730,7 +730,7 @@ function P2BTransactionBank({allowUatAccess, bankTransactionP2BData, setBankTran
             setBankTransactionP2BData( (prev) =>
             ({...prev, addressLine1:target.value}))} 
             value={bankTransactionP2BData.addressLine1} 
-            error={!bankTransactionP2BData.expiryDate && true}
+            error={!bankTransactionP2BData.addressLine1 && true}
             />
             {!bankTransactionP2BData.addressLine1 && (
               <FormHelperText error sx={{marginLeft:'0px', fontSize:'12px', color:'#ea5c57'}} >

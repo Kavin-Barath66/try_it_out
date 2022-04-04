@@ -25,7 +25,7 @@ function CorridorQuotation({allowUatAccess, corridorQuotationData, setCorridorQu
           InputProps={{ style: { height: 40 } }}
           InputLabelProps={corridorQuotationData.currency?{ style: { height: 40} }:{ style: { height: 40, marginTop:-7 } }}
         >
-        <MenuItem value="">All</MenuItem>
+        {/* <MenuItem value="">All</MenuItem> */}
           {currencyList && currencyList.length > 0 && currencyList.map((value, index) => {
             return (
               <MenuItem key={index} value={value.id}>{value.id}</MenuItem>

@@ -78,15 +78,18 @@ function TryitHeader(props) {
 
         const Root = styled('div')(({ theme }) => ({
           [theme.breakpoints.down('md')]: {
-            width: '10%',
+            width: '55px',
+            height:'14px',
             margin:"auto 0",
           },
           [theme.breakpoints.up('md')]: {
-            width: '15%',
+            width: '127px',
+            height:'34px',
             margin:"auto 0",
           },
           [theme.breakpoints.up('lg')]: {
-            width: '20%',
+            width: '281px',
+            height:'76px',
             margin:"auto 0",
           },
         }));
@@ -2028,28 +2031,6 @@ function TryitHeader(props) {
         }
     }
     
-   /*  const partnerSettingApi = () =>{
-      var requestUrl = `${apiUrl}/v1/dev/partner/settings/${partnerId}`;
-      var options = {
-        headers: {
-            'Cookie:':  "accessToken="+getCookieValue("accessToken"),
-        }
-      }
-        axios.get(requestUrl,
-          { headers: options.headers }
-          )
-          .then(function (response) {
-            if(response.data.isSuccess===true && response.data.message==="Successfully fetched partner settings"){
-              setSandboxUsername(response.data.data.sandbox_username)
-              setSandboxPassword(response.data.data.sandbox_password)
-              setUatUsername(response.data.data.uat_username)
-              setUatPassword(response.data.data.uat_password)
-            }
-        })
-        .catch(function (error) {
-            console.log(error.response.data);
-        })
-    } */
 
     useEffect(()=>{
         if(props.environment==="sandox"){
@@ -2095,10 +2076,10 @@ function TryitHeader(props) {
               })
             }
         })
-        .catch(function (error) {
-            /* console.log(error.response.data); */
+        /* .catch(function (error) {
+            console.log(error.response.data);
             setOpen(true)
-        })
+        })*/
     }
     
     useEffect(()=>{
@@ -2125,7 +2106,7 @@ function TryitHeader(props) {
 
     return (
         <Box sx={{position:'fixed', width:'100%'}} className="tryit-header" >
-        <Stack spacing={6} p={3} m={0} justifyContent='space-between' direction='row' /* sx={{ backgroundColor: '#223871' }} */>
+        <Stack spacing={6} p={3} m={0} justifyContent='space-between' direction='row'>
         <Root><Stack  direction="column" justifyContent="center">
               <img src={terrapayLogo} alt="terrapayLogo" />  
             </Stack></Root>
@@ -2440,7 +2421,7 @@ function TryitHeader(props) {
                 <CustomButtom sx={{ textAlign: 'center', minWidth: '80%', alignSelf: 'center', letterSpacing: 1, backgroundColor: '#ea5c57' }} variant='contained' /* disabled={checkProperties(props.headerObject)} */ onClick={allowStaticScreen}>TRY IT OUT</CustomButtom>}
                 {!props.allowUatAccess?
                   <Typography sx={{textAlign: 'center', minWidth: '80%', alignSelf: 'center'}} color="white" fonstSize={12} height={40} fontWeight='500'>
-                        Click here to <span style={{cursor:'pointer', color:'#ea5c57'}}onClick={handleClickOpen} > Login</span>
+                        Click here to <span style={{cursor:'pointer', color:'#ea5c57'}} onClick={handleClickOpen} > Login</span>
                   </Typography>:
                   <Typography sx={{textAlign: 'center', minWidth: '80%', alignSelf: 'center'}} color="white" fonstSize={12} height={40} fontWeight='500'>
                         <img src={LoggedInUser} width='40px' height='40px' style={{marginTop:'5px'}}/>
@@ -2451,12 +2432,17 @@ function TryitHeader(props) {
         <Dialog open={open} onClose={handleClose}
             PaperProps={{ sx: {
                 width: "600px", 
-                height: "420px",
+                height: "440px",
                 padding:'0px 30px 30px 30px',
             } }}
         >
             <DialogContent>
-              <Stack  direction="column" justifyContent="flex-start"alignItems="center" spacing={4} >
+            <Stack direction="row" justifyContent="flex-end" alignItems="flex-end" sx={{marginRight:'-22px'}}>
+                <IconButton  onClick={handleClose}>
+                <img src={cancelIcon}  width="15px" height="15px" />
+                </IconButton>
+            </Stack>
+              <Stack  direction="column" justifyContent="flex-start" alignItems="center" spacing={4} >
               <Typography sx={{color:"#24262D", fontSize:'30px', fontFamily:'Poppins', fontWeight:700, marginBottom:'8px'}}>Login</Typography>
               <Typography sx={{color:"#24262D", fontSize:'20px', fontFamily:'Poppins', fontWeight:'medium'}}>Let's login to your Terrapay account</Typography>
               <Typography  sx={{color:"#24262D", fontSize:'14px', fontFamily:'Poppins', fontWeight:'medium'}}>What's your email address?</Typography>

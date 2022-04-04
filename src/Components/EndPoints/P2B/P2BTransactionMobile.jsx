@@ -509,14 +509,27 @@ function P2BTransactionMobile({allowUatAccess, mobileTransactionP2BData, setMobi
         Primary Contact Country Code (Sender)<span style={{color:'#ea5c57'}}> *</span>
         </Typography>
         <FormControl sx={{height:45}}>
-            <OutlinedInput sx={{ height: 40 }} placeholder='primaryContactCountryCode'
-        disabled={!allowUatAccess}     
-        onChange={({ target }) =>
-        setMobileTransactionP2BData( (prev) =>
-        ({...prev, senderBusinessPrimaryContactCountryCode:target.value}))} 
-        value={mobileTransactionP2BData.senderBusinessPrimaryContactCountryCode} 
-        /* error={!mobileTransactionP2BData.senderBusinessPrimaryContactCountryCode && true} */
-        />
+        <TextField
+          alignItems='center'
+          sx={{ width: 213}}
+          label="Country"
+          disabled={!allowUatAccess}
+          onChange={({ target }) =>
+          setMobileTransactionP2BData( (prev) =>
+          ({...prev, senderBusinessPrimaryContactCountryCode:target.value}))} 
+          value={mobileTransactionP2BData.senderBusinessPrimaryContactCountryCode}
+          /* error={!mobileTransactionP2BData.senderBusinessPrimaryContactCountryCode && true}  */
+          select
+          InputProps={{ style: { height: 40 } }}
+          InputLabelProps={mobileTransactionP2BData.senderBusinessPrimaryContactCountryCode?{ style: { height: 40} }:{ style: { height: 40, marginTop:-7 }}} 
+        >
+          <MenuItem value="">Country</MenuItem>
+          {countryList && countryList.length > 0 && countryList.map((value, index) => {
+          return (
+            <MenuItem key={index} value={value.code}>{value.name}</MenuItem>
+          )
+        })}
+        </TextField>
         {/* !mobileTransactionP2BData.senderBusinessPrimaryContactCountryCode && (
           <FormHelperText error sx={{marginLeft:'0px', fontSize:'12px', color:'#ea5c57'}} >
             {!mobileTransactionP2BData.senderBusinessPrimaryContactCountryCode && "Mandatory Field"}
@@ -535,13 +548,13 @@ function P2BTransactionMobile({allowUatAccess, mobileTransactionP2BData, setMobi
         setMobileTransactionP2BData( (prev) =>
         ({...prev, senderBusinessPrimaryContactNo:target.value}))} 
         value={mobileTransactionP2BData.senderBusinessPrimaryContactNo} 
-        /* error={!mobileTransactionP2BData.senderBusinessPrimaryContactNo && true} */
+        error={!mobileTransactionP2BData.senderBusinessPrimaryContactNo && true}
         />
-        {/* !mobileTransactionP2BData.senderBusinessPrimaryContactNo && (
+        {!mobileTransactionP2BData.senderBusinessPrimaryContactNo && (
           <FormHelperText error sx={{marginLeft:'0px', fontSize:'12px', color:'#ea5c57'}} >
             {!mobileTransactionP2BData.senderBusinessPrimaryContactNo && "Mandatory Field"}
           </FormHelperText>
-        ) */}
+        )}
         </FormControl>
     </Stack>
     <Stack direction='row' alignItems='center' justifyContent='space-between'>
@@ -555,13 +568,13 @@ function P2BTransactionMobile({allowUatAccess, mobileTransactionP2BData, setMobi
         setMobileTransactionP2BData( (prev) =>
         ({...prev, senderPrimaryContactNoType:target.value}))} 
         value={mobileTransactionP2BData.senderPrimaryContactNoType} 
-        /* error={!mobileTransactionP2BData.senderPrimaryContactNoType && true} */
+        error={!mobileTransactionP2BData.senderPrimaryContactNoType && true}
         />
-        {/* !mobileTransactionP2BData.senderPrimaryContactNoType && (
+        {!mobileTransactionP2BData.senderPrimaryContactNoType && (
           <FormHelperText error sx={{marginLeft:'0px', fontSize:'12px', color:'#ea5c57'}} >
             {!mobileTransactionP2BData.senderPrimaryContactNoType && "Mandatory Field"}
           </FormHelperText>
-        ) */}
+        )}
         </FormControl>
     </Stack>
     <Stack direction='row' alignItems='center' justifyContent='space-between'>
