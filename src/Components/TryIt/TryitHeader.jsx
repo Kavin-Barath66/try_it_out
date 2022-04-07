@@ -2033,7 +2033,7 @@ function TryitHeader(props) {
     
 
     useEffect(()=>{
-        if(props.environment==="sandox"){
+        if(props.environment==="sandbox"){
           props.setuserName(sandboxUsername)
           props.setPassword(sandboxPassword)
         }
@@ -2065,10 +2065,15 @@ function TryitHeader(props) {
               axios.get(`${apiUrl}/v1/dev/partner/settings/${response.data.data.partnerId}`, { headers: options.headers })
                 .then(function (response) {
                   if(response.data.isSuccess===true && response.data.message==="Successfully fetched partner settings"){
-                    setSandboxUsername(response.data.data.sandbox_username)
-                    setSandboxPassword(response.data.data.sandbox_password)
-                    setUatUsername(response.data.data.uat_username)
-                    setUatPassword(response.data.data.uat_password)
+                    response.data.data.credentials && response.data.data.credentials.length>0 && response.data.data.credentials.map((item) =>{
+                      if(item.environment==='sandbox'){
+                        setSandboxUsername(item.username)
+                        setSandboxPassword(item.password)
+                      }else if(item.environment==='UAT'){
+                        setUatUsername(item.username)
+                        setUatPassword(item.password)
+                      }
+                    })
                   }
               })
               .catch(function (error) {
