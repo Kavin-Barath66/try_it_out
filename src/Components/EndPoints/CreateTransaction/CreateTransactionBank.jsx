@@ -17,31 +17,11 @@ function CreateTransactionBank({allowUatAccess, createTransactionBankData, setCr
     </Stack>
     <Stack height="100%" width={'100%'} spacing={5} sx={{ paddingTop: 4, paddingBottom:4, paddingRight:15, paddingLeft:15 }} >
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
-            <Typography color="#575757" fontWeight='500'>
-            Creation Date/Time<span style={{color:'#ea5c57'}}> *</span>
-            </Typography>
-            <FormControl sx={{height:45}}>
-        <OutlinedInput sx={{ height: 40 }} placeholder='requestDate'
-            disabled={!allowUatAccess}
-            onChange={({ target }) =>
-            setCreateTransactionBankData( (prev) =>
-            ({...prev, requestDate:target.value}))} 
-            value={createTransactionBankData.requestDate} 
-            error={!createTransactionBankData.requestDate && true}
-          />
-          {!createTransactionBankData.requestDate && (
-            <FormHelperText error sx={{marginLeft:'0px', fontSize:'12px', color:'#ea5c57'}} >
-              {!createTransactionBankData.requestDate && "Mandatory Field"}
-            </FormHelperText>
-          )}
-            </FormControl>
-        </Stack>
-        <Stack direction='row' alignItems='center' justifyContent='space-between'>
-            <Typography color="#575757" fontWeight='500'>
+            <Typography color="#575757" fontWeight='500' sx={{width:350}}>
             Destination Amount<span style={{color:'#ea5c57'}}> *</span>
             </Typography>
             <FormControl sx={{height:45}}>
-        <OutlinedInput sx={{ height: 40 }} placeholder='amount'
+        <OutlinedInput sx={{ height: 40, width: 213   }} placeholder='amount'
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionBankData( (prev) =>
@@ -57,7 +37,7 @@ function CreateTransactionBank({allowUatAccess, createTransactionBankData, setCr
             </FormControl>
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
-            <Typography color="#575757" fontWeight='500'>
+            <Typography color="#575757" fontWeight='500' sx={{width:350}}>
             Destination Currency<span style={{color:'#ea5c57'}}> *</span>
             </Typography>
             <FormControl sx={{height:45}}>
@@ -83,11 +63,11 @@ function CreateTransactionBank({allowUatAccess, createTransactionBankData, setCr
             </FormControl>
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
-            <Typography color="#575757" fontWeight='500'>
+            <Typography color="#575757" fontWeight='500' sx={{width:350}}>
             Transaction Type<span style={{color:'#ea5c57'}}> *</span>
             </Typography>
             <FormControl sx={{height:45}}>
-        <OutlinedInput sx={{ height: 40 }} placeholder='types'
+        <OutlinedInput sx={{ height: 40, width: 213 }} placeholder='types'
             disabled={true}
             onChange={({ target }) =>
             setCreateTransactionBankData( (prev) =>
@@ -103,11 +83,11 @@ function CreateTransactionBank({allowUatAccess, createTransactionBankData, setCr
             </FormControl>
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
-            <Typography color="#575757" fontWeight='500'>
+            <Typography color="#575757" fontWeight='500'sx={{width:350}}>
             Free format Text Description
             </Typography>
             <FormControl sx={{height:45}}>
-        <OutlinedInput sx={{ height: 40 }} placeholder='descriptionText' 
+         <OutlinedInput sx={{ height: 40, width: 213 }} placeholder='descriptionText' 
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionBankData( (prev) =>
@@ -123,11 +103,11 @@ function CreateTransactionBank({allowUatAccess, createTransactionBankData, setCr
             </FormControl>
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
-            <Typography color="#575757" fontWeight='500'>
+            <Typography color="#575757" fontWeight='500' sx={{width:350}}>
             Transaction Reference<span style={{color:'#ea5c57'}}> *</span>
             </Typography>
             <FormControl sx={{height:45}}>
-        <OutlinedInput sx={{ height: 40 }} placeholder='requestingOrganisationTransactionReference'
+         <OutlinedInput sx={{ height: 40, width: 213 }} placeholder='requestingOrganisationTransactionReference'
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionBankData( (prev) =>
@@ -157,11 +137,11 @@ function CreateTransactionBank({allowUatAccess, createTransactionBankData, setCr
             </FormControl>
         </Stack>*/}
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
-            <Typography color="#575757" fontWeight='500'>
+            <Typography color="#575757" fontWeight='500' sx={{width:350}}>
             Sender Mobile Number<span style={{color:'#ea5c57'}}> *</span>
             </Typography>
             <FormControl sx={{height:45}}>
-        <OutlinedInput sx={{ height: 40 }} placeholder='msisdn debitParty'
+         <OutlinedInput sx={{ height: 40, width: 213 }} placeholder='msisdn debitParty'
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionBankData( (prev) =>
@@ -178,11 +158,11 @@ function CreateTransactionBank({allowUatAccess, createTransactionBankData, setCr
         </Stack>
         {/* Beneficiary Mobile Number */}
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
-            <Typography color="#575757" fontWeight='500'>
+            <Typography color="#575757" fontWeight='500' sx={{width:350}}>
             Beneficiary Mobile Number 
             </Typography>
             <FormControl sx={{height:45}}>
-        <OutlinedInput sx={{ height: 40 }} placeholder='msisdn creditParty'
+         <OutlinedInput sx={{ height: 40, width: 213 }} placeholder='msisdn creditParty'
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionBankData( (prev) =>
@@ -191,11 +171,11 @@ function CreateTransactionBank({allowUatAccess, createTransactionBankData, setCr
             </FormControl>
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
-            <Typography color="#575757" fontWeight='500'>
+            <Typography color="#575757" fontWeight='500' sx={{width:350}}>
             Beneficiary Bank Account<span style={{color:'#ea5c57'}}> *</span>
             </Typography>
             <FormControl sx={{height:45}}>
-        <OutlinedInput sx={{ height: 40 }} placeholder='bankaccountno'
+         <OutlinedInput sx={{ height: 40, width: 213 }} placeholder='bankaccountno'
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionBankData( (prev) =>
@@ -212,11 +192,11 @@ function CreateTransactionBank({allowUatAccess, createTransactionBankData, setCr
         </Stack>
         {/* Receive Bank Account */}
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
-            <Typography color="#575757" fontWeight='500'>
+            <Typography color="#575757" fontWeight='500' sx={{width:350}}>
             Receive Bank Account Type
             </Typography>
             <FormControl sx={{height:45}}>
-        <OutlinedInput sx={{ height: 40 }} placeholder='accounttype'
+         <OutlinedInput sx={{ height: 40, width: 213 }} placeholder='accounttype'
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionBankData( (prev) =>
@@ -225,11 +205,11 @@ function CreateTransactionBank({allowUatAccess, createTransactionBankData, setCr
             </FormControl>
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
-            <Typography color="#575757" fontWeight='500'>
+            <Typography color="#575757" fontWeight='500' sx={{width:350}}>
             Bank Code<span style={{color:'#ea5c57'}}> *</span>
             </Typography>
             <FormControl sx={{height:45}}>
-        <OutlinedInput sx={{ height: 40 }} placeholder='sortcode creditParty' 
+         <OutlinedInput sx={{ height: 40, width: 213 }} placeholder='sortcode creditParty' 
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionBankData( (prev) =>
@@ -245,11 +225,11 @@ function CreateTransactionBank({allowUatAccess, createTransactionBankData, setCr
             </FormControl>
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
-            <Typography color="#575757" fontWeight='500'>
+            <Typography color="#575757" fontWeight='500' sx={{width:350}}>
             Full name of Beneficiary Bank<span style={{color:'#ea5c57'}}> *</span>
             </Typography>
             <FormControl sx={{height:45}}>
-        <OutlinedInput sx={{ height: 40 }} placeholder='organisationid'
+         <OutlinedInput sx={{ height: 40, width: 213 }} placeholder='organisationid'
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionBankData( (prev) =>
@@ -266,11 +246,11 @@ function CreateTransactionBank({allowUatAccess, createTransactionBankData, setCr
         </Stack>
         {/* Branch code */}
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
-            <Typography color="#575757" fontWeight='500'>
+            <Typography color="#575757" fontWeight='500' sx={{width:350}}>
             Branch code<span style={{color:'#ea5c57'}}> *</span>
             </Typography>
             <FormControl sx={{height:45}}>
-        <OutlinedInput sx={{ height: 40 }} placeholder='sortcode'
+         <OutlinedInput sx={{ height: 40, width: 213 }} placeholder='sortcode'
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionBankData( (prev) =>
@@ -286,7 +266,7 @@ function CreateTransactionBank({allowUatAccess, createTransactionBankData, setCr
             </FormControl>
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
-            <Typography color="#575757" fontWeight='500'>
+            <Typography color="#575757" fontWeight='500' sx={{width:350}}>
             Nationality (Sender)<span style={{color:'#ea5c57'}}> *</span>
             </Typography>
             <FormControl sx={{height:45}}>
@@ -315,11 +295,11 @@ function CreateTransactionBank({allowUatAccess, createTransactionBankData, setCr
             </FormControl>
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
-        <Typography color="#575757" fontWeight='500'>
+        <Typography color="#575757" fontWeight='500' sx={{width:350}}>
         Date of Birth (Sender)<span style={{color:'#ea5c57'}}> *</span>
         </Typography>
         <FormControl sx={{height:45}}>
-        <OutlinedInput sx={{ height: 40 }} placeholder='dateOfBirth'
+         <OutlinedInput sx={{ height: 40, width: 213 }} placeholder='dateOfBirth'
         disabled={!allowUatAccess}
         onChange={({ target }) =>
             setCreateTransactionBankData( (prev) =>
@@ -335,11 +315,12 @@ function CreateTransactionBank({allowUatAccess, createTransactionBankData, setCr
             </FormControl>
     </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
-            <Typography color="#575757" fontWeight='500'>
+            <Typography color="#575757" fontWeight='500' sx={{width:350}}>
             Gender (Sender)
             </Typography>
             <TextField
-              sx={{ width: 205 }}
+            alignItems='center'
+            sx={{ width: 213 }}
               label="Gender"
               disabled={!allowUatAccess}
               onChange={({ target }) =>
@@ -347,19 +328,19 @@ function CreateTransactionBank({allowUatAccess, createTransactionBankData, setCr
                 ({...prev, senderGender:target.value}))} 
                 value={createTransactionBankData.senderGender}
               select
-              InputProps={{ style: { height: 40 } }}
-              InputLabelProps={{ style: { height: 40 } }}
+              InputProps={{ style: { height: 40,  width: 213  } }}
+              InputLabelProps={{ style: { height: 40, } }}
             >
               <MenuItem value='M'>Male</MenuItem>
               <MenuItem value='F'>Female</MenuItem>
             </TextField>
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
-            <Typography color="#575757" fontWeight='500'>
+            <Typography color="#575757" fontWeight='500' sx={{width:350}}>
             Id Document Type (Sender)<span style={{color:'#ea5c57'}}> *</span>
             </Typography>
             <FormControl sx={{height:45}}>
-        <OutlinedInput sx={{ height: 40 }} placeholder='idType' 
+         <OutlinedInput sx={{ height: 40, width: 213 }} placeholder='idType' 
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionBankData( (prev) =>
@@ -375,11 +356,11 @@ function CreateTransactionBank({allowUatAccess, createTransactionBankData, setCr
             </FormControl>
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
-            <Typography color="#575757" fontWeight='500'>
+            <Typography color="#575757" fontWeight='500' sx={{width:350}}>
             Id Number (Sender)<span style={{color:'#ea5c57'}}> *</span>
             </Typography>
             <FormControl sx={{height:45}}>
-        <OutlinedInput sx={{ height: 40 }} placeholder='idNumber'
+         <OutlinedInput sx={{ height: 40, width: 213 }} placeholder='idNumber'
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionBankData( (prev) =>
@@ -395,11 +376,11 @@ function CreateTransactionBank({allowUatAccess, createTransactionBankData, setCr
             </FormControl>
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
-            <Typography color="#575757" fontWeight='500'>
+            <Typography color="#575757" fontWeight='500' sx={{width:350}}>
             Id Document Issue Date (Sender)
             </Typography>
             <FormControl sx={{height:45}}>
-        <OutlinedInput sx={{ height: 40 }} placeholder='issueDate'
+         <OutlinedInput sx={{ height: 40, width: 213 }} placeholder='issueDate'
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionBankData( (prev) =>
@@ -408,11 +389,11 @@ function CreateTransactionBank({allowUatAccess, createTransactionBankData, setCr
             </FormControl>
         </Stack>  
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
-            <Typography color="#575757" fontWeight='500'>
+            <Typography color="#575757" fontWeight='500' sx={{width:350}}>
             Id Document Expiry Date (Sender)<span style={{color:'#ea5c57'}}> *</span>
             </Typography>
             <FormControl sx={{height:45}}>
-        <OutlinedInput sx={{ height: 40 }} placeholder='expiryDate'
+         <OutlinedInput sx={{ height: 40, width: 213 }} placeholder='expiryDate'
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionBankData( (prev) =>
@@ -428,7 +409,7 @@ function CreateTransactionBank({allowUatAccess, createTransactionBankData, setCr
             </FormControl>
         </Stack> 
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
-            <Typography color="#575757" fontWeight='500'>
+            <Typography color="#575757" fontWeight='500' sx={{width:350}}>
             Id Issuer Country (Sender)
             </Typography>
             <FormControl sx={{height:45}}>
@@ -457,11 +438,11 @@ function CreateTransactionBank({allowUatAccess, createTransactionBankData, setCr
             </FormControl>
         </Stack> 
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
-            <Typography color="#575757" fontWeight='500'>
+            <Typography color="#575757" fontWeight='500' sx={{width:350}}>
             Address Line1 (Sender Address)<span style={{color:'#ea5c57'}}> *</span>
             </Typography>
             <FormControl sx={{height:45}}>
-        <OutlinedInput sx={{ height: 40 }} placeholder='addressLine1'
+         <OutlinedInput sx={{ height: 40, width: 213 }} placeholder='addressLine1'
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionBankData( (prev) =>
@@ -477,11 +458,11 @@ function CreateTransactionBank({allowUatAccess, createTransactionBankData, setCr
             </FormControl>
         </Stack> 
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
-            <Typography color="#575757" fontWeight='500'>
+            <Typography color="#575757" fontWeight='500' sx={{width:350}}>
             Address Line2 (Sender Address)
             </Typography>
             <FormControl sx={{height:45}}>
-        <OutlinedInput sx={{ height: 40 }} placeholder='addressLine2' 
+         <OutlinedInput sx={{ height: 40, width: 213 }} placeholder='addressLine2' 
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionBankData( (prev) =>
@@ -490,11 +471,11 @@ function CreateTransactionBank({allowUatAccess, createTransactionBankData, setCr
             </FormControl>
         </Stack> 
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
-            <Typography color="#575757" fontWeight='500'>
+            <Typography color="#575757" fontWeight='500' sx={{width:350}}>
             Address Line3 (Sender Address)
             </Typography>
             <FormControl sx={{height:45}}>
-        <OutlinedInput sx={{ height: 40 }} placeholder='addressLine3' 
+         <OutlinedInput sx={{ height: 40, width: 213 }} placeholder='addressLine3' 
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionBankData( (prev) =>
@@ -503,11 +484,11 @@ function CreateTransactionBank({allowUatAccess, createTransactionBankData, setCr
             </FormControl>
         </Stack> 
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
-            <Typography color="#575757" fontWeight='500'>
+            <Typography color="#575757" fontWeight='500' sx={{width:350}}>
             City/Town (Sender Address)<span style={{color:'#ea5c57'}}> *</span>
             </Typography>
             <FormControl sx={{height:45}}>
-        <OutlinedInput sx={{ height: 40 }} placeholder='city'
+         <OutlinedInput sx={{ height: 40, width: 213 }} placeholder='city'
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionBankData( (prev) =>
@@ -523,11 +504,11 @@ function CreateTransactionBank({allowUatAccess, createTransactionBankData, setCr
             </FormControl>
         </Stack> 
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
-            <Typography color="#575757" fontWeight='500'>
+            <Typography color="#575757" fontWeight='500' sx={{width:350}}>
             State (Sender Address)
             </Typography>
             <FormControl sx={{height:45}}>
-        <OutlinedInput sx={{ height: 40 }} placeholder='stateProvince' 
+         <OutlinedInput sx={{ height: 40, width: 213 }} placeholder='stateProvince' 
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionBankData( (prev) =>
@@ -536,11 +517,11 @@ function CreateTransactionBank({allowUatAccess, createTransactionBankData, setCr
             </FormControl>
         </Stack> 
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
-            <Typography color="#575757" fontWeight='500'>
+            <Typography color="#575757" fontWeight='500' sx={{width:350}}>
             Postal Code (Sender Address)
             </Typography>
             <FormControl sx={{height:45}}>
-        <OutlinedInput sx={{ height: 40 }} placeholder='postalCode'
+         <OutlinedInput sx={{ height: 40, width: 213 }} placeholder='postalCode'
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionBankData( (prev) =>
@@ -549,7 +530,7 @@ function CreateTransactionBank({allowUatAccess, createTransactionBankData, setCr
             </FormControl>
         </Stack> 
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
-            <Typography color="#575757" fontWeight='500'>
+            <Typography color="#575757" fontWeight='500' sx={{width:350}}>
             Country (Sender Address)<span style={{color:'#ea5c57'}}> *</span>
             </Typography>
             <FormControl sx={{height:45}}>
@@ -593,11 +574,11 @@ function CreateTransactionBank({allowUatAccess, createTransactionBankData, setCr
             </FormControl>
         </Stack>*/}
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
-            <Typography color="#575757" fontWeight='500'>
+            <Typography color="#575757" fontWeight='500' sx={{width:350}}>
             First Name (Sender)<span style={{color:'#ea5c57'}}> *</span>
             </Typography>
             <FormControl sx={{height:45}}>
-        <OutlinedInput sx={{ height: 40 }} placeholder='firstName' 
+         <OutlinedInput sx={{ height: 40, width: 213 }} placeholder='firstName' 
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionBankData( (prev) =>
@@ -613,11 +594,11 @@ function CreateTransactionBank({allowUatAccess, createTransactionBankData, setCr
             </FormControl>
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
-            <Typography color="#575757" fontWeight='500'>
+            <Typography color="#575757" fontWeight='500' sx={{width:350}}>
             Middle Name (Sender)
             </Typography>
             <FormControl sx={{height:45}}>
-        <OutlinedInput sx={{ height: 40 }} placeholder='middleName'
+         <OutlinedInput sx={{ height: 40, width: 213 }} placeholder='middleName'
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionBankData( (prev) =>
@@ -626,11 +607,11 @@ function CreateTransactionBank({allowUatAccess, createTransactionBankData, setCr
             </FormControl>
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
-            <Typography color="#575757" fontWeight='500'>
+            <Typography color="#575757" fontWeight='500' sx={{width:350}}>
             Last Name (Sender)<span style={{color:'#ea5c57'}}> *</span>
             </Typography>
             <FormControl sx={{height:45}}>
-        <OutlinedInput sx={{ height: 40 }} placeholder='lastName'
+         <OutlinedInput sx={{ height: 40, width: 213 }} placeholder='lastName'
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionBankData( (prev) =>
@@ -647,7 +628,7 @@ function CreateTransactionBank({allowUatAccess, createTransactionBankData, setCr
         </Stack>
         {/* Nationality (Receiver) */}
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
-            <Typography color="#575757" fontWeight='500'>
+            <Typography color="#575757" fontWeight='500' sx={{width:350}}>
             Nationality (Receiver)
             </Typography>
             <FormControl sx={{height:45}}>
@@ -676,11 +657,11 @@ function CreateTransactionBank({allowUatAccess, createTransactionBankData, setCr
         </Stack>
         {/* Date of Birth (Receiver)  */}
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
-            <Typography color="#575757" fontWeight='500'>
+            <Typography color="#575757" fontWeight='500' sx={{width:350}}>
             Date of Birth (Receiver)
             </Typography>
             <FormControl sx={{height:45}}>
-        <OutlinedInput sx={{ height: 40 }} placeholder='dateOfBirth'
+         <OutlinedInput sx={{ height: 40, width: 213 }} placeholder='dateOfBirth'
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionBankData( (prev) =>
@@ -690,11 +671,11 @@ function CreateTransactionBank({allowUatAccess, createTransactionBankData, setCr
         </Stack>
         {/* Id Document Type (Receiver) */}
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
-            <Typography color="#575757" fontWeight='500'>
+            <Typography color="#575757" fontWeight='500' sx={{width:350}}>
             Id Document Type (Receiver) 
             </Typography>
             <FormControl sx={{height:45}}>
-        <OutlinedInput sx={{ height: 40 }} placeholder='idType'
+         <OutlinedInput sx={{ height: 40, width: 213 }} placeholder='idType'
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionBankData( (prev) =>
@@ -704,11 +685,11 @@ function CreateTransactionBank({allowUatAccess, createTransactionBankData, setCr
         </Stack>
         {/*Id Number (Receiver)  */}
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
-            <Typography color="#575757" fontWeight='500'>
+            <Typography color="#575757" fontWeight='500' sx={{width:350}}>
             Id Number (Receiver)
             </Typography>
             <FormControl sx={{height:45}}>
-        <OutlinedInput sx={{ height: 40 }} placeholder='idNumber'
+         <OutlinedInput sx={{ height: 40, width: 213 }} placeholder='idNumber'
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionBankData( (prev) =>
@@ -718,11 +699,11 @@ function CreateTransactionBank({allowUatAccess, createTransactionBankData, setCr
         </Stack>
         {/* Id Document Issue Date (Receiver) */}
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
-            <Typography color="#575757" fontWeight='500'>
+            <Typography color="#575757" fontWeight='500' sx={{width:350}}>
             Id Document Issue Date (Receiver)
             </Typography>
             <FormControl sx={{height:45}}>
-        <OutlinedInput sx={{ height: 40 }} placeholder='issueDate'
+         <OutlinedInput sx={{ height: 40, width: 213 }} placeholder='issueDate'
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionBankData( (prev) =>
@@ -732,11 +713,11 @@ function CreateTransactionBank({allowUatAccess, createTransactionBankData, setCr
         </Stack>
         {/* Id Document Expiry Date (Receiver) */}
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
-            <Typography color="#575757" fontWeight='500'>
+            <Typography color="#575757" fontWeight='500' sx={{width:350}}>
             Id Document Expiry Date (Receiver)
             </Typography>
             <FormControl sx={{height:45}}>
-        <OutlinedInput sx={{ height: 40 }} placeholder='expiryDate'
+         <OutlinedInput sx={{ height: 40, width: 213 }} placeholder='expiryDate'
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionBankData( (prev) =>
@@ -746,7 +727,7 @@ function CreateTransactionBank({allowUatAccess, createTransactionBankData, setCr
         </Stack>
         {/* Id Issuer Country (Receiver) */}
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
-            <Typography color="#575757" fontWeight='500'>
+            <Typography color="#575757" fontWeight='500' sx={{width:350}}>
             Id Issuer Country (Receiver)
             </Typography>
             <FormControl sx={{height:45}}>
@@ -776,11 +757,11 @@ function CreateTransactionBank({allowUatAccess, createTransactionBankData, setCr
         </Stack>
         {/* Address Line1 (Receiver Address) */}
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
-            <Typography color="#575757" fontWeight='500'>
+            <Typography color="#575757" fontWeight='500' sx={{width:350}}>
             Address Line1 (Receiver Address)
             </Typography>
             <FormControl sx={{height:45}}>
-        <OutlinedInput sx={{ height: 40 }} placeholder='addressLine1'
+         <OutlinedInput sx={{ height: 40, width: 213 }} placeholder='addressLine1'
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionBankData( (prev) =>
@@ -790,11 +771,11 @@ function CreateTransactionBank({allowUatAccess, createTransactionBankData, setCr
         </Stack>
         {/*  Address Line2 (Receiver Address)*/}
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
-            <Typography color="#575757" fontWeight='500'>
+            <Typography color="#575757" fontWeight='500' sx={{width:350}}>
             Address Line2 (Receiver Address)
             </Typography>
             <FormControl sx={{height:45}}>
-        <OutlinedInput sx={{ height: 40 }} placeholder='addressLine2'
+         <OutlinedInput sx={{ height: 40, width: 213 }} placeholder='addressLine2'
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionBankData( (prev) =>
@@ -804,11 +785,11 @@ function CreateTransactionBank({allowUatAccess, createTransactionBankData, setCr
         </Stack>
         {/* Address Line3 (Receiver Address) */}
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
-            <Typography color="#575757" fontWeight='500'>
+            <Typography color="#575757" fontWeight='500' sx={{width:350}}>
             Address Line3 (Receiver Address)
             </Typography>
             <FormControl sx={{height:45}}>
-        <OutlinedInput sx={{ height: 40 }} placeholder='addressLine3'
+         <OutlinedInput sx={{ height: 40, width: 213 }} placeholder='addressLine3'
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionBankData( (prev) =>
@@ -818,11 +799,11 @@ function CreateTransactionBank({allowUatAccess, createTransactionBankData, setCr
         </Stack>
           {/* City/Town (Receiver Address) */}
           <Stack direction='row' alignItems='center' justifyContent='space-between'>
-            <Typography color="#575757" fontWeight='500'>
+            <Typography color="#575757" fontWeight='500' sx={{width:350}}>
             City/Town (Receiver Address) 
             </Typography>
             <FormControl sx={{height:45}}>
-        <OutlinedInput sx={{ height: 40 }} placeholder='city'
+         <OutlinedInput sx={{ height: 40, width: 213 }} placeholder='city'
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionBankData( (prev) =>
@@ -832,11 +813,11 @@ function CreateTransactionBank({allowUatAccess, createTransactionBankData, setCr
         </Stack>
           {/* State (Receiver Address) */}
           <Stack direction='row' alignItems='center' justifyContent='space-between'>
-            <Typography color="#575757" fontWeight='500'>
+            <Typography color="#575757" fontWeight='500' sx={{width:350}}>
             State (Receiver Address)
             </Typography>
             <FormControl sx={{height:45}}>
-        <OutlinedInput sx={{ height: 40 }} placeholder='stateProvince'
+         <OutlinedInput sx={{ height: 40, width: 213 }} placeholder='stateProvince'
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionBankData( (prev) =>
@@ -846,11 +827,11 @@ function CreateTransactionBank({allowUatAccess, createTransactionBankData, setCr
         </Stack>
             {/* Postal Code (Receiver Address) */}
             <Stack direction='row' alignItems='center' justifyContent='space-between'>
-            <Typography color="#575757" fontWeight='500'>
+            <Typography color="#575757" fontWeight='500' sx={{width:350}}>
             Postal Code (Receiver Address) 
             </Typography>
             <FormControl sx={{height:45}}>
-        <OutlinedInput sx={{ height: 40 }} placeholder='postalCode'
+         <OutlinedInput sx={{ height: 40, width: 213 }} placeholder='postalCode'
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionBankData( (prev) =>
@@ -860,7 +841,7 @@ function CreateTransactionBank({allowUatAccess, createTransactionBankData, setCr
         </Stack>
               {/* Country (Receiver Address) */}
             <Stack direction='row' alignItems='center' justifyContent='space-between'>
-            <Typography color="#575757" fontWeight='500'>
+            <Typography color="#575757" fontWeight='500' sx={{width:350}}>
             Country (Receiver Address) 
             </Typography>
             <FormControl sx={{height:45}}>
@@ -890,11 +871,11 @@ function CreateTransactionBank({allowUatAccess, createTransactionBankData, setCr
             </FormControl>
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
-            <Typography color="#575757" fontWeight='500'>
+            <Typography color="#575757" fontWeight='500' sx={{width:350}}>
             First Name (Receiver)<span style={{color:'#ea5c57'}}> *</span>
             </Typography>
             <FormControl sx={{height:45}}>
-        <OutlinedInput sx={{ height: 40 }} placeholder='firstName'
+         <OutlinedInput sx={{ height: 40, width: 213 }} placeholder='firstName'
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionBankData( (prev) =>
@@ -910,11 +891,11 @@ function CreateTransactionBank({allowUatAccess, createTransactionBankData, setCr
             </FormControl>
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
-            <Typography color="#575757" fontWeight='500'>
+            <Typography color="#575757" fontWeight='500' sx={{width:350}}>
             Last Name (Receiver)<span style={{color:'#ea5c57'}}> *</span>
             </Typography>
             <FormControl sx={{height:45}}>
-        <OutlinedInput sx={{ height: 40 }} placeholder='lastName' 
+         <OutlinedInput sx={{ height: 40, width: 213 }} placeholder='lastName' 
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionBankData( (prev) =>
@@ -930,11 +911,11 @@ function CreateTransactionBank({allowUatAccess, createTransactionBankData, setCr
             </FormControl>
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
-            <Typography color="#575757" fontWeight='500'>
+            <Typography color="#575757" fontWeight='500' sx={{width:350}}>
             Quote Id<span style={{color:'#ea5c57'}}> *</span>
             </Typography>
             <FormControl sx={{height:45}}>
-        <OutlinedInput sx={{ height: 40 }} placeholder='quoteId'
+         <OutlinedInput sx={{ height: 40, width: 213 }} placeholder='quoteId'
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionBankData( (prev) =>
@@ -950,7 +931,7 @@ function CreateTransactionBank({allowUatAccess, createTransactionBankData, setCr
             </FormControl>
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
-            <Typography color="#575757" fontWeight='500'>
+            <Typography color="#575757" fontWeight='500' sx={{width:350}}>
             Destination Country<span style={{color:'#ea5c57'}}> *</span>
             </Typography>
             <FormControl sx={{height:45}}>
@@ -979,11 +960,11 @@ function CreateTransactionBank({allowUatAccess, createTransactionBankData, setCr
             </FormControl>
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
-            <Typography color="#575757" fontWeight='500'>
+            <Typography color="#575757" fontWeight='500' sx={{width:350}}>
             Reason for Transfer<span style={{color:'#ea5c57'}}> *</span>
             </Typography>
             <FormControl sx={{height:45}}>
-        <OutlinedInput sx={{ height: 40 }} placeholder='remittancePurpose'
+         <OutlinedInput sx={{ height: 40, width: 213 }} placeholder='remittancePurpose'
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionBankData( (prev) =>
@@ -999,11 +980,11 @@ function CreateTransactionBank({allowUatAccess, createTransactionBankData, setCr
             </FormControl>
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
-            <Typography color="#575757" fontWeight='500'>
+            <Typography color="#575757" fontWeight='500' sx={{width:350}}>
             Source Of Funds<span style={{color:'#ea5c57'}}> *</span>
             </Typography>
             <FormControl sx={{height:45}}>
-        <OutlinedInput sx={{ height: 40 }} placeholder='sourceOfFunds'
+         <OutlinedInput sx={{ height: 40, width: 213 }} placeholder='sourceOfFunds'
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionBankData( (prev) =>
@@ -1019,11 +1000,11 @@ function CreateTransactionBank({allowUatAccess, createTransactionBankData, setCr
             </FormControl>
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between' pb={30}>
-            <Typography color="#575757" fontWeight='500'>
+            <Typography color="#575757" fontWeight='500' sx={{width:350}}>
             Relationship - Sender & Beneficiary<span style={{color:'#ea5c57'}}> *</span>
             </Typography>
             <FormControl sx={{height:45}}>
-        <OutlinedInput sx={{ height: 40 }} placeholder='relationshipSender' 
+         <OutlinedInput sx={{ height: 40, width: 213 }} placeholder='relationshipSender' 
             disabled={!allowUatAccess}
             onChange={({ target }) =>
             setCreateTransactionBankData( (prev) =>

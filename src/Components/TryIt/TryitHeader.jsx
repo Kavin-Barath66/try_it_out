@@ -492,7 +492,7 @@ function TryitHeader(props) {
         options.headers['X-ENVIRONMENT'] = 'sandbox'
       }
         let requestBodyDataInfo ={
-          "requestDate": `${props.createQuotationBank.requestDate}`,
+          "requestDate": new Date().toLocaleString("sv-SE"),
           "debitParty": [
             {
               "key": "msisdn",
@@ -556,7 +556,7 @@ function TryitHeader(props) {
         options.headers['X-ENVIRONMENT'] = 'sandbox'
       }
         let requestBodyDataInfo = {
-            "requestDate": `${props.createQuotationMobileData.requestDate}`,
+            "requestDate": new Date().toLocaleString("sv-SE"),
             "debitParty": [
               {
                 "key": "msisdn",
@@ -683,7 +683,7 @@ function TryitHeader(props) {
         "currency": `${props.createTransactionBankData.currency}`,
         "type": `${props.createTransactionBankData.type}`,
         "descriptionText": `${props.createTransactionBankData.descriptionText}`,
-        "requestDate": `${props.createTransactionBankData.requestDate}`,
+        "requestDate": new Date().toLocaleString("sv-SE"),
         "requestingOrganisationTransactionReference": `${props.createTransactionBankData.transRef}`,
         "provider": `${props.createTransactionBankData.provider}`, 
           "debitParty": [
@@ -822,7 +822,7 @@ function TryitHeader(props) {
           "currency": `${props.createTransactionMobileData.currency}`,
           "type": `${props.createTransactionMobileData.type}`,
           "descriptionText": `${props.createTransactionMobileData.descriptionText}`,
-          "requestDate": `${props.createTransactionMobileData.requestDate}`,
+          "requestDate": new Date().toLocaleString("sv-SE"),
           "requestingOrganisationTransactionReference": `${props.createTransactionMobileData.transRef}`,
           "provider": `${props.createTransactionMobileData.providerCode}`,
           "debitParty": [
@@ -957,7 +957,7 @@ function TryitHeader(props) {
         var requestBodyDataInfo ={
           "currency": `${props.bankTransactionB2BData.currency}`,
           "type": `${props.bankTransactionB2BData.type}`,
-          "requestDate": `${props.bankTransactionB2BData.requestDate}`,
+          "requestDate": new Date().toLocaleString("sv-SE"),
           "amount": `${props.bankTransactionB2BData.amount}`,
           "descriptionText": `${props.bankTransactionB2BData.descriptionText}`,
           "requestingOrganisationTransactionReference": `${props.bankTransactionB2BData.transRef}`,
@@ -1120,7 +1120,7 @@ function TryitHeader(props) {
         var requestBodyDataInfo ={
           "currency": `${props.mobileTransactionB2BData.currency}`,
           "type": `${props.mobileTransactionB2BData.type}`,
-          "requestDate": `${props.mobileTransactionB2BData.requestDate}`,
+          "requestDate": new Date().toLocaleString("sv-SE"),
           "amount": `${props.mobileTransactionB2BData.amount}`,
           "descriptionText": `${props.mobileTransactionB2BData.descriptionText}`,
           "requestingOrganisationTransactionReference": `${props.mobileTransactionB2BData.transRef}`,
@@ -1278,7 +1278,7 @@ function TryitHeader(props) {
           "currency": `${props.bankTransactionB2PData.currency}`,
           "type": `${props.bankTransactionB2PData.type}`,
           "descriptionText": `${props.bankTransactionB2PData.descriptionText}`,
-          "requestDate": `${props.bankTransactionB2PData.requestDate}`,
+          "requestDate": new Date().toLocaleString("sv-SE"),
           "requestingOrganisationTransactionReference": `${props.bankTransactionB2PData.transRef}`,
           "provider":`${props.bankTransactionB2PData.providerCode}`,
           "debitParty": [
@@ -1435,7 +1435,7 @@ function TryitHeader(props) {
         {
             "currency": `${props.mobileTransactionB2PData.currency}`,
             "type": `${props.mobileTransactionB2PData.type}`,
-            "requestDate": `${props.mobileTransactionB2PData.requestDate}`,
+            "requestDate": new Date().toLocaleString("sv-SE"),
             "amount": `${props.mobileTransactionB2PData.amount}`,
             "descriptionText": `${props.mobileTransactionB2PData.descriptionText}`,
             "requestingOrganisationTransactionReference": `${props.mobileTransactionB2PData.transRef}`,
@@ -1573,7 +1573,7 @@ function TryitHeader(props) {
           "currency": `${props.bankTransactionP2BData.currency}`,
           "type": `${props.bankTransactionP2BData.type}`,
           "descriptionText": `${props.bankTransactionP2BData.descriptionText}`,
-          "requestDate": `${props.bankTransactionP2BData.requestDate}`,
+          "requestDate": new Date().toLocaleString("sv-SE"),
           "requestingOrganisationTransactionReference": `${props.bankTransactionP2BData.transRef}`,
           "sendingAmount":  `${props.bankTransactionP2BData.sendingAmount}`,
           "payinCcyCode":  `${props.bankTransactionP2BData.payinCcyCode}`,
@@ -1754,7 +1754,7 @@ function TryitHeader(props) {
             "currency": `${props.mobileTransactionP2BData.currency}`,
             "type": `${props.mobileTransactionP2BData.type}`,
             "descriptionText": `${props.mobileTransactionP2BData.descriptionText}`,
-            "requestDate": `${props.mobileTransactionP2BData.requestDate}`,
+            "requestDate": new Date().toLocaleString("sv-SE"),
             "requestingOrganisationTransactionReference": `${props.mobileTransactionP2BData.transRef}`,
             "provider": `${props.mobileTransactionP2BData.providerCode}`,
             "debitParty": [
@@ -1924,19 +1924,20 @@ function TryitHeader(props) {
           props.setEndPoint("Create Transaction Mobile")
         } else if (path ===  `${process.env.REACT_APP_BASE_URL}/b2b-transaction-bank`) {
           props.setEndPoint("B2B Transaction Bank")
-        } else if (path ===  `${process.env.REACT_APP_BASE_URL}/b2b-transaction-mobile`) {
-          props.setEndPoint("B2B Transaction Mobile")
         } else if (path ===  `${process.env.REACT_APP_BASE_URL}/p2b-transaction-bank`) {
           props.setEndPoint("P2B Transaction Bank")
-        } else if (path ===  `${process.env.REACT_APP_BASE_URL}/p2b-transaction-mobile`) {
-          props.setEndPoint("P2B Transaction Mobile")
         } else if (path ===  `${process.env.REACT_APP_BASE_URL}/b2p-transaction-bank`) {
           props.setEndPoint("B2P Transaction Bank")
-        } else if (path === `${process.env.REACT_APP_BASE_URL}/b2p-transaction-mobile`) {
-          props.setEndPoint("B2P Transaction Mobile")
         } else {
           navigate(`${process.env.REACT_APP_BASE_URL}`)
         }
+        /* else if (path ===  `${process.env.REACT_APP_BASE_URL}/b2b-transaction-mobile`) {
+          props.setEndPoint("B2B Transaction Mobile")
+        } */  /* else if (path ===  `${process.env.REACT_APP_BASE_URL}/p2b-transaction-mobile`) {
+          props.setEndPoint("P2B Transaction Mobile")
+        } */  /* else if (path === `${process.env.REACT_APP_BASE_URL}/b2p-transaction-mobile`) {
+          props.setEndPoint("B2P Transaction Mobile")
+        }  */
 
     },[path])
 
@@ -2399,11 +2400,11 @@ function TryitHeader(props) {
                         {/* <MenuItem value='View Transaction Mobile'>View Transaction Mobile</MenuItem> */}
                         <MenuItem value='Create Transaction Mobile'>Create Transaction - Mobile</MenuItem>
                         <MenuItem value='Create Transaction Bank'>Create Transaction - Bank</MenuItem>
-                        <MenuItem value='P2B Transaction Mobile'>P2B Transaction - Mobile</MenuItem>
+                        {/* <MenuItem value='P2B Transaction Mobile'>P2B Transaction - Mobile</MenuItem> */}
                         <MenuItem value='P2B Transaction Bank'>P2B Transaction - Bank</MenuItem>
-                        <MenuItem value='B2P Transaction Mobile'>B2P Transaction - Mobile</MenuItem>
+                        {/* <MenuItem value='B2P Transaction Mobile'>B2P Transaction - Mobile</MenuItem> */}
                         <MenuItem value='B2P Transaction Bank'>B2P Transaction - Bank</MenuItem>
-                        <MenuItem value='B2B Transaction Mobile'>B2B Transaction - Mobile</MenuItem>
+                        {/* <MenuItem value='B2B Transaction Mobile'>B2B Transaction - Mobile</MenuItem> */}
                         <MenuItem value='B2B Transaction Bank'>B2B Transaction - Bank</MenuItem>
                         <MenuItem value='View Transaction Bank'>View Transaction</MenuItem>
                         <MenuItem value='Ledger Balance'>Ledger Balance</MenuItem>

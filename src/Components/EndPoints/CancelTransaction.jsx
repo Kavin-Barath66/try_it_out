@@ -15,11 +15,11 @@ function CancelTransaction({allowUatAccess, cancelTransactionData, setCancelTran
     </Stack>
     <Stack height="100%" width={'100%'} spacing={5} sx={{ paddingTop: 4, paddingBottom:4, paddingRight:15, paddingLeft:15 }}  >
       <Stack direction='row' alignItems='center' justifyContent='space-between'>
-          <Typography color="#575757" fontWeight='500'>
+          <Typography color="#575757" fontWeight='500' sx={{width:350}}>
           Reason For Cancelling
           </Typography>
           <FormControl sx={{height:45}}>
-          <OutlinedInput sx={{ height: 40 }} placeholder='Cancel Reason' 
+          <OutlinedInput sx={{ height: 40, width: 213 }} placeholder='Cancel Reason' 
           disabled={!allowUatAccess}
           onChange={({ target }) =>
           setCancelTransactionData( (prev) =>
@@ -28,10 +28,10 @@ function CancelTransaction({allowUatAccess, cancelTransactionData, setCancelTran
           /> </FormControl>
       </Stack>
       <Stack direction='row' alignItems='center' justifyContent='space-between'>
-          <Typography color="#575757" fontWeight='500'>
+          <Typography color="#575757" fontWeight='500' sx={{width:350}}>
           Transaction Reference ID<span style={{color:'#ea5c57'}}> *</span>
           </Typography>
-          <FormControl sx={{height:45}}><OutlinedInput sx={{ height: 40 }} placeholder='Transaction ID' 
+          <FormControl sx={{height:45}}><OutlinedInput sx={{ height: 40, width: 213 }} placeholder='Transaction ID' 
           disabled={!allowUatAccess}
           onChange={({ target }) =>
           setCancelTransactionData( (prev) =>

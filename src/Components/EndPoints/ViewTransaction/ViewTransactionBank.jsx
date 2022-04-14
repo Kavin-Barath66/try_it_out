@@ -15,10 +15,10 @@ function ViewTransactionBank({allowUatAccess, viewTransactionBankData, setViewTr
     </Stack>
     <Stack height="100%" width={'100%'} spacing={5} sx={{ paddingTop: 4, paddingBottom:4, paddingRight:15, paddingLeft:15 }}  >
       <Stack direction='row' alignItems='center' justifyContent='space-between'>
-          <Typography color="#575757" fontWeight='500'>
+          <Typography color="#575757" fontWeight='500' sx={{width:350}}>
             Transaction Reference<span style={{color:'#ea5c57'}}> *</span>
           </Typography>
-          <FormControl sx={{height:45}}> <OutlinedInput sx={{ height: 40 }} placeholder='transactionReference' 
+          <FormControl sx={{height:45}}> <OutlinedInput sx={{ height: 40, width: 213 }} placeholder='transactionReference' 
           disabled={!allowUatAccess}
           onChange={({ target }) =>
           setViewTransactionBankData( (prev) =>

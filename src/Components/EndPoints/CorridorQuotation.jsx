@@ -10,11 +10,11 @@ function CorridorQuotation({allowUatAccess, corridorQuotationData, setCorridorQu
     </Stack>
     <Stack height="100%" width={'100%'} spacing={5} sx={{ paddingTop: 4, paddingBottom:4, paddingRight:15, paddingLeft:15 }}  >
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
-        <Typography color="#575757" fontWeight='500'>
+        <Typography color="#575757" fontWeight='500' sx={{width:350}}>
         Prefunding Currency
         </Typography>
         <TextField
-          sx={{ width: 205 }}
+          sx={{ width: 213 }}
           label="Currency"
           onChange={({ target }) =>
           setCorridorQuotationData( (prev) =>
@@ -22,7 +22,7 @@ function CorridorQuotation({allowUatAccess, corridorQuotationData, setCorridorQu
           value={corridorQuotationData.currency}
           select
           disabled={!allowUatAccess}
-          InputProps={{ style: { height: 40 } }}
+          InputProps={{ style: { height: 40, width:213 } }}
           InputLabelProps={corridorQuotationData.currency?{ style: { height: 40} }:{ style: { height: 40, marginTop:-7 } }}
         >
         {/* <MenuItem value="">All</MenuItem> */}

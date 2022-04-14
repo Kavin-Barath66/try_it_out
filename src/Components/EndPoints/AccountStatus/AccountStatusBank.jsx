@@ -15,13 +15,13 @@ function AccountStatusBank({allowUatAccess, bankAccountStatusData, setBankAccoun
     <Stack direction='row' alignItems='center' justifyContent='center'>
         <Typography py={2} textAlign='center' fontWeight={600} fontSize={20} variant='h6' color="#404040">Bank Account Status</Typography>
     </Stack>
-    <Stack height="100%" width={'100%'} spacing={5} sx={{ paddingTop: 4, paddingBottom:4, paddingRight:15, paddingLeft:15 }}  >
+    <Stack height="100%" width={'100%'} spacing={5} sx={{paddingTop: 4, paddingBottom:4, paddingRight:15, paddingLeft:15 }}  >
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
-        <Typography color="#575757" direction='row' fontWeight='500'>
+        <Typography color="#575757" direction='row' fontWeight='500' sx={{width:350}}>
         Beneficiary Bank Account<span style={{color:'#ea5c57'}}> *</span>
         </Typography>
         <FormControl sx={{height:45}}>
-        <OutlinedInput sx={{ height: 40 }} 
+        <OutlinedInput sx={{ height: 40, width: 213 }} 
         disabled={!allowUatAccess}
         placeholder="accountId"
         onChange={({ target }) =>
@@ -38,11 +38,11 @@ function AccountStatusBank({allowUatAccess, bankAccountStatusData, setBankAccoun
         </FormControl>
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
-        <Typography color="#575757" fontWeight='500'>
-        Full KYC name of Beneficiary<span style={{color:'#ea5c57'}}> *</span>
+        <Typography color="#575757" fontWeight='500'  sx={{width:350}}>
+        Full KYC name of Beneficiary<span style={{color:'#ea5c57',}}> *</span>
         </Typography>
         <FormControl sx={{height:45}}>
-        <OutlinedInput sx={{ height: 40 }} 
+        <OutlinedInput sx={{ height: 40, width: 213}} 
         disabled={!allowUatAccess}
         placeholder="bnv"
         onChange={({ target }) =>
@@ -60,12 +60,12 @@ function AccountStatusBank({allowUatAccess, bankAccountStatusData, setBankAccoun
         </Stack>
 
         {/* Full name of Sender  optional*/}
-        <Stack direction='row' alignItems='center' justifyContent='space-between'>
-        <Typography color="#575757" fontWeight='500'>
+        <Stack direction='row' alignItems='center' justifyContent='space-between'  >
+        <Typography color="#575757" fontWeight='500' sx={{width:350}}>
         Full name of Sender
         </Typography>
         <FormControl sx={{height:45}}>
-        <OutlinedInput sx={{ height: 40 }} 
+        <OutlinedInput sx={{ height: 40, width: 213 }} 
         placeholder="snv"
         disabled={!allowUatAccess}
         onChange={({ target }) =>
@@ -77,10 +77,10 @@ function AccountStatusBank({allowUatAccess, bankAccountStatusData, setBankAccoun
         </Stack>
 
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
-        <Typography color="#575757" fontWeight='500'>
+        <Typography color="#575757" fontWeight='500'  sx={{width:350}}>
         Bank Code
         </Typography><FormControl sx={{height:45}}>
-        <OutlinedInput sx={{ height: 40 }} 
+        <OutlinedInput sx={{ height: 40, width: 213 }} 
         placeholder="bankcode"
         disabled={!allowUatAccess}
         onChange={({ target }) =>
@@ -89,10 +89,10 @@ function AccountStatusBank({allowUatAccess, bankAccountStatusData, setBankAccoun
         value={bankAccountStatusData.bankCode} /></FormControl>
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
-        <Typography color="#575757" fontWeight='500'>
+        <Typography color="#575757" fontWeight='500'  sx={{width:350}}>
         Full name of Beneficiary Bank<span style={{color:'#ea5c57'}}> *</span>
         </Typography><FormControl sx={{height:45}}>
-        <OutlinedInput sx={{ height: 40 }} 
+        <OutlinedInput sx={{ height: 40, width: 213 }} 
         placeholder="bankname"
         disabled={!allowUatAccess}
         onChange={({ target }) =>
@@ -109,7 +109,7 @@ function AccountStatusBank({allowUatAccess, bankAccountStatusData, setBankAccoun
         </FormControl>
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
-        <Typography color="#575757" fontWeight='500'>
+        <Typography color="#575757" fontWeight='500' sx={{width:350}}>
         Country Code<span style={{color:'#ea5c57'}}> *</span>
         </Typography><FormControl sx={{height:45}}>
 
@@ -153,10 +153,10 @@ function AccountStatusBank({allowUatAccess, bankAccountStatusData, setBankAccoun
         </Stack>
         {/* Optional & conditional fields */}
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
-        <Typography color="#575757" fontWeight='500'>
+        <Typography color="#575757" fontWeight='500'  sx={{width:350}}>
         Beneficiary Mobile Number
         </Typography><FormControl sx={{height:45}}>
-        <OutlinedInput sx={{ height: 40 }} 
+        <OutlinedInput sx={{ height: 40, width: 213 }} 
         placeholder="msisdn"
         disabled={!allowUatAccess} 
         onChange={({ target }) =>
@@ -165,10 +165,10 @@ function AccountStatusBank({allowUatAccess, bankAccountStatusData, setBankAccoun
         value={bankAccountStatusData.msisdn}/></FormControl >
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
-        <Typography color="#575757" fontWeight='500'>
+        <Typography color="#575757" fontWeight='500'  sx={{width:350}}>
         Provider Code
         </Typography><FormControl sx={{height:45}}>
-        <OutlinedInput sx={{ height: 40 }} 
+        <OutlinedInput sx={{ height: 40, width: 213 }} 
         placeholder="provider"
         disabled={!allowUatAccess}
         onChange={({ target }) =>
@@ -177,10 +177,10 @@ function AccountStatusBank({allowUatAccess, bankAccountStatusData, setBankAccoun
         value={bankAccountStatusData.provider} /></FormControl >
         </Stack>
         <Stack direction='row' alignItems='center' justifyContent='space-between' pb={30}>
-        <Typography color="#575757" fontWeight='500'>
+        <Typography color="#575757" fontWeight='500'  sx={{width:350}}>
         Bank Sub Code
         </Typography><FormControl sx={{height:45}}>
-        <OutlinedInput sx={{ height: 40 }} 
+        <OutlinedInput sx={{ height: 40, width: 213 }} 
         placeholder="banksubcode"
         disabled={!allowUatAccess} 
         onChange={({ target }) =>

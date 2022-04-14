@@ -78,7 +78,6 @@ function App() {
   const [corridorQuotationData, setCorridorQuotationData] = useState({ currency: 'USD' })
 
   const [createQuotationBank, setCreateQuotationBank] = useState({
-    requestDate: '2017-06-20 12:27:16',
     bankaccountno: '50100002965304',
     receivingCountry: 'IN',
     requestAmount: '500',
@@ -90,7 +89,6 @@ function App() {
   })
 
   const [createQuotationMobileData, setCreateQuotationMobileData] = useState({
-    requestDate: '2017-06-20 12:27:16',
     reciverMsisdn: '+9779840002320',
     requestAmount: '500',
     requestCurrency: 'NPR',
@@ -108,7 +106,6 @@ function App() {
   const [viewTransactionBankData, setViewTransactionBankData] = useState({transRef:"SrcTxnId001"})
   
   const [createTransactionBankData, setCreateTransactionBankData] = useState({
-    requestDate: "2022-03-19 11:40:48",
     amount: "500",
     currency: "INR",
     type: "inttransfer",
@@ -180,7 +177,6 @@ function App() {
     currency: "NPR",
     type: "inttransfer",
     descriptionText: "Gift for my brother",
-    requestDate: "2021-05-23 08:19:36",
     transRef: "SrcTxnId089898",
     providerCode:'',
 
@@ -249,7 +245,6 @@ function App() {
 
   
   const [bankTransactionB2BData, setBankTransactionB2BData] = useState({
-    requestDate: "2021-05-23 08:19:36",
     currency: "INR",
     type: "b2b",
     amount: "2050.00",
@@ -332,7 +327,6 @@ function App() {
   const [mobileTransactionB2BData, setMobileTransactionB2BData] = useState({
     currency: "INR",
     type: "b2b",
-    requestDate: "2021-05-23 08:19:36",
     amount: "500",
     descriptionText: "Gift for my brother",
     transRef: "SrcTxnId004",
@@ -413,7 +407,6 @@ function App() {
     currency: "INR",
     type: "b2p",
     descriptionText: "Gift for my brother",
-    requestDate: "2021-05-23 08:19:36",
     transRef: "21003b6f-8899-4dd5-815a-9efb445491ee",
     providerCode:"",
 
@@ -484,7 +477,6 @@ function App() {
   const [mobileTransactionB2PData, setMobileTransactionB2PData] = useState({
     currency: "INR",
     type: "b2p",
-    requestDate: "2021-05-23 08:19:36",
     amount: "500",
     descriptionText: "Gift for my brother",
     transRef: "SrcTxnId0098u3",
@@ -552,7 +544,6 @@ function App() {
     const [bankTransactionP2BData, setBankTransactionP2BData] = useState({
       currency: "GHS",
       type: "p2b",
-      requestDate: "2021-05-23 08:19:36",
       amount: "765.00",
       descriptionText: "Gift for my brother",
       transRef: "1f4bd226-b86b-48c1-a434-ac9ff59d2f14",
@@ -640,7 +631,6 @@ function App() {
     currency: "INR",
     type: "p2b",
     descriptionText: "Gift for my brother",
-    requestDate: "2021-05-23 08:19:36",
     transRef: "SrcTxnId005",
     providerCode:"",
     
@@ -728,7 +718,6 @@ function App() {
     country: `${bankAccountStatusData.country}`,
   }
   const MandatoryBankQuotationFields = {
-    requestDate: `${createQuotationBank.requestDate}`,
     requestAmount:  `${createQuotationBank.requestAmount}`,
     requestCurrency:`${createQuotationBank.requestCurrency}`,
     sendingCurrency: `${createQuotationBank.sendingCurrency}`,
@@ -737,7 +726,6 @@ function App() {
     receivingCountry: `${createQuotationBank.receivingCountry}`
   }
   const MandatoryMobileQuotationFields = {
-    requestDate: `${createQuotationMobileData.requestDate}`,
     requestAmount:  `${createQuotationMobileData.requestAmount}`,
     requestCurrency:`${createQuotationMobileData.requestCurrency}`,
     reciverMsisdn: `${createQuotationMobileData.reciverMsisdn}`,
@@ -754,7 +742,6 @@ function App() {
     
     }
   const MandatoryMobileCreateTransFields = {
-    requestDate: `${createTransactionMobileData.requestDate}`,
     amount: `${createTransactionMobileData.amount}`,
     currency: `${createTransactionMobileData.currency}`,
     type: `${createTransactionMobileData.type}`,
@@ -780,7 +767,6 @@ function App() {
     relationshipSender: `${createTransactionMobileData.relationshipSender}`,
   }
   const MandatoryBankCreateTransFields = {
-    requestDate: `${createTransactionBankData.requestDate}`,
     amount: `${createTransactionBankData.amount}`,
     currency: `${createTransactionBankData.currency}`,
     type: `${createTransactionBankData.type}`,
@@ -809,7 +795,6 @@ function App() {
     relationshipSender: `${createTransactionBankData.relationshipSender}`,
   }
   const MandatoryBankB2BFields = {
-    requestDate: `${bankTransactionB2BData.requestDate}`,
     amount: `${bankTransactionB2BData.amount}`,
     currency: `${bankTransactionB2BData.currency}`,
     transRef: `${bankTransactionB2BData.transRef}`,
@@ -841,7 +826,6 @@ function App() {
   }
 
   const MandatoryMobileB2BFields = {
-    requestDate: `${mobileTransactionB2BData.requestDate}`,
     amount: `${mobileTransactionB2BData.amount}`,
     currency: `${mobileTransactionB2BData.currency}`,
     transRef: `${mobileTransactionB2BData.transRef}`,
@@ -870,7 +854,6 @@ function App() {
     sourceOfFunds: `${mobileTransactionB2BData.sourceOfFunds}`,
     }
   const MandatoryBankB2PFields = {
-    requestDate: `${bankTransactionB2PData.requestDate}`,
     senderMsisd: `${bankTransactionB2PData.senderMsisd}`,
     amount: `${bankTransactionB2PData.amount}`,
     currency: `${bankTransactionB2PData.currency}`,
@@ -903,7 +886,6 @@ function App() {
     receiverLastName: `${bankTransactionB2PData.receiverLastName}`,
     }
   const MandatoryMobileB2PFields = {
-    requestDate: `${mobileTransactionB2PData.requestDate}`,
     amount: `${mobileTransactionB2PData.amount}`,
     currency: `${mobileTransactionB2PData.currency}`,
     transRef: `${mobileTransactionB2PData.transRef}`,
@@ -931,7 +913,6 @@ function App() {
     relationshipSender: `${mobileTransactionB2PData.relationshipSender}`,
     }
   const MandatoryBankP2BFields = {
-    requestDate: `${bankTransactionP2BData.requestDate}`,
     amount: `${bankTransactionP2BData.amount}`,
     currency: `${bankTransactionP2BData.currency}`,
     transRef: `${bankTransactionP2BData.transRef}`,
@@ -963,7 +944,6 @@ function App() {
     sourceOfFunds: `${bankTransactionP2BData.sourceOfFunds}`,
     }
   const MandatoryMobileP2BFields = {
-    requestDate: `${mobileTransactionP2BData.requestDate}`,
     amount: `${mobileTransactionP2BData.amount}`,
     currency: `${mobileTransactionP2BData.currency}`,
     transRef: `${mobileTransactionP2BData.transRef}`,

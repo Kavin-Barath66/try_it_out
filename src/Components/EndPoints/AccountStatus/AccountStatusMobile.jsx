@@ -5,6 +5,7 @@ import axios from 'axios'
 import MenuItem from '@mui/material/MenuItem';
 import { Stack, OutlinedInput, Button, Box, Typography, TextField, Container, FormControl, FormHelperText} from '@mui/material'
 
+
 function AccountStatusMobile({allowUatAccess, mobileAccountStatusData, setMobileAccountStatusData}) {
     
     
@@ -13,13 +14,13 @@ function AccountStatusMobile({allowUatAccess, mobileAccountStatusData, setMobile
     <Stack direction='row' alignItems='center' justifyContent='center'>
         <Typography py={2} textAlign='center' fontWeight={600} fontSize={20} variant='h6' color="#404040">Mobile Account Status</Typography>
     </Stack>
-    <Stack height="100%" width={'100%'} spacing={5} sx={{ paddingTop: 4, paddingBottom:4, paddingRight:15, paddingLeft:15 }}  >
+    <Stack height="100%" widht="100%" spacing={5} sx={{ paddingTop: 4, paddingBottom:4, paddingRight:15, paddingLeft:15 }}  >
       <Stack direction='row' alignItems='center' justifyContent='space-between'>
-          <Typography color="#575757" fontWeight='500'>
+          <Typography color="#575757" fontWeight='500' sx={{width:350}}>
             Beneficiary msisdn<span style={{color:'#ea5c57'}}> *</span>
           </Typography>
         <FormControl sx={{height:45}}>
-          <OutlinedInput sx={{ height: 40 }} placeholder='msisdn' 
+          <OutlinedInput sx={{ height: 40, width: 213 }} placeholder='msisdn' 
           disabled={!allowUatAccess}
           onChange={({ target }) =>
             setMobileAccountStatusData( (prev) =>
@@ -35,11 +36,11 @@ function AccountStatusMobile({allowUatAccess, mobileAccountStatusData, setMobile
         </FormControl>
       </Stack>
       <Stack direction='row' alignItems='center' justifyContent='space-between'>
-          <Typography color="#575757" fontWeight='500'>
+          <Typography color="#575757" fontWeight='500'  sx={{width:350}}>
           Full KYC name of Beneficiary<span style={{color:'#ea5c57'}}> *</span>
           </Typography>
           <FormControl sx={{height:45}}>
-            <OutlinedInput sx={{ height: 40 }} placeholder='bnv' 
+            <OutlinedInput sx={{ height: 40, width: 213  }} placeholder='bnv' 
             disabled={!allowUatAccess}
             onChange={({ target }) =>
               setMobileAccountStatusData( (prev) =>
@@ -55,11 +56,11 @@ function AccountStatusMobile({allowUatAccess, mobileAccountStatusData, setMobile
         </FormControl>
       </Stack>
       <Stack direction='row' alignItems='center' justifyContent='space-between'>
-          <Typography color="#575757" fontWeight='500'>
+          <Typography color="#575757" fontWeight='500'  sx={{width:350}}>
           Full name of Sender
           </Typography>
           <FormControl sx={{height:45}}>
-          <OutlinedInput sx={{ height: 40 }} 
+          <OutlinedInput sx={{ height: 40, width: 213  }} 
             placeholder="snv"
             disabled={!allowUatAccess}
             onChange={({ target }) =>
@@ -69,11 +70,11 @@ function AccountStatusMobile({allowUatAccess, mobileAccountStatusData, setMobile
           </FormControl>
       </Stack>
       <Stack direction='row' alignItems='center' justifyContent='space-between' pb={30}>
-          <Typography color="#575757" fontWeight='500'>
+          <Typography color="#575757" fontWeight='500'  sx={{width:350}}>
           Provider Code
           </Typography>
           <FormControl sx={{height:45}}>
-          <OutlinedInput sx={{ height: 40 }} 
+          <OutlinedInput sx={{ height: 40, width: 213 }} 
             placeholder="provider"
             disabled={!allowUatAccess}
             onChange={({ target }) =>
