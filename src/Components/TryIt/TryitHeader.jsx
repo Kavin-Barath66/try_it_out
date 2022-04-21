@@ -1,8 +1,10 @@
 import React, { useEffect } from 'react'
 import { styled } from '@mui/system'
 import './tryitHeader.css'
+import Snackbar from '@mui/material/Snackbar';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios'
+import Modal from '@mui/material/Modal';
 import { useState } from "react";
 import dotIcon from '../../assets/img/dot.png'
 import cancelIcon from '../../assets/img/cancel.png'
@@ -56,6 +58,16 @@ function TryitHeader(props) {
     const handleClickOpen = () => {setIsError(false);setErrorMessage("");setEmail("");setOtp("");setShowOTPScreen(false);setOpen(true);};
     const handleClose = () => {setOpen(false);};
     const getCookieValue = (name) => (document.cookie.match('(^|;)\\s*' + name + '\\s*=\\s*([^;]+)')?.pop() || '')
+    /* Session Expire Popup */
+    const [sessionExpire, setSessionExpire] = useState(false);
+    const handleClickSessionExpirePopupOpen = () => {setSessionExpire(true);};
+    const handlSessionExpirePopupClose = () => {
+      setSessionExpire(false);
+      window.location.reload(); 
+      navigate(`${process.env.REACT_APP_BASE_URL}`)
+      localStorage.removeItem("mytime");
+    };
+  
 
     const CustomButtom = styled(Button)`
         &.Mui-disabled{
@@ -76,6 +88,17 @@ function TryitHeader(props) {
           props.clearTimeOut()
         }
 
+        const tokenValidation = () => {
+          if (localStorage.getItem('mytime')) {
+            const currentDate = new Date();
+            const responseDate = new Date(localStorage.getItem('mytime'));
+            const currentDateModifi = currentDate.getTime();
+            const responseDateModifi = responseDate.getTime();
+              if (currentDateModifi > responseDateModifi ) {
+                handleClickSessionExpirePopupOpen();
+              } 
+            }
+          }
         const Root = styled('div')(({ theme }) => ({
           [theme.breakpoints.down('md')]: {
             width: '55px',
@@ -183,6 +206,7 @@ function TryitHeader(props) {
         user_partner_id: userPartnerId
         }).then(function (response) {
         if(response.data.status===200 && response.data.message==="Logged in successfully"){
+          localStorage.setItem("mytime", response.data.data.token.access.expires);
           setIsError(false);
           setErrorMessage("");
           props.setAllowUatAccess(true)
@@ -207,6 +231,7 @@ function TryitHeader(props) {
     }
 
     const getLedgerBalanceApi = () => {
+      tokenValidation();
       var requestUrl = `${apiUrl}/v1/try-it/ledger-balance?`;
       var options = {
             headers: {
@@ -239,6 +264,7 @@ function TryitHeader(props) {
     }
 
     const cancelTransactionApi = () => {
+      tokenValidation();
         var options = {
             headers: {
                 'X-USERNAME': `${props.userName}`,
@@ -276,6 +302,7 @@ function TryitHeader(props) {
     }
     
     const reverseTransactionApi = () => {
+      tokenValidation();
         var options = {
             headers: {
                 'X-USERNAME': `${props.userName}`,
@@ -313,6 +340,7 @@ function TryitHeader(props) {
     }
 
     const getViewTransaction = () => {
+      tokenValidation();
         var options = {
             headers: {
                 'X-USERNAME': `${props.userName}`,
@@ -342,6 +370,7 @@ function TryitHeader(props) {
     }
 
     const accountStatusBankApi = () => {
+      tokenValidation();
         var requestUrl=`${apiUrl}/v1/try-it/account-status?accountId=${props.bankAccountStatusData.accountId}&bnv=${props.bankAccountStatusData.bnv}&bankcode=${props.bankAccountStatusData.bankCode}&bankname=${encodeURIComponent(props.bankAccountStatusData.bankName)}&country=${props.bankAccountStatusData.country}`;
         var options = {
             headers: {
@@ -378,6 +407,7 @@ function TryitHeader(props) {
     }
    
     const accountStatusMobileApi = () => {
+      tokenValidation();
       var requestUrl=`${apiUrl}/v1/try-it/account-status?msisdn=${encodeURIComponent(props.mobileAccountStatusData.msisdn)}&bnv=${encodeURIComponent(props.mobileAccountStatusData.bnv)}`;
         var options = {
             headers: {
@@ -412,6 +442,7 @@ function TryitHeader(props) {
     }
     
     const getBankListApi = () => {
+      tokenValidation();
         var options = {
             headers: {
                 'X-USERNAME': `${props.userName}`,
@@ -440,8 +471,8 @@ function TryitHeader(props) {
                 props.setResponseScreen(true)
             });
     }
-    
     const corridorQuotationApi = () => {
+      tokenValidation();
       var requestUrl =`${apiUrl}/v1/try-it/quotation?`
         var options = {
             headers: {
@@ -475,6 +506,7 @@ function TryitHeader(props) {
     }
     
     const createQuotationBankApi = () => {
+      tokenValidation();
         var options = {
             headers: {
                 'X-USERNAME': `${props.userName}`,
@@ -539,6 +571,7 @@ function TryitHeader(props) {
     }
     
     const createQuotationMobileApi = () => {
+      tokenValidation();
         var options = {
             headers: {
                 'X-USERNAME': `${props.userName}`,
@@ -603,6 +636,7 @@ function TryitHeader(props) {
     }
     
     const viewTransactionBankApi = () => {
+      tokenValidation();
         var options = {
             headers: {
                 'X-USERNAME': `${props.userName}`,
@@ -619,8 +653,7 @@ function TryitHeader(props) {
       }else if(props.environment==="sandbox"){
         options.headers['X-ENVIRONMENT'] = 'sandbox'
       }
-        axios.post(`${apiUrl}/v1/try-it/transaction?transactionReference=${props.viewTransactionBankData.transRef}`,
-        {},
+        axios.get(`${apiUrl}/v1/try-it/transaction?transactionReference=${props.viewTransactionBankData.transRef}`,
         { headers: options.headers }
         ).then(function (response) {
             props.setResponseScreen(true)
@@ -635,6 +668,7 @@ function TryitHeader(props) {
     }
     
     const viewTransactionMobileApi = () => {
+      tokenValidation();
         var options = {
             headers: {
                 'X-USERNAME': `${props.userName}`,
@@ -667,6 +701,7 @@ function TryitHeader(props) {
     }
     
     const createTransactionBankApi = () => {
+      tokenValidation();
         var options = {
             headers: {
                 'X-USERNAME': `${props.userName}`,
@@ -806,6 +841,7 @@ function TryitHeader(props) {
     }
     
     const createTransactionMobileApi = () => {
+      tokenValidation();
         var options = {
             headers: {
                 'X-USERNAME': `${props.userName}`,
@@ -943,6 +979,7 @@ function TryitHeader(props) {
     }
     
     const bankTransactionB2BApi = () => {
+      tokenValidation();
         var options = {
             headers: {
                 'X-USERNAME': `${props.userName}`,
@@ -1106,6 +1143,7 @@ function TryitHeader(props) {
     }
 
     const mobileTransactionB2BApi = () => {
+      tokenValidation();
         var options = {
             headers: {
                 'X-USERNAME': `${props.userName}`,
@@ -1262,6 +1300,7 @@ function TryitHeader(props) {
     }
 
     const bankTransactionB2PApi = () => {
+      tokenValidation();
         var options = {
             headers: {
                 'X-USERNAME': `${props.userName}`,
@@ -1415,6 +1454,7 @@ function TryitHeader(props) {
             });
     }
     const mobileTransactionB2PApi = () => {
+      tokenValidation();
         var options = {
             headers: {
                 'X-USERNAME': `${props.userName}`,
@@ -1557,6 +1597,7 @@ function TryitHeader(props) {
     }
 
     const bankTransactionP2BApi = () => {
+      tokenValidation();
         var options = {
             headers: {
                 'X-USERNAME': `${props.userName}`,
@@ -1732,6 +1773,7 @@ function TryitHeader(props) {
             });
     }
     const mobileTransactionP2BApi = () => {
+      tokenValidation();
         var options = {
             headers: {
                 'X-USERNAME': `${props.userName}`,
@@ -2067,10 +2109,10 @@ function TryitHeader(props) {
                 .then(function (response) {
                   if(response.data.isSuccess===true && response.data.message==="Successfully fetched partner settings"){
                     response.data.data.credentials && response.data.data.credentials.length>0 && response.data.data.credentials.map((item) =>{
-                      if(item.environment==='sandbox'){
+                      if(item.environment.toLowerCase() ==='sandbox'){
                         setSandboxUsername(item.username)
                         setSandboxPassword(item.password)
-                      }else if(item.environment==='UAT'){
+                      }else if(item.environment.toLowerCase() ==='uat'){
                         setUatUsername(item.username)
                         setUatPassword(item.password)
                       }
@@ -2434,7 +2476,6 @@ function TryitHeader(props) {
                   </Typography>}
         </Stack></SelectRoot>
         </Stack>
-
         <Dialog open={open} onClose={handleClose}
             PaperProps={{ sx: {
                 width: "600px", 
@@ -2527,6 +2568,16 @@ function TryitHeader(props) {
               </Stack>: ""}
               
             </DialogContent>
+        </Dialog>
+
+        <Dialog open={sessionExpire} onClose={handlSessionExpirePopupClose} 
+        PaperProps={{ sx: {width: "500px"} }}>
+        <Box>
+            <Stack direction="column" justifyContent="center" alignItems="center" padding="50px" >
+                <Typography sx={{color:"#24262D", fontSize:'22px', fontFamily:'Poppins', fontWeight:'medium'}}>Session Expired Log in again</Typography>
+                <CustomLoginButtom onClick={handlSessionExpirePopupClose} sx={{marginTop:'20px', fontWeight:'medium', fontSize:'16px', height:40, textAlign: 'center',width: '100px', alignSelf: 'center', letterSpacing: 1, backgroundColor: '#ea5c57' }} variant='contained'>OK</CustomLoginButtom>
+            </Stack>
+        </Box>
         </Dialog>
         </Box>
     )

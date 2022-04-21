@@ -18,6 +18,26 @@ function CreateTransactionMobile({allowUatAccess, createTransactionMobileData, s
     <Stack height="100%" width={'100%'} spacing={5} sx={{ paddingTop: 4, paddingBottom:4, paddingRight:15, paddingLeft:15 }} >
         <Stack direction='row' alignItems='center' justifyContent='space-between'>
             <Typography color="#575757" fontWeight='500' sx={{width:350}}>
+            Creation Date/Time<span style={{color:'#ea5c57'}}> *</span>
+            </Typography>
+            <FormControl sx={{height:45}}>
+        <OutlinedInput sx={{ height: 40, width: 213 }} placeholder='requestDate'
+            disabled={true}
+            onChange={({ target }) =>
+            setCreateTransactionMobileData( (prev) =>
+            ({...prev, requestDate:target.value}))} 
+            value={createTransactionMobileData.requestDate} 
+            error={!createTransactionMobileData.requestDate && true}
+          />
+          {!createTransactionMobileData.requestDate && (
+            <FormHelperText error sx={{marginLeft:'0px', fontSize:'12px', color:'#ea5c57'}} >
+              {!createTransactionMobileData.requestDate && "Mandatory Field"}
+            </FormHelperText>
+          )}
+            </FormControl>
+        </Stack>
+        <Stack direction='row' alignItems='center' justifyContent='space-between'>
+            <Typography color="#575757" fontWeight='500' sx={{width:350}}>
             Destination Amount Payable<span style={{color:'#ea5c57'}}> *</span>
             </Typography>
             <FormControl sx={{height:45}}>
